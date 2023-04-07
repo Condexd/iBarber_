@@ -1,3 +1,37 @@
-body{
-    background-color: rgb(219, 62, 62);
+*{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+.container{
+	display: flex;
+    justify-content: center;
+	
+}
+.a{
+	width: 75%;
+	height: 100px;
+	background-color: #e1d7d7;
+	margin-top: -25px;
+	border-radius:4px;
+}
+header{
+    background-color: rgb(31, 35, 37);
+    width: auto;
+    height: 90px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+}
+nav{
+    display: inline-block;
+    color: aliceblue;
+    padding: 30px;
+    text-align: left;
+    margin: 0;
+}
+.yo{
+    align-items: center;
+    justify-content: flex-start;
 }

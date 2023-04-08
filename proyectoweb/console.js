@@ -6,6 +6,6 @@ function carrusel(){
         imagenes[indice].style.opacity = 0;
         indice =(indice + 1) % imagenes.length;
         imagenes[indice].style.opacity = 1;
-    }, 5000);
+    }, 4000);
 }
 carrusel();

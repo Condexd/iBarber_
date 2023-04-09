@@ -41,16 +41,17 @@ body{
 }
 .pie-pagina{
     width: 100%;
-    background-color: rgb(56, 56, 56);
+    background-color: rgb(39, 38, 38);
 }
 .pie-pagina .grupo-1{
     width: 100%;
-    max-width: 120px;
+    max-width: 1200px;
     margin: auto;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-gap: 50px;
     padding: 45px 0px;
+    color: #efefef;
 }
 .pie-pagina .grupo-1 .box figure{
     width: 100%;
@@ -71,7 +72,7 @@ body{
     color: #efefef;
     margin-bottom: 10px;
 }
-.pie-pagina.grupo-1 .redes-sociales a{
+.pie-pagina.grupo-1 .red-social a{
     display: inline-block;
     text-decoration: none;
     width: 45px;
@@ -79,12 +80,12 @@ body{
     line-height: 45px;
     color: #fff;
     margin-right: 10px;
-    background-color: black;
+    background-color: rgb(39, 38, 38);
     text-align: center;
     transition: all 300ms ease;
 }
-.pie-pagina.grupo-1 .redes-sociales a:hover{
-    color: aqua;
+.pie-pagina.grupo-1 .red-social a:hover{
+    color: rgb(222, 231, 94)
 }
 .pie-pagina.grupo-2{
     background-color: #0a1a2a;

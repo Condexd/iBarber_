@@ -16,33 +16,66 @@
     background-color: #e1d7d7;
     margin-top: -25px;
     border-radius: 4px;
+    text-decoration: none;
 }
 
 header {
-    background-color: lightgoldenrodyellow;
+    background-color: rgba(251, 251, 18, 0.865);
     width: auto;
     height: 90px;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    border: 2px solid #ccc;
+    border-radius: 10px;
 }
 
 nav {
     display: inline-block;
-    color: rgb(38, 119, 190);
+    color: rgb(0, 0, 0);
     padding: 30px;
     text-align: left;
     margin: 0;
+    width: auto;
+    height: auto;
+    text-shadow: darkgrey;
+    
 }
 
-.yo {
+.containerbutton {
     align-items: center;
     justify-content: flex-start;
+    height: 90px;
+    padding-top: 30px;
+    
+}
+.boton2{
+    background-color:  #fff4f4;
+    color: #0c0c0c;
+}
+.boton{
+    background-color:  #131313; 
+    color: #fff4f4;
+   
+}
+.containerbutton button{
+    width: 110px;
+    font-size: 18px;      
+    padding: 5px;
+    border-radius: 6px;
+    cursor: pointer;
+    margin-right: 4px;
+    
+}
+.containerbutton button:hover{
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
+
 }
 
 body {
     background-color: white;
 }
+
 
 .home-agenda-carrusel {
     display: flex;
@@ -64,3 +97,28 @@ body {
 .home-agenda-carrusel img:first-child {
     opacity: 1;
 }
+.logo{
+    height: 90px;
+}
+.logo img {
+    width: 150px;
+    padding-bottom: 3px;
+
+}
+
+.navs{
+    align-items: center;
+    justify-content:flex-end;
+    height: 90px;
+    margin-left: -50px;
+}
+nav a {
+    text-decoration: none;
+    color: black;
+  }
+.navs :hover {
+    color: #cc5c00;
+    transform: translateY(-5px);
+    cursor: pointer;
+    
+  }

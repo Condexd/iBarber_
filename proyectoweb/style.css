@@ -1,113 +1,154 @@
-*{
-	margin: 0;
-	padding: 0;
-	box-sizing: border-box;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
-.container{
-	display: flex;
+
+.container {
+    display: flex;
     justify-content: center;
-	
+
 }
-.a{
-	width: 75%;
-	height: 100px;
-	background-color: #e1d7d7;
-	margin-top: -25px;
-	border-radius:4px;
+
+.a {
+    width: 75%;
+    height: 100px;
+    background-color: #e1d7d7;
+    margin-top: -25px;
+    border-radius: 4px;
+    text-decoration: none;
 }
-header{
-    background-color: lightgoldenrodyellow;
+
+header {
+    background-color: rgba(231, 231, 141, 0.865);
     width: auto;
     height: 90px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-
+    border: 2px solid #ccc;
+    border-radius: 10px;
 }
-nav{
+
+nav {
     display: inline-block;
-    color: aliceblue;
+    color: rgb(0, 0, 0);
     padding: 30px;
     text-align: left;
     margin: 0;
+    width: auto;
+    height: auto;
+    text-shadow: darkgrey;
+    
 }
-.yo{
+
+.containerbutton {
     align-items: center;
     justify-content: flex-start;
+    height: 90px;
+    padding-top: 30px;
+    padding-left: 5px;
+    
 }
-body{
-<<<<<<< Updated upstream
-    background-image: ;
+.boton2{
+    background-color:  #fff4f4;
+    color: #0c0c0c;
+}
+.boton{
+    background-color:  #131313; 
+    color: #fff4f4;
 
-=======
+}
+.containerbutton button{
+    width: 110px;
+    font-size: 18px;      
+    padding: 5px;
+    border-radius: 6px;
+    cursor: pointer;
+    margin-right: 14px;
+    
+}
+.containerbutton button:hover{
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
+
+}
+
+body {
     background-color: white;
 }
-.pie-pagina{
-    width: 100%;
-    position: absolute;
-    bottom: 0;
-    background-color: rgb(39, 38, 38);
-}
-.pie-pagina .grupo-1{
-    width: 100%;
-    max-width: 1200px;
-    margin: auto;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-gap: 50px;
-    padding: 45px 0px;
-    color: #efefef;
-}
-.pie-pagina .grupo-1 .box figure{
-    width: 100%;
-    height: 100%;
+
+
+.home-agenda-carrusel {
     display: flex;
     justify-content: center;
-    align-items: center;  
+    margin-top: 20px;
+    position: relative;
+    height: 500px;
 }
-.pie-pagina .grupo-1 .box figure img{
-    width: 250px;
-}
-.pie-pagina .grupo-1 .box h2{
-    color: #fff;
-    margin-bottom: 25px;
-    font-size: 20px;
-}
-.pie-pagina.grupo-1 .box p{
-    color: #efefef;
-    margin-bottom: 10px;
-}
-.pie-pagina .grupo-1 .red-social a{
-    display: inline-block;
-    text-decoration: none;
-    width: 45px;
-    height: 45px;
-    line-height: 45px;
-    color: #fff;
-    margin-right: 10px;
-    background-color: rgb(39, 38, 38);
-    text-align: center;
-    transition: all 300ms ease;
-}
-.pie-pagina .grupo-1 .red-social a:hover{
-    color: rgb(222, 231, 94)
-}
-.pie-pagina .grupo-2 {
-    background-color: #000000;
-    padding: 15px 10px;
-    text-align: center;
-    color: #fff;
-}
-.pie-pagina .grupo-2 small{
-    font-size: 15px;
-}
-@media screen and (max-width:800px){
-    .pie-pagina .grupo-1{
-        width: 90%;
-        grid-template-columns: repeat(1, 1fr);
-        grid-gap: 30px;
-        padding: 35px 0px;
-        color: #efefef;
+
+.home-agenda-carrusel img {
+    position: absolute;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+    width: 100%;
+    height: 100%;
+
     }
->>>>>>> Stashed changes
+
+.home-agenda-carrusel img:first-child {
+    opacity: 1;
 }
+.logo{
+    height: 90px;
+}
+.logo img {
+    width: 150px;
+    padding-bottom: 3px;
+
+}
+
+.navs{
+    align-items: center;
+    justify-content:flex-end;
+    height: 90px;
+    margin-left: -50px;
+}
+nav a {
+    text-decoration: none;
+    color: black;
+  }
+.navs :hover {
+    color: #cc5c00;
+    transform: translateY(-5px);
+    cursor: pointer;
+    
+  }
+  .entrar{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);}
+.entrar button{
+    background-color:rgba(231, 231, 141, 0.865);
+    border-radius: 10px;
+    width: 140px;
+    height: 40px;
+    font-size: 14px;
+    color: white;
+    border: none;
+    cursor: pointer;
+    
+
+}
+
+.entrar button:hover:before {
+    content: "Haz clic aquí ";
+    display: block;
+    position: absolute;
+    top: 45px;
+    color: rgba(237, 237, 147, 0.87);
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: bold;
+  }

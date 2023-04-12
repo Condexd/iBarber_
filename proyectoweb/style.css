@@ -36,10 +36,6 @@ nav{
     justify-content: flex-start;
 }
 body{
-<<<<<<< Updated upstream
-    background-image: ;
-
-=======
     background-color: white;
 }
 .pie-pagina{
@@ -63,7 +59,7 @@ body{
     height: 100%;
     display: flex;
     justify-content: center;
-    align-items: center;  
+    align-items: center; 
 }
 .pie-pagina .grupo-1 .box figure img{
     width: 250px;
@@ -109,5 +105,4 @@ body{
         padding: 35px 0px;
         color: #efefef;
     }
->>>>>>> Stashed changes
 }

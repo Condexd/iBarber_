@@ -140,10 +140,7 @@ nav a {
     
 
 }
-body{
-    background-image: ;
 
-}
 .entrar button:hover:before {
     content: "Haz clic aquí ";
     display: block;

@@ -82,7 +82,6 @@ body{
     display: flex;
     justify-content: center;
     align-items: center; 
-    margin-top: 20px;
     position: relative;
     height: 500px;
 }
@@ -198,19 +197,16 @@ body{
 .pie-pagina{
     width: 100%;
     position: absolute;
-    bottom: 0;
     background-color: rgb(39, 38, 38);
-    margin-top: 15px;
 }
 .pie-pagina .grupo-1{
     width: 100%;
-    max-width: 1200px;
-    margin: auto;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-gap: 50px;
-    padding: 45px 0px;
+    padding-top: 12px;
     color: #efefef;
+
 }
 .pie-pagina .grupo-1 .box figure{
     width: 100%;

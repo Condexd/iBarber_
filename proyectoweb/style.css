@@ -123,3 +123,36 @@ nav a {
     cursor: pointer;
     
   }
+  .entrar{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);}
+.entrar button{
+    background-color:rgba(231, 231, 141, 0.865);
+    border-radius: 10px;
+    width: 140px;
+    height: 40px;
+    font-size: 14px;
+    color: white;
+    border: none;
+    cursor: pointer;
+    
+
+}
+.entrar button:hover{
+     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+     position: relative;
+    
+}
+.entrar button:hover:before {
+    content: "Haz clic aquí ";
+    display: block;
+    position: absolute;
+    top: 45px;
+    color: rgba(237, 237, 147, 0.87);
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: bold;
+  }

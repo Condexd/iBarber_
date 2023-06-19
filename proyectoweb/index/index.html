@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>iBarber</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="images/logo.png" type="image/png">
+    <script src="https://kit.fontawesome.com/dc1b59421b.js" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+</head>
+
+<body>
+    <header class="cabecero">
+        <nav class="navegacion">
+            <ul class="contenedor1-navegacion">
+                <li><a href="index.html">
+                        <img class="logo-img" src="./images/logo-ibarber.png" width="55px" height="auto"></a>
+                </li>
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="barberos.html">Barberos</a></li>
+                <li><a href="barberias.html">Barberías</a></li>
+                <li><a href="contactanos.html">Contáctanos</a></li>
+            </ul>
+            <ul class="contenedor2-navegacion">
+                <li><img class="buscador-img" src="./images/buscador.png" width="20px"></li>
+                <li><a class="boton-login" href="../login/login.html">Iniciar sesión</a></li>
+                <li><a class="boton-registrarse" href="../login/registrarse.html">Registrarse</a></li>
+            </ul>
+        </nav>
+    </header>
+
+        <!-- contenedor/abuelo-->
+  <div id="carrusel/indicador" class="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-interval="3000">
+    
+    <!-- indicadores-->
+  <div class="carousel-indicators">
+    <button type="button" data-bs-target="#carrusel/indicador" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+    <button type="button" data-bs-target="#carrusel/indicador" data-bs-slide-to="1" aria-label="Slide 2"></button>
+    <button type="button" data-bs-target="#carrusel/indicador" data-bs-slide-to="2" aria-label="Slide 3"></button>
+  </div>
+  <!-- contenedor padre -->
+
+  <div class="carousel-inner">
+    <div class="carousel-item active d-item">
+      <img src="imgcar/barberia-la-antigua-viruta5.jpg" class="d-block w-100 d-img" alt="...">
+      <!-- permite agregar contenido a la diapositiva-->
+      <div class="carousel-caption top-0 mt-4">
+        <p class="mt-5 fs-3 text-uppercase">Descubre TU ESTILO</p>
+        <h1 class="display-1 fw-folder tex-capitalize">iBarber</h1>
+        <button class="btn btn-primary px-4 py-9 fs-5 mt-5">Entrar</button>
+
+
+
+      </div>
+    </div>
+    <!-- Contenedor hijo-->
+
+    <div class="carousel-item d-item">
+      <img src="imgcar/descarga.jpg" class="d-block w-100 d-img" alt="...">
+      <!-- permite agregar contenido a la diapositiva-->
+      <div class="carousel-caption top-0 mt-4">
+        <p class="mt-5 fs-3 text-uppercase">descubre </p>
+        <h1 class="display-1 fw-folder tex-capitalize">aaaaaaaaaaaa</h1>
+        <button class="btn btn-dark px-4 py-2 fs-5 mt-5">Informacion</button>
+      </div>
+    </div>
+    <!-- Contenedor hijo-->
+    <div class="carousel-item d-item">
+      <img src="imgcar/mejores_barberias_espana_cuidado_facial__173247837.webp" class="d-block w-100 d-img" alt="...">
+      <div class="carousel-caption top-0 mt-4">
+        <!-- permite agregar contenido a la diapositiva-->
+        <p class="mt-5 fs-3 text-uppercase">descubre d</p>
+        <h1 class="display-1 fw-folder tex-capitalize">aaaaaaaaa</h1>
+        <button class="btn btn-primary px-4 py-2 fs-5 mt-5">Informacion</button>
+      </div>
+    </div>
+  </div>
+  <!-- botones proximo/anterior-->
+  <button class="carousel-control-prev" type="button" data-bs-target="#carrusel/indicador" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carrusel/indicador" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
+    <footer class="pie-pagina"> <!--pie de pagina-->
+        <div class="grupo-1"> 
+            <div class="box"><!--Logo y información del footer-->
+                <figure>
+                    <a href="#"> <!--Logo-->
+                        <img src="images/logo.png" alt="Logo iBarber">
+                    </a>
+                </figure>
+            </div>
+            <div class="box"> <!--información-->
+                <h2> Sobre nosotros</h2>
+                <p>Agenda con nosotros tu cita de corte de cabello.</p>
+                <p>"Un corte de cabello, un estilo que deslumbra."</p>
+            </div>
+            <div class="box"> <!--Redes-->
+                <h2> Siguenos:</h2>
+                <div class="red-social"> <!--Iconos-->
+                    <a href="#" class="fa fa-facebook"></a>
+                    <a href="#" class="fa fa-instagram"></a>
+                    <a href="#" class="fa fa-twitter"></a>
+                </div>
+            </div>
+        </div>
+        <div class="grupo-2">
+            <small>&copy; 2023 <b>iBarber</b> - Todos los Derechos reservados </small>
+        </div>
+    </footer>
+    <script src="console.js"></script>
+     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+</body>
+
+</html>

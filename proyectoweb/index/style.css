@@ -42,7 +42,7 @@ li {
     align-items: center;
     height: 100%;
     width: 100%;
-    background-color: lightcoral;
+    background-color: white;
 }
 
 .contenedor1-navegacion {
@@ -57,7 +57,7 @@ li {
 }
 
 .contenedor2-navegacion {
-    background-color: aquamarine;
+    background-color: white;
     margin-right: 30px;
     display: flex;
     align-items: center;

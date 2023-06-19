@@ -1,0 +1,174 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,wght@0,500;1,300&display=swap');
+
+body {
+    margin: 0;
+    padding: 0;
+    margin-bottom: 50px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+
+* {
+    font: 15px "Fira Sans", sans-serif;
+}
+
+body {
+    font-family: sans-serif;
+    margin: 0;
+    background-color: #959393;
+}
+
+ul,
+li {
+    list-style: none;
+}
+
+.navegacion a {
+    text-decoration: none;
+    font-family: 'Nunito Sans', sans-serif;
+    color: black;
+}
+
+.cabecero {
+    height: 60px;
+    width: 100%;
+    background-color: lightblue;
+}
+
+.navegacion {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    background-color: lightcoral;
+}
+
+.contenedor1-navegacion {
+    background-color: bisque;
+    display: flex;
+    align-items: center;
+    gap: 30px
+}
+
+.logo-img {
+    margin: 0 30px 0 20px;
+}
+
+.contenedor2-navegacion {
+    background-color: aquamarine;
+    margin-right: 30px;
+    display: flex;
+    align-items: center;
+    gap: 25px;
+    padding: 10px 0 10px 0;
+}
+
+.buscador-img {
+    margin-right: 5px;
+}
+
+.buscador-img:hover {
+    cursor: pointer;
+}
+
+.boton-login,
+.boton-registrarse {
+    border: none;
+    border-radius: 5px;
+    background-color: cornflowerblue;
+    padding: 8px 8px;
+}
+.btn-primary {
+    background-color: cornflowerblue;
+}
+
+.pie-pagina {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: white;
+    color: black;
+}
+
+.pie-pagina .grupo-1 {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 50px;
+    padding-top: 12px;
+    padding: 20px 0;
+}
+
+.pie-pagina .grupo-1 .box figure {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.pie-pagina .grupo-1 .box figure img {
+    width: 100px;
+}
+
+.pie-pagina .grupo-1 .box h2 {
+    color: black;
+    margin-bottom: 25px;
+    font-size: 14px;
+}
+
+.pie-pagina.grupo-1 .box p {
+    color: black;
+    margin-bottom: 15px;
+    font-size: 5px;
+}
+
+.pie-pagina .grupo-1 .red-social a {
+    display: inline-block;
+    text-decoration: none;
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    margin-right: 8px;
+    color: white;
+    background-color:cornflowerblue;
+    text-align: center;
+    transition: all 300ms ease;
+    border-radius: 10px;
+}
+
+.pie-pagina .grupo-1 .red-social a:hover {
+    color: rgb(74, 137, 253);
+}
+
+.pie-pagina .grupo-2 {
+    background-color: cornflowerblue;
+    padding: 10px;
+    text-align: center;
+    color: #fff;
+}
+
+.pie-pagina .grupo-2 small {
+    font-size: 12px;
+}
+
+@media screen and (max-width:800px) {
+    .pie-pagina .grupo-1 {
+        width: 90%;
+        grid-gap: 30px;
+        grid-template-columns: repeat(1, 1fr);
+        padding: 25px 0;
+    }
+}
+main{
+    background-color: #e90000;
+}
+.contenidoprin{
+    justify-content: center;
+    background-clip: padding-box;
+    height: 10px;
+    width: 10px;
+    background-color: white;
+    padding: 20px;
+}

@@ -160,3 +160,12 @@ li {
         padding: 25px 0;
     }
 }
+
+.d-item{
+    height: 500px;
+}
+.d-img{
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(0.4);
+}

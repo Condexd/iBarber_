@@ -1,11 +1,15 @@
 /*Fuente Nunito Sans*/
 @import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,wght@0,500;1,300&display=swap');
 
+/*Inicio body*/
+
 body {
     margin: 0;
     padding: 0;
     margin-bottom: 50px;
     font-family: Georgia, 'Times New Roman', Times, serif;
+    font-family: sans-serif;
+    background-color: #959393;
 }
 
 
@@ -13,27 +17,14 @@ body {
     font: 15px "Fira Sans", sans-serif;
 }
 
-body {
-    font-family: sans-serif;
-    margin: 0;
-    background-color: #959393;
-}
-
 ul,
 li {
     list-style: none;
 }
 
-.navegacion a {
-    text-decoration: none;
-    font-family: 'Nunito Sans', sans-serif;
-    color: black;
-}
-
 .cabecero {
-    height: 60px;
+    height: 45px;
     width: 100%;
-    background-color: lightblue;
 }
 
 .navegacion {
@@ -42,14 +33,19 @@ li {
     align-items: center;
     height: 100%;
     width: 100%;
-    background-color: lightcoral;
+    margin: 10px 0 0 0;
+}
+
+.navegacion a {
+    text-decoration: none;
+    font-family: 'Nunito Sans', sans-serif;
+    color: black;
 }
 
 .contenedor1-navegacion {
-    background-color: bisque;
     display: flex;
     align-items: center;
-    gap: 30px
+    gap: 30px;
 }
 
 .logo-img {
@@ -57,7 +53,6 @@ li {
 }
 
 .contenedor2-navegacion {
-    background-color: aquamarine;
     margin-right: 30px;
     display: flex;
     align-items: center;
@@ -80,10 +75,38 @@ li {
     background-color: cornflowerblue;
     padding: 8px 8px;
 }
+
+.contenedor1-navegacion>li:not(:first-child)>a:hover {
+    box-shadow: inset 0 -2px 0 0 black;
+}
+
+.contenedor1-navegacion>li:not(:first-child)>a:active,
+.contenedor1-navegacion>li:not(:first-child)>a:focus {
+    font-size: 14px;
+}
+
+/*Colores header para identificar contenedores*/
+/*
+.cabecero {
+    background-color: lightblue;
+}
+
+.navegacion {
+    background-color: lightcoral;
+}
+
+.contenedor1-navegacion {
+    background-color: bisque;
+}
+
+.contenedor2-navegacion {
+    background-color: aquamarine;
+}
+
 .btn-primary {
     background-color: cornflowerblue;
   }
-  
+*/
 
 .pie-pagina {
     position: fixed;
@@ -134,7 +157,7 @@ li {
     line-height: 40px;
     margin-right: 8px;
     color: white;
-    background-color:cornflowerblue;
+    background-color: cornflowerblue;
     text-align: center;
     transition: all 300ms ease;
     border-radius: 10px;
@@ -164,10 +187,11 @@ li {
     }
 }
 
-.d-item{
+.d-item {
     height: 500px;
 }
-.d-img{
+
+.d-img {
     height: 100%;
     object-fit: cover;
     filter: brightness(0.4);

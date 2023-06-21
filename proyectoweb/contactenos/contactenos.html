@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/estilos.css">
+    <title>Contáctanos</title><link rel="shortcut icon" href="images/logo.png" type="image/png">
+    <script src="https://kit.fontawesome.com/dc1b59421b.js" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+</head>
+<body>
+    <header class="cabecero">
+        <nav class="navegacion">
+            <ul class="contenedor1-navegacion">
+                <li><a href="index.html">
+                        <img class="logo-img" src="./images/logo-ibarber.png" width="55px" height="auto"></a>
+                </li>
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="barberos.html">Barberos</a></li>
+                <li><a href="barberias.html">Barberías</a></li>
+                <li><a href="contactanos.html">Contáctanos</a></li>
+            </ul>
+            <ul class="contenedor2-navegacion">
+                <li><img class="buscador-img" src="./images/buscador.png" width="20px"></li>
+                <li><a class="boton-login" href="../login/login.html">Iniciar sesión</a></li>
+                <li><a class="boton-registrarse" href="../login/registrarse.html">Registrarse</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <div class="contenido">
+            <h1 class="logo">Contácta<span>nos</span></h1>
+            <div class="contacto">
+                <div class="formulario-contacto">
+                    <h3>Contactanos</h3>
+                    <form>
+                        <p>
+                            <label for="nombre">Nombre</label>
+                            <input type="text" name="nombre" id="nombre" required>
+                        </p>
+                        <p>
+                            <label for="email">Correo</label>
+                            <input type="email" name="email" id="email" required>
+                        </p>
+                        <p>
+                            <label for="numero">Número</label>
+                            <input type="tel" name="numero" id="numero">
+                        </p>
+                        <p>
+                            <label for="asunto">Asunto</label>
+                            <input type="text" name="asunto" id="asunto">
+                        </p>
+                        <p class="block">
+                            <label for="mensaje">Mensaje</label>
+                            <textarea name="mensaje" id="mensaje" rows="5"></textarea>
+                        </p>
+                        <p class="block">
+                            <button type="submit">Enviar</button>
+                        </p>
+                    </form>
+                </div>
+                <div class="contacto-info">
+                    <h4>Mas información</h4>
+                    <ul>
+                        <li><i class="fa-solid fa-envelope" style="color: white;"></i>olwpad@gmail.com</li>
+                        <li><i class="fas fa-phone" style="color: white;"></i>310 4556060</li>
+                        <li><i class="fa-solid fa-location-crosshairs" style="color: white;"></i>Bogotá, Colombia.</li>
+                    </ul>
+                    <p>En iBarber, valoramos estar en contacto constante con nuestros clientes. Su retroalimentación y comunicación nos ayudan a brindarles un mejor servicio y satisfacer sus necesidades. Estamos aquí para escuchar y responder a sus inquietudes. Su opinión es vital para nuestro crecimiento y éxito. ¡Gracias por confiar en iBarber!</p>
+                    <p>iBarber</p>
+                </div>
+            </div>
+
+        </div>
+    </main>
+    
+
+    <footer class="pie-pagina"> <!--pie de pagina-->
+        <div class="grupo-1"> 
+            <div class="box"><!--Logo y información del footer-->
+                <figure>
+                    <a href="#"> <!--Logo-->
+                        <img src="images/logo.png" alt="Logo iBarber">
+                    </a>
+                </figure>
+            </div>
+            <div class="box"> <!--información-->
+                <h2> Sobre nosotros</h2>
+                <p>Agenda con nosotros tu cita de corte de cabello.</p>
+                <p>"Un corte de cabello, un estilo que deslumbra."</p>
+            </div>
+            <div class="box"> <!--Redes-->
+                <h2> Siguenos:</h2>
+                <div class="red-social"> <!--Iconos-->
+                    <a href="#" class="fa fa-facebook"></a>
+                    <a href="#" class="fa fa-instagram"></a>
+                    <a href="#" class="fa fa-twitter"></a>
+                </div>
+            </div>
+        </div>
+        <div class="grupo-2">
+            <small>&copy; 2023 <b>iBarber</b> - Todos los Derechos reservados </small>
+        </div>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,139 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+.contenedor_principal{
+    background-color: #F5F5F5;
+    display: flex;
+    justify-content: center;
+    padding: 40px;
+    flex-wrap: wrap;
+    width: 100%;
+    padding-left: 90px;
+    
+}
+.contenedor{
+    width: 1300px;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    height: 800px;
+    padding: 40px;
+    margin-top: 20px;
+  
+    
+}
+.contenedorxl{
+    background-image: url("https://i.pinimg.com/originals/58/20/bd/5820bdd4a8fea8a6bdd5d27d6fd040d7.jpg");
+    background-size: cover;
+    height: 90%;
+    width: 35%;
+    border: 1px solid;
+    color: #FFFFFF;
+    cursor: pointer;
+    padding: 10px;
+    text-align: center;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+}
+.contenedorxl1{
+    background-image: url("https://e00-elmundo.uecdn.es/assets/multimedia/imagenes/2021/05/24/16218610144610.jpg");
+    background-size: cover;
+    height: 90%;
+    width: 35%;
+    border: 1px solid;
+    color: #FFFFFF;
+    cursor: pointer;
+    padding: 10px;
+    text-align: center;
+    border-radius: 5px;
+   
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+}
+
+
+.contenedorx{
+    background-color: cornflowerblue;
+    height: 45%;
+    width: 30%;
+    border: 1px solid;
+    color: #ffffff;
+    cursor: pointer;
+    padding: 10px;
+    text-align: center;
+    border-radius: 5px;
+}
+/* Estilos básicos */
+.contenedorxl,
+.contenedorx,.contenedorxl1 {
+  /* ... otros estilos ... */
+  transition: background-color 0.3s ease;
+  transition: transform 0.3s ease;
+}
+
+/* Animación al pasar el cursor sobre los contenedores */
+.contenedorxl:hover,
+.contenedorx:hover,.contenedorxl1:hover {
+    transform: scale(1.1);/* Nuevo color de fondo al hacer hover */
+}
+
+.buscador {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 400px;
+  }
+  
+.buscador input {
+    flex-grow: 1;
+    padding: 8px;
+    border: none;
+    border-radius: 20px;
+    font-size: 14px;
+  
+  }
+.buscador input:focus{
+    outline: none;
+}
+  
+.buscador button {
+    background-color: #337ab7;
+    color: #ffffff;
+    border: none;
+    border-radius: 20px;
+    padding: 8px 12px;
+    margin-left: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+
+.buscador button:hover{
+    background-color: #13558e;
+}
+
+.eslogan {
+    font-weight: bold;
+    font-style: italic;
+  }
+
+@media (max-width: 730px) {
+    .contenedor {
+      height: auto;
+      width: 500px; 
+    }
+    
+    .contenedorxl, .contenedorx,.contenedorxl1 {
+      width: 90%; 
+      height: 400px; 
+     
+    }
+  }

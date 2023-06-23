@@ -4,3 +4,93 @@
   margin: 0;
   padding: 0;
 }
+
+body {
+  background-color: #F3F2EF;
+}
+
+.contenedor-principal-barberos {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 28px;
+}
+
+.contenedor-busqueda-barberos {
+  width: 800px;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.contenedor-perfil-barbero {
+  width: 100%;
+  height: 100px;
+  margin-bottom: 10px;
+  display: grid;
+  grid-template-columns: 15% 67% 18%;
+}
+
+.contenedor-img-busqueda-barbero {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.contenedor-img-busqueda-barbero a {
+  height: 60px;
+  width: 60px;
+}
+
+.contenedor-img-busqueda-barbero img {
+  width: 100%;
+  border-radius: 50%;
+}
+
+.contenedor-info-busqueda-barbero {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 3px;
+  padding-left: 20px;
+}
+
+.contenedor-agendar-busqueda-barbero {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.anuncios {
+  background-color: chocolate;
+  width: 300px;
+  border-radius: 10px;
+}
+
+
+/*
+colores de contenedores
+.contenedor-principal-barberos {
+  background-color: cornflowerblue;
+}
+
+.contenedor-busqueda-barberos {
+  background-color: cadetblue;
+}
+
+.contenedor-perfil-barbero {
+  background-color: tomato;
+}
+
+.contenedor-img-busqueda-barbero {
+  background-color: darkslateblue;
+}
+
+.contenedor-info-busqueda-barbero {
+  background-color: darkorchid;
+}
+
+.contenedor-agendar-busqueda-barbero {
+  background-color: indigo;
+}
+*/

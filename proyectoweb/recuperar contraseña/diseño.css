@@ -99,7 +99,7 @@ section .container .from h2::before {
     content: '';
     position: absolute;
     bottom: -10px;
-    width: 180px; height: 4px;
+    width: 300px; height: 4px;
     background: #fff;
 }
 section .container .from .inputBox {
@@ -123,7 +123,7 @@ section .container .from .inputBox input::placeholder {
 section .container .from .inputBox input[type="submit"] {
     background: #fff;
     color: #666;
-    max-width: 100px;
+    max-width: 160px;
     cursor: pointer;
     margin-bottom: 20px;
     font-weight: 600;

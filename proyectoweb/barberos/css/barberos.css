@@ -1,8 +1,12 @@
 @import url(../../modulos-css/header.css);
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,wght@0,400;1,300&family=Open+Sans:wght@500&family=Ubuntu&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter&family=Nunito+Sans:ital,wght@0,400;1,300&display=swap');
+
 
 * {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
 
 body {
@@ -15,6 +19,7 @@ body {
   justify-content: center;
   gap: 28px;
   margin-top: 20px;
+  padding: 3px;
 }
 
 .contenedor-busqueda-barberos {
@@ -31,7 +36,7 @@ body {
   padding: 10px 0;
   display: grid;
   grid-template-columns: 15% 67% 18%;
-  border-bottom: 0.5px solid #F3F2EF;
+  border-bottom: 1px solid #F3F2EF;
 }
 
 .contenedor-img-busqueda-barbero {
@@ -63,9 +68,26 @@ body {
   width: auto;
 }
 
+.nombre-busqueda-barbero {
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+}
+
 .contenedor-info-busqueda-barbero .nombre-busqueda-barbero:hover {
   text-decoration: underline;
   cursor: pointer;
+}
+
+.busqueda-barberia-barbero {
+  width: auto;
+}
+
+.busqueda-barberia-barbero:hover {
+  text-decoration: underline;
+}
+
+.contenedor-info-busqueda-barbero small {
+  color: #535353;
 }
 
 .contenedor-agendar-busqueda-barbero {
@@ -73,6 +95,10 @@ body {
   justify-content: center;
   align-items: center;
   padding: 0 10px;
+}
+
+.contenedor-agendar-busqueda-barbero span {
+  display: none;
 }
 
 .contenedor-agendar-busqueda-barbero button {
@@ -94,6 +120,38 @@ body {
   background-color: chocolate;
   width: 300px;
   border-radius: 10px;
+}
+
+@media screen and (max-width:700px) {
+
+  .contenedor-principal-barberos {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .contenedor-principal-barberos:nth-child(1) {
+    order: 1;
+  }
+
+  .contenedor-principal-barberos:nth-child(2) {
+    order: 2;
+  }
+
+  .anuncios {
+    margin: auto;
+  }
+
+  .contenedor-perfil-barbero {
+    display: grid;
+    grid-template-columns: 10% 80% 10%;
+    grid-template-rows: auto;
+  }
+
+  .contenedor-info-busqueda-barbero {
+    height: auto;
+    font-size: smaller;
+    padding-left: 5px;
+  }
 }
 
 

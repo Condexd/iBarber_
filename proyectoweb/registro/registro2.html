@@ -19,24 +19,29 @@
       <div class="square" style="--i:4;"></div>
       <div class="container">
         <div class="from">
-          <h2>Crear cuenta</h2>
-          <form action="./registro2.html">
+          <h2>Información básica</h2>
+          <form action="./registro3.html">
             <div class="inputBox">
-              <input type="text" placeholder="Primer nombre" required>
+              <input type="date" placeholder="Dia" required>
             </div>
+            <select id="combo">
+                <option value="Seleccione"></option required>
+                <option value="T.I">Tarjeta de identidad</option>
+                <option value="C.C">Cedula de ciudadania</option>
+                <option value="C.E">Cedula Extranjera</option>
+            </select>
             <div class="inputBox">
-              <input type="text" placeholder=" Segundo nombre">
+              <input type="text" minlength="8" maxlength="10" placeholder="N° documento" required>
             </div>
-            <div class="inputBox">
-              <input type="text" placeholder="Primer apellido" required>
-            </div>
-            <div class="inputBox">
-              <input type="text" placeholder="Segundo apellido">
-            </div>
+            <select id="combo" required>
+                <option value="Seleccione"></option>
+                <option value="hombre">Hombre</option>
+            <option value="mujer">Mujer</option>
+            </select>
             <div class="inputBox">
               <input type="submit" value="Siguiente">
             </div>
-          </form>
+            </form>
         </div>
       </div>
     </div>

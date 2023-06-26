@@ -128,6 +128,11 @@ section .container .from .inputBox input[type="submit"] {
     margin-bottom: 20px;
     font-weight: 600;
 }
+
+section .container .from .inputBox input[type="submit"]:hover{
+    background-color: rgb(80, 80, 226);
+    color: whitesmoke;
+}
 section .container .from .forget {
     margin-top: 5px;
     color: #fff;
@@ -146,4 +151,3 @@ section .container form .forget a {
     width: 240px;
     text-align: center;
 }
-

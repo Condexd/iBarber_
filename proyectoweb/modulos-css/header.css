@@ -1,5 +1,6 @@
 /*Fuente Nunito Sans*/
 @import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,wght@0,500;1,300&display=swap');
+@import url('../modulos-css/general.css');
 
 body {
     font-family: sans-serif;
@@ -60,11 +61,20 @@ a {
 }
 
 .boton-login,
-.boton-registrarse {
+.boton-registrarse,
+.boton-acceder {
     border: none;
     border-radius: 5px;
     background-color: cornflowerblue;
     padding: 8px 8px;
+}
+
+.boton-acceder {
+    display: none;
+}
+
+#menu-navegacion-oculta {
+    display: none;
 }
 
 .contenedor1-navegacion>li:not(:first-child)>a:hover {
@@ -75,6 +85,61 @@ a {
 .contenedor1-navegacion>li:not(:first-child)>a:focus {
     font-size: 14px;
 }
+
+.material-symbols-outlined {
+    font-variation-settings:
+        'FILL' 0,
+        'wght' 400,
+        'GRAD' 0,
+        'opsz' 48
+}
+
+@media screen and (max-width:822px) {
+
+    .boton-login,
+    .boton-registrarse {
+        display: none;
+    }
+
+    .navegacion {
+        justify-content: end;
+    }
+
+    .contenedor1-navegacion {
+        order: 2;
+    }
+
+    .contenedor2-navegacion {
+        order: 1;
+    }
+
+    .contenedor1-navegacion>li {
+        display: none;
+    }
+
+    .contenedor2-navegacion>*:not(.material-symbols-outlined) {
+        display: none;
+    }
+
+    #menu-navegacion-oculta {
+        display: block;
+    }
+
+    #menu-navegacion-oculta:hover {
+        cursor: pointer;
+    }
+}
+
+@media screen and (min-width: 1024px) {
+    .navegacion {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 100%;
+        width: 100%;
+    }
+}
+
 
 /*Colores header para identificar contenedores*/
 /*

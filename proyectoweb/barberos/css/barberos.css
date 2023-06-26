@@ -1,17 +1,7 @@
-@import url(../../modulos-css/header.css);
+@import url('../../modulos-css/header.css');
+@import url('../modulos-css/general.css');
 @import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,wght@0,400;1,300&family=Open+Sans:wght@500&family=Ubuntu&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Inter&family=Nunito+Sans:ital,wght@0,400;1,300&display=swap');
-
-
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-body {
-  background-color: #F3F2EF;
-}
 
 .contenedor-principal-barberos {
   width: 100%;
@@ -122,7 +112,7 @@ body {
   border-radius: 10px;
 }
 
-@media screen and (max-width:700px) {
+@media screen and (max-width:822px) {
 
   .contenedor-principal-barberos {
     display: flex;
@@ -151,6 +141,14 @@ body {
     height: auto;
     font-size: smaller;
     padding-left: 5px;
+  }
+
+  .contenedor-principal-barberos {
+    width: 100%;
+  }
+
+  .contenedor-busqueda-barberos {
+    width: 100%;
   }
 }
 

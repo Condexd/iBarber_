@@ -20,18 +20,45 @@
       <div class="container">
         <div class="from">
           <h2>Crear cuenta</h2>
-          <form action="./registro2.html">
+          <form action="../php/elefante.php" method="POST">
+            <select id="combo" name="select-tdoc">
+                <option value="TI">Tarjeta de identidad</option>
+                <option value="CC">Cedula de ciudadania</option>
+                <option value="CE">Cedula Extranjera</option>
+            </select>
             <div class="inputBox">
-              <input type="text" placeholder="Primer nombre" required>
+              <input  name="numeroDocumento" type="text" minlength="8" maxlength="10" placeholder="N° documento" required>
             </div>
             <div class="inputBox">
-              <input type="text" placeholder=" Segundo nombre">
+              <input name="primerNombre" type="text" placeholder="Primer nombre" required>
             </div>
             <div class="inputBox">
-              <input type="text" placeholder="Primer apellido" required>
+              <input name="SegundoNombre" type="text" placeholder=" Segundo nombre">
             </div>
             <div class="inputBox">
-              <input type="text" placeholder="Segundo apellido">
+              <input name="primerApellido" type="text" placeholder="Primer apellido" required>
+            </div>
+            <div class="inputBox">
+              <input name="segundoApellido" type="text" placeholder="Segundo apellido">
+            </div>
+            <div class="inputBox">
+              <input name="email" type="email" placeholder="Correo electronico" required>
+            </div>
+            <div class="inputBox">
+              <input name="contraseñas" type="password" placeholder="Contraseña" required>
+            </div>
+            <div class="inputBox">
+              <input type="password" placeholder="Confirmación" required>
+            <!--
+            <div class="inputBox">
+              <input type="date" placeholder="Dia" required>
+            </div>
+            <select id="combo" required>
+              <option value="Seleccione"></option>
+              <option value="hombre">Hombre</option>
+              <option value="mujer">Mujer</option>
+            </select>
+          -->
             </div>
             <div class="inputBox">
               <input type="submit" value="Siguiente">

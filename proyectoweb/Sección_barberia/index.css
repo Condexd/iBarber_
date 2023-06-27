@@ -3,6 +3,78 @@
     margin: 0;
     box-sizing: border-box;
 }
+
+
+
+ul,
+li {
+    list-style: none;
+}
+
+.cabecero {
+    height: 45px;
+    width: 100%;
+}
+
+.navegacion {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    margin: 10px 0 0 0;
+}
+
+.navegacion a {
+    text-decoration: none;
+    font-family: 'Nunito Sans', sans-serif;
+    color: black;
+}
+
+.contenedor1-navegacion {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+.logo-img {
+    margin: 0 30px 0 20px;
+}
+
+.contenedor2-navegacion {
+    margin-right: 30px;
+    display: flex;
+    align-items: center;
+    gap: 25px;
+    padding: 10px 0 10px 0;
+}
+
+.buscador-img {
+    margin-right: 5px;
+}
+
+.buscador-img:hover {
+    cursor: pointer;
+}
+
+.boton-login,
+.boton-registrarse {
+    border: none;
+    border-radius: 5px;
+    background-color: cornflowerblue;
+    padding: 8px 8px;
+}
+
+.contenedor1-navegacion>li:not(:first-child)>a:hover {
+    box-shadow: inset 0 -2px 0 0 black;
+}
+
+.contenedor1-navegacion>li:not(:first-child)>a:active,
+.contenedor1-navegacion>li:not(:first-child)>a:focus {
+    font-size: 14px;
+}
+
+/*seccion barberia*/
 .contenedor_principal{
     background-color: #F5F5F5;
     display: flex;
@@ -71,20 +143,25 @@
     padding: 10px;
     text-align: center;
     border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
-/* Estilos básicos */
 .contenedorxl,
-.contenedorx,.contenedorxl1 {
+.contenedorx,
+.contenedorxl1 {
   /* ... otros estilos ... */
-  transition: background-color 0.3s ease;
   transition: transform 0.3s ease;
 }
 
-/* Animación al pasar el cursor sobre los contenedores */
 .contenedorxl:hover,
-.contenedorx:hover,.contenedorxl1:hover {
-    transform: scale(1.1);/* Nuevo color de fondo al hacer hover */
+.contenedorx:hover,
+.contenedorxl1:hover {
+  transform: scale(1.05);
 }
+
 
 .buscador {
     display: flex;
@@ -99,6 +176,7 @@
     border: none;
     border-radius: 20px;
     font-size: 14px;
+   
   
   }
 .buscador input:focus{
@@ -137,3 +215,161 @@
      
     }
   }
+/*Footer*/
+.pie-pagina {
+  bottom: 0;
+  width: 100%;
+  background-color: white;
+  color: black;
+}
+
+.pie-pagina .grupo-1 {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 50px;
+  padding-top: 12px;
+  padding: 20px 0;
+}
+
+.pie-pagina .grupo-1 .box figure {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.pie-pagina .grupo-1 .box figure img {
+  width: 100px;
+}
+
+.pie-pagina .grupo-1 .box h2 {
+  color: black;
+  margin-bottom: 25px;
+  font-size: 14px;
+}
+
+.pie-pagina.grupo-1 .box p {
+  color: black;
+  margin-bottom: 15px;
+  font-size: 5px;
+}
+
+.pie-pagina .grupo-1 .red-social a {
+  display: inline-block;
+  text-decoration: none;
+  width: 40px;
+  height: 40px;
+  line-height: 40px;
+  margin-right: 8px;
+  color: white;
+  background-color: cornflowerblue;
+  text-align: center;
+  transition: all 300ms ease;
+  border-radius: 10px;
+}
+
+.pie-pagina .grupo-1 .red-social a:hover {
+  color: rgb(74, 137, 253);
+}
+
+.pie-pagina .grupo-2 {
+  background-color: cornflowerblue;
+  padding: 10px;
+  text-align: center;
+  color: #fff;
+}
+
+.pie-pagina .grupo-2 small {
+  font-size: 12px;
+}
+
+@media screen and (max-width:800px) {
+  .pie-pagina .grupo-1 {
+      width: 90%;
+      grid-gap: 30px;
+      grid-template-columns: repeat(1, 1fr);
+      padding: 25px 0;
+  }
+}
+
+
+/*seccion barberia*/
+.seccion-barberias {
+  padding: 100px;
+  background-color:rgb(255, 255, 255);
+  margin-bottom: 140px;
+}
+
+.seccion-barberias h2 {
+  text-align: center;
+  font-size: 24px;
+  margin-bottom: 30px;
+  color:#272222;
+}
+
+.contenedor-barberias {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+}
+
+.barberia {
+  text-align: center;
+
+ 
+}
+
+.barberia img {
+  width: 100%;
+  max-width: 300px;
+  height: auto;
+  margin-bottom: 20px;
+  border-radius: 20px;
+
+}
+
+.barberia h3 {
+  font-size: 20px;
+  margin-bottom: 10px;
+  font-weight: bold;
+    font-style: italic;
+    color: #272222;
+}
+
+.barberia p {
+  font-size: 16px;
+}
+.ver-mas {
+  display: inline-block;
+  padding: 10px 20px;
+  margin-top: 30px;
+  font-size: 16px;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: #575353;
+  background-color: #ffff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.ver-mas::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(214, 203, 203, 0.3);
+  z-index: -1;
+  transition: transform 0.3s ease;
+}
+
+.ver-mas:hover::before {
+  transform: translateX(100%);
+}

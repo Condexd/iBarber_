@@ -259,18 +259,6 @@ li {
     }
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
 /*Footer*/
 .pie-pagina {
     bottom: 0;
@@ -350,8 +338,9 @@ li {
     }
 }
 
+/*carrusel*/
 .d-item {
-    height: 500px;
+    height: 600px;
 }
 
 .d-img {

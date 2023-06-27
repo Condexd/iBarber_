@@ -262,3 +262,6 @@ body {
     object-fit: cover;
     filter: brightness(0.4);
 }
+.contenedor-sobre-nosotros{
+    margin-top: 40px;
+}

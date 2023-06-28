@@ -78,24 +78,30 @@ body {
     justify-content: space-evenly;
 }
 
-.cuadrados .cuadrado {
+.cuadrado {
     background: cornflowerblue;
-    display: flex;
     width: 46%;
-    height: 200px;
-    align-items: center;
-    justify-content: space-evenly;
+    height: 130px;
     border-radius: 5px;
 }
 
-.cudadrados .cuadrado>.contenido-texto-cuadrado {
-    width: 60%;
-    color: white;
+.contenido-texto-cuadrado {
+    display: flex;
+    align-items: center;
+    padding: 10px;
 }
 
-.cudadrados .cuadrado>.contenido-texto-cuadrado p {
-    font-weight: 300;
-    padding-top: 5px;
+.cuadrado img {
+    width: 100px;
+    height: 100px;
+    border-radius: 10px;
+    margin-right: 10px;
+}
+
+.cuadrado p {
+    text-align: left;
+    margin-left: 10px;
+    font-size: 23px; 
 }
 
 .ventajas-cont {
@@ -169,8 +175,6 @@ body {
         margin-bottom: 60px;
         width: 99%;
     }
-
-    .sobre-nosotros .contenido-textos {}
 }
 
 /*Footer*/

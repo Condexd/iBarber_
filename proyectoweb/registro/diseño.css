@@ -13,10 +13,15 @@ section {
     justify-content: center;
     min-height: 80vh;
     background-color: linear-gradient(to bottom, #f1f4f9, #dff1ff);
+
+
 }
+
+
 section .color {
    position: absolute;
-   filter: blur(150px);    
+   filter: blur(150px); 
+   
 }
 section .color:nth-child(1) {
     top: -350;
@@ -73,19 +78,23 @@ section .box .square:nth-child(5) {
 }
 section .container {
     position: relative;
-    width: 400px;
+    width: 600px;
     min-height: 400px;
     background-color: rgba(255, 255, 255, 0.1);
     border-radius: 10px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
     backdrop-filter: blur(5px);
     box-shadow: 0 25px 45px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: center;
+ 
 }
-section .container form {
+ form {
     position: relative;
-    padding: 40px
+    padding: 40px;
+    height: 400px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 section .container .from h2 {
     position: relative;
@@ -94,6 +103,7 @@ section .container .from h2 {
     font-weight: 600;
     letter-spacing: 1px;
     margin-left: 40px;
+  
 }
 section .container .from h2::before {
     content: '';
@@ -103,7 +113,7 @@ section .container .from h2::before {
     background: #fff;
 }
 section .container .from .inputBox {
-    width: 100%;
+ margin: 5px;
     margin-top: 10px;
 }
 section .container .from .inputBox input {
@@ -150,4 +160,7 @@ section .container form .forget a {
     border-radius: 25px;
     width: 240px;
     text-align: center;
+}
+h2{
+    margin-top: 7px;
 }

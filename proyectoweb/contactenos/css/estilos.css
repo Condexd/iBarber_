@@ -9,8 +9,9 @@ body {
 }
 
 
-* {
+*{
   font: 15px "Fira Sans", sans-serif;
+  margin: 0;
 }
 
 /* contenido*/
@@ -115,9 +116,7 @@ main {
 }
 
 @media (min-width: 700px) {
-  body {
-    padding: 0 4rem;
-  }
+  
 
   .contacto {
     display: grid;
@@ -142,6 +141,7 @@ main {
   width: 100%;
   background-color: white;
   color: black;
+  margin-top: 88px;
 }
 
 .pie-pagina .grupo-1 {

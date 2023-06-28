@@ -135,7 +135,7 @@ main {
   }
 }
 
-/* footer */
+/*Footer*/
 .pie-pagina {
   bottom: 0;
   width: 100%;
@@ -208,10 +208,10 @@ main {
 
 @media screen and (max-width:800px) {
   .pie-pagina .grupo-1 {
-    width: 90%;
-    grid-gap: 30px;
-    grid-template-columns: repeat(1, 1fr);
-    padding: 25px 0;
+      width: 90%;
+      grid-gap: 30px;
+      grid-template-columns: repeat(1, 1fr);
+      padding: 25px 0;
   }
 }
 

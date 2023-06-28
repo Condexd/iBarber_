@@ -91,7 +91,7 @@ section .container {
 }
  form {
     position: relative;
-    padding: 23px;
+    padding: 43px;
     height: 400px;
     display: flex;
     flex-wrap: wrap;
@@ -122,11 +122,12 @@ section .container .from .inputBox input {
     border: none;
     outline: none;
     padding: 10px 20px;
-    border-radius: 35px;
+    border-radius: 15px;
     font-size: 16px;
     letter-spacing: 1px;
     color: #fff;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    margin-bottom: 4px;
 }
 section .container .from .inputBox input::placeholder {
     color: #fff;
@@ -158,11 +159,15 @@ section .container form .forget a {
 }
 
 #combo{
-    border-radius: 25px;
+    border-radius: 20px;
     width: 240px;
     text-align: center;
+    height: 30px;
+    margin-top: 15px;
+    margin-right: 7px;
 }
+
 h2{
-    margin-top: 7px;
+    margin-top:20px;
 }
 

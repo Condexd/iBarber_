@@ -133,7 +133,7 @@
 
   .contenedor-perfil-barbero {
     display: grid;
-    grid-template-columns: 10% 80% 10%;
+    grid-template-columns: 15% 70% 15%;
     grid-template-rows: auto;
   }
 

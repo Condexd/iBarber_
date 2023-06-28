@@ -1,6 +1,6 @@
 /*Fuente Nunito Sans*/
 @import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,wght@0,500;1,300&display=swap');
-
+@import url("../../modulos-css/header.css");
 /*Inicio body*/
 
 body {
@@ -9,7 +9,7 @@ body {
     margin-bottom: 50px;
     font-family: Georgia, 'Times New Roman', Times, serif;
     font-family: sans-serif;
-    background-color: #959393;
+    background-color: #F5F5F5;
 }
 
 * {
@@ -262,6 +262,7 @@ body {
     object-fit: cover;
     filter: brightness(0.4);
 }
-.contenedor-sobre-nosotros{
+
+.contenedor-sobre-nosotros {
     margin-top: 40px;
 }

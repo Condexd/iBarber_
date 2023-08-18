@@ -1,3 +1,4 @@
+ DROP DATABASE IF EXISTS iBarber;
 CREATE DATABASE iBarber;
 
 -- Usar la base de datos creada

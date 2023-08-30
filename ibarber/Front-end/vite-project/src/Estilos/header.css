@@ -1,0 +1,142 @@
+/*Fuente Nunito Sans*/
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,wght@0,500;1,300&display=swap');
+@import url('../modulos-css/general.css');
+
+body {
+    font-family: sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+ul,
+li {
+    list-style: none;
+}
+
+.navegacion a {
+    text-decoration: none;
+    font-family: 'Nunito Sans', sans-serif;
+    color: black;
+}
+
+.cabecero {
+    height: auto;
+    width: 100%;
+    background-color: white;
+}
+
+.navegacion {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+}
+
+.contenedor1-navegacion {
+    display: flex;
+    align-items: center;
+    gap: 30px
+}
+
+.logo-img {
+    margin: 0 30px 0 20px;
+}
+
+.contenedor2-navegacion {
+    margin-right: 30px;
+    display: flex;
+    align-items: center;
+    gap: 25px;
+    padding: 10px 0 10px 0;
+}
+
+.buscador-img {
+    margin-right: 5px;
+}
+
+.buscador-img:hover {
+    cursor: pointer;
+}
+
+.boton-login,
+.boton-registrarse,
+.boton-acceder {
+    border: none;
+    border-radius: 5px;
+    background-color: cornflowerblue;
+    padding: 8px 8px;
+}
+
+.boton-acceder {
+    display: none;
+}
+
+#menu-navegacion-oculta {
+    display: none;
+}
+
+.contenedor1-navegacion>li:not(:first-child)>a:hover {
+    box-shadow: inset 0 -2px 0 0 black;
+}
+
+.contenedor1-navegacion>li:not(:first-child)>a:active,
+.contenedor1-navegacion>li:not(:first-child)>a:focus {
+    font-size: 14px;
+}
+
+.material-symbols-outlined {
+    font-variation-settings:
+        'FILL' 0,
+        'wght' 400,
+        'GRAD' 0,
+        'opsz' 48
+}
+
+@media screen and (max-width:822px) {
+
+    .boton-login,
+    .boton-registrarse {
+        display: none;
+    }
+
+    .navegacion {
+        justify-content: end;
+    }
+
+    .contenedor1-navegacion {
+        order: 2;
+    }
+
+    .contenedor2-navegacion {
+        order: 1;
+    }
+
+    .contenedor1-navegacion>li {
+        display: none;
+    }
+
+    .contenedor2-navegacion>*:not(.material-symbols-outlined) {
+        display: none;
+    }
+
+    #menu-navegacion-oculta {
+        display: block;
+    }
+
+    #menu-navegacion-oculta:hover {
+        cursor: pointer;
+    }
+}
+
+@media screen and (min-width: 1024px) {
+    .navegacion {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 100%;
+        width: 100%;
+    }
+}
+

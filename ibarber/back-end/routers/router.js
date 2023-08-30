@@ -4,11 +4,11 @@ import usuarioModel from "../models/usuario.js";
 export  default router;
 
 router.post('/usuarios',async(req,res)=>{
-    const { nombre, apellido,documento, password} = req.body;
+    const {nombres,apellidos,numeroDocumento,password} = req.body;
     const data= new usuarioModel({
-        nombres:nombre,
-        apellidos:apellido,
-        documento:documento,
+        nombres:nombres,
+        apellidos:apellidos,
+        documento:numeroDocumento,
         password:password
     })
 

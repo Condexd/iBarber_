@@ -8,7 +8,7 @@ const Footer = () => {
         <div className="box">
           <figure>
             <a href="#">
-              <img src="images/logo-ibarber.png" alt="Logo iBarber" />
+              <img src="https://raw.githubusercontent.com/Condexd/_iBarber_/main/proyectoweb/index/images/logo-ibarber.png" alt="Logo iBarber" />
             </a>
           </figure>
         </div>

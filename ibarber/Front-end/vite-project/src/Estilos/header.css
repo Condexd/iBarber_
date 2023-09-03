@@ -1,6 +1,5 @@
 /*Fuente Nunito Sans*/
 @import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,wght@0,500;1,300&display=swap');
-@import url('../modulos-css/general.css');
 
 body {
     font-family: sans-serif;

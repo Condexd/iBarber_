@@ -29,9 +29,6 @@ function Cabecero({ isAuthenticated, logout }) {
           <li>
             <Link to="/contacto">Contáctanos</Link>
           </li>
-          <li>
-            <Link to="/perfil">perfil</Link>
-          </li>
         </ul>
         <ul className="contenedor2-navegacion">
           <li>
@@ -45,6 +42,9 @@ function Cabecero({ isAuthenticated, logout }) {
           {isAuthenticated ? (
             // Si el usuario está autenticado, muestra el botón de cerrar sesión
             <>
+              <li>
+               <Link to="/perfil">perfil</Link>
+              </li>
               <li>
                 <button className="boton-logout" onClick={logout}>
                   Cerrar sesión

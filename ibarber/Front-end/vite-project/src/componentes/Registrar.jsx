@@ -1,5 +1,7 @@
 import {useForm} from "../Hooks/useform"
 import {instanceador} from "../Hooks/funciones"
+import { useEffect } from "react"
+
 function Registrar() {
   const{formState,funcion}=useForm({
         nombres:"",
@@ -9,7 +11,7 @@ function Registrar() {
 
   })  
   const{nombres,apellidos,numeroDocumento,password}=formState
-  
+ 
   const manejador = (event) => {
     event.preventDefault();
     instanceador({nombres,apellidos,numeroDocumento,password});

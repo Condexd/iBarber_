@@ -1,0 +1,107 @@
+.contenedor {
+    padding: 60px 0;
+    width: 90%;
+    max-width: 1000px;
+    margin: auto;
+    overflow: hidden;
+}
+
+.titulo {
+    color: cornflowerblue;
+    font-size: 60px;
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.sobre-nosotros {
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 50px;
+}
+
+.sobre-nosotros img {
+    width: 28%;
+}
+
+.sobre-nosotros .contenido-textos {
+    width: 48%;
+}
+
+.contenido-textos h3 {
+    margin-bottom: 15px;
+
+}
+
+.contenido-textos h3 span {
+    background-color: cornflowerblue;
+    color: white;
+    border-radius: 50%;
+    display: inline-block;
+    text-align: center;
+    width: 30px;
+    height: 30px;
+    padding: 2px;
+    box-shadow: 0 0 6px 0 rgb(67, 126, 237);
+    margin-right: 5px;
+}
+
+.contenido-textos p {
+    padding: 0px 0px 30px 15px;
+    font-weight: 300;
+    text-align: justify;
+}
+
+.cuadrados {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.cuadrado {
+    background: cornflowerblue;
+    width: 46%;
+    height: 130px;
+    border-radius: 5px;
+}
+
+.contenido-texto-cuadrado {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+}
+
+.cuadrado img {
+    width: 100px;
+    height: 100px;
+    border-radius: 10px;
+    margin-right: 10px;
+}
+
+.cuadrado p {
+    text-align: left;
+    margin-left: 10px;
+    font-size: 23px; 
+}
+
+.ventajas-cont {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.ventaja {
+    width: 28%;
+    text-align: center;
+}
+
+.ventajas-cont img {
+    width: 90%;
+}
+
+.ventajas-cont h3 {
+    margin: 10px 0;
+}
+
+.ventajas-cont p {
+    font-weight: 300;
+    text-align: justify;
+}

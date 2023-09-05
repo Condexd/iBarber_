@@ -20,9 +20,10 @@ li {
 }
 
 .cabecero {
-    height: auto;
+    max-height: 60px;
     width: 100%;
     background-color: white;
+    padding: 2px 0 2px 0;
 }
 
 .navegacion {
@@ -36,7 +37,8 @@ li {
 .contenedor1-navegacion {
     display: flex;
     align-items: center;
-    gap: 30px
+    gap: 30px;
+    margin-bottom: 0px;
 }
 
 .logo-img {
@@ -45,6 +47,7 @@ li {
 
 .contenedor2-navegacion {
     margin-right: 30px;
+    margin-bottom: 0px;
     display: flex;
     align-items: center;
     gap: 25px;

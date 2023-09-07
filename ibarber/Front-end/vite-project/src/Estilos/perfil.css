@@ -1,0 +1,12 @@
+#main {
+  max-width: 1250px;
+}
+
+#img-perfil:hover {
+  cursor:pointer;
+}
+
+#datos-personales > li:not(:last-child) {
+  display: flex;
+  flex-direction: column;
+}

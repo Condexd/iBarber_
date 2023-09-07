@@ -64,7 +64,8 @@ li {
 
 .boton-login,
 .boton-registrarse,
-.boton-acceder {
+.boton-acceder,
+.boton-logout {
     border: none;
     border-radius: 5px;
     background-color: cornflowerblue;

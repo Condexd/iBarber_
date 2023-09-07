@@ -43,7 +43,7 @@ function Cabecero({ isAuthenticated, logout }) {
             // Si el usuario está autenticado, muestra el botón de cerrar sesión
             <>
               <li>
-               <Link to="/perfil">perfil</Link>
+               <Link to="/perfil"><img className='rounded-circle' src='https://i.pinimg.com/474x/f3/16/ce/f316cef6a7a1e732baf48a36808411b4.jpg' height={35} width={35}></img></Link>
               </li>
               <li>
                 <button className="boton-logout" onClick={logout}>

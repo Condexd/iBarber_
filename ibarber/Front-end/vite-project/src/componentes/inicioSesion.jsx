@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useForm } from '../Hooks/useform';
 import { iniciar } from '../Hooks/funciones';
 import { useNavigate } from 'react-router-dom';
+import { Link } from "react-router-dom";
 
 const IniciarSesion = ({ setIsAuthenticated }) => {
   const { formState, funcion } = useForm({
@@ -22,7 +23,7 @@ const IniciarSesion = ({ setIsAuthenticated }) => {
   };
 
   return (
-    <div>
+    <><div>
       <h1>Iniciar Sesión</h1>
       <form onSubmit={manejador}>
         <div>
@@ -32,8 +33,7 @@ const IniciarSesion = ({ setIsAuthenticated }) => {
             name="numeroDocumento"
             id="documento"
             value={numeroDocumento}
-            onChange={funcion}
-          />
+            onChange={funcion} />
         </div>
         <div>
           <label>Contraseña:</label>
@@ -41,7 +41,7 @@ const IniciarSesion = ({ setIsAuthenticated }) => {
         </div>
         <button type="submit">Iniciar Sesión</button>
       </form>
-    </div>
+    </div><Link to="/recuperar-contrasena">Recuperar contraseña</Link></>
   );
 };
 

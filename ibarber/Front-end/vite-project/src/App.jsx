@@ -6,6 +6,7 @@ import Registrar from "./componentes/registrar";
 import IniciarSesion from "./componentes/inicioSesion";
 import Inicio from "./componentes/inicio";
 import Perfil from "./componentes/perfil";
+import { RecuperarContraseña } from "./componentes/RecuperarContraseña";
 
 function App() {
   // Estado para verificar si el usuario está autenticado
@@ -43,6 +44,7 @@ function App() {
           <Route path="/iniciarSesion" element={<IniciarSesion setIsAuthenticated={setIsAuthenticated} />} />
         )}
         <Route path="/registrarse" element={<Registrar />} />
+        <Route path="/recuperar-contrasena" element={<RecuperarContraseña />} />
       </Routes>
       <Footer />
     </Router>

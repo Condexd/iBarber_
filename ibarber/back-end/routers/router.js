@@ -3,8 +3,9 @@ import bcrypt from "bcrypt";
 import nodemailer from 'nodemailer';
 import crypto from 'crypto';
 import jwt from "jsonwebtoken";
+import dotenv from "dotenv";
 import usuarioModel from "../models/usuario.js";
-
+dotenv.config();
 const router = Router();
 
 // Ruta para registrar usuarios
@@ -89,13 +90,13 @@ router.post('/recuperar', async (req, res) => {
     const transporter = nodemailer.createTransport({
       service: 'Gmail',
       auth: {
-        user: 'ibarbersoporte@gmail.com', // Reemplaza con tus credenciales de Gmail
-        pass: 'yvxkcbqruceeuhtx',
+        user: process.env.CORREO, // Reemplaza con tus credenciales de Gmail
+        pass: process.env.CONTRASENA,
       },
     });
     
     const mailOptions = {
-      from: 'ibarbersoporte@gmail.com',
+      from: process.env.CORREO,
       to: email,
       subject: 'Recuperación de contraseña',
       html: `

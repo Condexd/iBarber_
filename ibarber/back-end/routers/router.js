@@ -70,46 +70,55 @@ router.post('/recuperar', async (req, res) => {
     const { email } = req.body;
 
     // Verificar si el correo electrónico existe en la base de datos
-    const user = await usuarioModel.findOne({ email });
+    const user = await usuarioModel.findOne({ correo: email });
 
     if (!user) {
-      return res.status(404).json({ message: 'El correo electrónico no existe en nuestra base de datos.' });
+      return res.status(404).json({ message: 'El correo electrónico no existe en nuestra base de datos' });
     }
 
     // Generar una nueva contraseña segura
-    const newPassword = crypto.randomBytes(8).toString('hex'); // Puedes ajustar la longitud de la contraseña según tus necesidades
+    const newPassword = crypto.randomBytes(12).toString('hex'); // Aumentar la longitud de la contraseña
 
     // Hashea la nueva contraseña antes de guardarla en la base de datos
     const contrasenaencriptada = await bcrypt.hash(newPassword, 10);
 
     // Almacena la nueva contraseña en la base de datos
-    user.password = contrasenaencriptada;
-    await user.save();
+    await usuarioModel.updateOne({ correo: email }, { password: contrasenaencriptada });
+
     // Enviar la nueva contraseña al correo electrónico del usuario
     const transporter = nodemailer.createTransport({
-      service: 'Email',
+      service: 'Gmail',
       auth: {
-        user: '', // Reemplaza con tus credenciales de Gmail
-        pass: '',
+        user: 'ibarbersoporte@gmail.com', // Reemplaza con tus credenciales de Gmail
+        pass: 'yvxkcbqruceeuhtx',
       },
     });
-
+    
     const mailOptions = {
-      from: 'correo',
+      from: 'ibarbersoporte@gmail.com',
       to: email,
       subject: 'Recuperación de contraseña',
-      text: `Tu nueva contraseña es: ${newPassword}`,
+      html: `
+        <html>
+          <body>
+            <p>Hola,</p>
+            <p>Recibiste este correo electrónico porque solicitaste una recuperación de contraseña.</p>
+            <p>Tu nueva contraseña es: <strong>${newPassword}</strong></p>
+            <p>Te recomendamos cambiar esta contraseña después de iniciar sesión.</p>
+            <p>Gracias,</p>
+            <p>Equipo de Soporte de iBarber</p>
+          </body>
+        </html>
+      `,
     };
-
     await transporter.sendMail(mailOptions);
 
-    res.status(200).json({ message: 'Se ha enviado una nueva contraseña a tu correo electrónico.' });
+    res.status(200).json({ message: 'Se ha enviado una nueva contraseña a tu correo electrónico' });
   } catch (error) {
     console.error('Error en la solicitud:', error);
-    res.status(500).json({ message: 'Hubo un error al procesar tu solicitud.' });
+    res.status(500).json({ message: 'Hubo un error al procesar tu solicitud' });
   }
 });
-
 
 
 export default router;

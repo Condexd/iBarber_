@@ -52,27 +52,3 @@ export const iniciar = async (usuarios, setIsAuthenticated) => {
     return false; // Devolver false en caso de error
   }
 };
-
-export const enviador = async (email) => {
-  try {
-    const response = await fetch('http://localhost:3300/api/recuperar', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({email}),
-    });
-    
-    if (response.ok) {
-      // La solicitud se completó correctamente (código de respuesta 200)
-      const data = await response.json(); // Puedes procesar la respuesta aquí
-      console.log('Respuesta exitosa:', data);
-    } else {
-      // La solicitud no se completó correctamente (código de respuesta no es 200)
-      console.error('Error en la solicitud:', response);
-    }
-  } catch (error) {
-    console.error('Error en la solicitud:', error);
-    alert(error);
-  }
-  }

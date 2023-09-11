@@ -1,6 +1,6 @@
 import React from 'react'
 import {useForm} from "../Hooks/useform"
-import { enviador } from '../Hooks/funciones';
+import { enviador } from '../Hooks/recuperarfun';
 export const RecuperarContraseña = () => {
     const{formState,funcion}=useForm({
         email:"",

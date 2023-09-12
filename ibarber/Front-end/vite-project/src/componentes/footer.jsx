@@ -15,7 +15,7 @@ const Footer = () => {
         <div className="box">
           <h2> Sobre nosotros</h2>
           <p>Agenda con nosotros tu cita de corte de cabello.</p>
-          <p>"Un corte de cabello, un estilo que deslumbra."</p>
+          <p>&quot;Un corte de cabello, un estilo que deslumbra.&quot;</p>
         </div>
         <div className="box">
           <h2> Siguenos:</h2>

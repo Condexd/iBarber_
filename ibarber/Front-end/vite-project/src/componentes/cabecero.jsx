@@ -26,9 +26,6 @@ function Cabecero({ isAuthenticated, logout }) {
           <li>
             <Link to="/barberias">Barberías</Link>
           </li>
-          <li>
-            <Link to="/contacto">Contáctanos</Link>
-          </li>
         </ul>
         <ul className="contenedor2-navegacion">
           <li>

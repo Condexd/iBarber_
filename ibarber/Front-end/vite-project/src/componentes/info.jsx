@@ -3,7 +3,7 @@ import React from 'react'
 const info = () => {
   return (
     <><><section className="contenedor-sobre-nosotros">
-          <h2 className="titulo">Nuestro servicio</h2>
+          <h2 className="titulo1">Nuestro servicio</h2>
           <div className="sobre-nosotros">
               <img src="https://github.com/Condexd/_iBarber_/blob/main/ibarber/Front-end/vite-project/src/imgcar/cortar.jpg?raw=true" alt="" className="imagen-nosotros" />
               <div className="contenido-textos">

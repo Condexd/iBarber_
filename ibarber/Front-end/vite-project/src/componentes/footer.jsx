@@ -20,7 +20,7 @@ const Footer = () => {
         <div className="box">
           <h2> Siguenos:</h2>
           <div className="red-social">
-            <a href="#" className="fa fa-facebook"></a>
+            <a href="https://www.facebook.com/profile.php?id=100091729057741" target="_blank" class="fa fa-facebook"></a>
             <a href="#" className="fa fa-instagram"></a>
             <a href="#" className="fa fa-twitter"></a>
           </div>

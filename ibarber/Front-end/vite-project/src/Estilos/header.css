@@ -13,10 +13,38 @@ li {
     list-style: none;
 }
 
-.navegacion a {
+.navegacion a,
+.navegacion #agendar {
     text-decoration: none;
     font-family: 'Nunito Sans', sans-serif;
     color: black;
+}
+
+.navegacion #submenu-agendar {
+    padding-inline-start: 0 !important;
+}
+
+#agendar:hover {
+    cursor: pointer;
+}
+
+.menu-desplegable #submenu-agendar {
+    position: absolute;
+    margin-top: -11px;
+    z-index: 100;
+    background-color: white;
+}
+
+#submenu-agendar li:not(#agendar) {
+    margin-top: 10px;
+}
+
+.menu-desplegable #submenu-agendar li:not(#agendar) {
+    display: none;
+}
+
+.menu-desplegable:hover #submenu-agendar li:not(#agendar) {
+    display: block;
 }
 
 .cabecero {
@@ -64,7 +92,8 @@ li {
 
 .boton-login,
 .boton-registrarse,
-.boton-acceder {
+.boton-acceder,
+.boton-logout {
     border: none;
     border-radius: 5px;
     background-color: cornflowerblue;

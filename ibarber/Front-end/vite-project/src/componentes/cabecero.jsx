@@ -20,14 +20,16 @@ function Cabecero({ isAuthenticated, logout }) {
           <li>
             <Link to="/inicio">Inicio</Link>
           </li>
-          <li>
-            <Link to="/barberos">Barberos</Link>
-          </li>
-          <li>
-            <Link to="/barberias">Barberías</Link>
-          </li>
-          <li>
-            <Link to="/contacto">Contáctanos</Link>
+          <li id='contenedor-submenu' className='menu-desplegable'>
+            <ul id='submenu-agendar'>
+              <li id='agendar'>Agendar</li>
+              <li>
+                <Link to="/barberos" id='navegacion-barberos'>Barberos</Link>
+              </li>
+              <li>
+                <Link to="/barberias" id='navegacion-barberias'>Barberías</Link>
+              </li>
+            </ul>
           </li>
         </ul>
         <ul className="contenedor2-navegacion">
@@ -43,7 +45,7 @@ function Cabecero({ isAuthenticated, logout }) {
             // Si el usuario está autenticado, muestra el botón de cerrar sesión
             <>
               <li>
-               <Link to="/perfil">perfil</Link>
+               <Link to="/perfil"><img className='rounded-circle' src='https://i.pinimg.com/474x/f3/16/ce/f316cef6a7a1e732baf48a36808411b4.jpg' height={35} width={35}></img></Link>
               </li>
               <li>
                 <button className="boton-logout" onClick={logout}>

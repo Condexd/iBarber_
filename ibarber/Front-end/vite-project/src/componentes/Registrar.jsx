@@ -1,7 +1,5 @@
 import {useForm} from "../Hooks/useform"
-import {instanceador} from "../Hooks/funciones"
-import { useEffect } from "react"
-import { RecuperarContraseña } from "./RecuperarContraseña"
+import { FuncionRegistrar } from "../Hooks/funciones";
 
 function Registrar() {
   const{formState,funcion}=useForm({
@@ -16,7 +14,11 @@ function Registrar() {
  
   const manejador = (event) => {
     event.preventDefault();
-    instanceador({nombres,apellidos,numeroDocumento,password,email});
+   const confirmarcion= confirm("¿Enviar datos?")
+   if(confirmarcion){
+    FuncionRegistrar({nombres,apellidos,numeroDocumento,password,email});
+   }
+    
   };
 
   return (
@@ -40,6 +42,7 @@ function Registrar() {
       <input
         type="text"
         id="numeroDocumento"
+        autoComplete="username"
         name="numeroDocumento"
         value={numeroDocumento}
         onChange={funcion} />
@@ -47,6 +50,7 @@ function Registrar() {
       <input
         type="password"
         id="password"
+        autoComplete="email"
         name="password"
         value={password}
         onChange={funcion} />

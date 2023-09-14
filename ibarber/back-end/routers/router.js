@@ -11,7 +11,13 @@ const router = Router();
 // Ruta para registrar usuarios
 router.post('/usuarios', async (req, res) => {
   try {
-    const { nombres, apellidos, numeroDocumento, password ,email} = req.body;
+    const { nombres, apellidos, numeroDocumento, password, email } = req.body;
+
+    const usuarioExistente = await usuarioModel.findOne({ documento: numeroDocumento });
+
+    if (usuarioExistente) {
+      return res.status(400).json({ message: 'Número de documento ya registrado' });
+    }
 
     // Encripta la contraseña antes de guardarla
     const contrasenaencriptada = await bcrypt.hash(password, 10);
@@ -21,11 +27,11 @@ router.post('/usuarios', async (req, res) => {
       apellidos: apellidos,
       documento: numeroDocumento,
       password: contrasenaencriptada,
-      correo:email,
+      correo: email,
     });
 
     const result = await data.save();
-    res.status(200).json(result);
+    res.status(200).json({message:"Registro exítoso"});
   } catch (error) {
     console.error('Error al registrar usuario:', error);
     res.status(500).json({ message: 'Error interno del servidor' });
@@ -33,12 +39,11 @@ router.post('/usuarios', async (req, res) => {
 });
 
 
+
 // Ruta para el inicio de sesión y generación del token JWT
 router.post('/login', async (req, res) => {
   try {
     const { numeroDocumento, password } = req.body;
-
-    // Busca al usuario por número de documento en la base de datos
     const user = await usuarioModel.findOne({ documento: numeroDocumento });
 
     if (!user) {

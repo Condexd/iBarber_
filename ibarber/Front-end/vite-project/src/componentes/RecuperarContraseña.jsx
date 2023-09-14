@@ -10,7 +10,11 @@ export const RecuperarContraseña = () => {
  
   const manejador = (event) => {
     event.preventDefault();
-    enviador(email);
+    const confirmarcion= confirm("¿Enviar datos?")
+    if(confirmarcion){
+      enviador(email);
+    }
+   
   };
   return (
     <><div>RecuperarContraseña</div>

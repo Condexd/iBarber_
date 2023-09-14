@@ -8,8 +8,15 @@ export const enviador = async (email) => {
         },
         body: JSON.stringify({email}),
       });
+      if (response.ok) {
+        const data = await response.json(); 
+        alert(data.message)
+      } else {
+        const errorResponse = await response.json();
+        alert(errorResponse.message);
+      }
     } catch (error) {
-      console.error('Error en la solicitud:', error);
-      alert(error);
+      const data = await response.json();
+      alert(data.message);
     }
     }

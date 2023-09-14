@@ -30,6 +30,7 @@ const IniciarSesion = ({ setIsAuthenticated }) => {
           <label>Documento:</label>
           <input
             type="text"
+            autoComplete="username"
             name="numeroDocumento"
             id="documento"
             value={numeroDocumento}
@@ -37,7 +38,7 @@ const IniciarSesion = ({ setIsAuthenticated }) => {
         </div>
         <div>
           <label>Contraseña:</label>
-          <input type="password" name="password" value={password} onChange={funcion} />
+          <input type="password" name="password" autoComplete="current-password" value={password} onChange={funcion} />
         </div>
         <button type="submit">Iniciar Sesión</button>
       </form>

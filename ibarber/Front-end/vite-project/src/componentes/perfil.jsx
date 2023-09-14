@@ -16,25 +16,25 @@ function Perfil() {
           </div>
         </section>
         <form className="w-50 p-3">
-          <ul className="row gap-2" id="datos-personales">
+          <ul className="row gap-3" id="datos-personales">
             <h2>Mis datos</h2>
-            <li className="col-5">
+            <li className="col-5 row">
               <label>Nombres</label>
               <input type="text" defaultValue="flui" />
             </li>
-            <li className="col-5">
+            <li className="col-5 row">
               <label>Apellidos</label>
               <input type="text" defaultValue="orduz" />
             </li>
-            <li className="col-5">
+            <li className="col-5 row">
               <label>Email</label>
               <input type="email" defaultValue="nopetard@gmail.com" />
             </li>
-            <li className="col-5">
+            <li className="col-5 row">
               <label>Teléfono<span>(+57)</span></label>
               <input type="text" defaultValue="3216702257" placeholder="Tu número"/>
             </li>
-            <li className="col-5">
+            <li className="col-5 row">
               <label>Ciudad</label>
               <select name="select-ciudad">
                 <option defaultValue="Seleccionar" selected>Seleccionar</option>

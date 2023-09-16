@@ -1,3 +1,5 @@
+import Perfil from "../componentes/perfil";
+
 export const FuncionRegistrar = async (usuario) => {
   try {
     const response = await fetch('http://localhost:3300/api/usuarios', {
@@ -21,7 +23,7 @@ export const FuncionRegistrar = async (usuario) => {
     console.error('Error en la solicitud:', error);
   }
 };
-export const iniciar = async (usuarios, setIsAuthenticated) => {
+export const iniciar = async (usuarios, setIsAuthenticated,setUserData) => {
   try {
     const response = await fetch('http://localhost:3300/api/login', {
       method: 'POST',
@@ -33,11 +35,11 @@ export const iniciar = async (usuarios, setIsAuthenticated) => {
 
     if (response.ok) {
       const data = await response.json();
-      console.log(data);
+      console.log(data.user)
       localStorage.setItem('token', data.token);
       // Cambiar el estado de autenticación aquí
       setIsAuthenticated(true);
-
+      setUserData(data.user)
       // Devolver true para indicar autenticación exitosa
       return true;
     } else {

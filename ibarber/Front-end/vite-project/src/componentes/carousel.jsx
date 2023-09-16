@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 const Carousel = () => {
   return (
     <div id="carrusel/indicador" className="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-interval="3000">
@@ -13,7 +14,7 @@ const Carousel = () => {
           <div className="carousel-caption top-0 mt-5">
             <p className="mt-5 fs-3 text-uppercase">Descubre TU ESTILO</p>
             <h1 className="display-1 fw-folder tex-capitalize">iBarber</h1>
-            <a href="../login/login.html" className="btn btn-primary px-4 py-9 fs-5 mt-5">Entrar</a>
+            <Link to="/registrarse" className="btn btn-primary px-4 py-9 fs-5 mt-5">Entrar</Link>
           </div>
         </div>
         <div className="carousel-item d-item">
@@ -21,7 +22,7 @@ const Carousel = () => {
           <div className="carousel-caption top-0 mt-5 ">
             <p className="mt-5 fs-3 text-uppercase">Descubre TU ESTILO</p>
             <h1 className="display-1 fw-folder tex-capitalize">iBarber</h1>
-            <a href="../login/login.html" className="btn btn-primary px-4 py-9 fs-5 mt-5">Entrar</a>
+            <Link to="/registrarse" className="btn btn-primary px-4 py-9 fs-5 mt-5">Entrar</Link>
           </div>
         </div>
         <div className="carousel-item d-item">
@@ -29,7 +30,7 @@ const Carousel = () => {
           <div className="carousel-caption top-0 mt-5">
             <p className="mt-5 fs-3 text-uppercase">Descubre TU ESTILO</p>
             <h1 className="display-1 fw-folder tex-capitalize">iBarber</h1>
-            <a href="../login/login.html" className="btn btn-primary px-4 py-9 fs-5 mt-5">Entrar</a>
+            <Link to="/registrarse" className="btn btn-primary px-4 py-9 fs-5 mt-5">Entrar</Link>
           </div>
         </div>
       </div>

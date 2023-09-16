@@ -62,7 +62,12 @@ router.post('/login', async (req, res) => {
       expiresIn: '1h', // Define la expiración del token (ejemplo: 1 hora)
     });
 
-    res.status(200).json({ message: 'Inicio de sesión exitoso', token });
+    res.status(200).json({ message: 'Inicio de sesión exitoso', token, user:{
+      _id: user._id,
+      nombre: user.nombres,
+      apellido: user.apellidos,
+      correo:user.correo,
+    }, });
   } catch (error) {
     console.error('Error al iniciar sesión:', error);
     res.status(500).json({ message: 'Error interno del servidor' });

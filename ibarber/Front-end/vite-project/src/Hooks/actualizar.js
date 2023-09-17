@@ -1,7 +1,7 @@
-export const actualizar = async (usuario,id) => {
+export const actualizar = async (usuario) => {
     try {
         // Envía la solicitud al servidor
-        const response = await fetch(`http://localhost:3300/api/usuario/${id}`, {
+        const response = await fetch(`http://localhost:3300/api/usuario/${usuario._id}`, {
           method: 'put',
           headers: {
             'Content-Type': 'application/json'

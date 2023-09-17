@@ -1,12 +1,20 @@
 import React from 'react';
-import  Carousel  from "./carousel";
+import Carousel from "./carousel";
 import Info from "./info";
-const inicio = () => {
+
+const Inicio = ({ isAuthenticated }) => {
   return (
-    <><Carousel /> 
-    <Info/>
-    </>
+    isAuthenticated ? (
+      <div>
+        <p>Hola, usuario autenticado</p>
+      </div>
+    ) : (
+      <>
+        <Carousel />
+        <Info />
+      </>
+    )
   );
 }
 
-export default inicio;
+export default Inicio;

@@ -7,15 +7,15 @@ import { Link } from "react-router-dom";
 const IniciarSesion = ({ setIsAuthenticated, setUserData}) => {
   const { formState, funcion } = useForm({
     password: '',
-    numeroDocumento: '',
+    usuario: '',
   });
 
-  const { numeroDocumento, password } = formState;
+  const { usuario, password } = formState;
   const navigate = useNavigate(); // Obtén la función de navegación
 
   const manejador = async (event) => {
     event.preventDefault();
-    const isAuthenticated = await iniciar({ numeroDocumento, password }, setIsAuthenticated, setUserData);
+    const isAuthenticated = await iniciar({ usuario, password }, setIsAuthenticated, setUserData);
     if (isAuthenticated) {
       navigate('/inicio')
       console.log("yoprima"); // Redirige a la página de inicio usando navigate
@@ -27,13 +27,13 @@ const IniciarSesion = ({ setIsAuthenticated, setUserData}) => {
       <h1>Iniciar Sesión</h1>
       <form onSubmit={manejador}>
         <div>
-          <label>Documento:</label>
+          <label>Usuario:</label>
           <input
             type="text"
             autoComplete="username"
-            name="numeroDocumento"
-            id="documento"
-            value={numeroDocumento}
+            name="usuario"
+            id="usuario"
+            value={usuario}
             onChange={funcion} />
         </div>
         <div>
@@ -42,7 +42,7 @@ const IniciarSesion = ({ setIsAuthenticated, setUserData}) => {
         </div>
         <button type="submit">Iniciar Sesión</button>
       </form>
-    </div><Link to="/recuperar-contrasena">Recuperar contraseña</Link></>
+    </div><Link to="/recuperar-contrasena">Recuperar CUENTA</Link></>
   );
 };
 

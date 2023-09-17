@@ -5,18 +5,18 @@ function Registrar() {
   const{formState,funcion}=useForm({
         nombres:"",
         apellidos:"",
-        numeroDocumento:"",
+        usuario:"",
         password:"",
         email:"",
 
   })  
-  const{nombres,apellidos,numeroDocumento,password,email}=formState
+  const{nombres,apellidos,usuario,password,email}=formState
  
   const manejador = (event) => {
     event.preventDefault();
    const confirmarcion= confirm("¿Enviar datos?")
    if(confirmarcion){
-    FuncionRegistrar({nombres,apellidos,numeroDocumento,password,email});
+    FuncionRegistrar({nombres,apellidos,usuario,password,email});
    }
     
   };
@@ -38,13 +38,13 @@ function Registrar() {
         name="apellidos"
         value={apellidos}
         onChange={funcion} />
-      <label htmlFor="numeroDocumento">Número de Documento</label>
+      <label htmlFor="numeroDocumento">Usuario</label>
       <input
         type="text"
         id="numeroDocumento"
         autoComplete="username"
-        name="numeroDocumento"
-        value={numeroDocumento}
+        name="usuario"
+        value={usuario}
         onChange={funcion} />
       <label htmlFor="password">Contraseña</label>
       <input

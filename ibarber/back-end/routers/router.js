@@ -11,17 +11,17 @@ const router = Router();
 // Ruta para registrar usuarios
 router.post('/usuarios', async (req, res) => {
   try {
-    const { nombres, apellidos, numeroDocumento, password, email } = req.body;
+    const { nombres, apellidos, usuario, password, email } = req.body;
 
-    const usuarioExistente = await usuarioModel.findOne({ documento: numeroDocumento });
+    const usuarioExistente = await usuarioModel.findOne({ usuario: usuario });
     const usuarioExistenteCorreo = await usuarioModel.findOne({ correo: email });
 
     if (usuarioExistente && usuarioExistenteCorreo ) {
-      return res.status(400).json({ message: 'Documento y correo ya estan registrados' });
+      return res.status(400).json({ message: ' Nombre de usuario y correo ya estan registrados' });
     }
 
     if (usuarioExistente ) {
-      return res.status(400).json({ message: 'Número de documento ya registrado' });
+      return res.status(400).json({ message: 'Nombre de usuario ya registrado' });
     }
     if(usuarioExistenteCorreo){
       return res.status(400).json({ message: 'Correo ya registrado' });
@@ -34,7 +34,7 @@ router.post('/usuarios', async (req, res) => {
     const data = new usuarioModel({
       nombres: nombres,
       apellidos: apellidos,
-      documento: numeroDocumento,
+      usuario: usuario,
       password: contrasenaencriptada,
       correo: email,
     });
@@ -52,8 +52,8 @@ router.post('/usuarios', async (req, res) => {
 // Ruta para el inicio de sesión y generación del token JWT
 router.post('/login', async (req, res) => {
   try {
-    const { numeroDocumento, password } = req.body;
-    const user = await usuarioModel.findOne({ documento: numeroDocumento });
+    const { usuario, password } = req.body;
+    const user = await usuarioModel.findOne({ usuario: usuario});
 
     if (!user) {
       return res.status(401).json({ message: 'Usuario no encontrado' });
@@ -122,7 +122,8 @@ router.post('/recuperar', async (req, res) => {
         <html>
           <body>
             <p>Hola,</p>
-            <p>Recibiste este correo electrónico porque solicitaste una recuperación de contraseña.</p>
+            <p>Recibiste este correo electrónico porque solicitaste  recuperar tu cuenta</p>
+            <p>Tu usuario es: <strong>${user.usuario}</strong></p>
             <p>Tu nueva contraseña es: <strong>${newPassword}</strong></p>
             <p>Te recomendamos cambiar esta contraseña después de iniciar sesión.</p>
             <p>Gracias,</p>
@@ -133,7 +134,7 @@ router.post('/recuperar', async (req, res) => {
     };
     await transporter.sendMail(mailOptions);
 
-    res.status(200).json({ message: 'Se ha enviado una nueva contraseña a tu correo electrónico' });
+    res.status(200).json({ message: 'Se han enviado tus credenciales a tu correo electrónico' });
   } catch (error) {
     console.error('Error en la solicitud:', error);
     res.status(500).json({ message: 'Hubo un error al procesar tu solicitud' });

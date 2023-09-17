@@ -14,9 +14,18 @@ router.post('/usuarios', async (req, res) => {
     const { nombres, apellidos, numeroDocumento, password, email } = req.body;
 
     const usuarioExistente = await usuarioModel.findOne({ documento: numeroDocumento });
+    const usuarioExistenteCorreo = await usuarioModel.findOne({ correo: email });
 
-    if (usuarioExistente) {
+    if (usuarioExistente && usuarioExistenteCorreo ) {
+      return res.status(400).json({ message: 'Documento y correo ya estan registrados' });
+    }
+
+    if (usuarioExistente ) {
       return res.status(400).json({ message: 'Número de documento ya registrado' });
+    }
+    if(usuarioExistenteCorreo){
+      return res.status(400).json({ message: 'Correo ya registrado' });
+
     }
 
     // Encripta la contraseña antes de guardarla
@@ -128,6 +137,18 @@ router.post('/recuperar', async (req, res) => {
   } catch (error) {
     console.error('Error en la solicitud:', error);
     res.status(500).json({ message: 'Hubo un error al procesar tu solicitud' });
+  }
+});
+
+router.put('/usuario/:id', async (req, res) => {
+  try {
+    const id= req.params.id;
+    const updateData = req.body;
+    const options = { new: true };
+    const result = await usuarioModel.findByIdAndUpdate(id, updateData, options);
+    res.json({message:"actualizado"})
+  } catch (error) {
+    res.status(400).json({ message: error.message });
   }
 });
 

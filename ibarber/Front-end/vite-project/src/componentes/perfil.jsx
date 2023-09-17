@@ -1,18 +1,24 @@
 import React from "react";
 import { useForm } from "../Hooks/useform"; 
-
+import { Link } from "react-router-dom";
+import { actualizar } from "../Hooks/actualizar";
  function Perfil({datausuario}) {
   const { formState, funcion } = useForm({
     nombres: datausuario.nombre,
     apellidos: datausuario.apellido,
     email: datausuario.correo,
     telefono: "3216702257",
-    ciudad: "Seleccionar",
+    ciudad: "",
   });
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async(e) => {
     e.preventDefault();
-    console.log(datausuario.nombre)
+    const confirmarcion= confirm("¿Actualizar datos?")
+    if(confirmarcion){   
+    const resultados = await actualizar(formState,datausuario._id);
+    }
+
+   
   };
 
   return (
@@ -34,9 +40,11 @@ import { useForm } from "../Hooks/useform";
               </span>
             </div>
             <div>
-              <button className="btn btn-warning mt-2 fs-6">
+            <Link to="/Crear">
+            <button className="btn btn-warning mt-2 fs-6">
                 Crear mi barbería
               </button>
+            </Link>
             </div>
           </div>
         </section>
@@ -87,7 +95,7 @@ import { useForm } from "../Hooks/useform";
                 value={formState.ciudad}
                 onChange={funcion}
               >
-                <option value="Seleccionar">Seleccionar</option>
+                <option >Seleccionar</option>
                 <option value="Bogotá">Bogotá</option>
                 <option value="Medellín">Medellín</option>
                 <option value="Ciudad3">Ciudad3</option>

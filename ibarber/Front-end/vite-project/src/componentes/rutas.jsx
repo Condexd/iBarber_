@@ -6,6 +6,7 @@ import Registrar from "./Registrar";
 import IniciarSesion from "./inicioSesion";
 import { RecuperarContraseña } from "./RecuperarContraseña";
 import { useState } from "react";
+import {Crearbarberia } from "./crearbarberia";
 
 function Rutas({ isAuthenticated, setIsAuthenticated }) {
   const [userData, setUserData] = useState({});
@@ -26,6 +27,7 @@ function Rutas({ isAuthenticated, setIsAuthenticated }) {
         />
       )}
       <Route path="/registrarse" element={<Registrar />} />
+      <Route path="/crear" element={<Crearbarberia />} />
       <Route path="/recuperar-contrasena" element={<RecuperarContraseña />} />
     </Routes>
   );

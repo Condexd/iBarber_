@@ -6,7 +6,7 @@ const usuarioSchema = new Schema({
     apellidos: String,
     correo: String,
     password: String,
-    num_cel: String,
+    telefono: String,
     num_fijo: String,
     ciudad: {
       _id: Schema.ObjectId,

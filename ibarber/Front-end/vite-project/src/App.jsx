@@ -19,6 +19,7 @@ function App() {
   const logout = () => {
     // Eliminar el token al cerrar sesión
     localStorage.removeItem('token');
+    localStorage.removeItem("userData");
     setIsAuthenticated(false);
   };
 

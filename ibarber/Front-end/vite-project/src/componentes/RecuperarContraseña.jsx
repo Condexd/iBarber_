@@ -17,15 +17,30 @@ export const RecuperarContraseña = () => {
    
   };
   return (
-    <><div>RecuperarContraseña</div>
-    <form onSubmit={manejador} >
-        <input type="email" 
-        id="email"
-        name="email"
-        value={email}
-        onChange={funcion}
-        />
-            <button type="submit">enviar</button>
-        </form></>
+    <>
+    <main id='form-recuperar-container'>
+      <form onSubmit={manejador} id='form-recuperar'>
+        <div>
+          <h5>Olvidé mis datos de acceso</h5>
+        </div>
+        <div>
+          <input type="email"
+            id="email"
+            name="email"
+            placeholder='Email'
+            required
+            value={email}
+            onChange={funcion}
+            />
+        </div>
+        <div>
+          <button type="submit">Enviar</button>
+        </div>
+        <div id='mensaje-recuperar'>
+          <span>Te enviaremos una nueva contraseña y tu nombre de usuario</span>
+        </div>
+      </form>
+    </main>
+        </>
   )
 }

@@ -23,26 +23,45 @@ const IniciarSesion = ({ setIsAuthenticated, setUserData}) => {
   };
 
   return (
-    <><div>
-      <h1>Iniciar Sesión</h1>
-      <form onSubmit={manejador}>
-        <div>
-          <label>Usuario:</label>
+    <>
+    <main id="form-login-container">
+      <form onSubmit={manejador} id='form-login'>
+        <div id='login-title'>
+          <h3>Iniciar Sesión</h3>
+        </div>
+        <div id='login-username'>
           <input
             type="text"
             autoComplete="username"
             name="usuario"
+            placeholder='Usuario'
+            required
             id="usuario"
             value={usuario}
             onChange={funcion} />
         </div>
-        <div>
-          <label>Contraseña:</label>
-          <input type="password" name="password" autoComplete="current-password" value={password} onChange={funcion} />
+        <div id='login-password'>
+          <input
+            type="password"
+            name="password"
+            placeholder='Contraseña'
+            required
+            autoComplete="current-password"
+            value={password}
+            onChange={funcion} />
         </div>
-        <button type="submit">Iniciar Sesión</button>
+        <div id='login-submit'>
+          <button type="submit">Iniciar Sesión</button>
+        </div>
+        <div id='login-problemas'>
+          <div>
+            <span>¿Tienes problemas? </span>
+            <Link to="/recuperar-contrasena">Recupera tu cuenta</Link>
+          </div>
+        </div>
       </form>
-    </div><Link to="/recuperar-contrasena">Recuperar CUENTA</Link></>
+    </main>
+    </>
   );
 };
 

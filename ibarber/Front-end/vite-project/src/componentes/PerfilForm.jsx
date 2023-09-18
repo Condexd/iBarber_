@@ -10,6 +10,7 @@ function PerfilForm({ formState, handleSubmit, setFormState }) {
           <input
             type="text"
             name="nombres"
+            required
             value={formState.nombres}
             onChange={(e) =>
               setFormState({ ...formState, nombres: e.target.value })
@@ -21,6 +22,7 @@ function PerfilForm({ formState, handleSubmit, setFormState }) {
           <input
             type="text"
             name="apellidos"
+            required
             value={formState.apellidos}
             onChange={(e) =>
               setFormState({ ...formState, apellidos: e.target.value })
@@ -32,6 +34,7 @@ function PerfilForm({ formState, handleSubmit, setFormState }) {
           <input
             type="email"
             name="email"
+            required
             value={formState.email}
             onChange={(e) =>
               setFormState({ ...formState, email: e.target.value })
@@ -43,6 +46,7 @@ function PerfilForm({ formState, handleSubmit, setFormState }) {
           <input
             type="text"
             name="telefono"
+            required
             value={formState.telefono}
             onChange={(e) =>
               setFormState({ ...formState, telefono: e.target.value })
@@ -54,6 +58,7 @@ function PerfilForm({ formState, handleSubmit, setFormState }) {
           <label>Ciudad</label>
           <select
             name="ciudad"
+            required
             value={formState.ciudad}
             onChange={(e) =>
               setFormState({ ...formState, ciudad: e.target.value })

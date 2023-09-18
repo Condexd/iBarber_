@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 function PerfilInfo({ formState }) {
   return (
-    <section className="p-3">
+    <section className="p-3 w-25">
       <div className="d-flex flex-column gap-1">
         <img
           id="img-perfil"
@@ -14,7 +14,7 @@ function PerfilInfo({ formState }) {
           alt="Perfil"
         />
         <div>
-          <span className="text-start lh-lg fw-semibold fs-4">
+          <span className="text-start lh-lg semibold fs-5">
             {formState.nombres} {formState.apellidos}
           </span>
         </div>

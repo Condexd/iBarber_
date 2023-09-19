@@ -85,7 +85,7 @@ router.post('/login', async (req, res) => {
 });
 
 
-
+//Recuperacion de contraseña
 router.post('/recuperar', async (req, res) => {
   try {
     const { email } = req.body;
@@ -98,19 +98,18 @@ router.post('/recuperar', async (req, res) => {
     }
 
     // Generar una nueva contraseña segura
-    const newPassword = crypto.randomBytes(12).toString('hex'); // Aumentar la longitud de la contraseña
+    const newPassword = crypto.randomBytes(12).toString('hex');
 
     // Hashea la nueva contraseña antes de guardarla en la base de datos
     const contrasenaencriptada = await bcrypt.hash(newPassword, 10);
 
     // Almacena la nueva contraseña en la base de datos
     await usuarioModel.updateOne({ correo: email }, { password: contrasenaencriptada });
-
-    // Enviar la nueva contraseña al correo electrónico del usuario
+    
     const transporter = nodemailer.createTransport({
       service: 'Gmail',
       auth: {
-        user: process.env.CORREO, // Reemplaza con tus credenciales de Gmail
+        user: process.env.CORREO, 
         pass: process.env.CONTRASENA,
       },
     });
@@ -118,19 +117,83 @@ router.post('/recuperar', async (req, res) => {
     const mailOptions = {
       from: process.env.CORREO,
       to: email,
-      subject: 'Recuperación de contraseña',
+      subject: 'Recuperación de Cuenta',
       html: `
-        <html>
-          <body>
+     <html>
+      <head>
+        <style>
+          /* Estilos generales */
+          body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+          }
+          .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+          }
+          p {
+            font-size: 16px;
+            color: #333;
+            line-height: 1.5;
+          }
+          strong {
+            color: #007bff;
+          }
+
+          /* Encabezado */
+          .header {
+            background-color: #007bff;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+            border-radius: 10px 10px 0 0;
+          }
+          .header h1 {
+            font-size: 24px;
+            margin: 0;
+          }
+
+          /* Contenido principal */
+          .content {
+            padding: 20px;
+          }
+
+          /* Pie de página */
+          .footer {
+            background-color: #007bff;
+            color: #fff;
+            text-align: center;
+            padding: 10px 0;
+            border-radius: 0 0 10px 10px;
+          }
+        </style>
+      </head>
+      <body>
+        <div class="container">
+          <div class="header">
+            <h1>Recuperación de Cuenta</h1>
+          </div>
+          <div class="content">
             <p>Hola,</p>
-            <p>Recibiste este correo electrónico porque solicitaste  recuperar tu cuenta</p>
+            <p>Recibiste este correo electrónico porque solicitaste recuperar tu cuenta</p>
             <p>Tu usuario es: <strong>${user.usuario}</strong></p>
             <p>Tu nueva contraseña es: <strong>${newPassword}</strong></p>
             <p>Te recomendamos cambiar esta contraseña después de iniciar sesión.</p>
             <p>Gracias,</p>
             <p>Equipo de Soporte de iBarber</p>
-          </body>
-        </html>
+          </div>
+          <div class="footer">
+            © ${new Date().getFullYear()} iBarber
+          </div>
+        </div>
+      </body>
+    </html>
       `,
     };
     await transporter.sendMail(mailOptions);
@@ -142,6 +205,8 @@ router.post('/recuperar', async (req, res) => {
   }
 });
 
+
+//actualizar datos de usuario
 router.put('/usuario/:id', async (req, res) => {
   try {
     const id= req.params.id;
@@ -156,6 +221,7 @@ router.put('/usuario/:id', async (req, res) => {
 
 
 
+//registro de barberia
 router.post('/barberia', async (req, res) => {
   try {
     const {nombre_barberia,direccion_barberia,nombre_ciudad } = req.body;

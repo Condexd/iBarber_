@@ -1,4 +1,5 @@
-import Perfil from "../componentes/perfil";
+
+import Swal from 'sweetalert2'; // Importa SweetAlert si estás usando npm
 
 export const FuncionRegistrar = async (usuario) => {
   try {
@@ -12,18 +13,37 @@ export const FuncionRegistrar = async (usuario) => {
 
     if (response.ok) {
       // La solicitud se completó correctamente (código de respuesta 200)
-      const data = await response.json(); 
-      alert(data.message)// Puedes procesar la respuesta aquí
+      const data = await response.json();
+      Swal.fire({
+        title: 'Registro exitoso',
+        text: data.message, // Puedes personalizar el mensaje aquí
+        icon: 'success',
+        confirmButtonText: 'Aceptar',
+      });
     } else {
       const errorResponse = await response.json();
-      alert(errorResponse.message);
+      Swal.fire({
+        title: 'Error al registrar',
+        text: errorResponse.message,
+        icon: 'error',
+        confirmButtonText: 'Aceptar',
+      });
       // La solicitud no se completó correctamente (código de respuesta no es 200)
     }
   } catch (error) {
     console.error('Error en la solicitud:', error);
+    Swal.fire({
+      title: 'Error',
+      text: 'Ocurrió un error inesperado',
+      icon: 'error',
+      confirmButtonText: 'Aceptar',
+    });
   }
 };
-export const iniciar = async (usuarios, setIsAuthenticated,setUserData) => {
+
+
+
+export const iniciar = async (usuarios, setIsAuthenticated, setUserData) => {
   try {
     const response = await fetch('http://localhost:3300/api/login', {
       method: 'POST',
@@ -35,20 +55,40 @@ export const iniciar = async (usuarios, setIsAuthenticated,setUserData) => {
 
     if (response.ok) {
       const data = await response.json();
-      console.log(data.user)
       localStorage.setItem('token', data.token);
-      // Cambiar el estado de autenticación aquí
       setIsAuthenticated(true);
-      setUserData(data.user)
-      // Devolver true para indicar autenticación exitosa
+      setUserData(data.user);
+      
+      Swal.fire({
+        title: 'Inicio de sesión exitoso',
+        text: '¡Bienvenido!',
+        icon: 'success',
+        confirmButtonText: 'Aceptar',
+      });
+
       return true;
     } else {
-        const errorResponse = await response.json();
-        alert(errorResponse.message);
-        // La solicitud no se completó correctamente (código de respuesta no es 200)
-      return false; // Devolver false para indicar autenticación fallida
+      const errorResponse = await response.json();
+      
+      Swal.fire({
+        title: 'Error al iniciar sesión',
+        text: errorResponse.message,
+        icon: 'error',
+        confirmButtonText: 'Aceptar',
+      });
+
+      return false;
     }
   } catch (error) {
-    return false; // Devolver false en caso de error
+    console.error('Error en la solicitud:', error);
+    
+    Swal.fire({
+      title: 'Error',
+      text: 'Ocurrió un error inesperado',
+      icon: 'error',
+      confirmButtonText: 'Aceptar',
+    });
+
+    return false;
   }
 };

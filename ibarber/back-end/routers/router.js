@@ -213,9 +213,9 @@ router.put('/usuario/:id', async (req, res) => {
     const updateData = req.body;
     const options = { new: true };
     const result = await usuarioModel.findByIdAndUpdate(id, updateData, options);
-    res.json({message:"actualizado"})
+    res.json({message:"Actualizado Éxitosamente"})
   } catch (error) {
-    res.status(400).json({ message: error.message });
+    res.status(400).json({ message: "No se pudo Actualizar" });
   }
 });
 

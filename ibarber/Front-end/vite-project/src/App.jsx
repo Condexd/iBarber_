@@ -3,8 +3,10 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Cabecero from "./componentes/cabecero";
 import Footer from "./componentes/footer";
 import Rutas from "./componentes/rutas";
+import { useNavigate } from 'react-router-dom';
 
 function App() {
+  const navigate = useNavigate();
   // Estado para verificar si el usuario está autenticado
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   // Efecto para verificar la autenticación al cargar la página
@@ -21,6 +23,7 @@ function App() {
     localStorage.removeItem('token');
     localStorage.removeItem("userData");
     setIsAuthenticated(false);
+    navigate('/inicio')
   };
 
   return (

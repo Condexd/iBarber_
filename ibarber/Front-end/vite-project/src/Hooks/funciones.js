@@ -43,6 +43,7 @@ export const FuncionRegistrar = async (usuario) => {
 
 
 
+
 export const iniciar = async (usuarios, setIsAuthenticated, setUserData) => {
   try {
     const response = await fetch('http://localhost:3300/api/login', {
@@ -58,18 +59,11 @@ export const iniciar = async (usuarios, setIsAuthenticated, setUserData) => {
       localStorage.setItem('token', data.token);
       setIsAuthenticated(true);
       setUserData(data.user);
-      
-      Swal.fire({
-        title: 'Inicio de sesión exitoso',
-        text: '¡Bienvenido!',
-        icon: 'success',
-        confirmButtonText: 'Aceptar',
-      });
 
       return true;
     } else {
       const errorResponse = await response.json();
-      
+
       Swal.fire({
         title: 'Error al iniciar sesión',
         text: errorResponse.message,
@@ -81,7 +75,7 @@ export const iniciar = async (usuarios, setIsAuthenticated, setUserData) => {
     }
   } catch (error) {
     console.error('Error en la solicitud:', error);
-    
+
     Swal.fire({
       title: 'Error',
       text: 'Ocurrió un error inesperado',

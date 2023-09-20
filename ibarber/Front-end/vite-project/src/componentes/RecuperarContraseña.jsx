@@ -1,5 +1,6 @@
 import React from 'react'
 import {useForm} from "../Hooks/useform"
+import Swal from 'sweetalert2';
 import { enviador } from '../Hooks/recuperarfun';
 export const RecuperarContraseña = () => {
     const{formState,funcion}=useForm({
@@ -8,14 +9,25 @@ export const RecuperarContraseña = () => {
   })  
   const{email}=formState
  
+
   const manejador = (event) => {
     event.preventDefault();
-    const confirmarcion= confirm("¿Enviar datos?")
-    if(confirmarcion){
-      enviador(email);
-    }
-   
+  
+    Swal.fire({
+      title: '¿Enviar datos?',
+      text: '¿Estás seguro de que deseas enviar los datos?',
+      icon: 'question',
+      showCancelButton: true,
+      confirmButtonText: 'Sí',
+      cancelButtonText: 'Cancelar',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        // Llama a la función "enviador" si el usuario hace clic en "Sí"
+        enviador(email);
+      }
+    });
   };
+  
   return (
     <>
     <main id='form-recuperar-container'>

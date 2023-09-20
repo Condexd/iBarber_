@@ -1,0 +1,9 @@
+:root {
+  --primary-color: #655CC9;
+  --secondary-color: #157347;
+}
+
+#boton-crear-barberia {
+  background-color: #655CC9;
+  color: white;
+}

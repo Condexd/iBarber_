@@ -1,6 +1,12 @@
 /*Fuente Nunito Sans*/
 @import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,wght@0,500;1,300&display=swap');
 
+:root {
+    --primary-color: #655CC9;
+    --secondary-color: #157347;
+}
+
+
 body {
     font-family: sans-serif;
     margin: 0;
@@ -8,20 +14,26 @@ body {
     box-sizing: border-box;
 }
 
+
 ul,
 li {
     list-style: none;
 }
 
-.navegacion a,
+.navegacion a:not(.boton-registrarse, .boton-login),
 .navegacion #agendar {
     text-decoration: none;
     font-family: 'Nunito Sans', sans-serif;
     color: black;
 }
 
+.navegacion .boton-registrarse, .boton-login {
+    text-decoration: none;
+    font-family: 'Nunito Sans', sans-serif;
+}
+
 .navegacion #submenu-agendar {
-    padding-inline-start: 0 !important;
+    padding-inline-start: 0;
 }
 
 #agendar:hover {
@@ -98,8 +110,9 @@ li {
 .boton-logout {
     border: none;
     border-radius: 5px;
-    background-color: cornflowerblue;
+    background-color: var(--primary-color);
     padding: 8px 8px;
+    color: white !important;
 }
 
 .boton-acceder {

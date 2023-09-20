@@ -1,3 +1,8 @@
+:root {
+    --primary-color: #655CC9;
+    --secondary-color: #157347;
+}
+
 .d-item{
     height: 500px;
 }
@@ -5,4 +10,9 @@
     height: 100%;
     object-fit: cover;
     filter: brightness(0.4);
+}
+
+#boton-carrusel {
+    background-color: var(--secondary-color);
+    color: white;
 }

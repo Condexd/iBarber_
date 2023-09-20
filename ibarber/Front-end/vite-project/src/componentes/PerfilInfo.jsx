@@ -20,7 +20,7 @@ function PerfilInfo({ formState }) {
         </div>
         <div>
           <Link to="/Crear">
-            <button className="btn btn-warning mt-2 fs-6">
+            <button className="btn btn-success mt-2 fs-6">
               Crear mi barbería
             </button>
           </Link>

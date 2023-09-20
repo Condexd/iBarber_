@@ -74,7 +74,7 @@ function PerfilForm({ formState, handleSubmit, setFormState }) {
           <div className="mt-5 d-flex align-content-center">
             <input
               type="submit"
-              className="btn btn-primary"
+              className="btn btn-success"
               value="Guardar cambios"
             />
             <button className="btn btn-link">Cancelar</button>

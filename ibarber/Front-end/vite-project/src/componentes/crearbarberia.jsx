@@ -53,7 +53,7 @@ export const Crearbarberia= () => {
             <option value="Cali">Cali</option>
           </select>
         </div>
-        <button type="submit" className="btn btn-primary">
+        <button type="submit" className="btn" id='boton-crear-barberia'>
           Enviar
         </button>
       </form>

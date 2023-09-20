@@ -14,7 +14,7 @@ const Carousel = () => {
           <div className="carousel-caption top-0 mt-5">
             <p className="mt-5 fs-3 text-uppercase">Descubre TU ESTILO</p>
             <h1 className="display-1 fw-folder tex-capitalize">iBarber</h1>
-            <Link to="/registrarse" className="btn btn-primary px-4 py-9 fs-5 mt-5">Entrar</Link>
+            <Link to="/registrarse" id='boton-carrusel' className="btn btn-lg px-4 py-9 fs-5 mt-5">Entrar</Link>
           </div>
         </div>
         <div className="carousel-item d-item">
@@ -22,7 +22,7 @@ const Carousel = () => {
           <div className="carousel-caption top-0 mt-5 ">
             <p className="mt-5 fs-3 text-uppercase">Descubre TU ESTILO</p>
             <h1 className="display-1 fw-folder tex-capitalize">iBarber</h1>
-            <Link to="/registrarse" className="btn btn-primary px-4 py-9 fs-5 mt-5">Entrar</Link>
+            <Link to="/registrarse" id='boton-carrusel' className="btn btn-lg px-4 py-9 fs-5 mt-5">Entrar</Link>
           </div>
         </div>
         <div className="carousel-item d-item">
@@ -30,7 +30,7 @@ const Carousel = () => {
           <div className="carousel-caption top-0 mt-5">
             <p className="mt-5 fs-3 text-uppercase">Descubre TU ESTILO</p>
             <h1 className="display-1 fw-folder tex-capitalize">iBarber</h1>
-            <Link to="/registrarse" className="btn btn-primary px-4 py-9 fs-5 mt-5">Entrar</Link>
+            <Link to="/registrarse" id='boton-carrusel' className="btn btn-lg px-4 py-9 fs-5 mt-5">Entrar</Link>
           </div>
         </div>
       </div>

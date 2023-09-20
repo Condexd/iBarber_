@@ -1,3 +1,8 @@
+:root {
+  --primary-color: #655CC9;
+  --secondary-color: #157347;
+}
+
 /*Footer*/
 .pie-pagina {
     bottom: 0;
@@ -48,18 +53,18 @@
     line-height: 40px;
     margin-right: 8px;
     color: white;
-    background-color: cornflowerblue;
+    background-color: var(--primary-color);
     text-align: center;
     transition: all 300ms ease;
     border-radius: 10px;
   }
   
   .pie-pagina .grupo-1 .red-social a:hover {
-    color: rgb(74, 137, 253);
+    color: var(--primary-color);
   }
   
   .pie-pagina .grupo-2 {
-    background-color: cornflowerblue;
+    background-color: var(--primary-color);
     padding: 10px;
     text-align: center;
     color: #fff;

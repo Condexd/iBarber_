@@ -143,12 +143,12 @@ router.post('/recuperar', async (req, res) => {
             line-height: 1.5;
           }
           strong {
-            color: #007bff;
+            color: #655CC9;
           }
 
           /* Encabezado */
           .header {
-            background-color: #007bff;
+            background-color: #655CC9;
             color: #fff;
             padding: 20px;
             text-align: center;
@@ -166,7 +166,7 @@ router.post('/recuperar', async (req, res) => {
 
           /* Pie de página */
           .footer {
-            background-color: #007bff;
+            background-color: #655CC9;
             color: #fff;
             text-align: center;
             padding: 10px 0;

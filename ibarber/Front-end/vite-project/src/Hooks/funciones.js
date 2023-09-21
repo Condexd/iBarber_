@@ -1,5 +1,4 @@
-
-import Swal from 'sweetalert2'; // Importa SweetAlert si estás usando npm
+import { mostrarMensajeExito, mostrarMensajeError, mostrarMensajeErrorInesperado } from '../modulos/alertas';
 
 export const FuncionRegistrar = async (usuario) => {
   try {
@@ -14,30 +13,15 @@ export const FuncionRegistrar = async (usuario) => {
     if (response.ok) {
       // La solicitud se completó correctamente (código de respuesta 200)
       const data = await response.json();
-      Swal.fire({
-        title: 'Registro exitoso',
-        text: data.message, // Puedes personalizar el mensaje aquí
-        icon: 'success',
-        confirmButtonText: 'Aceptar',
-      });
+      mostrarMensajeExito(data.message);
     } else {
       const errorResponse = await response.json();
-      Swal.fire({
-        title: 'Error al registrar',
-        text: errorResponse.message,
-        icon: 'error',
-        confirmButtonText: 'Aceptar',
-      });
+      mostrarMensajeError(errorResponse.message);
       // La solicitud no se completó correctamente (código de respuesta no es 200)
     }
   } catch (error) {
     console.error('Error en la solicitud:', error);
-    Swal.fire({
-      title: 'Error',
-      text: 'Ocurrió un error inesperado',
-      icon: 'error',
-      confirmButtonText: 'Aceptar',
-    });
+    mostrarMensajeErrorInesperado();
   }
 };
 
@@ -63,26 +47,12 @@ export const iniciar = async (usuarios, setIsAuthenticated, setUserData) => {
       return true;
     } else {
       const errorResponse = await response.json();
-
-      Swal.fire({
-        title: 'Error al iniciar sesión',
-        text: errorResponse.message,
-        icon: 'error',
-        confirmButtonText: 'Aceptar',
-      });
-
+      mostrarMensajeError('Error al iniciar sesión', errorResponse.message);
       return false;
     }
   } catch (error) {
     console.error('Error en la solicitud:', error);
-
-    Swal.fire({
-      title: 'Error',
-      text: 'Ocurrió un error inesperado',
-      icon: 'error',
-      confirmButtonText: 'Aceptar',
-    });
-
+    mostrarMensajeErrorInesperado();
     return false;
   }
 };

@@ -1,4 +1,4 @@
-import Swal from 'sweetalert2'; // Importa SweetAlert si estás usando npm
+import { mostrarMensajeExito, mostrarMensajeError, mostrarMensajeErrorInesperado } from '../modulos/alertas';
 
 export const enviador = async (email) => {
   try {
@@ -12,28 +12,13 @@ export const enviador = async (email) => {
 
     if (response.ok) {
       const data = await response.json();
-      Swal.fire({
-        title: 'Éxito',
-        text: data.message,
-        icon: 'success',
-        confirmButtonText: 'Aceptar',
-      });
+      mostrarMensajeExito(data.message);
     } else {
       const errorResponse = await response.json();
-      Swal.fire({
-        title: 'Error',
-        text: errorResponse.message,
-        icon: 'error',
-        confirmButtonText: 'Aceptar',
-      });
+      mostrarMensajeError(errorResponse.message);
     }
   } catch (error) {
     console.error('Error en la solicitud:', error);
-    Swal.fire({
-      title: 'Error',
-      text: 'Ocurrió un error inesperado',
-      icon: 'error',
-      confirmButtonText: 'Aceptar',
-    });
+    mostrarMensajeErrorInesperado();
   }
 };

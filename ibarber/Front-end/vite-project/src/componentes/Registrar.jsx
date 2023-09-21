@@ -1,7 +1,8 @@
 import {useForm} from "../Hooks/useform"
 import { FuncionRegistrar } from "../Hooks/funciones";
 import { Link } from 'react-router-dom';
-import Swal from 'sweetalert2';
+ 
+import { mostrarConfirmacion } from '../modulos/confirms';
 function Registrar() {
   const{formState,funcion}=useForm({
         nombres:"",
@@ -12,28 +13,14 @@ function Registrar() {
 
   })  
   const{nombres,apellidos,usuario,password,email}=formState
- 
-  const manejador = (event) => {
+
+
+  const manejador = async (event) => {
     event.preventDefault();
-    
-    Swal.fire({
-      title: '¿Enviar datos?',
-      text: '¿Estás seguro de que deseas enviar los datos?',
-      icon: 'question',
-      showCancelButton: true,
-      confirmButtonText: 'Sí',
-      cancelButtonText: 'Cancelar',
-      customClass: {
-        confirmButton: 'btn btn-success', // Clase de estilo para el botón "Sí"
-        cancelButton: 'btn btn-danger',   // Clase de estilo para el botón "Cancelar"
-      },
-      background: '#f5f5f5', // Color de fondo del cuadro de diálogo
-      iconHtml: '<i class="far fa-question-circle"></i>', // Ícono personalizado
-    }).then((result) => {
-      if (result.isConfirmed) {
-        FuncionRegistrar({ nombres, apellidos, usuario, password, email });
-      }
-    });
+    const confirmacion = await mostrarConfirmacion('¿Enviar datos?', '¿Estás seguro de que deseas enviar los datos?')
+        if (confirmacion.isConfirmed) {
+         FuncionRegistrar({ nombres, apellidos, usuario, password, email });
+        }
   };
   
   

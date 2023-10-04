@@ -10,7 +10,7 @@ const Carousel = () => {
       </div>
       <div className="carousel-inner">
         <div className="carousel-item active d-item">
-          <img src="https://github.com/Condexd/_iBarber_/blob/main/ibarber/Front-end/vite-project/src/imgcar/barberia-la-antigua-viruta5.jpg?raw=true" className="d-block w-100 d-img" alt="..." />
+          <img src="https://raw.githubusercontent.com/Condexd/_iBarber_/main/ibarber/Front-end/vite-project/src/imgcar/barberia-la-antigua-viruta5.webp" className="d-block w-100 d-img" alt="..." />
           <div className="carousel-caption top-0 mt-5">
             <p className="mt-5 fs-3 text-uppercase">Descubre TU ESTILO</p>
             <h1 className="display-1 fw-folder tex-capitalize">iBarber</h1>

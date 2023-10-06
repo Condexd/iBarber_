@@ -12,7 +12,7 @@ function Rutas({ isAuthenticated, setIsAuthenticated }) {
   const [userData, setUserData] = useState({});
   return (
     <Routes>
-      <Route path="/inicio" element={<Inicio isAuthenticated={isAuthenticated} />} />
+      <Route path="/" element={<Inicio isAuthenticated={isAuthenticated} />} />
       {/* Rutas protegidas */}
       {isAuthenticated ? (
         <>

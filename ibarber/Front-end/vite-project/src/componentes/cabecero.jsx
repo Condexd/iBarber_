@@ -18,7 +18,7 @@ function Cabecero({ isAuthenticated, logout }) {
             </Link>
           </li>
           <li>
-            <Link to="/inicio">Inicio</Link>
+            <Link to="/">Inicio</Link>
           </li>
           <li id='contenedor-submenu' className='menu-desplegable'>
             <ul id='submenu-agendar'>

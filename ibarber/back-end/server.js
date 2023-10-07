@@ -1,8 +1,10 @@
 import express from "express";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
-import router from "./routers/router.js";
+import auth from "./routers/auth.js";
 import cors from 'cors';
+import barberiasRoutes from "./routers/barberias.js"
+import usuarioRoutes from "./routers/usuarios.js"
 dotenv.config();
 
 const app = express();
@@ -31,7 +33,9 @@ database.once("connected", () => {
   console.log("database connected");
 });
 
-app.use("/api",router);
+app.use("/api",auth);
+app.use("/api",barberiasRoutes);
+app.use("/api",usuarioRoutes);
 
 app.listen(port, () => {
   console.log(`server started at ${port}`);

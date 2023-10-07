@@ -2,7 +2,7 @@ import { mostrarMensajeExito, mostrarMensajeError, mostrarMensajeErrorInesperado
 
 export const FuncionRegistrar = async (usuario) => {
   try {
-    const response = await fetch('http://localhost:3300/api/usuarios', {
+    const response = await fetch('http://localhost:3300/api/Registrar', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

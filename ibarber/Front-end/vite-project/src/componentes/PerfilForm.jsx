@@ -11,9 +11,9 @@ function PerfilForm({ formState, handleSubmit, setFormState }) {
             type="text"
             name="nombres"
             required
-            value={formState.nombres}
+            value={formState.nombre}
             onChange={(e) =>
-              setFormState({ ...formState, nombres: e.target.value })
+              setFormState({ ...formState, nombre: e.target.value })
             }
           />
         </li>
@@ -23,9 +23,9 @@ function PerfilForm({ formState, handleSubmit, setFormState }) {
             type="text"
             name="apellidos"
             required
-            value={formState.apellidos}
+            value={formState.apellido}
             onChange={(e) =>
-              setFormState({ ...formState, apellidos: e.target.value })
+              setFormState({ ...formState, apellido: e.target.value })
             }
           />
         </li>
@@ -35,9 +35,9 @@ function PerfilForm({ formState, handleSubmit, setFormState }) {
             type="email"
             name="email"
             required
-            value={formState.email}
+            value={formState.correo}
             onChange={(e) =>
-              setFormState({ ...formState, email: e.target.value })
+              setFormState({ ...formState, correo: e.target.value })
             }
           />
         </li>

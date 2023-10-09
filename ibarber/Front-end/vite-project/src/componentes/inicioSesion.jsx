@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useContext} from 'react';
 import { useForm } from '../Hooks/useform';
 import { iniciar } from '../Hooks/funciones';
 import { useNavigate } from 'react-router-dom';
 import { Link } from "react-router-dom";
+import { UserContext } from './UserContext';
 
-const IniciarSesion = ({ setIsAuthenticated, setUserData}) => {
+const IniciarSesion = ({ setIsAuthenticated}) => {
   const { formState, funcion } = useForm({
     password: '',
     usuario: '',
@@ -12,13 +13,12 @@ const IniciarSesion = ({ setIsAuthenticated, setUserData}) => {
 
   const { usuario, password } = formState;
   const navigate = useNavigate(); // Obtén la función de navegación
-
+  const { setUserData } = useContext(UserContext); 
   const manejador = async (event) => {
     event.preventDefault();
     const isAuthenticated = await iniciar({ usuario, password }, setIsAuthenticated, setUserData);
     if (isAuthenticated) {
-      navigate('/inicio')
-      console.log("yoprima"); // Redirige a la página de inicio usando navigate
+      navigate('/')
     }
   };
 

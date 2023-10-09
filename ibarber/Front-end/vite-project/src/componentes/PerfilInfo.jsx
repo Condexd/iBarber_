@@ -15,7 +15,7 @@ function PerfilInfo({ formState }) {
         />
         <div>
           <span className="text-start lh-lg semibold fs-5">
-            {formState.nombres} {formState.apellidos}
+            {formState.nombre} {formState.apellido}
           </span>
         </div>
         <div>

@@ -59,6 +59,7 @@ router.post('/login', async (req, res) => {
       nombre: user.nombres,
       apellido: user.apellidos,
       correo:user.correo,
+      telefono:user.telefono
     }, });
   } catch (error) {
     console.error('Error al iniciar sesión:', error);

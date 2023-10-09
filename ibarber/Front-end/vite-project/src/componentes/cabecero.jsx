@@ -7,7 +7,7 @@ function Cabecero({ isAuthenticated, logout }) {
       <nav className="navegacion">
         <ul className="contenedor1-navegacion">
           <li>
-            <Link className="logo-img-contenedor" to="/inicio">
+            <Link className="logo-img-contenedor" to="/">
               <img
                 className="logo-img"
                 src="https://github.com/Condexd/_iBarber_/blob/main/proyectoweb/index/images/logo-ibarber.png?raw=true"

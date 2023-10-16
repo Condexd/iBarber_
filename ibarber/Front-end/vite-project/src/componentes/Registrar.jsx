@@ -1,8 +1,8 @@
 import {useForm} from "../Hooks/useform"
-import { FuncionRegistrar } from "../Hooks/funciones";
+import { enviador } from "../functions/usePost";
 import { Link } from 'react-router-dom';
- 
 import { mostrarConfirmacion } from '../modulos/confirms';
+import { API_URLS } from "../modulos/urls";
 function Registrar() {
   const{formState,funcion}=useForm({
         nombres:"",
@@ -19,7 +19,7 @@ function Registrar() {
     event.preventDefault();
     const confirmacion = await mostrarConfirmacion('¿Enviar datos?', '¿Estás seguro de que deseas enviar los datos?')
         if (confirmacion.isConfirmed) {
-         FuncionRegistrar({ nombres, apellidos, usuario, password, email });
+         enviador(API_URLS.Registrar,{ nombres, apellidos, usuario, password, email });
         }
   };
   

@@ -1,19 +1,18 @@
 import { mostrarMensajeExito, mostrarMensajeError, mostrarMensajeErrorInesperado } from '../modulos/alertas';
 
-export const actualizar = async (usuario) => {
+export const enviador = async (url, valor) => {
   try {
-    const response = await fetch(`http://localhost:3300/api/usuario/${usuario._id}`, {
-      method: 'put',
+    const response = await fetch(url, {
+      method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify(usuario),
+      body: JSON.stringify(valor),
     });
 
     if (response.ok) {
-      const resultados = await response.json();
-      mostrarMensajeExito(resultados.message);
-      return resultados;
+      const data = await response.json();
+      mostrarMensajeExito(data.message);
     } else {
       const errorResponse = await response.json();
       mostrarMensajeError(errorResponse.message);

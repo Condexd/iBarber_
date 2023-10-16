@@ -11,9 +11,9 @@ function PerfilForm({ formState, handleSubmit, setFormState }) {
             type="text"
             name="nombres"
             required
-            value={formState.nombre}
+            value={formState.nombres}
             onChange={(e) =>
-              setFormState({ ...formState, nombre: e.target.value })
+              setFormState({ ...formState, nombres: e.target.value })
             }
           />
         </li>
@@ -23,9 +23,9 @@ function PerfilForm({ formState, handleSubmit, setFormState }) {
             type="text"
             name="apellidos"
             required
-            value={formState.apellido}
+            value={formState.apellidos}
             onChange={(e) =>
-              setFormState({ ...formState, apellido: e.target.value })
+              setFormState({ ...formState, apellidos: e.target.value })
             }
           />
         </li>

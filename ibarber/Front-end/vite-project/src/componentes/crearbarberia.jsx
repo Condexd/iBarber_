@@ -1,7 +1,7 @@
 import React from 'react';
 import { useForm } from '../Hooks/useform';
-import { barberiafun } from '../Hooks/barberiafun'; // Asegúrate de importar el custom hook
-
+import { enviador } from '../functions/usePost'; // Asegúrate de importar el custom hook
+import { API_URLS } from '../modulos/urls';
 export const Crearbarberia= () => {
   const { formState, funcion } = useForm({
     nombre_barberia: '',
@@ -11,7 +11,7 @@ export const Crearbarberia= () => {
   const{nombre_barberia , direccion_barberia,nombre_ciudad}=formState
   const handleSubmit = async(e) => {
     e.preventDefault();
-    const result= await barberiafun(formState)
+    const result= await enviador(API_URLS.BARBERIA,formState)
   };
 
 

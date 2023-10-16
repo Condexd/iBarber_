@@ -18,7 +18,7 @@ function Cabecero({ isAuthenticated, logout }) {
             </Link>
           </li>
           <li>
-            <Link to="/">Inicio</Link>
+            <Link to="/Home">Inicio</Link>
           </li>
           <li id='contenedor-submenu' className='menu-desplegable'>
             <ul id='submenu-agendar'>
@@ -58,7 +58,7 @@ function Cabecero({ isAuthenticated, logout }) {
             // Si el usuario no está autenticado, muestra los enlaces de inicio de sesión y registro
             <>
               <li>
-                <Link className="boton-login" to="/iniciarSesion">
+                <Link className="boton-login" to="/Login">
                   Iniciar sesión
                 </Link>
               </li>

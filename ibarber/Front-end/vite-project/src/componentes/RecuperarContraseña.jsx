@@ -1,7 +1,8 @@
 import React from 'react'
 import {useForm} from "../Hooks/useform"
+import { API_URLS } from '../modulos/urls';
 import { mostrarConfirmacion } from '../modulos/confirms';
-import { enviador } from '../Hooks/recuperarfun';
+import { enviador } from '../functions/usePost';
 
 export const RecuperarContraseña = () => {
     const{formState,funcion}=useForm({
@@ -22,7 +23,7 @@ export const RecuperarContraseña = () => {
     );
   
     if (confirmacion.isConfirmed) {
-        await enviador(email);
+        await enviador(API_URLS.RECUPERAR,{email});
     }
   };
   

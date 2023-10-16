@@ -1,6 +1,6 @@
 import React, { useState, useContext} from 'react';
 import { useForm } from '../Hooks/useform';
-import { iniciar } from '../Hooks/funciones';
+import { iniciar } from '../functions/funciones';
 import { useNavigate } from 'react-router-dom';
 import { Link } from "react-router-dom";
 import { UserContext } from './UserContext';

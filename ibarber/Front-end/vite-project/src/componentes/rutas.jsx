@@ -1,5 +1,5 @@
 import React from "react";
-import { Route, Routes } from "react-router-dom";
+import { Navigate, Route, Routes } from "react-router-dom";
 import Inicio from "./inicio";
 import Perfil from "./perfil";
 import Registrar from "./Registrar";
@@ -12,7 +12,8 @@ function Rutas({ isAuthenticated, setIsAuthenticated }) {
   return (
     <UserProvider> {/* Aquí envuelve tus rutas con el UserProvider */}
       <Routes>
-        <Route path="/" element={<Inicio isAuthenticated={isAuthenticated} />} />
+        <Route path="/Home" element={<Inicio isAuthenticated={isAuthenticated} />} />
+        <Route path="/" element={<Navigate to= "/Home"/>} />
         {/* Rutas protegidas */}
         {isAuthenticated ? (
           <>
@@ -22,7 +23,7 @@ function Rutas({ isAuthenticated, setIsAuthenticated }) {
         ) : (
           // Si no está autenticado, redirige a la página de inicio de sesión
           <Route
-            path="/iniciarSesion"
+            path="/Login"
             element={<IniciarSesion setIsAuthenticated={setIsAuthenticated} />}
           />
         )}

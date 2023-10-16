@@ -1,6 +1,7 @@
 import React, { useState, useContext } from "react";
+import { API_URLS } from "../modulos/urls";
 import { UserContext } from "./UserContext";
-import { actualizar } from "../Hooks/actualizar";
+import { actualizar } from "../functions/usePut";
 import PerfilForm from "./PerfilForm";
 import PerfilInfo from "./PerfilInfo";
 import { mostrarConfirmacion } from "../modulos/confirms";
@@ -8,7 +9,6 @@ import { mostrarConfirmacion } from "../modulos/confirms";
 function Perfil() {
   const { userData, setUserData } = useContext(UserContext);
   const [formState, setFormState] = useState(userData);
-  console.log((formState))
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -19,7 +19,7 @@ function Perfil() {
     );
 
     if (confirmacion.isConfirmed) {
-      await actualizar(formState,userData);
+      await actualizar(formState,API_URLS.USUARIO);
       setUserData(formState);
     }
   };

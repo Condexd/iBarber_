@@ -1,8 +1,8 @@
-import {useForm} from "../Hooks/useform"
-import { enviador } from "../functions/usePost";
+import {useForm} from "../../Hooks/useform"
+import { enviador } from "../../functions/usePost";
 import { Link } from 'react-router-dom';
-import { mostrarConfirmacion } from '../modulos/confirms';
-import { API_URLS } from "../modulos/urls";
+import { mostrarConfirmacion } from '../../modulos/confirms';
+import { API_URLS } from "../../modulos/urls";
 function Registrar() {
   const{formState,funcion}=useForm({
         nombres:"",

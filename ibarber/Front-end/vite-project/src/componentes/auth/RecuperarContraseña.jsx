@@ -1,8 +1,8 @@
 import React from 'react'
-import {useForm} from "../Hooks/useform"
-import { API_URLS } from '../modulos/urls';
-import { mostrarConfirmacion } from '../modulos/confirms';
-import { enviador } from '../functions/usePost';
+import {useForm} from "../../Hooks/useform"
+import { API_URLS } from '../../modulos/urls';
+import { mostrarConfirmacion } from '../../modulos/confirms';
+import { enviador } from '../../functions/usePost';
 
 export const RecuperarContraseña = () => {
     const{formState,funcion}=useForm({

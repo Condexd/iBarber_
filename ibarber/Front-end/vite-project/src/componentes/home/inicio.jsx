@@ -1,6 +1,5 @@
-import React from 'react';
-import Carousel from "./carousel";
-import Info from "./info";
+import Carousel from "./carousel"
+import Info from './info';
 
 const Inicio = ({ isAuthenticated }) => {
   return (

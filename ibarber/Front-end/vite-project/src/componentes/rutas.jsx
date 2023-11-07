@@ -1,12 +1,12 @@
 import React from "react";
 import { Navigate, Route, Routes } from "react-router-dom";
-import Inicio from "./inicio";
-import Perfil from "./perfil";
-import Registrar from "./Registrar";
-import IniciarSesion from "./inicioSesion";
-import { RecuperarContraseña } from "./RecuperarContraseña";
-import { Crearbarberia } from "./crearbarberia";
-import { UserProvider } from "./userProvider"; // Asegúrate de importar el UserProvider desde el archivo correcto
+import Inicio from "./home/inicio";
+import Perfil from "./Perfil/perfil";
+import Registrar from "./auth/Registrar";
+import IniciarSesion from "./auth/inicioSesion";
+import { RecuperarContraseña } from "./auth/RecuperarContraseña";
+import { Crearbarberia } from "./Barberia/crearbarberia";
+import { UserProvider } from "./context/userProvider"; // Asegúrate de importar el UserProvider desde el archivo correcto
 
 function Rutas({ isAuthenticated, setIsAuthenticated }) {
   return (

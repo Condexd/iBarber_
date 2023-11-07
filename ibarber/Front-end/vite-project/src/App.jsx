@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Route, Routes, } from 'react-router-dom'; // Asegúrate de importar useNavigate
-import Cabecero from "./componentes/cabecero";
-import Footer from "./componentes/footer";
+import Cabecero from "./componentes/layout/cabecero";
+import Footer from "./componentes/layout/footer";
 import Rutas from "./componentes/rutas";
 
 function App() {

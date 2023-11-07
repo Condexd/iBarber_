@@ -1,6 +1,4 @@
 import React from 'react';
-import '../Estilos/Footer.css'; 
-
 const Footer = () => {
   return (
     <footer className="pie-pagina">

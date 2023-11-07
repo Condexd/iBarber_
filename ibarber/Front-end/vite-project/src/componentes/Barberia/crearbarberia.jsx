@@ -1,4 +1,3 @@
-import React from 'react';
 import { useForm } from '../../Hooks/useform';
 import { enviador } from '../../functions/usePost'; // Asegúrate de importar el custom hook
 import { API_URLS } from '../../modulos/urls';

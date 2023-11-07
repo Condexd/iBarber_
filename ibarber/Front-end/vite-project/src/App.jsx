@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { BrowserRouter as Router, Route, Routes, } from 'react-router-dom'; // Asegúrate de importar useNavigate
 import Cabecero from "./componentes/layout/cabecero";
 import Footer from "./componentes/layout/footer";

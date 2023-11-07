@@ -1,4 +1,3 @@
-import React from "react";
 import { Navigate, Route, Routes } from "react-router-dom";
 import Inicio from "./home/inicio";
 import Perfil from "./Perfil/perfil";

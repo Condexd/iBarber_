@@ -1,5 +1,3 @@
-import React from 'react'
-
 const info = () => {
   return (
     <><><section className="contenedor-sobre-nosotros">

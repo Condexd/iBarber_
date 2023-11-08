@@ -3,7 +3,89 @@
   --secondary-color: #157347;
 }
 
+.title-barber {
+  text-align: center;
+}
+
 #boton-crear-barberia {
   background-color: #655CC9;
   color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 10px 40px;
+  cursor: pointer;
+}
+
+#btn-enviar-barbero {
+  margin: auto;
+}
+
+#form-barber-container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  background-color: #f8f9fa;
+  padding: 20px;
+}
+
+.img-container img {
+  margin: 80px;
+  background-size: cover;
+  width: 23rem;
+  border: 2px solid #655CC9;
+  border-radius: 5px;
+  box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.2);
+}
+
+#form-barber {
+  margin-top: 170px;
+  box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.4);
+  width: 50rem;
+  height: auto;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  row-gap: 16px;
+  background-color: white;
+  border-radius: 4px;
+  box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.4);
+  margin-left: 40px;
+}
+
+#form-barber input,
+#form-barber select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin: 5px 0;
+}
+
+input:focus, input:active {
+  outline: none;
+}
+
+#form-barber button:hover {
+  background-color: #4b4587;
+}
+
+@media (max-width: 788px) {
+  .img-container img {
+    width: 17rem;
+    margin-top: 10px;
+    height: auto;
+  }
+
+  #form-barber-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  #form-barber {
+    width: 70%;
+    margin-top: 10px;
+    padding: 40px;
+    margin-left: 0;
+  }
 }

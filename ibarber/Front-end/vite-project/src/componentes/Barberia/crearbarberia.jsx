@@ -20,12 +20,12 @@ export const Crearbarberia = () => {
     <>
 
       <main id="form-barber-container">
-        <div>
-        <img src="barber.jpg" alt="Imagen de la barbería" /> 
+        <div className='img-container'>
+        <img src="https://github.com/Condexd/iBarber_/blob/develop/ibarber/Front-end/vite-project/src/imgcar/barber.jpg?raw=true" alt="Imagen de la barbería" /> 
         </div>
-        <form onSubmit={handleSubmit} id="form-login">
+        <form onSubmit={handleSubmit} id="form-barber">
           <div id="login-title">
-            <h3>Crear Barbería</h3>
+            <h3 className='title-barber'>Crear Barbería</h3>
           </div>
           <div id="login-username">
             <input
@@ -62,7 +62,7 @@ export const Crearbarberia = () => {
               <option value="Cali">Cali</option>
             </select>
           </div>
-          <div id="login-submit">
+          <div id="btn-enviar-barbero">
             <button type="submit" id="boton-crear-barberia">
               Enviar
             </button>

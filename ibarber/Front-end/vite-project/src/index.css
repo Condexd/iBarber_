@@ -7,9 +7,3 @@
 @import url("./Estilos/perfil.css");
 @import url("./Estilos/recuperar.css");
 @import url("./Estilos/registrar.css");
-#form-barber-container{
-display: flex;
-justify-content: center;
-align-items:flex-start ;
-background-color: blue;
-}

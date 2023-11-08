@@ -1,65 +1,76 @@
 import { useForm } from '../../Hooks/useform';
 import { enviador } from '../../functions/usePost'; // Asegúrate de importar el custom hook
 import { API_URLS } from '../../modulos/urls';
-export const Crearbarberia= () => {
+import { Link } from 'react-router-dom'; // Asegúrate de importar Link si no lo has hecho
+export const Crearbarberia = () => {
   const { formState, funcion } = useForm({
     nombre_barberia: '',
     direccion_barberia: '',
     nombre_ciudad: '',
   });
-  const{nombre_barberia , direccion_barberia,nombre_ciudad}=formState
-  const handleSubmit = async(e) => {
+  const { nombre_barberia, direccion_barberia, nombre_ciudad } = formState;
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(formState)
-    const result= await enviador(API_URLS.BARBERIA,formState)
+    console.log(formState);
+    const result = await enviador(API_URLS.BARBERIA, formState);
   };
 
-
   return (
-    <div className="container mt-5">
-      <form onSubmit={handleSubmit}>
-        <div className="form-group">
-          <label>Nombre de la barbería</label>
-          <input
-            type="text"
-            name="nombre_barberia"
-            value={nombre_barberia}
-            onChange={funcion}
-            className="form-control"
-          />
-        </div>
+    <>
 
-        <div className="form-group">
-          <label>Dirección de la barbería</label>
-          <input
-            type="text"
-            name="direccion_barberia"
-            value={direccion_barberia}
-            onChange={funcion}
-            className="form-control"
-          />
+      <main id="form-barber-container">
+        <div>
+        <img src="barber.jpg" alt="Imagen de la barbería" /> 
         </div>
-
-        <div className="form-group">
-          <label>Nombre de la ciudad</label>
-          <select
-            name="nombre_ciudad"
-            value={nombre_ciudad}
-            onChange={funcion}
-            className="form-control"
-          >
-            <option value="Bogotá">Bogotá</option>
-            <option value="Medellín">Medellín</option>
-            <option value="Cali">Cali</option>
-          </select>
-        </div>
-        <button type="submit" className="btn" id='boton-crear-barberia'>
-          Enviar
-        </button>
-      </form>
-    </div>
+        <form onSubmit={handleSubmit} id="form-login">
+          <div id="login-title">
+            <h3>Crear Barbería</h3>
+          </div>
+          <div id="login-username">
+            <input
+              type="text"
+              name="nombre_barberia"
+              placeholder="Nombre de la barbería"
+              required
+              id="nombre_barberia"
+              value={nombre_barberia}
+              onChange={funcion}
+            />
+          </div>
+          <div id="login-password">
+            <input
+              type="text"
+              name="direccion_barberia"
+              placeholder="Dirección de la barbería"
+              required
+              id="direccion_barberia"
+              value={direccion_barberia}
+              onChange={funcion}
+            />
+          </div>
+          <div id="login-username">
+            <label>Nombre de la ciudad</label>
+            <select
+              name="nombre_ciudad"
+              value={nombre_ciudad}
+              onChange={funcion}
+              id="nombre_ciudad"
+            >
+              <option value="Bogotá">Bogotá</option>
+              <option value="Medellín">Medellín</option>
+              <option value="Cali">Cali</option>
+            </select>
+          </div>
+          <div id="login-submit">
+            <button type="submit" id="boton-crear-barberia">
+              Enviar
+            </button>
+          </div>
+        </form>
+      </main>
+    </>
   );
 };
-
 
 

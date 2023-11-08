@@ -10,6 +10,7 @@ export const Crearbarberia= () => {
   const{nombre_barberia , direccion_barberia,nombre_ciudad}=formState
   const handleSubmit = async(e) => {
     e.preventDefault();
+    console.log(formState)
     const result= await enviador(API_URLS.BARBERIA,formState)
   };
 

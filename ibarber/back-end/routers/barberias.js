@@ -3,17 +3,18 @@ const router = Router();
 //registro de barberia
 router.post("/barberia", async (req, res) => {
   try {
-    const { nombre_barberia, direccion_barberia, ciudad, barberos } = req.body;
+    const { nombre_barberia, direccion_barberia, nombre_ciudad } = req.body;
 
-    // Verifica que los campos obligatorios estén presentes
-    if (!nombre_barberia || !direccion_barberia || !ciudad || !barberos) {
+    if (!nombre_barberia || !direccion_barberia || !nombre_ciudad) {
       return res.status(400).json({ message: "Todos los campos son obligatorios" });
     }
+
     const newBarberia = new BarberiaModel({
       nombre_barberia,
       direccion_barberia,
-      ciudad,
-      barberos,
+      ciudad: {
+        nombre_ciudad:nombre_ciudad,
+      },
     });
 
     const result = await newBarberia.save();

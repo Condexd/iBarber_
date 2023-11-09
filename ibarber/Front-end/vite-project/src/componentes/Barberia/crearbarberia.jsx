@@ -41,13 +41,14 @@ export const Crearbarberia= () => {
         </div>
 
         <div className="form-group">
-          <label>Nombre de la ciudad</label>
+          <label>Ciudad</label>
           <select
             name="nombre_ciudad"
             value={nombre_ciudad}
             onChange={funcion}
             className="form-control"
           >
+            <option value="Seleccionar">Seleccionar</option>
             <option value="Bogotá">Bogotá</option>
             <option value="Medellín">Medellín</option>
             <option value="Cali">Cali</option>

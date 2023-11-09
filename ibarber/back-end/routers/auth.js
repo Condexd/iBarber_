@@ -1,4 +1,4 @@
-import { Router, bcrypt, crypto, jwt, dotenv, usuarioModel,correoelectronico,enviarCorreo ,BarberiaModel} from "../Modulos/barril.js";
+import { Router, bcrypt, crypto, jwt, dotenv, usuarioModel,correoelectronico,enviarCorreo,BarberiaModel } from "../Modulos/barril.js";
 
 dotenv.config();
 const router = Router();
@@ -41,35 +41,44 @@ router.post('/Registrar', async (req, res) => {
 router.post('/login', async (req, res) => {
   try {
     const { usuario, password } = req.body;
-    const user = await usuarioModel.findOne({ usuario: usuario });
+    const user = await usuarioModel.findOne({ usuario: usuario});
 
-    if (!user) return res.status(401).json({ message: 'Usuario no encontrado' });
+    if (!user)return res.status(401).json({ message: 'Usuario no encontrado' });
 
-    const contraseñaValida = await bcrypt.compare(password, user.password);
+    const contraseñaValida = await bcrypt.compare(password, user.password);// Compara la contraseña ingresada con la contraseña almacenada en la base de datos
 
-    if (!contraseñaValida) return res.status(401).json({ message: 'Contraseña incorrecta' });
-
-    const usuarioTieneBarberia = await BarberiaModel.findOne({ "usuario": usuario }) ? true : false;
-
+    if (!contraseñaValida)return res.status(401).json({ message: 'Contraseña incorrecta' });
+      
+    const usuarioTieneBarberia = await BarberiaModel.findOne({ "dueño.usuario": usuario });
+    // Genera un token JWT con la información del usuario (puedes personalizar el payload)
     const token = jwt.sign({ usuarioId: user._id }, 'tu_secreto_secreto', {
-      expiresIn: '1h'
+      expiresIn: '1h', // Define la expiración del token (ejemplo: 1 hora)
     });
-
-    res.status(200).json({
-      message: 'Inicio de sesión exitoso',
-      token,
-      user: {
+      
+    if(usuarioTieneBarberia){
+      res.status(200).json({ message: 'Inicio de sesión exitoso', token, user:{
         _id: user._id,
         nombres: user.nombres,
         apellidos: user.apellidos,
-        correo: user.correo,
-        telefono: user.telefono,
-        barberia: usuarioTieneBarberia
-      }
-    });
-
+        correo:user.correo,
+        telefono:user.telefono,
+        barberia:true
+  
+      }, });
+    }else{
+      res.status(200).json({ message: 'Inicio de sesión exitoso', token, user:{
+        _id: user._id,
+        nombres: user.nombres,
+        apellidos: user.apellidos,
+        correo:user.correo,
+        telefono:user.telefono,
+        barberia:false
+  
+      }, });
+    }
+  
   } catch (error) {
-    console.error('Error al iniciar sesión:', error);
+    console.error('Error al iniciar sesión:', error, );
     res.status(500).json({ message: 'Error interno del servidor' });
   }
 });

@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 function Cabecero({ isAuthenticated, logout }) {
   const { userData, setUserData } = useContext(UserContext);
   const [visible, setVisible] = useState(userData.barberia);
+  console.log(userData.barberia)
   return (
     <header className="cabecero">
       <nav className="navegacion">
@@ -48,7 +49,7 @@ function Cabecero({ isAuthenticated, logout }) {
           {isAuthenticated ? (
             // Si el usuario está autenticado, muestra el botón de cerrar sesión
             <>
-              {visible.barberia && (
+              {visible && (
                 <>
                   <li>
                     <Link to="/mi-barberia">Mi barbería</Link>

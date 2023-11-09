@@ -1,11 +1,15 @@
-import { useState, useContext } from 'react';
+import { useState, useContext,useEffect } from 'react';
 import { UserContext } from '../context/UserContext';
 import { Link } from 'react-router-dom';
 
 function Cabecero({ isAuthenticated, logout }) {
   const { userData, setUserData } = useContext(UserContext);
   const [visible, setVisible] = useState(userData.barberia);
-  console.log(userData.barberia)
+
+
+  useEffect(() => {
+    setVisible(userData.barberia);
+  }, [userData.barberia]);
   return (
     <header className="cabecero">
       <nav className="navegacion">

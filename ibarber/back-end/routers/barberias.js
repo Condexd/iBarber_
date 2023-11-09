@@ -13,12 +13,10 @@ router.post("/barberia", async (req, res) => {
       direccion_barberia,
      nombre_ciudad,
       dueño: {
-        usuario: usuario, 
+        usuario: usuario,
       },
     });
 
-
-     
     const result = await newBarberia.save();
     res.status(201).json({ message: "Registro exitoso", data: result });
   } catch (error) {
@@ -59,11 +57,11 @@ router.get('/barberia/:id', async (req, res) => {
 });
 
 
-router.get('/barberia/:id/barberos', async (req, res) => {
+router.get('/barberia/barberos/:id', async (req, res) => {
   const barberiaId = req.params.id;
 
   try {
-    const barberia = await BarberiaModel.findById(barberiaId);
+    const barberia = await BarberiaModel.findOne({ "dueño.usuario": barberiaId });
     if (barberia) {
       const barberos = barberia.barberos;
       res.status(200).json(barberos);
@@ -80,18 +78,18 @@ router.get('/barberia/:id/barberos', async (req, res) => {
 
 
 router.put('/barberia/:id', async (req, res) => {
-  const nombreUsuario = req.params.id;  
+  const nombreUsuario = req.params.id;
   const { nombre, ciudad ,decripcion} = req.body;
 
   try {
     const updatedBarberia = await BarberiaModel.findOneAndUpdate(
-      { "dueño.usuario": nombreUsuario },  
+      { "dueño.usuario": nombreUsuario },
       {
         nombre_barberia: nombre,
         nombre_ciudad: ciudad,
         decripcion_barberia:decripcion,
       },
-      { new: true } 
+      { new: true }
     );
 
     if (!updatedBarberia) return res.status(404).json({ message: 'Barbería no encontrada' });

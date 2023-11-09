@@ -5,6 +5,7 @@ import auth from "./routers/auth.js";
 import cors from 'cors';
 import barberiasRoutes from "./routers/barberias.js"
 import usuarioRoutes from "./routers/usuarios.js"
+import citaRoutes from "./routers/citas.js"
 dotenv.config();
 
 const app = express();
@@ -33,6 +34,7 @@ database.once("connected", () => {
   console.log("database connected");
 });
 
+app.use("/api",citaRoutes);
 app.use("/api",auth);
 app.use("/api",barberiasRoutes);
 app.use("/api",usuarioRoutes);

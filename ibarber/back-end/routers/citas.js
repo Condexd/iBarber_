@@ -66,3 +66,4 @@ router.delete('/api/citas/:id', async (req, res) => {
     }
   });
   
+  export default router;

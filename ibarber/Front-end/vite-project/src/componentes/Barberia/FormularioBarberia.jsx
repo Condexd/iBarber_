@@ -1,17 +1,17 @@
-const FormularioBarberia = ({ formState, funcion }) => {
-  const { nombres, apellidos, email, telefono, ciudad } = formState;
+const FormularioBarberia = ({ formState, funcion ,handleSubmit}) => {
+  const { nombre, descripcion, email, telefono, ciudad } = formState;
 
   return (
-    <form className="w-50 p-3">
+    <form className="w-50 p-3" onSubmit={handleSubmit}>
       <ul className="row gap-3" id="datos-personales">
         <h2>Mi barbería</h2>
         <li className="col-5 row">
           <label>Nombre</label>
-          <input type="text" name="nombres" required value={nombres} onChange={funcion} />
+          <input type="text" name="nombre" required value={nombre} onChange={funcion} />
         </li>
         <li className="col-5 row">
           <label>Descripción</label>
-          <input type="text" name="apellidos" required value={apellidos} onChange={funcion} />
+          <input type="text" name="descripcion" required value={descripcion} onChange={funcion} />
         </li>
         <li className="col-5 row">
           <label>Email</label>

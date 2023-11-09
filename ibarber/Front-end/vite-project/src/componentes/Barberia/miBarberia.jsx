@@ -1,26 +1,49 @@
 import { useForm } from '../../Hooks/useform'; import React from 'react';
 import PerfilBarberia from './PerfilBarberia';
 import FormularioBarberia from './FormularioBarberia';
-
+import { mostrarConfirmacion } from "../../modulos/confirms";
+import { API_URLS } from '../../modulos/urls';
+import { useState,useContext } from 'react';
+import { UserContext } from '../context/UserContext';
+import { actualizar } from '../../functions/usePut';
 export const MiBarberia = () => {
+  const { userData, setUserData } = useContext(UserContext);
+  const [visible, setVisible] = useState(userData.usuario);
+
   const { formState, funcion } = useForm({
-    nombres: '',
-    apellidos: '',
+    _id:visible,
+    nombre: '',
+    descripcion: '',
     email: '',
     telefono: '',
     ciudad: 'Seleccionar',
   });
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    const confirmacion = await mostrarConfirmacion(
+      "¿Actualizar datos?",
+      "¿Estás seguro de que deseas actualizar los datos?"
+    );
+
+    if (confirmacion.isConfirmed) {
+      console.log(visible)
+      await actualizar(formState,API_URLS.ActualizarBarberia);
+      
+    }
+  };
 
   return (
     <>
       <main id="main" className="p-2 d-flex mt-4 justify-content-center">
         <div className="d-flex justify-content-evenly flex-wrap">
           <PerfilBarberia
-            nombres={formState.nombres}
-            apellidos={formState.apellidos}
+            nombre={formState.nombre}
+            descripcion={formState.descripcion}
             ciudad={formState.ciudad}
           />
-          <FormularioBarberia formState={formState} funcion={funcion} />
+          <FormularioBarberia formState={formState} funcion={funcion} handleSubmit={handleSubmit} />
         </div>
       </main>
     </>

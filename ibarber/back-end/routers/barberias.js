@@ -82,19 +82,18 @@ router.get('/barberia/:id/barberos', async (req, res) => {
 
 
 router.put('/barberia/:id', async (req, res) => {
-  const barberiaId = req.params.id;
-  const { nombre_barberia, direccion_barberia,ciudad} = req.body;
+  const nombreUsuario = req.params.id;  
+  const { nombre, ciudad ,decripcion} = req.body;
 
   try {
-    const updatedBarberia = await BarberiaModel.findByIdAndUpdate(
-      barberiaId,
+    const updatedBarberia = await BarberiaModel.findOneAndUpdate(
+      { "dueño.usuario": nombreUsuario },  
       {
-        nombre_barberia: nombre_barberia,
-        direccion_barberia: direccion_barberia,
-        ciudad: {
-          nombre_ciudad: ciudad.nombre_ciudad,
-        },
+        nombre_barberia: nombre,
+        ciudad: ciudad,
+        decripcion_barberia:decripcion,
       },
+      { new: true } 
     );
 
     if (!updatedBarberia) return res.status(404).json({ message: 'Barbería no encontrada' });
@@ -105,6 +104,7 @@ router.put('/barberia/:id', async (req, res) => {
     res.status(500).json({ message: 'Error interno del servidor' });
   }
 });
+
 
 router.delete('/barberia/:id', async (req, res) => {
   const barberiaId = req.params.id;

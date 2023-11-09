@@ -3,10 +3,8 @@ import { Schema, model } from "mongoose";
 const barberiaSchema = new Schema({
   nombre_barberia: String,
   direccion_barberia: String,
-  ciudad: {
-    nombre_ciudad: String,
-    descripcion_ciudad: String
-  },
+  descripcion_barberia: String,
+ nombre_ciudad: String,
   dueño: {
     usuario: { type: String, required: true }, // Usuario requerido para el dueño
     nombre_dueño: String

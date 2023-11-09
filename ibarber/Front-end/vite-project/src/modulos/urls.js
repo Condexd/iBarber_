@@ -7,4 +7,5 @@ export const API_URLS = {
   Registrar: `${API_BASE_URL}/Registrar`,
   LOGIN: `${API_BASE_URL}/login`,
   RECUPERAR: `${API_BASE_URL}/recuperar`,
+  ActualizarBarberia:`${API_BASE_URL}/barberia/`
 };

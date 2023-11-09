@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const PerfilBarberia = ({ nombres, apellidos, ciudad }) => {
+const PerfilBarberia = ({ nombre, descripcion, ciudad }) => {
   return (
     <section className="p-3 w-25">
       <div className="d-flex flex-column gap-1">
@@ -15,7 +15,7 @@ const PerfilBarberia = ({ nombres, apellidos, ciudad }) => {
         />
         <div>
           <span className="text-start lh-lg semibold fs-5">
-            {nombres} {apellidos} Empleados: 5 {ciudad}
+            {nombre} {descripcion} Empleados: 5 {ciudad}
           </span>
         </div>
         <div>

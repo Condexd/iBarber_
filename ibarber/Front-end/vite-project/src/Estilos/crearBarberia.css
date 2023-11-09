@@ -28,14 +28,7 @@
   padding: 20px;
 }
 
-.img-container img {
-  margin: 80px;
-  background-size: cover;
-  width: 23rem;
-  border: 2px solid #655CC9;
-  border-radius: 5px;
-  box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.2);
-}
+
 
 #form-barber {
   margin-top: 170px;
@@ -67,7 +60,7 @@ input:focus, input:active {
 }
 
 #form-barber button:hover {
-  background-color: #105b38;
+  background-color: #655CC9;
 }
 
 @media (max-width: 898px) {
@@ -88,5 +81,33 @@ input:focus, input:active {
     margin-top: 10px;
     padding: 40px;
     margin-left: 0;
+  }
+}
+.img-container img {
+  margin: 80px;
+  background-size: cover;
+  width: 23rem;
+  border: 2px solid rgb(189, 187, 198);
+  border-radius: 5px;
+  box-shadow: 3px 3px 5px rgba(179, 10, 10, 0.2);
+  filter: grayscale(0%); 
+  animation: desaturate 4s linear infinite; 
+}
+
+@keyframes desaturate {
+  0% {
+    filter: grayscale(0%); 
+  }
+  25% {
+    filter: grayscale(10%); 
+  }
+  50% {
+    filter: grayscale(20%);
+  }
+  75% {
+    filter: grayscale(30%); 
+  }
+  100% {
+    filter: grayscale(0%); 
   }
 }

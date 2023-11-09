@@ -23,28 +23,6 @@ export const Crearbarberia = () => {
         <div className='img-container'>
         <img src="https://github.com/Condexd/iBarber_/blob/develop/ibarber/Front-end/vite-project/src/imgcar/barber.jpg?raw=true" alt="Imagen de la barbería" /> 
         </div>
-<<<<<<< HEAD
-
-        <div className="form-group">
-          <label>Ciudad</label>
-          <select
-            name="nombre_ciudad"
-            value={nombre_ciudad}
-            onChange={funcion}
-            className="form-control"
-          >
-            <option value="Seleccionar">Seleccionar</option>
-            <option value="Bogotá">Bogotá</option>
-            <option value="Medellín">Medellín</option>
-            <option value="Cali">Cali</option>
-          </select>
-        </div>
-        <button type="submit" className="btn" id='boton-crear-barberia'>
-          Enviar
-        </button>
-      </form>
-    </div>
-=======
         <form onSubmit={handleSubmit} id="form-barber">
           <div id="login-title">
             <h3 className='title-barber'>Crear Barbería</h3>
@@ -92,7 +70,6 @@ export const Crearbarberia = () => {
         </form>
       </main>
     </>
->>>>>>> 523be6a17f9592f122a5fd5ab5c07ec2cff6f005
   );
 };
 

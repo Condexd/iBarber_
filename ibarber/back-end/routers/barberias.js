@@ -1,22 +1,26 @@
-import { Router, BarberiaModel } from "../Modulos/barril.js";
+import { Router, BarberiaModel,usuarioModel } from "../Modulos/barril.js";
 const router = Router();
 //registro de barberia
 router.post("/barberia", async (req, res) => {
   try {
-    const { nombre_barberia, direccion_barberia, nombre_ciudad } = req.body;
+    const { nombre_barberia, direccion_barberia, nombre_ciudad ,usuario} = req.body;
 
     if (!nombre_barberia || !direccion_barberia || !nombre_ciudad) {
       return res.status(400).json({ message: "Todos los campos son obligatorios" });
     }
-
     const newBarberia = new BarberiaModel({
       nombre_barberia,
       direccion_barberia,
       ciudad: {
         nombre_ciudad:nombre_ciudad,
       },
+      dueño: {
+        usuario: usuario, 
+      },
     });
 
+
+     
     const result = await newBarberia.save();
     res.status(201).json({ message: "Registro exitoso", data: result });
   } catch (error) {

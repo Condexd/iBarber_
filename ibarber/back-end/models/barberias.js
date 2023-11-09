@@ -9,8 +9,7 @@ const barberiaSchema = new Schema({
   },
   dueño: {
     usuario: { type: String, required: true }, // Usuario requerido para el dueño
-    nombre_dueño: String, // Puedes agregar más campos del dueño si es necesario
-    // Otros campos del dueño
+    nombre_dueño: String
   },
   barberos: [
     {

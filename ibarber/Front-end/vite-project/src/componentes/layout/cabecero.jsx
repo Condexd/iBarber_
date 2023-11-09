@@ -43,12 +43,12 @@ function Cabecero({ isAuthenticated, logout }) {
         </ul>
         <ul className="contenedor2-navegacion">
           <li>
-            <img
+            {/* <img
               className="buscador-img"
               src="https://github.com/Condexd/_iBarber_/blob/main/proyectoweb/index/images/buscador.png?raw=true"
               width="20px"
               alt="Buscar"
-            />
+            /> */}
           </li>
           {isAuthenticated ? (
             // Si el usuario está autenticado, muestra el botón de cerrar sesión

@@ -1,21 +1,23 @@
 import { Schema, model } from "mongoose";
 
 const citaSchema = new Schema({
-  id_citas: String,
+  id_cita: String,
   fecha: Date,
-  costo_servicio: Number,
-  clientes: {
-    id_cliente: String,
-    t_doc_cliente: String
+  cliente: {
+    usuario: String,
+    nombre: String,
+    apellidos: String
   },
-  barberos: {
-    id_barbero: String,
-    t_doc_barbero: String
+  barbero: {
+    usuario: String,
+    nombre: String,
+    apellidos: String
   },
-  metodo_de_pago: {
-    id_m_pago: Number,
-    desc_metodo_pago: String
-  },
+  barberia: {
+    id: String,
+    nombre: String,
+    direccion: String
+  }
 });
 
 const Cita = model('Cita', citaSchema);

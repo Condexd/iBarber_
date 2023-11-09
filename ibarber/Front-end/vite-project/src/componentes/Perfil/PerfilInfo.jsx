@@ -1,7 +1,9 @@
-import React from "react";
+import {useContext,useState} from "react";
 import { Link } from "react-router-dom";
-
+import { UserContext } from "../context/UserContext";
 function PerfilInfo({ formState }) {
+  const { userData, setUserData } = useContext(UserContext);
+  const [visible, setVisible] = useState(userData.barberia);
   return (
     <section className="p-3 w-25">
       <div className="d-flex flex-column gap-1">
@@ -19,11 +21,16 @@ function PerfilInfo({ formState }) {
           </span>
         </div>
         <div>
-          <Link to="/Crear">
-            <button className="btn btn-success mt-2 fs-6">
-              Crear mi barbería
-            </button>
-          </Link>
+         {!visible &&(
+         <Link to="/Crear">
+        <button className="btn btn-success mt-2 fs-6">
+        Crear mi barbería
+        </button>
+         </Link>
+         )
+        
+         }
+          
         </div>
       </div>
     </section>

@@ -62,7 +62,8 @@ router.post('/login', async (req, res) => {
         apellidos: user.apellidos,
         correo:user.correo,
         telefono:user.telefono,
-        barberia:true
+        barberia:true,
+        usuario:user.usuario,
   
       }, });
     }else{
@@ -72,7 +73,8 @@ router.post('/login', async (req, res) => {
         apellidos: user.apellidos,
         correo:user.correo,
         telefono:user.telefono,
-        barberia:false
+        barberia:false,
+        usuario:user.usuario,
   
       }, });
     }

@@ -8,7 +8,7 @@ export const UserProvider = ({ children }) => {
   // Actualizar el localStorage cuando userData cambie
   useEffect(() => {
     localStorage.setItem('userData', JSON.stringify(userData));
-  }, [userData,userData.barberia]);
+  }, [userData]);
 
   return (
     <UserContext.Provider value={{ userData, setUserData }}>

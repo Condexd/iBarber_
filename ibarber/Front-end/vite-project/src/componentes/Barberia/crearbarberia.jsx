@@ -1,21 +1,37 @@
 import { useForm } from '../../Hooks/useform';
 import { RegistrarBarberia } from '../../functions/Registrobarberia';
 import { API_URLS } from '../../modulos/urls';
-import { Link, useNavigate } from 'react-router-dom'; // Asegúrate de importar Link si no lo has hecho
+import { UserContext } from '../context/UserContext';
+import { Link, useNavigate } from 'react-router-dom';
+import { useContext ,useState} from 'react'; 
+
 export const Crearbarberia = () => {
+  const { userData, setUserData } = useContext(UserContext);
+  const [usuario, setUsuario] = useState(userData.usuario);
+
   const { formState, funcion } = useForm({
     nombre_barberia: '',
     direccion_barberia: '',
     nombre_ciudad: '',
   });
   const { nombre_barberia, direccion_barberia, nombre_ciudad } = formState;
+
   const navigate = useNavigate();
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(formState);
-    const result = await RegistrarBarberia(API_URLS.BARBERIA, formState);
+    console.log(usuario)
+    const result = await RegistrarBarberia(API_URLS.BARBERIA, { nombre_barberia, direccion_barberia, nombre_ciudad,usuario});
     if(result.ok)
     navigate("/mi-barberia")
+    setUserData(prevUserData => ({
+      ...prevUserData, // Clonar las propiedades existentes
+      barberia: true // Cambiar la propiedad "barberia" a false
+    }));
+    
+
+ 
+    
+
   };
 
   return (

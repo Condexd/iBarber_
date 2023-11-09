@@ -1,7 +1,7 @@
 import { useForm } from '../../Hooks/useform';
-import { enviador } from '../../functions/usePost'; // Asegúrate de importar el custom hook
+import { RegistrarBarberia } from '../../functions/Registrobarberia';
 import { API_URLS } from '../../modulos/urls';
-import { Link } from 'react-router-dom'; // Asegúrate de importar Link si no lo has hecho
+import { Link, useNavigate } from 'react-router-dom'; // Asegúrate de importar Link si no lo has hecho
 export const Crearbarberia = () => {
   const { formState, funcion } = useForm({
     nombre_barberia: '',
@@ -9,11 +9,13 @@ export const Crearbarberia = () => {
     nombre_ciudad: '',
   });
   const { nombre_barberia, direccion_barberia, nombre_ciudad } = formState;
-
+  const navigate = useNavigate();
   const handleSubmit = async (e) => {
     e.preventDefault();
     console.log(formState);
-    const result = await enviador(API_URLS.BARBERIA, formState);
+    const result = await RegistrarBarberia(API_URLS.BARBERIA, formState);
+    if(result.ok)
+    navigate("/mi-barberia")
   };
 
   return (

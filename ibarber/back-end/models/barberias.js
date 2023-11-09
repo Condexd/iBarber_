@@ -7,14 +7,18 @@ const barberiaSchema = new Schema({
     nombre_ciudad: String,
     descripcion_ciudad: String
   },
+  dueño: {
+    usuario: { type: String, required: true }, // Usuario requerido para el dueño
+    nombre_dueño: String, // Puedes agregar más campos del dueño si es necesario
+    // Otros campos del dueño
+  },
   barberos: [
     {
-      usuario: { type: String, required: true },
+      usuario: String,
       num_barbero: String,
       biografia_barbero: String
     }
-  ],
-
+  ]
 });
 
 const Barberia = model('Barberia', barberiaSchema);

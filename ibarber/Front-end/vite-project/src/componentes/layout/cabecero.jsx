@@ -1,6 +1,10 @@
+import { useState, useContext } from 'react';
+import { UserContext } from '../context/UserContext';
 import { Link } from 'react-router-dom';
 
 function Cabecero({ isAuthenticated, logout }) {
+  const { userData, setUserData } = useContext(UserContext);
+  const [visible, setVisible] = useState(userData.barberia);
   return (
     <header className="cabecero">
       <nav className="navegacion">
@@ -19,12 +23,7 @@ function Cabecero({ isAuthenticated, logout }) {
           <li>
             <Link to="/Home">Inicio</Link>
           </li>
-          <li>
-            <Link to="/mi-barberia">Mi barbería</Link>
-          </li>
-          <li>
-            <Link to="/empleados">Mis empleados</Link>
-          </li>
+
           <li id='contenedor-submenu' className='menu-desplegable'>
             <ul id='submenu-agendar'>
               <li id='agendar'>Agendar</li>
@@ -49,8 +48,21 @@ function Cabecero({ isAuthenticated, logout }) {
           {isAuthenticated ? (
             // Si el usuario está autenticado, muestra el botón de cerrar sesión
             <>
+              {visible.barberia && (
+                <>
+                  <li>
+                    <Link to="/mi-barberia">Mi barbería</Link>
+                  </li>
+                  <li>
+                    <Link to="/empleados">Mis empleados</Link>
+                  </li>
+                </>
+              )}
+
               <li>
-               <Link to="/perfil"><img className='rounded-circle' src='https://i.pinimg.com/474x/f3/16/ce/f316cef6a7a1e732baf48a36808411b4.jpg' height={35} width={35}></img></Link>
+                <Link to="/perfil">
+                  <img className='rounded-circle' src='https://i.pinimg.com/474x/f3/16/ce/f316cef6a7a1e732baf48a36808411b4.jpg' height={35} width={35} alt="Perfil" />
+                </Link>
               </li>
               <li>
                 <button className="boton-logout" onClick={logout}>

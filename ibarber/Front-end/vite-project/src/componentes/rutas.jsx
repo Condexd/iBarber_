@@ -8,22 +8,22 @@ import { Crearbarberia } from "./Barberia/crearbarberia";
 import { MiBarberia } from "./Barberia/miBarberia";
 import { MisBarberos } from "./barberos/MisBarberos";
 import { CrearBarbero } from "./barberos/CrearBarbero";
-import { UserProvider } from "./context/userProvider"; // Asegúrate de importar el UserProvider desde el archivo correcto
+ // Asegúrate de importar el UserProvider desde el archivo correcto
 
 function Rutas({ isAuthenticated, setIsAuthenticated }) {
   return (
-    <UserProvider> {/* Aquí envuelve tus rutas con el UserProvider */}
       <Routes>
         <Route path="/Home" element={<Inicio isAuthenticated={isAuthenticated} />} />
         <Route path="/" element={<Navigate to= "/Home"/>} />
-        <Route path="/mi-barberia" element={<MiBarberia />} />
-        <Route path="/empleados" element={<MisBarberos />} />
-        <Route path="/new-empleado" element={<CrearBarbero />} />
+      
         {/* Rutas protegidas */}
         {isAuthenticated ? (
           <>
             {/* Agrega aquí las rutas protegidas que solo deben ser accesibles para usuarios autenticados */}
             <Route path="/perfil" element={<Perfil />} />
+            <Route path="/mi-barberia" element={<MiBarberia />} />
+             <Route path="/empleados" element={<MisBarberos />} />
+             <Route path="/new-empleado" element={<CrearBarbero />} />
           </>
         ) : (
           // Si no está autenticado, redirige a la página de inicio de sesión
@@ -36,7 +36,6 @@ function Rutas({ isAuthenticated, setIsAuthenticated }) {
         <Route path="/crear" element={<Crearbarberia />} />
         <Route path="/recuperar-contrasena" element={<RecuperarContraseña />} />
       </Routes>
-    </UserProvider>
   );
 }
 

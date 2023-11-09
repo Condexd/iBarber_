@@ -80,18 +80,20 @@ router.get('/barberia/:id/barberos', async (req, res) => {
 
 
 router.put('/barberia/:id', async (req, res) => {
-  const nombreUsuario = req.params.id;  
-  const { nombre, ciudad ,decripcion} = req.body;
+  const nombreUsuario = req.params.id;
+  const { nombre, ciudad ,descripcion, email, telefono } = req.body;
 
   try {
     const updatedBarberia = await BarberiaModel.findOneAndUpdate(
-      { "dueño.usuario": nombreUsuario },  
+      { "dueño.usuario": nombreUsuario },
       {
         nombre_barberia: nombre,
         nombre_ciudad: ciudad,
-        decripcion_barberia:decripcion,
+        descripcion_barberia:descripcion,
+        email: email,
+        telefono : telefono
       },
-      { new: true } 
+      { new: true }
     );
 
     if (!updatedBarberia) return res.status(404).json({ message: 'Barbería no encontrada' });

@@ -34,7 +34,7 @@ const FormularioBarberia = ({ formState, funcion ,handleSubmit}) => {
             <option value="seleccionar">Seleccionar</option>
             <option value="Bogotá">Bogotá</option>
             <option value="Medellín">Medellín</option>
-            <option value="Ciudad3">Ciudad3</option>
+            <option value="Cali">Cali</option>
           </select>
         </li>
         <li className="row">

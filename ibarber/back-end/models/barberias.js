@@ -4,7 +4,9 @@ const barberiaSchema = new Schema({
   nombre_barberia: String,
   direccion_barberia: String,
   descripcion_barberia: String,
- nombre_ciudad: String,
+  nombre_ciudad: String,
+  email: String,
+  telefono: String,
   dueño: {
     usuario: { type: String, required: true }, // Usuario requerido para el dueño
     nombre_dueño: String

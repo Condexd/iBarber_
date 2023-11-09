@@ -20,6 +20,7 @@ export const Crearbarberia = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     console.log(usuario)
+    if(nombre_ciudad==="seleccionar")return;
     const result = await RegistrarBarberia(API_URLS.BARBERIA, { nombre_barberia, direccion_barberia, nombre_ciudad,usuario});
     if(result.ok)
     navigate("/mi-barberia")
@@ -27,11 +28,6 @@ export const Crearbarberia = () => {
       ...prevUserData, // Clonar las propiedades existentes
       barberia: true // Cambiar la propiedad "barberia" a false
     }));
-    
-
- 
-    
-
   };
 
   return (
@@ -74,7 +70,7 @@ export const Crearbarberia = () => {
               value={nombre_ciudad}
               onChange={funcion}
               id="nombre_ciudad"
-            >
+            >  <option value="seleccionar">Seleccionar</option>
               <option value="Bogotá">Bogotá</option>
               <option value="Medellín">Medellín</option>
               <option value="Cali">Cali</option>

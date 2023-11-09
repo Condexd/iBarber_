@@ -11,9 +11,7 @@ router.post("/barberia", async (req, res) => {
     const newBarberia = new BarberiaModel({
       nombre_barberia,
       direccion_barberia,
-      ciudad: {
-        nombre_ciudad:nombre_ciudad,
-      },
+     nombre_ciudad,
       dueño: {
         usuario: usuario, 
       },
@@ -90,7 +88,7 @@ router.put('/barberia/:id', async (req, res) => {
       { "dueño.usuario": nombreUsuario },  
       {
         nombre_barberia: nombre,
-        ciudad: ciudad,
+        nombre_ciudad: ciudad,
         decripcion_barberia:decripcion,
       },
       { new: true } 

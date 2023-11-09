@@ -16,12 +16,12 @@ export const MiBarberia = () => {
     descripcion: '',
     email: '',
     telefono: '',
-    ciudad: 'Seleccionar',
+    ciudad: '',
   });
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+    if(formState.ciudad==="seleccionar")return;
     const confirmacion = await mostrarConfirmacion(
       "¿Actualizar datos?",
       "¿Estás seguro de que deseas actualizar los datos?"

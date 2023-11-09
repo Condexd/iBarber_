@@ -31,7 +31,7 @@ const FormularioBarberia = ({ formState, funcion ,handleSubmit}) => {
         <li className="col-5 row">
           <label>Ciudad</label>
           <select name="ciudad" required value={ciudad} onChange={funcion}>
-            <option>Seleccionar</option>
+            <option value="seleccionar">Seleccionar</option>
             <option value="Bogotá">Bogotá</option>
             <option value="Medellín">Medellín</option>
             <option value="Ciudad3">Ciudad3</option>

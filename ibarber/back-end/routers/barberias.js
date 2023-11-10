@@ -79,7 +79,7 @@ router.get('/barberia/barberos/:id', async (req, res) => {
 
 router.put('/barberia/:id', async (req, res) => {
   const nombreUsuario = req.params.id;
-  const { nombre, ciudad ,decripcion} = req.body;
+  const { nombre, ciudad ,descripcion, email, telefono } = req.body;
 
   try {
     const updatedBarberia = await BarberiaModel.findOneAndUpdate(
@@ -87,7 +87,9 @@ router.put('/barberia/:id', async (req, res) => {
       {
         nombre_barberia: nombre,
         nombre_ciudad: ciudad,
-        decripcion_barberia:decripcion,
+        descripcion_barberia:descripcion,
+        email: email,
+        telefono : telefono
       },
       { new: true }
     );

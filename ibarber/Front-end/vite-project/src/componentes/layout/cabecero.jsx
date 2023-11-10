@@ -1,7 +1,7 @@
 import { useState, useContext,useEffect } from 'react';
 import { UserContext } from '../context/UserContext';
 import { Link } from 'react-router-dom';
-
+import Boton from './boton';
 function Cabecero({ isAuthenticated, logout }) {
   const { userData, setUserData } = useContext(UserContext);
   const [visible, setVisible] = useState(userData.barberia);
@@ -70,9 +70,7 @@ function Cabecero({ isAuthenticated, logout }) {
                 </Link>
               </li>
               <li>
-                <button className="boton-logout" onClick={logout}>
-                  Cerrar sesión
-                </button>
+               < Boton logout={logout} />
               </li>
               {/* Agrega aquí otros enlaces de navegación para usuarios autenticados si es necesario */}
             </>

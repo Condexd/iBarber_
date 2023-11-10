@@ -1,0 +1,52 @@
+/* LogoutButton.css */
+
+.boton-logout {
+  background-color: #655cc9;
+  color: #fff;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.boton-logout:hover {
+  background-color: #574eb8;
+}
+
+/* Estilos para el toast */
+.Toastify__toast-container {
+  z-index: 9999;
+}
+
+.Toastify__toast--info {
+  background-color: #ccc;
+  color: #fff;
+  border-radius: 4px;
+  margin-top:2rem ;
+  margin-right:4.25rem;
+}
+
+.Toastify__toast-body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.Toastify__toast-body p {
+  margin-bottom: 10px;
+}
+
+.Toastify__toast-body button {
+  background-color: #fff;
+  color: #655cc9;
+  padding: 5px 10px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.Toastify__toast-body button:hover {
+  background-color: #655cc9;
+  color: #fff;
+}

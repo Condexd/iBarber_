@@ -19,8 +19,8 @@
 }
 
 .Toastify__toast--info {
-  background-color: #ccc;
-  color: #fff;
+  background-color: #fff;
+  color: #050505;
   border-radius: 4px;
   margin-top:2rem ;
   margin-right:4.25rem;
@@ -38,8 +38,8 @@
 }
 
 .Toastify__toast-body button {
-  background-color: #fff;
-  color: #655cc9;
+  background-color: #453e85;
+  color: #fdfdfd;
   padding: 5px 10px;
   border: none;
   border-radius: 4px;
@@ -47,6 +47,6 @@
 }
 
 .Toastify__toast-body button:hover {
-  background-color: #655cc9;
+  background-color: #262156;
   color: #fff;
 }

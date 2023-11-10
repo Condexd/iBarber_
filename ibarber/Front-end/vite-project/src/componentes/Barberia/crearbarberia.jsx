@@ -3,7 +3,7 @@ import { RegistrarBarberia } from '../../functions/Registrobarberia';
 import { API_URLS } from '../../modulos/urls';
 import { UserContext } from '../context/UserContext';
 import { Link, useNavigate } from 'react-router-dom';
-import { useContext ,useState} from 'react'; 
+import { useContext ,useState} from 'react';
 
 export const Crearbarberia = () => {
   const { userData, setUserData } = useContext(UserContext);

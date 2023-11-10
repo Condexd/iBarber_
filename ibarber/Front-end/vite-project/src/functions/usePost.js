@@ -13,6 +13,7 @@ export const enviador = async (url, valor) => {
     if (response.ok) {
       const data = await response.json();
       mostrarMensajeExito(data.message);
+      return true;
     } else {
       const errorResponse = await response.json();
       mostrarMensajeError(errorResponse.message);

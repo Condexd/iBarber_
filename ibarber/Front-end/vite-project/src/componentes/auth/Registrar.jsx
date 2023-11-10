@@ -3,6 +3,7 @@ import { enviador } from "../../functions/usePost";
 import { Link } from 'react-router-dom';
 import { mostrarConfirmacion } from '../../modulos/confirms';
 import { API_URLS } from "../../modulos/urls";
+import { useNavigate } from "react-router-dom";
 function Registrar() {
   const{formState,funcion}=useForm({
         nombres:"",
@@ -11,20 +12,18 @@ function Registrar() {
         password:"",
         email:"",
 
-  })  
+  })
   const{nombres,apellidos,usuario,password,email}=formState
-
+const navigate=useNavigate();
 
   const manejador = async (event) => {
     event.preventDefault();
     const confirmacion = await mostrarConfirmacion('¿Enviar datos?', '¿Estás seguro de que deseas enviar los datos?')
         if (confirmacion.isConfirmed) {
-         enviador(API_URLS.Registrar,{ nombres, apellidos, usuario, password, email });
+           const resultado =await enviador(API_URLS.Registrar,{ nombres, apellidos, usuario, password, email });
+           if(resultado)navigate("/Login")
         }
   };
-  
-  
-
   return (
     <>
     <main id="form-container">
@@ -111,7 +110,7 @@ function Registrar() {
     </main>
    </>
   );
- 
+
 }
 
 export default Registrar;

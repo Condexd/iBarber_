@@ -30,7 +30,6 @@ export const MiBarberia = () => {
     if (confirmacion.isConfirmed) {
       console.log(visible)
       await actualizar(formState,API_URLS.ActualizarBarberia);
-      
     }
   };
 

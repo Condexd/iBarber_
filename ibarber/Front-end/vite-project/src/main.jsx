@@ -1,12 +1,16 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import App from './App.jsx'
-import './index.css' 
+import './index.css'
+import { BrowserRouter as Router } from 'react-router-dom'; // Asegúrate de importar useNavigate
 import {UserProvider} from "./componentes/context/userProvider.jsx"
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <UserProvider>
+
   <React.StrictMode>
-    <App />
+    <Router>
+      <UserProvider>
+        <App />
+      </UserProvider>
+    </Router>
   </React.StrictMode>,
-  </UserProvider>
 )

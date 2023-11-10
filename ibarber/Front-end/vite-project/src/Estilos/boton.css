@@ -38,7 +38,7 @@
 }
 
 .Toastify__toast-body button {
-  background-color: #453e85;
+  background-color: #574eb8;
   color: #fdfdfd;
   padding: 5px 10px;
   border: none;
@@ -47,6 +47,6 @@
 }
 
 .Toastify__toast-body button:hover {
-  background-color: #262156;
+  background-color: #423b8c;
   color: #fff;
 }

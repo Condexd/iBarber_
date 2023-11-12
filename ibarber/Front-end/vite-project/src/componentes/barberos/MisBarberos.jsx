@@ -2,7 +2,9 @@ import { Link } from "react-router-dom";
 import { useFetch } from "../../Hooks/useFetch";
 import { UserContext } from "../context/UserContext";
 import { useState,useContext } from "react";
+import {MdDeleteOutline} from "react-icons/md"
 import { API_URLS } from "../../modulos/urls";
+import {BiEditAlt}from "react-icons/bi"
 export const MisBarberos = () => {
   const { userData, setUserData } = useContext(UserContext);
   const [usuario, setUsuario] = useState(userData.usuario);
@@ -41,8 +43,8 @@ export const MisBarberos = () => {
                   <td>
                   </td>
                   <td>
-                  <button className="btn btn-success mt-2 fs-6">Editar</button>
-                  <button className="btn btn-primary mt-2 fs-6" style={{ backgroundColor: '#655CC9', borderColor: '#655CC9' }}> Eliminar</button>
+                  <BiEditAlt/>
+                  <MdDeleteOutline/>
                   </td>
                 </tr>
               ))}

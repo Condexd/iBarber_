@@ -1,5 +1,13 @@
 import { Schema, model } from "mongoose";
 
+const barberoSchema = new Schema({
+  usuario: String,
+  num_barbero: String,
+  biografia_barbero: String,
+  especialidad: String,
+  experiencia: Number,
+});
+
 const barberiaSchema = new Schema({
   nombre_barberia: String,
   direccion_barberia: String,
@@ -8,16 +16,10 @@ const barberiaSchema = new Schema({
   email: String,
   telefono: String,
   dueño: {
-    usuario: { type: String, required: true }, // Usuario requerido para el dueño
-    nombre_dueño: String
+    usuario: { type: String, required: true },
+    nombre_dueño: String,
   },
-  barberos: [
-    {
-      usuario: String,
-      num_barbero: String,
-      biografia_barbero: String
-    }
-  ]
+  barberos: [barberoSchema],
 });
 
 const Barberia = model('Barberia', barberiaSchema);

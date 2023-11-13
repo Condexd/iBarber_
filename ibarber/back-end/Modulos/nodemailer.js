@@ -1,10 +1,10 @@
-import { nodemailer,dotenv } from "../Modulos/barril.js";
+import { nodemailer, dotenv } from "./barril.js";
 
 dotenv.config();
 
-export async function enviarCorreo(destinatario, asunto, contenido) {
+export const enviarCorreo = async (destinatario, asunto, contenido) => {
   const transporter = nodemailer.createTransport({
-    service: 'Gmail',
+    service: 'gmail',
     auth: {
       user: process.env.CORREO,
       pass: process.env.CONTRASENA,

@@ -15,7 +15,7 @@ function Rutas({ isAuthenticated, setIsAuthenticated }) {
       <Routes>
         <Route path="/Home" element={<Inicio isAuthenticated={isAuthenticated} />} />
         <Route path="/" element={<Navigate to= "/Home"/>} />
-      
+
         {/* Rutas protegidas */}
         {isAuthenticated ? (
           <>
@@ -24,6 +24,7 @@ function Rutas({ isAuthenticated, setIsAuthenticated }) {
             <Route path="/mi-barberia" element={<MiBarberia />} />
              <Route path="/empleados" element={<MisBarberos />} />
              <Route path="/new-empleado" element={<CrearBarbero />} />
+             <Route path="/new-barberia" element={<Crearbarberia />} />
           </>
         ) : (
           // Si no está autenticado, redirige a la página de inicio de sesión
@@ -33,7 +34,6 @@ function Rutas({ isAuthenticated, setIsAuthenticated }) {
           />
         )}
         <Route path="/registrarse" element={<Registrar />} />
-        <Route path="/crear" element={<Crearbarberia />} />
         <Route path="/recuperar-contrasena" element={<RecuperarContraseña />} />
       </Routes>
   );

@@ -22,7 +22,7 @@ function PerfilInfo({ formState }) {
         </div>
         <div>
          {!visible &&(
-         <Link to="/Create-barber">
+         <Link to="/new-barberia">
         <button className="btn btn-success mt-2 fs-6">
         Crear mi barbería
         </button>

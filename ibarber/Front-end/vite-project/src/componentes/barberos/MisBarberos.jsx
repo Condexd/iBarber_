@@ -83,7 +83,7 @@ console.log(data)
         <h2>Mis empleados</h2>
         <Link to="/new-empleado">
           <IconButton variant="contained" color="success" className="mt-2 fs-6">
-           <span><FiEdit /> Agregar Barbero </span> 
+           <span><FiEdit /> Agregar Barbero </span>
           </IconButton>
         </Link>
         <div id="formularioBarberosContainer"></div>

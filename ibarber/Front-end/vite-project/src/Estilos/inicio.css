@@ -78,7 +78,11 @@ h2 {
     transition: background-color 0.3s;
 }
 
-.ver-btn button:hover {
+.agendar-btn:hover {
+    background-color: #333;
+}
+
+.ver-btn:hover {
     background-color: #333;
 }
 
@@ -88,7 +92,4 @@ h2 {
 }
 .carta:active, .carta-b:active {
     transform: scale(1.2); 
-}
-button:hover {
-    background-color: #333;
 }

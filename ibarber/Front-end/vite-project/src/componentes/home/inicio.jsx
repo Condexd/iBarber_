@@ -1,13 +1,11 @@
 import Carousel from "./carousel"
 import Info from './info';
-
+import { InicioAuth } from "./inicioAuth/InicioAuth";
 const Inicio = ({ isAuthenticated }) => {
   return (
     isAuthenticated ? (
-      <div>
-        <p>Hola, usuario autenticado</p>
-      </div>
-    ) : (
+      <InicioAuth/>
+          ) : (
       <>
         <Carousel />
         <Info />

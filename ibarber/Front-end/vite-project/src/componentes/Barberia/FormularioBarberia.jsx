@@ -1,21 +1,19 @@
-const FormularioBarberia = ({ formState, funcion ,handleSubmit}) => {
-  const { nombre, descripcion, email, telefono, ciudad } = formState;
-
+const FormularioBarberia = ({ nombre, setNombre, descripcion, setDescripcion, email, setEmail, telefono, setTelefono, ciudad, setCiudad, handleSubmit }) => {
   return (
     <form className="w-50 p-3" onSubmit={handleSubmit}>
       <ul className="row gap-3" id="datos-personales">
         <h2>Mi barbería</h2>
         <li className="col-5 row">
           <label>Nombre</label>
-          <input type="text" name="nombre" required value={nombre} onChange={funcion} />
+          <input type="text" name="nombre" required value={nombre} onChange={(e) => setNombre(e.target.value)} />
         </li>
         <li className="col-5 row">
           <label>Descripción</label>
-          <input type="text" name="descripcion" required value={descripcion} onChange={funcion} />
+          <input type="text" name="descripcion" required value={descripcion} onChange={(e) => setDescripcion(e.target.value)} />
         </li>
         <li className="col-5 row">
           <label>Email</label>
-          <input type="email" name="email" required value={email} onChange={funcion} />
+          <input type="email" name="email" required value={email} onChange={(e) => setEmail(e.target.value)} />
         </li>
         <li className="col-5 row">
           <label>Teléfono (+57)</label>
@@ -25,12 +23,12 @@ const FormularioBarberia = ({ formState, funcion ,handleSubmit}) => {
             required
             placeholder="Número de la barbería"
             value={telefono}
-            onChange={funcion}
+            onChange={(e) => setTelefono(e.target.value)}
           />
         </li>
         <li className="col-5 row">
           <label>Ciudad</label>
-          <select name="ciudad" required value={ciudad} onChange={funcion}>
+          <select name="ciudad" required value={ciudad} onChange={(e) => setCiudad(e.target.value)}>
             <option value="seleccionar">Seleccionar</option>
             <option value="Bogotá">Bogotá</option>
             <option value="Medellín">Medellín</option>

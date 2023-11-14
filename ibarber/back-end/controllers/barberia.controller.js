@@ -42,7 +42,7 @@ export const getBarberia = async (req, res) => {
   const barberiaId = req.params.id;
 
   try {
-    const barberia = await BarberiaModel.findById(barberiaId);
+    const barberia = await BarberiaModel.findOne({"dueño.usuario":barberiaId});
     if (barberia) {
       res.status(200).json(barberia);
     } else {

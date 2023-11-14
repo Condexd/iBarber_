@@ -15,7 +15,7 @@ const PerfilBarberia = ({ nombre, descripcion, ciudad }) => {
         />
         <div>
           <span className="text-start lh-lg semibold fs-5">
-            {nombre} {descripcion} Empleados: 5 {ciudad}
+            {nombre} {descripcion} {ciudad}
           </span>
         </div>
         <div>

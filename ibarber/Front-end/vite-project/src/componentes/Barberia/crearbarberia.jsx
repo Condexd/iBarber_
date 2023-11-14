@@ -35,7 +35,7 @@ export const Crearbarberia = () => {
 
       <main id="form-barber-container">
         <div className='img-container'>
-        <img src="https://github.com/Condexd/iBarber_/blob/develop/ibarber/Front-end/vite-project/src/imgcar/barber.jpg?raw=true" alt="Imagen de la barbería" /> 
+        <img src="https://github.com/Condexd/iBarber_/blob/develop/ibarber/Front-end/vite-project/src/imgcar/barber.jpg?raw=true"  loading="lazy" alt="Imagen de la barbería" /> 
         </div>
         <form onSubmit={handleSubmit} id="form-barber">
           <div id="login-title">

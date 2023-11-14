@@ -1,4 +1,4 @@
-import { mostrarMensajeError } from "../modulos/alertas";
+import { mostrarMensajeError, mostrarMensajeErrorInesperado } from "../modulos/alertas";
 import { API_URLS } from "../modulos/urls";
 export const deleteBarber=async(barberoId)=>{
     try {
@@ -19,6 +19,6 @@ export const deleteBarber=async(barberoId)=>{
         }
       } catch (error) {
         // Maneja errores de red u otros errores relacionados con la petición
-        console.error('Error de red:', error);
+        mostrarMensajeErrorInesperado('Error de red:', error);
       }
 }

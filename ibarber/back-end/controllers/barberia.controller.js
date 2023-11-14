@@ -1,4 +1,4 @@
-import { BarberiaModel } from "../Modulos/barril.js";
+import { BarberiaModel, usuarioModel } from "../Modulos/barril.js";
 
 export const registroBarberia = async (req, res) => {
   try {
@@ -113,3 +113,76 @@ export const deleteBarberia = async (req, res) => {
     res.status(500).json({ message: 'Error interno del servidor' });
   }
 }
+
+export const deleteBarber = async (req, res) => {
+  const barberoId = req.params.id;
+
+  try {
+    const updatedBarberia = await BarberiaModel.findOneAndUpdate(
+      { 'barberos._id': barberoId },
+      { $pull: { barberos: { _id: barberoId } } },
+      { new: true }
+    );
+
+    if (!updatedBarberia || updatedBarberia.barberos.length === 0) {
+      return res.status(404).json({ message: 'Barbero no encontrado en ninguna barbería' });
+    }
+
+    res.status(200).json({ message: 'Barbero eliminado con éxito' });
+  } catch (error) {
+    console.error('Error al eliminar el barbero:', error);
+    res.status(500).json({ message: 'Error interno del servidor' });
+  }
+}
+
+
+
+
+
+
+export const postBarber = async (req, res) => {
+  const { id } = req.params;
+  const { usuario, ciudad, experiencia } = req.body;
+
+  try {
+    // Verificar si el barbero existe
+    const barbero = await usuarioModel.findOne({ "usuario": usuario });
+
+    if (!barbero) {
+      return res.status(400).json({ message: "Barbero no tiene cuenta" });
+    }
+
+    // Verificar si el barbero ya está registrado en alguna barbería
+    const barberiaExistente = await BarberiaModel.findOne({
+      'barberos.usuario': usuario,
+    });
+
+    if (barberiaExistente) {
+      return res.status(400).json({ message: "El barbero ya está registrado en otra barbería" });
+    }
+
+    // Actualizar la barbería del dueño con el ID proporcionado
+    const updatedBarberia = await BarberiaModel.findOneAndUpdate(
+      { "dueño.usuario": id },
+      {
+        $push: {
+          'barberos': {
+            usuario: barbero.usuario,
+            experiencia,
+          },
+        },
+      },
+      { new: true }
+    );
+
+    if (!updatedBarberia) {
+      return res.status(404).json({ message: "No se encontró la barbería para el dueño dado" });
+    }
+
+    // Si todo está bien, devolver la barbería actualizada
+    res.status(200).json(updatedBarberia);
+  } catch (error) {
+    console.error('Error al procesar la solicitud:', error);
+    res.status(500).json({ message: 'Error interno del servidor' });
+  }
+};

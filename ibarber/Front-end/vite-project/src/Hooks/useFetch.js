@@ -28,6 +28,7 @@ useEffect(() => {
   data:state.data,
   isLoading:state.isLoading,
   haserror:state.haserror,
+  setState,
 
  }
 }

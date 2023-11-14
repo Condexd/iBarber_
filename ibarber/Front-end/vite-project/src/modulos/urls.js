@@ -8,5 +8,7 @@ export const API_URLS = {
   LOGIN: `${API_BASE_URL}/login`,
   RECUPERAR: `${API_BASE_URL}/recuperar`,
   ActualizarBarberia:`${API_BASE_URL}/barberia/`,
-  obtenerBarberos:`${API_BASE_URL}/barberia/barberos`
+  obtenerBarberos:`${API_BASE_URL}/barberia/barberos`,
+  crearBarbero:`${API_BASE_URL}/barberia/new-barber`,
+  eliminarBarbero:`${API_BASE_URL}//barberia/delete-barber`
 };

@@ -23,7 +23,10 @@ export const MiBarberia = () => {
   useEffect(() => {
     if (data && data.nombre_barberia) {
       setNombre(data.nombre_barberia);
-      setCiudad(data.ciudad_nombre);
+      setDescripcion(data.descripcion_barberia);
+      setEmail(data.email);
+      setTelefono(data.telefono);
+      setCiudad(data.ciudad);
     }
   }, [data]);
   const handleSubmit = async (e) => {

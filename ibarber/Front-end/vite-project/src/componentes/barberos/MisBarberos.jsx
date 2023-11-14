@@ -21,16 +21,16 @@ export const MisBarberos = () => {
 
   };
 
-  const handleDelete = async (barberoId) => {
+  const handleDelete = async (barberoId,event) => {
     event.preventDefault();
-  
+  console.log(barberoId)
     const confirmacion = await mostrarConfirmacion(
       '¿Enviar datos?',
       '¿Estás seguro de Eliminar este Barbero?'
     );
   if(confirmacion.isConfirmed){
     if (await deleteBarber(barberoId)) {
-      const updatedData = data.filter((barbero) => barbero._id !== barberoId);
+      const updatedData = data.filter((barbero) => barbero.usuario !== barberoId);
       setState({data:updatedData,
                 isLoading:false,
                 haserror:null
@@ -69,7 +69,7 @@ export const MisBarberos = () => {
       name: 'Acciones',
       options: {
         customBodyRender: (value, tableMeta, updateValue) => {
-          const barberoId = tableMeta.rowData[0]; // Obtener el ID del barbero desde la primera columna
+          const barberoId = tableMeta.rowData[1]; // Obtener el ID del barbero desde la primera columna
           return (
             <>
               <IconButton
@@ -84,7 +84,7 @@ export const MisBarberos = () => {
                 variant="contained"
                 color="primary"
                 className="mt-2 fs-6"
-                onClick={() => handleDelete(barberoId)}
+                onClick={(event) => handleDelete(barberoId, event)}
               >
                 <FiTrash2 />
               </IconButton>

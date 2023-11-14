@@ -15,6 +15,7 @@ export const deleteBarber=async(barberoId)=>{
           return true
         } else {
           // Maneja el caso en que la petición no fue exitosa
+          console.log(response)
           mostrarMensajeError('Error al borrar el barbero');
         }
       } catch (error) {

@@ -119,15 +119,10 @@ export const deleteBarber = async (req, res) => {
 
   try {
     const updatedBarberia = await BarberiaModel.findOneAndUpdate(
-      { 'barberos._id': barberoId },
-      { $pull: { barberos: { _id: barberoId } } },
+      { 'barberos.usuario': barberoId },
+      { $pull: { barberos: { usuario: barberoId } } },
       { new: true }
     );
-
-    if (!updatedBarberia || updatedBarberia.barberos.length === 0) {
-      return res.status(404).json({ message: 'Barbero no encontrado en ninguna barbería' });
-    }
-
     res.status(200).json({ message: 'Barbero eliminado con éxito' });
   } catch (error) {
     console.error('Error al eliminar el barbero:', error);

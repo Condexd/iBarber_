@@ -38,14 +38,7 @@ export const MisBarberos = () => {
       mostrarMensajeExitoDelete();
     }
   }
-    
   };
-
-  useEffect(() => {
-    // Este efecto se ejecutará cada vez que 'data' cambie, puedes agregar lógica adicional aquí si es necesario.
-  }, [data]);
-
-
 
   const columns = [
     {

@@ -2,7 +2,7 @@ import { BarberiaModel, usuarioModel } from "../Modulos/barril.js";
 
 export const registroBarberia = async (req, res) => {
   try {
-    const { nombre_barberia, direccion_barberia, nombre_ciudad ,usuario} = req.body;
+    const { nombre_barberia, direccion_barberia, nombre_ciudad ,usuario, descripcion_barberia, email, telefono} = req.body;
 
     if (!nombre_barberia || !direccion_barberia || !nombre_ciudad) {
       return res.status(400).json({ message: "Todos los campos son obligatorios" });
@@ -10,7 +10,10 @@ export const registroBarberia = async (req, res) => {
     const newBarberia = new BarberiaModel({
       nombre_barberia,
       direccion_barberia,
-     nombre_ciudad,
+      descripcion_barberia,
+      nombre_ciudad,
+      email,
+      telefono,
       dueño: {
         usuario: usuario,
       },

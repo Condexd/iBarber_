@@ -2,7 +2,7 @@ import { useForm } from '../../Hooks/useform';
 import { RegistrarBarberia } from '../../functions/Registrobarberia';
 import { API_URLS } from '../../modulos/urls';
 import { UserContext } from '../context/UserContext';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { useContext ,useState} from 'react';
 
 export const Crearbarberia = () => {
@@ -13,17 +13,23 @@ export const Crearbarberia = () => {
     nombre_barberia: '',
     direccion_barberia: '',
     nombre_ciudad: '',
+    descripcion_barberia: '',
+    email: '',
+    telefono: ''
   });
-  const { nombre_barberia, direccion_barberia, nombre_ciudad } = formState;
+  const { nombre_barberia, direccion_barberia, nombre_ciudad, descripcion_barberia, email, telefono } = formState;
 
   const navigate = useNavigate();
   const handleSubmit = async (e) => {
     e.preventDefault();
     console.log(usuario)
+    console.log(nombre_barberia, direccion_barberia, nombre_ciudad, descripcion_barberia, email, telefono)
     if(nombre_ciudad==="seleccionar")return;
-    const result = await RegistrarBarberia(API_URLS.BARBERIA, { nombre_barberia, direccion_barberia, nombre_ciudad,usuario});
-    if(result.ok)
-    navigate("/mi-barberia")
+    const result = await RegistrarBarberia(API_URLS.BARBERIA, { nombre_barberia, direccion_barberia, nombre_ciudad, usuario, descripcion_barberia, email, telefono});
+    if(result.ok){
+      console.log(result)
+      navigate("/mi-barberia")
+    }
     setUserData(prevUserData => ({
       ...prevUserData, // Clonar las propiedades existentes
       barberia: true // Cambiar la propiedad "barberia" a false
@@ -60,6 +66,39 @@ export const Crearbarberia = () => {
               required
               id="direccion_barberia"
               value={direccion_barberia}
+              onChange={funcion}
+            />
+          </div>
+          <div id="login-username">
+            <input
+              type="text"
+              name="descripcion_barberia"
+              placeholder="Descripción de la barbería"
+              required
+              id="descripcion_barberia"
+              value={descripcion_barberia}
+              onChange={funcion}
+            />
+          </div>
+          <div id="login-username">
+            <input
+              type="email"
+              name="email"
+              placeholder="Email de la barbería"
+              required
+              id="email"
+              value={email}
+              onChange={funcion}
+            />
+          </div>
+          <div id="login-username">
+            <input
+              type="text"
+              name="telefono"
+              placeholder="Teléfono de la barbería"
+              required
+              id="telefono"
+              value={telefono}
               onChange={funcion}
             />
           </div>

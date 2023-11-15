@@ -181,3 +181,13 @@ export const postBarber = async (req, res) => {
     res.status(500).json({ message: 'Error interno del servidor' });
   }
 };
+
+// Ruta para obtener todos los barberos de todas las barberías
+export const getBarberosall=async(req, res) => {
+  try {
+    const barberos = await BarberiaModel.find({}, 'barberos');
+    res.json(barberos);
+  } catch (error) {
+    res.status(500).json({ error: 'Error al obtener los barberos' });
+  }
+};

@@ -1,49 +1,72 @@
-import "../../../Estilos/inicio.css"
+
+import { useContext } from "react";
+import "../../../Estilos/inicio.css";
+import { useFetch } from "../../../Hooks/useFetch";
+import { API_URLS } from "../../../modulos/urls";
+import { UserContext } from "../../context/UserContext";
+import BarberoCard from "./BarberosCard";
+import BarberiaCard from "./BarberiaCard";
+
 const BarberShop = () => {
-    const barberias = [
-        { name: 'Barberia1', imageSrc: 'https://cdn-icons-png.flaticon.com/512/6673/6673402.png' },
-        // Add other barberias as needed
-    ];
+  const { userData } = useContext(UserContext);
+  const apiUrlBarberias = API_URLS.obtenerBarberias;
+  const { data: barberiasData, hasError: hasErrorBarberias, isLoading: isLoadingBarberias } = useFetch(apiUrlBarberias);
 
-    const barberos = [
-        { name: 'Barbero1', imageSrc: 'https://cdn-icons-png.flaticon.com/512/54/54647.png' },
-        // Add other barberos as needed
-    ];
+  const apiUrlBarberos = API_URLS.obtenerBarberosAll;
+  const { data: barberosData, hasError: hasErrorBarberos, isLoading: isLoadingBarberos } = useFetch(apiUrlBarberos);
 
-    return (
-        <div className="cuerpo">
-            <h1 className="titleUser">Hola, Usuario8789</h1>
-            <section className="cont-cartas">
-                <h2>Barberias:</h2>
-                <div className="cartas-barberia">
-                    {barberias.map((barberia, index) => (
-                        <div className="carta" key={index}>
-                            <div className="titulos"><h3>{barberia.name}</h3></div>
-                            <div className="imagen"><img src={barberia.imageSrc} alt="" /></div>
-                            <button className="agendar-btn">Agendar</button>
-                        </div>
-                    ))}
-                </div>
-                <div className="ver-mas">
-                    <button className="ver-btn">Ver más</button>
-                </div>
+  if (isLoadingBarberias || isLoadingBarberos) {
+    return <p>Loading...</p>;
+  }
 
-                <h2>Barberos:</h2>
-                <div className="cartas-barbero">
-                    {barberos.map((barbero, index) => (
-                        <div className="carta-b" key={index}>
-                            <div className="titulos"><h3>{barbero.name}</h3></div>
-                            <div className="imagen"><img src={barbero.imageSrc} alt="" /></div>
-                            <button className="agendar-btn">Agendar</button>
-                        </div>
-                    ))}
-                </div>
-                <div className="ver-mas">
-                    <button className="ver-btn">Ver más</button>
-                </div>
-            </section>
+  if (hasErrorBarberias || hasErrorBarberos) {
+    return <p>Please try again later.</p>;
+  }
+
+  return (
+    <div className="cuerpo">
+      <h1 className="titleUser">Hola, {userData.usuario}</h1>
+      <section className="cont-cartas">
+        {/* Barberias Section */}
+        <div className="barberias">
+          <h2>Barberias:</h2>
+          <div className="cartas-barberia">
+            {barberiasData.map((barberia, index) => (
+              <BarberiaCard
+                key={index}
+                name={barberia.nombre_barberia}
+                description={barberia.descripcion_barberia}
+              />
+            ))}
+          </div>
+          <div className="ver-mas">
+            <button className="ver-btn">Ver más</button>
+          </div>
         </div>
-    );
+
+        {/* Barberos Section */}
+        <div className="barberos">
+          <h2>Barberos:</h2>
+          <div className="cartas-barbero">
+            {barberosData.map((grupo, index) => (
+              <div key={index}>
+                {grupo.barberos.map((barbero, subIndex) => (
+                  <BarberoCard
+                    key={subIndex}
+                    name={barbero.usuario}
+                    biography={barbero.biografia_barbero}
+                  />
+                ))}
+              </div>
+            ))}
+          </div>
+          <div className="ver-mas">
+            <button className="ver-btn">Ver más</button>
+          </div>
+        </div>
+      </section>
+    </div>
+  );
 };
 
 export default BarberShop;

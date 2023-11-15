@@ -15,7 +15,7 @@
 
 .cont-cartas {
     margin-left: 50px;
-    margin-top: 70px;
+    margin-top: 40px;
 }
 
 h2 {
@@ -27,14 +27,13 @@ h2 {
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
-    align-items: center;
     flex-wrap: wrap;
-    margin-left: 50px;
+    width: 100%;
+    background-color: #655CC9;
 }
 
 .carta, .carta-b {
-    display: flex;
-    flex-direction: column;
+    display: inline-block;
     border-radius: 10px;
     background-color: #fff;
     margin: 10px;

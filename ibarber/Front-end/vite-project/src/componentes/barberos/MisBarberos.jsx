@@ -1,4 +1,4 @@
-import React, { useContext, useState,useEffect } from 'react';
+import { useContext, useState} from 'react';
 import { Link } from 'react-router-dom';
 import { useFetch } from '../../Hooks/useFetch';
 import { UserContext } from '../context/UserContext';
@@ -7,12 +7,11 @@ import { FiEdit, FiTrash2 } from 'react-icons/fi';
 import MUIDataTable from 'mui-datatables';
 import { API_URLS } from '../../modulos/urls';
 import { deleteBarber } from '../../functions/delete';
-import useDeleteItem from '../../Hooks/useDelete';
 import { mostrarMensajeExitoDelete } from '../../modulos/alertas';
 import { mostrarConfirmacion } from '../../modulos/confirms';
 export const MisBarberos = () => {
-  const { userData, setUserData } = useContext(UserContext);
-  const [usuario, setUsuario] = useState(userData.usuario);
+  const { userData} = useContext(UserContext);
+  const [usuario] = useState(userData.usuario);
   const apiUrl = `${API_URLS.obtenerBarberos}/${usuario}`;
   const { data, isLoading, haserror,setState } = useFetch(apiUrl);
 

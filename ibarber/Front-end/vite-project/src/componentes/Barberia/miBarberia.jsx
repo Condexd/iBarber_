@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from 'react';
+import{ useState, useContext, useEffect } from 'react';
 import PerfilBarberia from './PerfilBarberia';
 import FormularioBarberia from './FormularioBarberia';
 import { mostrarConfirmacion } from "../../modulos/confirms";
@@ -8,10 +8,10 @@ import { actualizar } from '../../functions/usePut';
 import { useFetch } from '../../Hooks/useFetch';
 
 export const MiBarberia = () => {
-  const { userData, setUserData } = useContext(UserContext);
-  const [visible, setVisible] = useState(userData.usuario);
+  const { userData } = useContext(UserContext);
+  const [visible] = useState(userData.usuario);
   const apiUrl = `${API_URLS.obtenerDatosBarberia}/${visible}`;
-  const { data, isLoading, haserror, setState } = useFetch(apiUrl);
+  const { data} = useFetch(apiUrl);
 
   const [nombre, setNombre] = useState('');
   const [descripcion, setDescripcion] = useState('');
@@ -21,7 +21,7 @@ export const MiBarberia = () => {
 
 
   useEffect(() => {
-    if (data && data.nombre_barberia) {
+    if (data) {
       setNombre(data.nombre_barberia);
       setDescripcion(data.descripcion_barberia);
       setEmail(data.email);

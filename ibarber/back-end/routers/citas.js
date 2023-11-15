@@ -3,14 +3,14 @@ import { getCita, getCitas, postCita, putCita, deleteCita } from "../controllers
 
 const router = Router();
 
-router.post('/api/citas', postCita);
+router.post('/citas', postCita);
 
-router.get('/api/citas', getCitas);
+router.get('/citas', getCitas);
 
-router.get('/api/citas/:id', getCita);
+router.get('/citas/:id', getCita);
 
-router.put('/api/citas/:id', putCita);
+router.put('/citas/:id', putCita);
 
-router.delete('/api/citas/:id', deleteCita);
+router.delete('/citas/:id', deleteCita);
 
 export default router;

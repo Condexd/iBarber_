@@ -1,24 +1,19 @@
-import { Schema, model } from "mongoose";
+import { Schema, model, mongoose } from "mongoose";
 
 const citaSchema = new Schema({
-  id_cita: String,
   fecha: Date,
   cliente: {
-    usuario: String,
-    nombre: String,
-    apellidos: String
+    type: String,
   },
   barbero: {
-    usuario: String,
-    nombre: String,
-    apellidos: String
+    type: String,
   },
   barberia: {
-    id: String,
-    nombre: String,
-    direccion: String
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Barberia'
   }
 });
+
 
 const Cita = model('Cita', citaSchema);
 

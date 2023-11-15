@@ -2,6 +2,7 @@ import { useState ,useContext} from 'react';
 import { UserContext } from '../context/UserContext';
 import { enviador } from '../../functions/usePost';
 import { API_URLS } from '../../modulos/urls';
+import { useNavigate } from 'react-router-dom';
 export const CrearBarbero = () => {
   const { userData} = useContext(UserContext);
   const [usuarioDueño, setUsuarioDueño] = useState(userData.usuario);
@@ -20,10 +21,13 @@ export const CrearBarbero = () => {
     setExperiencia(event.target.value);
   };
 
-  const handleSubmit = (event) => {
+  const navigate = useNavigate();
+  const handleSubmit =async (event) => {
     event.preventDefault();
-    console.log(`${API_URLS.crearBarbero}/${usuarioDueño}`)
-        enviador(`${API_URLS.crearBarbero}/${usuarioDueño}`,{ usuario, ciudad, experiencia })
+    const result = await enviador(`${API_URLS.crearBarbero}/${usuarioDueño}`,{ usuario, ciudad, experiencia })
+    if(result){
+     console.log(result)
+     navigate("/empleados") }
   };
 
   return (

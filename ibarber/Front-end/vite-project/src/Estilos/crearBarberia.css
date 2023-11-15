@@ -84,7 +84,7 @@ input:focus, input:active {
   }
 }
 .img-container img {
-  margin: 80px;
+  margin: 8.125rem;
   background-size: cover;
   width: 23rem;
   border: 2px solid rgb(189, 187, 198);

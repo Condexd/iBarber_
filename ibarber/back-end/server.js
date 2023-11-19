@@ -8,17 +8,13 @@ import usuarioRoutes from "./routers/usuarios.js"
 import citaRoutes from "./routers/citas.js"
 dotenv.config();
 
-const app = express();
-app.use(cors());
-
 const mongoString = process.env.MONGO_URI;
 const port = process.env.PORT;
 const host = process.env.HOST;
 
-console.log(mongoString);
-console.log(port);
-console.log(host);
+const app = express();
 
+app.use(cors());
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
@@ -34,10 +30,20 @@ database.once("connected", () => {
   console.log("database connected");
 });
 
-app.use("/api",citaRoutes);
-app.use("/api",auth);
-app.use("/api",barberiasRoutes);
-app.use("/api",usuarioRoutes);
+app.use("/api/citas", citaRoutes);
+app.use("/api", auth);
+app.use("/api", barberiasRoutes);
+app.use("/api", usuarioRoutes);
+
+// Error al no encontrar la ruta especificada
+app.use( (req, res) => {
+  res.status(404).send('404: Page not found')
+})
+
+// Error no manejado del servidor
+app.use( (req, res) => {
+  res.status(500).send('500: Internal server error')
+})
 
 app.listen(port, () => {
   console.log(`server started at ${port}`);

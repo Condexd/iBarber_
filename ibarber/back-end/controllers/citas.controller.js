@@ -31,6 +31,14 @@ export const getCita = async (req, res) => {
 
 export const postCita = async (req, res) => {
   try {
+    const barberoEncontrado = await BarberiaModel.findOne({ 'barberos.usuario': req.body.barbero })
+
+    if (!barberoEncontrado){
+      return res.status(404).json({
+        message: 'Barbero no encontrado'
+      })
+    }
+
     const cita = await citaModel.create(req.body);
     res.status(201).json({
       message: 'Cita creada!',

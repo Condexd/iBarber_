@@ -1,5 +1,5 @@
 import { Router } from '../Modulos/barril.js'
-import { deleteBarberia, getBarberia, getBarberias, getBarberos, registroBarberia, updateBarberia,postBarber,deleteBarber, getBarberosall } from '../controllers/barberia.controller.js';
+import { deleteBarberia, getBarberia, getBarberias, getBarberos, registroBarberia, updateBarberia,postBarber,deleteBarber, getBarberosall, obtenerBarberosPorNombreBarberia } from '../controllers/barberia.controller.js';
 const router = Router();
 
 //registro de barberia
@@ -13,6 +13,7 @@ router.get('/barberia/:id', getBarberia);
 router.get('/barberia/barberos/:id', getBarberos);
 
 router.get('/barberos', getBarberosall);
+router.get('/barberos/:id', obtenerBarberosPorNombreBarberia);
 
 router.put('/barberia/:id', updateBarberia);
 

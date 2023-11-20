@@ -74,6 +74,26 @@ export const getBarberos = async (req, res) => {
   }
 }
 
+
+export const obtenerBarberosPorNombreBarberia = async (req, res) => {
+  try {
+    const { id } = req.params;
+
+    const barberia = await BarberiaModel.findOne({ nombre_barberia: id });
+
+    if (!barberia) {
+      return res.status(404).json({ nombreBarberia });
+    }
+
+    const barberos = barberia.barberos;
+
+    res.status(200).json({ barberos });
+  } catch (error) {
+    res.status(500).json({ message: 'Error al obtener los barberos', error: error.message });
+  }
+};
+
+
 export const updateBarberia = async (req, res) => {
   const nombreUsuario = req.params.id;
   const { nombre, ciudad ,descripcion, email, telefono } = req.body;

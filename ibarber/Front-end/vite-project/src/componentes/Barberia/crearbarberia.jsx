@@ -24,7 +24,7 @@ export const Crearbarberia = () => {
     e.preventDefault();
     console.log(usuario)
     console.log(nombre_barberia, direccion_barberia, nombre_ciudad, descripcion_barberia, email, telefono)
-    if(nombre_ciudad==="seleccionar")return;
+    if(nombre_ciudad==="seleccionar" || nombre_ciudad==="")return;
     const result = await RegistrarBarberia(API_URLS.BARBERIA, { nombre_barberia, direccion_barberia, nombre_ciudad, usuario, descripcion_barberia, email, telefono});
     if(result.ok){
       console.log(result)

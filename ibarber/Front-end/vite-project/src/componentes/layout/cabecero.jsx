@@ -61,6 +61,9 @@ function Cabecero({ isAuthenticated, logout }) {
                   <li>
                     <Link to="/empleados">Mis empleados</Link>
                   </li>
+                  <li>
+                    <Link to="/new-cita">Agendar cita</Link>
+                  </li>
                 </>
               )}
 

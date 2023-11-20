@@ -60,7 +60,7 @@ export const CitaForm = () => {
 
   return (
     <form onSubmit={handleSubmit}>
-      <div className="container">
+      <div className="container-cita-barberia">
         <div className="text-container">
           <h4>Agenda tu cita</h4>
 

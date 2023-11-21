@@ -199,7 +199,7 @@ export const postBarber = async (req, res) => {
     if (!updatedBarberia) {
       return res.status(404).json({ message: "No se encontró la barbería para el dueño dado" });
     }
-
+    await usuarioModel.updateOne({ usuario: barbero.usuario }, { $push: { roles: 'barbero' } });
     // Si todo está bien, devolver la barbería actualizada
     res.status(200).json(updatedBarberia);
   } catch (error) {

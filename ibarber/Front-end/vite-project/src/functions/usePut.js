@@ -2,8 +2,7 @@ import { mostrarMensajeExito, mostrarMensajeError, mostrarMensajeErrorInesperado
 
 export const actualizar = async (usuario,url) => {
   try {
-    console.log(usuario._id)
-    const response = await fetch(`${url}${usuario._id}`,{
+    const response = await fetch(`${url}`,{
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',

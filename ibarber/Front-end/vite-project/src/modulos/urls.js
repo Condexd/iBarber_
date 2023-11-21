@@ -15,5 +15,6 @@ export const API_URLS = {
   obtenerBarberias:`${API_BASE_URL}/barberias`,
   obtenerBarberosAll:`${API_BASE_URL}/barberos`,
   agendar_cita: `${API_BASE_URL}/citas`,
-  obtenerBarberosNombreBarberia: `${API_BASE_URL}/barberos`
+  obtenerBarberosNombreBarberia: `${API_BASE_URL}/barberos`,
+  obtenerInfoUsuario:`${API_BASE_URL}/date-user`
 };

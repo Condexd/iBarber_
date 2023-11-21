@@ -22,6 +22,7 @@ export const postUsuario = async (req, res) => {
       usuario: usuario,
       password: contrasenaencriptada,
       correo: email,
+      active:false,
     });
 
     const result = await data.save();
@@ -48,28 +49,15 @@ export const loginUsuario = async (req, res) => {
     const token = jwt.sign({ usuarioId: user._id }, 'tu_secreto_secreto', {
       expiresIn: '1h', // Define la expiración del token (ejemplo: 1 hora)
     });
-
-    if(usuarioTieneBarberia){
-      res.status(200).json({ message: 'Inicio de sesión exitoso', token, user:{
-        _id: user._id,
-        nombres: user.nombres,
-        apellidos: user.apellidos,
-        correo:user.correo,
-        telefono:user.telefono,
-        barberia:true,
-        usuario:user.usuario,
-      }});
-    } else{
-      res.status(200).json({ message: 'Inicio de sesión exitoso', token, user:{
-        _id: user._id,
-        nombres: user.nombres,
-        apellidos: user.apellidos,
-        correo:user.correo,
-        telefono:user.telefono,
-        barberia:false,
-        usuario:user.usuario,
-      }});
-    }
+    const barberia = usuarioTieneBarberia ? true : false;
+    res.status(200).json({
+      message: 'Inicio de sesión exitoso',
+      token,
+      user: {
+        barberia,
+        usuario: user.usuario,
+      },
+    });
 
   } catch (error) {
     console.error('Error al iniciar sesión:', error, );

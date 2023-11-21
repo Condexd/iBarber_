@@ -5,6 +5,8 @@ import { API_URLS } from "../../modulos/urls";
 import { useFetch } from "../../Hooks/useFetch";
 import { UserContext } from "../context/UserContext";
 import moment from 'moment'
+import { Alert } from "@mui/material";
+import { mostrarMensajeError } from "../../modulos/alertas";
 
 export const CitaForm = () => {
   const { userData } = useContext(UserContext);
@@ -14,6 +16,9 @@ export const CitaForm = () => {
   const [barbero, setBarbero] = useState("");
   const [fecha, setFecha] = useState("");
   const [hora, setHora] = useState("");
+
+  // Obtener la fecha actual en formato 'YYYY-MM-DD' para usar como fecha mínima
+  const fechaActual = new Date().toISOString().split('T')[0];
 
   // Función para renderizar las opciones del select
   const renderBarberosOptions = () => {
@@ -27,24 +32,48 @@ export const CitaForm = () => {
       return <option value="">No hay barberos disponibles</option>;
     }
   };
-
   const handleSubmit = async (event) => {
     event.preventDefault();
     const confirmacion = await mostrarConfirmacion(
       "¿Enviar datos?",
       "¿Estás seguro de agendar cita?"
     );
-    if(barbero==="seleccionar" || barbero==="" )return;
-    if (confirmacion.isConfirmed) {
-      // Formatear la fecha y hora utilizando Moment.js
-      const fechaHora = moment(`${fecha}T${hora}`).toISOString();
-      enviador(API_URLS.agendar_cita, {
-        fecha: fechaHora,
-        barbero,
-        cliente: userData.usuario,
-      });
+
+    if (
+      barbero === "seleccionar" ||
+      barbero === "" ||
+      !fecha ||
+      !hora ||
+      !confirmacion.isConfirmed
+    ) {
+      return;
     }
+
+    // Crear un objeto Date con la fecha y hora seleccionadas
+    const fechaHoraSeleccionada = new Date(`${fecha}T${hora}`);
+
+    // Obtener la fecha y hora actuales
+    const fechaHoraActual = new Date();
+
+    // Verificar si la fecha y hora seleccionadas son futuras
+    if (fechaHoraSeleccionada <= fechaHoraActual) {
+      mostrarMensajeError(
+        "Por favor escoja una hora válida."
+      );
+      return;
+    }
+
+    // Formatear la fecha y hora como una cadena en el formato deseado
+    const fechaHoraFormateada = fechaHoraSeleccionada.toLocaleString();
+
+    // Enviar los datos
+    enviador(API_URLS.agendar_cita, {
+      fecha: fechaHoraFormateada,
+      barbero,
+      cliente: userData.usuario,
+    });
   };
+  
 
   const handleBarberoChange = (event) => {
     setBarbero(event.target.value);
@@ -70,7 +99,7 @@ export const CitaForm = () => {
             onChange={handleBarberoChange}
             className="select-barbero"
           >
-          <option value='seleccionar'>Seleccionar</option>
+            <option value='seleccionar'>Seleccionar</option>
             {/* Llamada a la función para renderizar las opciones */}
             {renderBarberosOptions()}
           </select>
@@ -86,6 +115,7 @@ export const CitaForm = () => {
             value={fecha}
             onChange={handleFechaChange}
             className="fecha-input"
+            min={fechaActual} // Establecer la fecha mínima
           />
 
           <h4>Hora</h4>

@@ -1,7 +1,7 @@
 import { Schema, model } from "mongoose";
 
 const citaSchema = new Schema({
-  fecha: Date,
+  fecha: String,
   cliente: String,
   barbero: String,
   cita_realizada: Boolean

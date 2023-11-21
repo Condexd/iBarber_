@@ -160,7 +160,7 @@ export const deleteBarber = async (req, res) => {
 
 export const postBarber = async (req, res) => {
   const { id } = req.params;
-  const { usuario, ciudad, experiencia } = req.body;
+  const { usuario, numero, biografia, especialidad, experiencia } = req.body;
 
   try {
     // Verificar si el barbero existe
@@ -186,6 +186,9 @@ export const postBarber = async (req, res) => {
         $push: {
           'barberos': {
             usuario: barbero.usuario,
+            num_barbero: numero, 
+            biografia_barbero: biografia, 
+            especialidad,
             experiencia,
           },
         },

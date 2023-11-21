@@ -1,9 +1,9 @@
 import {useContext,useState} from "react";
 import { Link } from "react-router-dom";
 import { UserContext } from "../context/UserContext";
-function PerfilInfo({ formState }) {
-  const { userData, setUserData } = useContext(UserContext);
-  const [visible, setVisible] = useState(userData.barberia);
+function PerfilInfo({ nombres,apellidos }) {
+  const { userData,  } = useContext(UserContext);
+  const [visible] = useState(userData.barberia);
   return (
     <section className="p-3 w-25">
       <div className="d-flex flex-column gap-1">
@@ -17,7 +17,7 @@ function PerfilInfo({ formState }) {
         />
         <div>
           <span className="text-start lh-lg semibold fs-5">
-            {formState.nombres} {formState.apellidos}
+            {nombres} {apellidos}
           </span>
         </div>
         <div>

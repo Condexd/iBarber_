@@ -8,7 +8,8 @@ const usuarioSchema = new Schema({
   password: String,
   telefono: String,
   nombre_ciudad: String,
-  roles: [String]
+  roles: [String],
+  active:Boolean
 });
 
 const Usuario = model('Usuario', usuarioSchema);

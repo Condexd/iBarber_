@@ -101,7 +101,7 @@ const navigate=useNavigate();
           <ul id="form-cuentaCreada">
             <li>
               <span>¿Ya tienes cuenta? </span>
-              <Link to="/iniciarSesion">
+              <Link to="/Login">
                   Inicia sesión
                 </Link>
             </li>

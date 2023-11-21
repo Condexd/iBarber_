@@ -1,6 +1,18 @@
 import React from "react";
 
-function PerfilForm({ formState, handleSubmit, setFormState }) {
+function PerfilForm({
+  nombres,
+  apellidos,
+  correo,
+  telefono,
+  ciudad,
+  handleSubmit,
+  setNombres,
+  setApellidos,
+  setCorreo,
+  setTelefono,
+  setCiudad,
+}) {
   return (
     <form className="w-50 p-3" onSubmit={handleSubmit}>
       <ul className="row gap-3" id="datos-personales">
@@ -11,10 +23,8 @@ function PerfilForm({ formState, handleSubmit, setFormState }) {
             type="text"
             name="nombres"
             required
-            value={formState.nombres}
-            onChange={(e) =>
-              setFormState({ ...formState, nombres: e.target.value })
-            }
+            value={nombres}
+            onChange={(e) => setNombres(e.target.value)}
           />
         </li>
         <li className="col-5 row">
@@ -23,10 +33,8 @@ function PerfilForm({ formState, handleSubmit, setFormState }) {
             type="text"
             name="apellidos"
             required
-            value={formState.apellidos}
-            onChange={(e) =>
-              setFormState({ ...formState, apellidos: e.target.value })
-            }
+            value={apellidos}
+            onChange={(e) => setApellidos(e.target.value)}
           />
         </li>
         <li className="col-5 row">
@@ -35,10 +43,8 @@ function PerfilForm({ formState, handleSubmit, setFormState }) {
             type="email"
             name="email"
             required
-            value={formState.correo}
-            onChange={(e) =>
-              setFormState({ ...formState, correo: e.target.value })
-            }
+            value={correo}
+            onChange={(e) => setCorreo(e.target.value)}
           />
         </li>
         <li className="col-5 row">
@@ -47,10 +53,8 @@ function PerfilForm({ formState, handleSubmit, setFormState }) {
             type="text"
             name="telefono"
             required
-            value={formState.telefono}
-            onChange={(e) =>
-              setFormState({ ...formState, telefono: e.target.value })
-            }
+            value={telefono}
+            onChange={(e) => setTelefono(e.target.value)}
             placeholder="Tu número"
           />
         </li>
@@ -59,10 +63,8 @@ function PerfilForm({ formState, handleSubmit, setFormState }) {
           <select
             name="ciudad"
             required
-            value={formState.ciudad}
-            onChange={(e) =>
-              setFormState({ ...formState, ciudad: e.target.value })
-            }
+            value={ciudad}
+            onChange={(e) => setCiudad(e.target.value)}
           >
             <option>Seleccionar</option>
             <option value="Bogotá">Bogotá</option>

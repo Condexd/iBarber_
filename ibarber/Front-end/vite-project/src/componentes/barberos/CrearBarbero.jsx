@@ -10,7 +10,6 @@ export const CrearBarbero = () => {
   const [numero, setNumero] = useState('');
   const [biografia, setBiografia] = useState('');
   const [especialidad, setEspecialidad] = useState('Seleccionar');
-  const [ciudad, setCiudad] = useState('Seleccionar');
   const [experiencia, setExperiencia] = useState('');
   const handleUsuarioChange = (event) => {
     setUsuario(event.target.value);
@@ -24,9 +23,6 @@ export const CrearBarbero = () => {
   const handleEspecialidadChange = (event) =>{
     setEspecialidad(event.target.value);
   };
-  const handleCiudadChange = (event) => {
-    setCiudad(event.target.value);
-  };
 
   const handleExperienciaChange = (event) => {
     setExperiencia(event.target.value);
@@ -35,7 +31,7 @@ export const CrearBarbero = () => {
   const navigate = useNavigate();
   const handleSubmit =async (event) => {
     event.preventDefault();
-    const result = await enviador(`${API_URLS.crearBarbero}/${usuarioDueño}`,{ usuario, ciudad, experiencia })
+    const result = await enviador(`${API_URLS.crearBarbero}/${usuarioDueño}`,{ usuario, numero, biografia, especialidad, experiencia })
     if(result){
      console.log(result)
      navigate("/empleados") }
@@ -99,19 +95,6 @@ export const CrearBarbero = () => {
               <option value="Corte para niños">Corte para niños</option>
               <option value="Barba">Barba</option>
               <option value="Coloracion de cabello">Coloración de cabello</option>
-            </select>
-          </ul>
-          <ul className="form-group">
-            <select
-              name="nombre_ciudad"
-              value={ciudad}
-              onChange={handleCiudadChange}
-              className="form-control"
-            >
-              <option value="Seleccionar">Selecciona ciudad</option>
-              <option value="Bogotá">Bogotá</option>
-              <option value="Medellín">Medellín</option>
-              <option value="Cali">Cali</option>
             </select>
           </ul>
           <ul id="form-username">

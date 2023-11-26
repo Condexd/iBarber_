@@ -1,4 +1,4 @@
-import { BarberiaModel, citaModel } from "../Modulos/barril.js";
+import { BarberiaModel, citaModel, usuarioModel } from "../Modulos/barril.js";
 
 export const getCitas = async (req, res) => {
   try {
@@ -32,7 +32,13 @@ export const getCita = async (req, res) => {
 export const postCita = async (req, res) => {
   try {
     const barberoEncontrado = await BarberiaModel.findOne({ 'barberos.usuario': req.body.barbero })
+    const barber= await usuarioModel.findOne({ 'usuario': req.body.barbero })
 
+    if (!barber.active){
+      return res.status(404).json({
+        message: 'Barbero no disponible'
+      })
+    }
     if (!barberoEncontrado){
       return res.status(404).json({
         message: 'Barbero no encontrado'

@@ -27,7 +27,7 @@ function App() {
   };
 
   return (
-      <><Cabecero isAuthenticated={isAuthenticated} logout={logout} /><Rutas isAuthenticated={isAuthenticated} setIsAuthenticated={setIsAuthenticated} /><Footer /></>
+      <><Cabecero isAuthenticated={isAuthenticated} logout={logout} /><Rutas isAuthenticated={isAuthenticated} setIsAuthenticated={setIsAuthenticated} /></>
 
   );
 }

@@ -20,7 +20,6 @@ function Rutas({ isAuthenticated, setIsAuthenticated }) {
         element={<Inicio isAuthenticated={isAuthenticated} />}
       />
       <Route path="/" element={<Navigate to="/Home" />} />
-
       {/* Rutas protegidas */}
       {isAuthenticated ? (
         <>

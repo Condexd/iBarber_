@@ -56,7 +56,7 @@ function Perfil() {
   };
 
   return (
-    <main id="main" className="p-2 d-flex mt-4 justify-content-center">
+    <main id="main" className="p-2 d-flex mt-5 justify-content-center">
       { barbero> 0  && (
         active ? (
           <button onClick={() => setActive(false)}>Inactivar</button>

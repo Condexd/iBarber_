@@ -53,7 +53,7 @@ export const MiBarberia = () => {
 
   return (
     <>
-      <main id="main" className="p-2 d-flex mt-4 justify-content-center">
+      <main id="main" className="p-2 d-flex mt-5 justify-content-center align-items-center">
         <div className="d-flex justify-content-evenly flex-wrap">
           <PerfilBarberia
             nombre={nombre}

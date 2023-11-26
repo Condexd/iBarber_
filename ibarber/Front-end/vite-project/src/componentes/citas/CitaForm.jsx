@@ -4,8 +4,6 @@ import { mostrarConfirmacion } from "../../modulos/confirms";
 import { API_URLS } from "../../modulos/urls";
 import { useFetch } from "../../Hooks/useFetch";
 import { UserContext } from "../context/UserContext";
-import moment from 'moment'
-import { Alert } from "@mui/material";
 import { mostrarMensajeError } from "../../modulos/alertas";
 
 export const CitaForm = () => {
@@ -88,7 +86,7 @@ export const CitaForm = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} className="containerCita">
       <div className="container-cita-barberia">
         <div className="text-container">
           <h4>Agenda tu cita</h4>

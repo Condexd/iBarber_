@@ -3,15 +3,18 @@
   margin-top: 20px;
   display: flex;
   flex-direction: column;
-  align-items: center;
   padding: 20px;
   border: 1px solid #ccc;
   border-radius: 8px;
   background-color: #f9f9f9;
-  width: 300px;
+  width:31.25rem;
   margin: 0 auto;
 }
-
+.containerCita{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 /* Estilos para la imagen */
 .agenda-image {
   width: 100px;
@@ -45,13 +48,11 @@ h2, h3 {
 
 /* Estilos para la etiqueta y la entrada de fecha */
 .fecha-label, .fecha-input {
-  display: block;
   margin-bottom: 12px;
 }
 
 /* Estilos para la etiqueta y la entrada de hora */
 .hora-label, .hora-input {
-  display: block;
   margin-bottom: 12px;
 }
 

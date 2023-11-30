@@ -10,7 +10,6 @@ import { MisBarberos } from "./barberos/MisBarberos";
 import { CrearBarbero } from "./barberos/CrearBarbero";
 import { CitaForm } from "./citas/CitaForm";
 
-// Asegúrate de importar el UserProvider desde el archivo correcto
 
 function Rutas({ isAuthenticated, setIsAuthenticated }) {
   return (
@@ -20,10 +19,8 @@ function Rutas({ isAuthenticated, setIsAuthenticated }) {
         element={<Inicio isAuthenticated={isAuthenticated} />}
       />
       <Route path="/" element={<Navigate to="/Home" />} />
-      {/* Rutas protegidas */}
       {isAuthenticated ? (
         <>
-          {/* Agrega aquí las rutas protegidas que solo deben ser accesibles para usuarios autenticados */}
           <Route path="/perfil" element={<Perfil />} />
           <Route path="/mi-barberia" element={<MiBarberia />} />
           <Route path="/empleados" element={<MisBarberos />} />
@@ -32,7 +29,6 @@ function Rutas({ isAuthenticated, setIsAuthenticated }) {
           <Route path="/new-cita" element={<CitaForm />} />
         </>
       ) : (
-        // Si no está autenticado, redirige a la página de inicio de sesión
         <Route
           path="/Login"
           element={<IniciarSesion setIsAuthenticated={setIsAuthenticated} />}

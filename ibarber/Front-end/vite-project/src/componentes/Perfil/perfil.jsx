@@ -57,20 +57,13 @@ function Perfil() {
 
   return (
     <main id="main" className="p-2 d-flex mt-5 justify-content-center">
-      { barbero> 0  && (
-        active ? (
-          <button onClick={() => setActive(false)}>Inactivar</button>
-        ) : (
-          <>
-            <h3>barbero</h3>
-            <button onClick={() => setActive(true)}>Activar</button>
-          </>
-        )
-      )}
       <div className="d-flex justify-content-evenly flex-wrap">
         <PerfilInfo
           nombres={nombres}
           apellidos={apellidos}
+          barbero={barbero}
+          active={active}
+          setActive={setActive}
         />
         <PerfilForm
           nombres={nombres}

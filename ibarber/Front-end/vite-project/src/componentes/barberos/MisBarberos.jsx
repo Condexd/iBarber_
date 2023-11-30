@@ -46,7 +46,6 @@ export const MisBarberos = () => {
 
   const handleDelete = async (barberoId,event) => {
     event.preventDefault();
-  console.log(barberoId)
     const confirmacion = await mostrarConfirmacion(
       '¿Enviar datos?',
       '¿Estás seguro de Eliminar este Barbero?'

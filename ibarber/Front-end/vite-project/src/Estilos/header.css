@@ -135,42 +135,6 @@ li {
         'opsz' 48
 }
 
-@media screen and (max-width:822px) {
-
-    .boton-login,
-    .boton-registrarse {
-        display: none;
-    }
-
-    .navegacion {
-        justify-content: end;
-    }
-
-    .contenedor1-navegacion {
-        order: 2;
-    }
-
-    .contenedor2-navegacion {
-        order: 1;
-    }
-
-    .contenedor1-navegacion>li {
-        display: none;
-    }
-
-    .contenedor2-navegacion>*:not(.material-symbols-outlined) {
-        display: none;
-    }
-
-    #menu-navegacion-oculta {
-        display: block;
-    }
-
-    #menu-navegacion-oculta:hover {
-        cursor: pointer;
-    }
-}
-
 @media screen and (min-width: 1024px) {
     .navegacion {
         display: flex;

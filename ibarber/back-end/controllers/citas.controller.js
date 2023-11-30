@@ -2,15 +2,41 @@ import { BarberiaModel, citaModel, usuarioModel } from "../Modulos/barril.js";
 
 export const getCitas = async (req, res) => {
   try {
-    const citas = await citaModel.find();
-    res.status(200).json(citas);
+    const { usuario } = req.params;
+
+    // Buscar las citas en las que el usuario sea cliente o barbero
+    const citasUsuario = await citaModel.find({ $or: [{ cliente: usuario }, { barbero: usuario }] });
+
+    if (citasUsuario.length === 0) {
+      return res.status(200).json({ message: 'No tienes citas agendadas' });
+    }
+
+    // Filtrar las citas según el tipo de usuario (cliente o barbero)
+    const citasCliente = citasUsuario.filter(cita => cita.cliente === usuario);
+    const citasBarbero = citasUsuario.filter(cita => cita.barbero === usuario);
+
+    let clienteEncontrado = citasCliente.length > 0;
+    let barberoEncontrado = citasBarbero.length > 0;
+
+    let response = {};
+
+    // Devolver las citas correspondientes al tipo de usuario
+    if (clienteEncontrado) {
+      response.cliente = citasCliente;
+    }
+    if (barberoEncontrado) {
+      response.barbero = citasBarbero;
+    }
+
+    // Devolver la respuesta con las citas encontradas para el usuario
+    return res.status(200).json(response);
   } catch (error) {
     res.status(500).json({
       message: 'Error al obtener las citas',
       error: error.message
-   });
+    });
   }
-}
+};
 
 export const getCita = async (req, res) => {
   try {

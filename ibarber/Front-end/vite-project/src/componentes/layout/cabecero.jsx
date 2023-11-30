@@ -1,11 +1,10 @@
-import { useState, useContext,useEffect } from 'react';
-import { UserContext } from '../context/UserContext';
-import { Link } from 'react-router-dom';
-import Boton from './boton';
+import { useState, useContext, useEffect } from "react";
+import { UserContext } from "../context/UserContext";
+import { Link } from "react-router-dom";
+import Boton from "./boton";
 function Cabecero({ isAuthenticated, logout }) {
   const { userData, setUserData } = useContext(UserContext);
   const [visible, setVisible] = useState(userData.barberia);
-
 
   useEffect(() => {
     setVisible(userData.barberia);
@@ -29,14 +28,18 @@ function Cabecero({ isAuthenticated, logout }) {
             <Link to="/Home">Inicio</Link>
           </li>
 
-          <li id='contenedor-submenu' className='menu-desplegable'>
-            <ul id='submenu-agendar'>
-              <li id='agendar'>Agendar</li>
+          <li id="contenedor-submenu" className="menu-desplegable">
+            <ul id="submenu-agendar">
+              <li id="agendar">Agendar</li>
               <li>
-                <Link to="/barberos" id='navegacion-barberos'>Barberos</Link>
+                <Link to="/barberos" id="navegacion-barberos">
+                  Barberos
+                </Link>
               </li>
               <li>
-                <Link to="/barberias" id='navegacion-barberias'>Barberías</Link>
+                <Link to="/barberias" id="navegacion-barberias">
+                  Barberías
+                </Link>
               </li>
             </ul>
           </li>
@@ -53,6 +56,12 @@ function Cabecero({ isAuthenticated, logout }) {
           {isAuthenticated ? (
             // Si el usuario está autenticado, muestra el botón de cerrar sesión
             <>
+              <li>
+                <Link to="/new-cita">Agendar cita</Link>
+              </li>
+              <li>
+                <Link to="/citas">Mis citas</Link>
+              </li>
               {visible && (
                 <>
                   <li>
@@ -61,19 +70,22 @@ function Cabecero({ isAuthenticated, logout }) {
                   <li>
                     <Link to="/empleados">Mis empleados</Link>
                   </li>
-                  <li>
-                    <Link to="/new-cita">Agendar cita</Link>
-                  </li>
                 </>
               )}
 
               <li>
                 <Link to="/perfil">
-                  <img className='rounded-circle' src='https://i.pinimg.com/474x/f3/16/ce/f316cef6a7a1e732baf48a36808411b4.jpg' height={35} width={35} alt="Perfil" />
+                  <img
+                    className="rounded-circle"
+                    src="https://i.pinimg.com/474x/f3/16/ce/f316cef6a7a1e732baf48a36808411b4.jpg"
+                    height={35}
+                    width={35}
+                    alt="Perfil"
+                  />
                 </Link>
               </li>
               <li>
-               < Boton logout={logout} />
+                <Boton logout={logout} />
               </li>
               {/* Agrega aquí otros enlaces de navegación para usuarios autenticados si es necesario */}
             </>

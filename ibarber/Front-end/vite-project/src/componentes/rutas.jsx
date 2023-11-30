@@ -9,6 +9,7 @@ import { MiBarberia } from "./Barberia/miBarberia";
 import { MisBarberos } from "./barberos/MisBarberos";
 import { CrearBarbero } from "./barberos/CrearBarbero";
 import { CitaForm } from "./citas/CitaForm";
+import { MisCitas } from "./citas/MisCitas";
 
 
 function Rutas({ isAuthenticated, setIsAuthenticated }) {
@@ -27,6 +28,7 @@ function Rutas({ isAuthenticated, setIsAuthenticated }) {
           <Route path="/new-empleado" element={<CrearBarbero />} />
           <Route path="/new-barberia" element={<Crearbarberia />} />
           <Route path="/new-cita" element={<CitaForm />} />
+          <Route path="/citas" element={<MisCitas />} />
         </>
       ) : (
         <Route

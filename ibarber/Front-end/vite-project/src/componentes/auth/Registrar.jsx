@@ -38,6 +38,7 @@ const navigate=useNavigate();
                 id="nombres"
                 name="nombres"
                 required
+                pattern="[A-Za-z]*"
                 placeholder="Nombres"
                 value={nombres}
                 onChange={funcion} />
@@ -49,6 +50,7 @@ const navigate=useNavigate();
                 type="text"
                 id="apellidos"
                 name="apellidos"
+                pattern="[A-Za-z]*"
                 placeholder="Apellidos"
                 required
                 value={apellidos}

@@ -1,7 +1,7 @@
 import { mostrarMensajeExito, mostrarMensajeError, mostrarMensajeErrorInesperado } from '../modulos/alertas';
 
 export const actualizar = async (usuario,url) => {
-  consol
+  console.log(usuario)
   try {
     const response = await fetch(`${url}`,{
       method: 'PUT',

@@ -9,27 +9,50 @@ import { API_URLS } from '../../modulos/urls';
 import { deleteBarber } from '../../functions/delete';
 import { mostrarMensajeExitoDelete } from '../../modulos/alertas';
 import { mostrarConfirmacion } from '../../modulos/confirms';
+import { EditBarberos } from './EditBarberos';
 export const MisBarberos = () => {
   const { userData} = useContext(UserContext);
   const [usuario] = useState(userData.usuario);
+  const [barbero, setBarbero] = useState('');
+  const [visible, setVisible] = useState(false);
   const apiUrl = `${API_URLS.obtenerBarberos}/${usuario}`;
   const { data, isLoading, haserror,setState } = useFetch(apiUrl);
 
-  const handleEdit = (barberoId) => {
-    console.log(`Editar barbero con ID ${barberoId}`);
+  const handleEdit = (barber,event) => {
+    event.preventDefault();
+    setBarbero(barber);
+    setVisible(true);
+  };
 
+  const funcionEditar = (contenido) => {
+    let result = data.map((barberia) => {
+      if (barberia.usuario === contenido.usuario) {
+  
+      barberia.num_barbero=contenido.num_barbero
+      barberia.biografia_barbero=contenido.biografia_barbero
+      barberia.especialidad=contenido.especialidad
+      barberia.experiencia=contenido.experiencia
+      }
+      return barberia;
+    });
+    setState({
+      data: result,
+      isLoading: false,
+      hasError: null,
+    });
+
+    return true;
   };
 
   const handleDelete = async (barberoId,event) => {
     event.preventDefault();
-  console.log(barberoId)
     const confirmacion = await mostrarConfirmacion(
       '¿Enviar datos?',
       '¿Estás seguro de Eliminar este Barbero?'
     );
   if(confirmacion.isConfirmed){
     if (await deleteBarber(barberoId)) {
-      const updatedData = data.filter((barbero) => barbero.usuario !== barberoId);
+      const updatedData = data.filter((barbero) => barbero._id !== barberoId);
       setState({data:updatedData,
                 isLoading:false,
                 haserror:null
@@ -68,14 +91,15 @@ export const MisBarberos = () => {
       name: 'Acciones',
       options: {
         customBodyRender: (value, tableMeta, updateValue) => {
-          const barberoId = tableMeta.rowData[1]; // Obtener el ID del barbero desde la primera columna
+          const barberoUser = tableMeta.rowData[1]
+          const barberoId = tableMeta.rowData[0]
           return (
             <>
               <IconButton
                 variant="contained"
                 color="success"
                 className="mt-2 fs-6"
-                onClick={() => handleEdit(barberoId)}
+                onClick={(event) => handleEdit(barberoUser,event)}
               >
                 <FiEdit />
               </IconButton>
@@ -122,7 +146,8 @@ export const MisBarberos = () => {
           </IconButton>
         </Link>
         <div id="formularioBarberosContainer"></div>
-
+        {visible && <EditBarberos setVisible={setVisible} funcionEditar={funcionEditar} barbero={barbero} usuario={usuario} />
+         }
         {isLoading ? (
           <p>Cargando...</p>
         ) : haserror ? (

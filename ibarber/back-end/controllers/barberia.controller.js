@@ -136,23 +136,28 @@ export const deleteBarberia = async (req, res) => {
     res.status(500).json({ message: 'Error interno del servidor' });
   }
 }
-
 export const deleteBarber = async (req, res) => {
   const barberoId = req.params.id;
 
   try {
     const updatedBarberia = await BarberiaModel.findOneAndUpdate(
-      { 'barberos.usuario': barberoId },
-      { $pull: { barberos: { usuario: barberoId } } },
+      // Buscar la barbería que tiene un barbero con el ID dado
+      { 'barberos._id': barberoId },
+      // Utilizar $pull para eliminar el barbero con el ID dado del array 'barberos'
+      { $pull: { barberos: { _id: barberoId } } },
+      // Opciones: 'new: true' devuelve el documento actualizado
       { new: true }
     );
-    res.status(200).json({ message: 'Barbero eliminado con éxito' });
+    if (updatedBarberia) {
+      res.status(200).json({ message: 'Barbero eliminado con éxito' });
+    } else {
+      res.status(404).json({ message: 'Barbero no encontrado' });
+    }
   } catch (error) {
     console.error('Error al eliminar el barbero:', error);
     res.status(500).json({ message: 'Error interno del servidor' });
   }
-}
-
+};
 
 
 
@@ -217,3 +222,39 @@ export const getBarberosall=async(req, res) => {
     res.status(500).json({ error: 'Error al obtener los barberos' });
   }
 };
+
+
+export const actualizarBarbero = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { barbero, num_barbero, biografia_barbero, especialidad, experiencia } = req.body;
+
+    const barberia = await BarberiaModel.findOne({ 'dueño.usuario': id });
+
+    if (!barberia) {
+      return res.status(404).json({ mensaje: 'Barbería no encontrada' });
+    }
+
+    const barberoEncontrado = barberia.barberos.find((b) => b.usuario === barbero);
+
+    if (!barberoEncontrado) {
+      return res.status(404).json({ mensaje: 'Barbero no encontrado' });
+    }
+
+    // Actualiza las propiedades del barbero encontrado
+    Object.assign(barberoEncontrado, {
+      num_barbero,
+      biografia_barbero,
+      especialidad,
+      experiencia,
+    });
+
+    await barberia.save();
+
+    res.status(200).json( barberoEncontrado );
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ mensaje: 'Error interno del servidor' });
+  }
+};
+

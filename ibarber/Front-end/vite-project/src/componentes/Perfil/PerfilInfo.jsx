@@ -1,9 +1,10 @@
-import {useContext,useState} from "react";
+import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { UserContext } from "../context/UserContext";
 function PerfilInfo({ nombres,apellidos, fotoPerfil }) {
   const { userData,  } = useContext(UserContext);
   const [visible] = useState(userData.barberia);
+
   return (
     <section className="p-3 w-25">
       <div className="d-flex flex-column gap-1"> 
@@ -21,14 +22,28 @@ function PerfilInfo({ nombres,apellidos, fotoPerfil }) {
           </span>
         </div>
         <div>
-         {!visible &&(
-         <Link to="/new-barberia">
-        <button className="btn btn-success mt-2 fs-6">
-        Crear mi barbería
-        </button>
-         </Link>
-         )
-         }
+          {!visible && (
+            <Link to="/new-barberia">
+              <button className="btn btn-success mt-2 fs-6">
+                Crear mi barbería
+              </button>
+            </Link>
+          )}
+        </div>
+        <div >
+          {barbero > 0 && (
+            <div className="contenedorbtn">
+              <label className="switch">
+                <input
+                  type="checkbox"
+                  checked={active}
+                  onChange={() => setActive(!active)}
+                />
+                <span className="slider round"></span>
+              </label>
+              <h3 className="titulobarbero">Barbero</h3>
+            </div>
+          )}
         </div>
       </div>
     </section>

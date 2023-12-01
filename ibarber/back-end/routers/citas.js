@@ -3,7 +3,7 @@ import { getCita, getCitas, postCita, putCita, deleteCita } from "../controllers
 
 const router = Router();
 
-router.get('/', getCitas);
+router.get('/:usuario', getCitas);
 
 router.get('/:id', getCita);
 

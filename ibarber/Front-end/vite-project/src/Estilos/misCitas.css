@@ -1,0 +1,42 @@
+/* Estilos CSS para MisCitas */
+.mis-citas {
+  padding: 20px;
+  font-family: Arial, sans-serif;
+}
+
+.citas-container {
+  margin-bottom: 20px;
+}
+
+.citas-heading {
+  font-size: 1.5em;
+  margin-bottom: 10px;
+}
+
+.cliente-heading {
+  font-weight: bold;
+  color: blue; /* Color para citas como cliente */
+}
+
+.barbero-heading {
+  font-weight: bold;
+  color: green; /* Color para citas como barbero */
+}
+
+.citas-list {
+  list-style: none;
+  padding: 0;
+}
+
+.cita-item {
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin-bottom: 10px;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+  border-radius: 4px;
+}
+
+.cita-item .cita-property {
+  font-weight: bold;
+  margin-bottom: 5px;
+}

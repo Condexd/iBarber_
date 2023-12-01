@@ -1,13 +1,14 @@
 import { mostrarMensajeExito, mostrarMensajeError, mostrarMensajeErrorInesperado } from '../modulos/alertas';
 
 export const actualizar = async (usuario,url) => {
+  consol
   try {
     const response = await fetch(`${url}`,{
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify(usuario),
+      body: usuario,
     });
 
     if (response.ok) {

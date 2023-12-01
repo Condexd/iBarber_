@@ -19,6 +19,7 @@ function Perfil() {
   const [telefono, setTelefono] = useState("");
   const [barbero, setBarbero] = useState("");
   const [active, setActive] = useState(false);
+  const [fotoPerfil, setFotoPerfil] = useState(""); 
 
   useEffect(() => {
     if (data) {
@@ -29,29 +30,38 @@ function Perfil() {
       setCorreo(data.usuario.correo);
       setBarbero(data.usuario.roles.length);
      setActive(data.usuario.active)
+     setFotoPerfil(data.usuario.fotoPerfil || "");
     }
   }, [data]);
 
+  const handleFileChange = (e) => {
+    const file = e.target.files[0];
+    setFotoPerfil(file);
+  };
+  
+
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+   
+    console.log(fotoPerfil)
     const confirmacion = await mostrarConfirmacion(
       "¿Actualizar datos?",
       "¿Estás seguro de que deseas actualizar los datos?"
     );
 
     if (confirmacion.isConfirmed) {
-      await actualizar(
-        {
-          nombres,
-          telefono,
-          nombre_ciudad: ciudad,
-          correo,
-          apellidos,
-          active
-        },
-        `${API_URLS.USUARIO}${userData.usuario}`
-      );
+      const formData = new FormData();
+
+      formData.append('nombres', nombres);
+      formData.append('telefono', telefono);
+      formData.append('nombre_ciudad', ciudad);
+      formData.append('correo', correo);
+      formData.append('apellidos', apellidos);
+      formData.append('active', active);
+      formData.append('fotoPerfil', fotoPerfil);
+
+      await actualizar(formData, `${API_URLS.USUARIO}${userData.usuario}`);
     }
   };
 
@@ -84,6 +94,7 @@ function Perfil() {
           setCiudad={setCiudad}
           telefono={telefono}
           ciudad={ciudad}
+          handleFileChange={handleFileChange}
         />
       </div>
     </main>

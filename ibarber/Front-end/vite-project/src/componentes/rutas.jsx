@@ -10,6 +10,7 @@ import { MisBarberos } from "./barberos/MisBarberos";
 import { CrearBarbero } from "./barberos/CrearBarbero";
 import { CitaForm } from "./citas/CitaForm";
 
+
 // Asegúrate de importar el UserProvider desde el archivo correcto
 
 function Rutas({ isAuthenticated, setIsAuthenticated }) {

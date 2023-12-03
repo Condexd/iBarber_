@@ -1,6 +1,6 @@
 
 const API_BASE_URL = 'http://localhost:3300/api';
-
+const API_BASE=`http://localhost:3300`
 export const API_URLS = {
   BARBERIA: `${API_BASE_URL}/barberia`,
   USUARIO: `${API_BASE_URL}/usuario/`,
@@ -18,5 +18,6 @@ export const API_URLS = {
   obtenerBarberosNombreBarberia: `${API_BASE_URL}/barberos`,
   obtenerInfoUsuario:`${API_BASE_URL}/date-user`,
   actualizarBarbero:`${API_BASE_URL}/barberia/edit-barber`,
-  obtenerCitasFiltradas: `${API_BASE_URL}/citas`
+  obtenerCitasFiltradas: `${API_BASE_URL}/citas`,
+  obtenerImage:`${API_BASE}`
 };

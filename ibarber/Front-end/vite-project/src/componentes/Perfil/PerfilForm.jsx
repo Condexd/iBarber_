@@ -16,7 +16,7 @@ function PerfilForm({
 }) {
 
   return (
-    <form className="w-50 p-3" onSubmit={handleSubmit}>
+    <form className="w-50 p-3" onSubmit={handleSubmit} >
       <ul className="row gap-3" id="datos-personales">
         <h2>Mis datos</h2>
         <li className="col-5 row">
@@ -80,6 +80,7 @@ function PerfilForm({
             type="file"
             accept="image/*"
             onChange={handleFileChange}
+            name="perfil"
           />
         </li>
         <li className="row">

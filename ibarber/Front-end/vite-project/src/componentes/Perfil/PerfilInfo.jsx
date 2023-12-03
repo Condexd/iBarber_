@@ -1,17 +1,17 @@
 import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { UserContext } from "../context/UserContext";
-function PerfilInfo({ nombres,apellidos, fotoPerfil }) {
+function PerfilInfo({ nombres,apellidos, img,setActive,active,barbero }) {
   const { userData,  } = useContext(UserContext);
   const [visible] = useState(userData.barberia);
 
   return (
-    <section className="p-3 w-25">
+    <section className="p-3 w-25 d-flex align-items-center justify-content-center" >
       <div className="d-flex flex-column gap-1"> 
         <img
           id="img-perfil"
           className="rounded-circle"
-          src={fotoPerfil}
+          src={img}
           width={200}
           height={200}
           alt="Perfil"

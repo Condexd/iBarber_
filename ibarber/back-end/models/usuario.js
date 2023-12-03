@@ -8,10 +8,7 @@ const usuarioSchema = new Schema({
   password: String,
   telefono: String,
   nombre_ciudad: String,
-  fotoPerfil: {
-    type: String,
-    default: "https://i.pinimg.com/474x/f3/16/ce/f316cef6a7a1e732baf48a36808411b4.jpg"
-  },
+  fotoPerfil: String, 
   roles: [String],
   active: Boolean
 });

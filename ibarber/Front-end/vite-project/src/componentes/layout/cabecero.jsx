@@ -2,59 +2,40 @@ import { useState, useContext, useEffect } from "react";
 import { UserContext } from "../context/UserContext";
 import { Link } from "react-router-dom";
 import Boton from "./boton";
+
 function Cabecero({ isAuthenticated, logout }) {
   const { userData, setUserData } = useContext(UserContext);
   const [visible, setVisible] = useState(userData.barberia);
+  const [menuVisible, setMenuVisible] = useState(false);
 
   useEffect(() => {
     setVisible(userData.barberia);
   }, [userData.barberia]);
+
+  const toggleMenu = () => {
+    setMenuVisible(!menuVisible);
+  };
+
   return (
     <header className="cabecero">
       <nav className="navegacion">
-        <ul className="contenedor1-navegacion">
-          <li>
-            <Link className="logo-img-contenedor" to="/">
-              <img
-                className="logo-img"
-                src="https://github.com/Condexd/_iBarber_/blob/main/proyectoweb/index/images/logo-ibarber.png?raw=true"
-                width="55px"
-                height="auto"
-                alt="Logo"
-              />
-            </Link>
-          </li>
-          <li>
-            <Link to="/Home">Inicio</Link>
-          </li>
+        <div className="contenedor1-navegacion">
+          <Link className="logo-img-contenedor" to="/">
+            <img
+              className="logo-img"
+              src="https://github.com/Condexd/_iBarber_/blob/main/proyectoweb/index/images/logo-ibarber.png?raw=true"
+              width="55px"
+              height="auto"
+              alt="Logo"
+            />
+          </Link>
+          <div className="icono-menu" onClick={toggleMenu}>
+            &#9776;
+          </div>
+        </div>
 
-          <li id="contenedor-submenu" className="menu-desplegable">
-            <ul id="submenu-agendar">
-              <li id="agendar">Agendar</li>
-              <li>
-                <Link to="/barberos" id="navegacion-barberos">
-                  Barberos
-                </Link>
-              </li>
-              <li>
-                <Link to="/barberias" id="navegacion-barberias">
-                  Barberías
-                </Link>
-              </li>
-            </ul>
-          </li>
-        </ul>
-        <ul className="contenedor2-navegacion">
-          <li>
-            {/* <img
-              className="buscador-img"
-              src="https://github.com/Condexd/_iBarber_/blob/main/proyectoweb/index/images/buscador.png?raw=true"
-              width="20px"
-              alt="Buscar"
-            /> */}
-          </li>
-          {isAuthenticated ? (
-            // Si el usuario está autenticado, muestra el botón de cerrar sesión
+        <ul className={`contenedor2-navegacion ${menuVisible ? "visible" : ""}`}>
+          {isAuthenticated && (
             <>
               <li>
                 <Link to="/new-cita">Agendar cita</Link>
@@ -72,7 +53,6 @@ function Cabecero({ isAuthenticated, logout }) {
                   </li>
                 </>
               )}
-
               <li>
                 <Link to="/perfil">
                   <img
@@ -87,10 +67,9 @@ function Cabecero({ isAuthenticated, logout }) {
               <li>
                 <Boton logout={logout} />
               </li>
-              {/* Agrega aquí otros enlaces de navegación para usuarios autenticados si es necesario */}
             </>
-          ) : (
-            // Si el usuario no está autenticado, muestra los enlaces de inicio de sesión y registro
+          )}
+          {!isAuthenticated && (
             <>
               <li>
                 <Link className="boton-login" to="/Login">

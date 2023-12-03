@@ -152,6 +152,7 @@ li {
         box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
         flex-direction: column;
         width: 100%;
+        animation: slideDown 0.3s ease-in-out;
     }
 
     .contenedor2-navegacion.visible {
@@ -162,5 +163,27 @@ li {
         padding: 10px;
         text-align: center;
         width: 100%;
+    }
+
+    .perfil-boton-container {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 10px;
+    }
+
+    .perfil-img {
+        margin-right: 10px;
+    }
+
+    @keyframes slideDown {
+        from {
+            opacity: 0;
+            transform: translateY(-10px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
     }
 }

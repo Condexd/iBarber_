@@ -16,11 +16,15 @@ function Cabecero({ isAuthenticated, logout }) {
     setMenuVisible(!menuVisible);
   };
 
+  const closeMenu = () => {
+    setMenuVisible(false);
+  };
+
   return (
     <header className="cabecero">
       <nav className="navegacion">
         <div className="contenedor1-navegacion">
-          <Link className="logo-img-contenedor" to="/">
+          <Link className="logo-img-contenedor" to="/" onClick={closeMenu}>
             <img
               className="logo-img"
               src="https://github.com/Condexd/_iBarber_/blob/main/proyectoweb/index/images/logo-ibarber.png?raw=true"
@@ -38,23 +42,31 @@ function Cabecero({ isAuthenticated, logout }) {
           {isAuthenticated && (
             <>
               <li>
-                <Link to="/new-cita">Agendar cita</Link>
+                <Link to="/new-cita" onClick={closeMenu}>
+                  Agendar cita
+                </Link>
               </li>
               <li>
-                <Link to="/citas">Mis citas</Link>
+                <Link to="/citas" onClick={closeMenu}>
+                  Mis citas
+                </Link>
               </li>
               {visible && (
                 <>
                   <li>
-                    <Link to="/mi-barberia">Mi barbería</Link>
+                    <Link to="/mi-barberia" onClick={closeMenu}>
+                      Mi barbería
+                    </Link>
                   </li>
                   <li>
-                    <Link to="/empleados">Mis empleados</Link>
+                    <Link to="/empleados" onClick={closeMenu}>
+                      Mis empleados
+                    </Link>
                   </li>
                 </>
               )}
               <li>
-                <Link to="/perfil">
+                <Link to="/perfil" onClick={closeMenu}>
                   <img
                     className="rounded-circle"
                     src="https://i.pinimg.com/474x/f3/16/ce/f316cef6a7a1e732baf48a36808411b4.jpg"
@@ -65,19 +77,23 @@ function Cabecero({ isAuthenticated, logout }) {
                 </Link>
               </li>
               <li>
-                <Boton logout={logout} />
+                <Boton logout={logout} onClick={closeMenu} />
               </li>
             </>
           )}
           {!isAuthenticated && (
             <>
               <li>
-                <Link className="boton-login" to="/Login">
+                <Link className="boton-login" to="/Login" onClick={closeMenu}>
                   Iniciar sesión
                 </Link>
               </li>
               <li>
-                <Link className="boton-registrarse" to="/registrarse">
+                <Link
+                  className="boton-registrarse"
+                  to="/registrarse"
+                  onClick={closeMenu}
+                >
                   Registrarse
                 </Link>
               </li>

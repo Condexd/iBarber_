@@ -6,6 +6,8 @@ import cors from 'cors';
 import barberiasRoutes from "./routers/barberias.js"
 import usuarioRoutes from "./routers/usuarios.js"
 import citaRoutes from "./routers/citas.js"
+import swaggerUi from 'swagger-ui-express';
+import swaggerSpec from './docs/swagger.js'
 dotenv.config();
 
 const mongoString = process.env.MONGO_URI;
@@ -34,6 +36,7 @@ app.use("/api/citas", citaRoutes);
 app.use("/api", auth);
 app.use("/api", barberiasRoutes);
 app.use("/api", usuarioRoutes);
+app.use('/api/docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
 // Error al no encontrar la ruta especificada
 app.use( (req, res) => {

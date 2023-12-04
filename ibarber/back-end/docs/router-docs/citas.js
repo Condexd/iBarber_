@@ -1,5 +1,4 @@
-import { Router } from "express";
-import { getCita, getCitas, postCita, putCita, deleteCita } from "../controllers/citas.controller.js";
+const swaggerDocument = `
 /**
  * @swagger
  * tags:
@@ -156,20 +155,6 @@ import { getCita, getCitas, postCita, putCita, deleteCita } from "../controllers
  *       '500':
  *         description: Error al eliminar la cita.
  */
+`;
 
-
-const router = Router();
-
-
-
-router.get('/:usuario', getCitas);
-
-router.get('/:id', getCita);
-
-router.post('/', postCita);
-
-router.put('/:id', putCita);
-
-router.delete('/:id', deleteCita);
-
-export default router;
+export default swaggerDocument;

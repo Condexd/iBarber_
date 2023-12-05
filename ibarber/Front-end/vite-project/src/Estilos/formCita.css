@@ -1,36 +1,34 @@
 /* Estilos para el contenedor principal */
 .container-cita-barberia {
-  margin-top: 20px;
   display: flex;
   flex-direction: column;
-  padding: 20px;
+  padding: 4.5rem;
   border: 1px solid #ccc;
   border-radius: 8px;
   background-color: #f9f9f9;
-  width:31.25rem;
+ width: 62.5rem;
   margin: 0 auto;
+  height: 70vh;
+  justify-content: center;
+  margin-bottom: 9rem;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
 }
 .containerCita{
   display: flex;
   justify-content: center;
   align-items: center;
+  height: 100vh;
 }
-/* Estilos para la imagen */
-.agenda-image {
-  width: 100px;
-  border-radius: 50%;
-  margin-bottom: 10px;
-}
+
 
 /* Estilos para el contenedor de texto */
 .text-container {
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: .3125rem  ;
 }
 
-/* Estilos para los títulos */
-h2, h3 {
-  margin-bottom: 8px;
-}
 
 /* Estilos para los horarios */
 .horarios {
@@ -57,8 +55,8 @@ h2, h3 {
 }
 
 /* Estilos para el botón de agendar */
-.agendar-btn-2 {
-  background-color: #007bff;
+.agendar-btnci{
+  background-color: #655CC9;
   color: #fff;
   border: none;
   border-radius: 4px;
@@ -67,6 +65,6 @@ h2, h3 {
   transition: background-color 0.3s ease;
 }
 
-.agendar-btn-2:hover {
-  background-color: #0056b3;
+.agendar-btnci:hover {
+  background-color: #534bad;
 }

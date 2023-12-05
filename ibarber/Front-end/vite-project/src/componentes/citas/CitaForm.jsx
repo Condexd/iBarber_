@@ -87,53 +87,54 @@ export const CitaForm = () => {
 
   return (
     <form onSubmit={handleSubmit} className="containerCita">
-      <div className="container-cita-barberia">
-        <div className="text-container">
-          <h4>Agenda tu cita</h4>
+  <div className="container-cita-barberia">
+    <div className="text-container">
+      <h3>Agenda tu cita</h3>
 
-          <h4>Barbero</h4>
-          <select
-            value={barbero}
-            onChange={handleBarberoChange}
-            className="select-barbero"
-          >
-            <option value='seleccionar'>Seleccionar</option>
-            {/* Llamada a la función para renderizar las opciones */}
-            {renderBarberosOptions()}
-          </select>
+      <h4>Barbero</h4>
+      <select
+        value={barbero}
+        onChange={handleBarberoChange}
+        className="form-select select-barbero "
+      >
+        <option value='seleccionar'>Seleccionar</option>
+        {/* Llamada a la función para renderizar las opciones */}
+        {renderBarberosOptions()}
+      </select>
 
-          <h4>Día de la cita</h4>
-          <label htmlFor="fecha" className="fecha-label">
-            Selecciona una fecha:
-          </label>
-          <input
-            type="date"
-            id="fecha"
-            name="fecha"
-            value={fecha}
-            onChange={handleFechaChange}
-            className="fecha-input"
-            min={fechaActual} // Establecer la fecha mínima
-          />
+      <h4>Día de la cita</h4>
+      <label htmlFor="fecha" className="fecha-label">
+        Selecciona una fecha:
+      </label>
+      <input
+        type="date"
+        id="fecha"
+        name="fecha"
+        value={fecha}
+        onChange={handleFechaChange}
+        className="form-control fecha-input"
+        min={fechaActual}
+      />
 
-          <h4>Hora</h4>
-          <label htmlFor="hora" className="hora-label">
-            Selecciona una hora:
-          </label>
-          <input
-            type="time"
-            id="hora"
-            name="hora"
-            value={hora}
-            onChange={handleHoraChange}
-            className="hora-input"
-          />
+      <h4>Hora</h4>
+      <label htmlFor="hora" className="hora-label">
+        Selecciona una hora:
+      </label>
+      <input
+        type="time"
+        id="hora"
+        name="hora"
+        value={hora}
+        onChange={handleHoraChange}
+        className="form-control hora-input"
+      />
 
-          <button type="submit" className="agendar-btn">
-            Agendar cita
-          </button>
-        </div>
-      </div>
-    </form>
+      <button type="submit" className="btn btn-primary agendar-btnci">
+        Agendar cita
+      </button>
+    </div>
+  </div>
+</form>
+
   );
 };

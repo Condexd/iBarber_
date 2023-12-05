@@ -18,7 +18,7 @@ export const MisCitas = () => {
     event.preventDefault();
     const confirmacion = await mostrarConfirmacion(
       "¿Enviar datos?",
-      "¿Estás seguro de eliminar esta cita?"
+      "¿Estás seguro de cancelar esta cita?"
     );
     if (confirmacion.isConfirmed) {
       const { cuerpo } = await deleteCita(`${API_URLS.deleteCita}/${citaId}`);

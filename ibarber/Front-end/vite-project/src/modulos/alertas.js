@@ -14,7 +14,6 @@ export const mostrarMensajeExitoDelete = (mensaje) => {
     title: mensaje ? mensaje : 'Registro Eliminado',
     icon: 'success',
     confirmButtonText: 'Aceptar',
-    iconHtml: '<i class="fas fa-trash-alt"></i>'
   });
 };
 

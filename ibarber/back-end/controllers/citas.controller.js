@@ -23,9 +23,12 @@ export const getCitas = async (req, res) => {
     // Devolver las citas correspondientes al tipo de usuario
     if (clienteEncontrado) {
       response.cliente = citasCliente;
-    }
-    if (barberoEncontrado) {
+    } else if (barberoEncontrado) {
       response.barbero = citasBarbero;
+    } else {
+      return res.status(404).json({
+        message: 'No se encontró el usuario'
+      });
     }
 
     // Devolver la respuesta con las citas encontradas para el usuario

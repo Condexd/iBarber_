@@ -6,6 +6,7 @@ import { API_URLS } from '../../modulos/urls';
 import { UserContext } from '../context/UserContext';
 import { actualizar } from '../../functions/usePut';
 import { useFetch } from '../../Hooks/useFetch';
+import { update } from '../../functions/updateBarber';
 
 export const MiBarberia = () => {
   const { userData } = useContext(UserContext);
@@ -18,7 +19,7 @@ export const MiBarberia = () => {
   const [email, setEmail] = useState('');
   const [telefono, setTelefono] = useState('');
   const [ciudad, setCiudad] = useState('');
-
+console.log(ciudad)
 
   useEffect(() => {
     if (data) {
@@ -26,7 +27,7 @@ export const MiBarberia = () => {
       setDescripcion(data.descripcion_barberia);
       setEmail(data.email);
       setTelefono(data.telefono);
-      setCiudad(data.ciudad);
+      setCiudad(data.nombre_ciudad);
     }
   }, [data]);
   const handleSubmit = async (e) => {
@@ -36,8 +37,8 @@ export const MiBarberia = () => {
     const confirmacion = await mostrarConfirmacion(
       "¿Actualizar datos?",
       "¿Estás seguro de que deseas actualizar los datos?"
+      
     );
-
     if (confirmacion.isConfirmed) {
       const formData = {
         _id: visible,
@@ -47,7 +48,7 @@ export const MiBarberia = () => {
         telefono,
         ciudad,
       };
-      await actualizar(formData, API_URLS.ActualizarBarberia);
+      await update(formData, API_URLS.ActualizarBarberia);
     }
   };
 

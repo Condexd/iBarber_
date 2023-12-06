@@ -19,18 +19,36 @@ function Perfil() {
   const [telefono, setTelefono] = useState("");
   const [barbero, setBarbero] = useState("");
   const [active, setActive] = useState(false);
-
+  const [fotoPerfil, setFotoPerfil] = useState(null);
+  const [imgPreview, setImgPreview] = useState("");
+  const [imgVersion, setImgVersion] = useState(Date.now());
   useEffect(() => {
     if (data) {
       setNombres(data.usuario.nombres);
       setApellidos(data.usuario.apellidos);
       setTelefono(data.usuario.telefono || "");
-      setCiudad(data.usuario.nombre_ciudad|| "");
+      setCiudad(data.usuario.nombre_ciudad || "");
       setCorreo(data.usuario.correo);
       setBarbero(data.usuario.roles.length);
-     setActive(data.usuario.active)
+      setActive(data.usuario.active);
+      setFotoPerfil(`${API_URLS.obtenerImage}${data.usuario.fotoPerfil}` || "");
+      setImgPreview(`${API_URLS.obtenerImage}${data.usuario.fotoPerfil}?v=${imgVersion}` || "");
+
     }
   }, [data]);
+
+  const handleFileChange = (e) => {
+    const file = e.target.files[0];
+    setFotoPerfil(file);
+    setImgVersion(Date.now());
+    const reader = new FileReader();
+    reader.onloadend = () => {
+      setImgPreview(reader.result);
+    };
+    if (file) {
+      reader.readAsDataURL(file);
+    }
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -41,14 +59,15 @@ function Perfil() {
     );
 
     if (confirmacion.isConfirmed) {
-      await actualizar(
+        const result=await actualizar(
         {
           nombres,
           telefono,
           nombre_ciudad: ciudad,
           correo,
           apellidos,
-          active
+          active,
+          fotoPerfil,
         },
         `${API_URLS.USUARIO}${userData.usuario}`
       );
@@ -64,6 +83,7 @@ function Perfil() {
           barbero={barbero}
           active={active}
           setActive={setActive}
+          img={imgPreview}
         />
         <PerfilForm
           nombres={nombres}
@@ -77,6 +97,7 @@ function Perfil() {
           setCiudad={setCiudad}
           telefono={telefono}
           ciudad={ciudad}
+          handleFileChange={handleFileChange}
         />
       </div>
     </main>

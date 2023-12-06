@@ -6,7 +6,6 @@
 .title-barber {
   text-align: center;
 }
-
 #boton-crear-barberia {
   background-color: #157347;
   color: white;
@@ -14,6 +13,7 @@
   border-radius: 4px;
   padding: 10px 40px;
   cursor: pointer;
+  transition: ease-in-out 5sg;
 }
 
 #btn-enviar-barbero {
@@ -26,17 +26,18 @@
   align-items: flex-start;
   background-color: #f8f9fa;
   padding: 20px;
+  height: 100vh;
 }
 
 
 
 #form-barber {
-  margin-top: 170px;
+  margin-top: 6.25rem;
   margin-right: 10px;
   box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.4);
   width: 50rem;
   height: auto;
-  padding: 20px;
+  padding: 1.5rem 4.5rem;
   display: flex;
   flex-direction: column;
   row-gap: 16px;
@@ -60,7 +61,7 @@ input:focus, input:active {
 }
 
 #form-barber button:hover {
-  background-color: #655CC9;
+  background-color: #0b3c25;
 }
 
 @media (max-width: 898px) {
@@ -73,6 +74,7 @@ input:focus, input:active {
   #form-barber-container {
     display: flex;
     justify-content: center;
+    align-items: center;
     flex-wrap: wrap;
   }
 
@@ -84,11 +86,11 @@ input:focus, input:active {
   }
 }
 .img-container img {
-  margin: 8.125rem;
+  margin-top: 7.25rem;
   background-size: cover;
   width: 23rem;
   border: 2px solid rgb(189, 187, 198);
-  border-radius: 5px;
+  border-radius: 8px;
   box-shadow: 3px 3px 5px rgba(179, 10, 10, 0.2);
   filter: grayscale(0%); 
   animation: desaturate 4s linear infinite; 

@@ -1,6 +1,6 @@
 import { mostrarMensajeError, mostrarMensajeErrorInesperado } from "../modulos/alertas";
 
-export const deleteBarber=async(url)=>{
+export const deleteCita=async(url)=>{
     try {
         const response = await fetch(url, {
           method: 'DELETE',
@@ -9,10 +9,11 @@ export const deleteBarber=async(url)=>{
           },
         });
         if (response.ok) {
-          return true
+          const respuesta = await response.json();
+          return respuesta;
         } else {
           console.log(response)
-          mostrarMensajeError('Error al borrar el barbero');
+          mostrarMensajeError('Error al borrar la cita');
         }
       } catch (error) {
         mostrarMensajeErrorInesperado('Error de red:', error);

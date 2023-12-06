@@ -87,3 +87,14 @@ input:checked + .slider:before {
 .titulobarbero {
   font-size: 1.5rem;
 }
+
+/* Estilos generales */
+#fileInput {
+  display: none; /* Oculta el input real */
+  background-color: #f32121;
+}
+
+/* Estilos específicos cuando hay un archivo seleccionado */
+.file-selected {
+  visibility: hidden; /* Oculta el texto */
+}

@@ -12,6 +12,8 @@ import { CitaForm } from "./citas/CitaForm";
 import { MisCitas } from "./citas/MisCitas";
 
 
+// Asegúrate de importar el UserProvider desde el archivo correcto
+
 function Rutas({ isAuthenticated, setIsAuthenticated }) {
   return (
     <Routes>

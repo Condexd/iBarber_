@@ -9,12 +9,11 @@ export const mostrarMensajeExito = (mensaje) => {
   });
 };
 
-export const mostrarMensajeExitoDelete = () => {
+export const mostrarMensajeExitoDelete = (mensaje) => {
   Swal.fire({
-    title: 'Registro Eliminado',
+    title: mensaje ? mensaje : 'Registro Eliminado',
     icon: 'success',
     confirmButtonText: 'Aceptar',
-    iconHtml: '<i class="fas fa-trash-alt"></i>'
   });
 };
 

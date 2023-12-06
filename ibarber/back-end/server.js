@@ -7,6 +7,10 @@ import path from "path";
 import barberiasRoutes from "./routers/barberias.js"
 import usuarioRoutes from "./routers/usuarios.js"
 import citaRoutes from "./routers/citas.js"
+import swaggerUi from 'swagger-ui-express';
+import swaggerDocument from './swagger.json' assert { type: "json" };
+
+
 import { dirname } from 'path';
 import { fileURLToPath } from 'url';
 dotenv.config();
@@ -35,6 +39,7 @@ database.once("connected", () => {
   console.log("database connected");
 });
 
+app.use('/api/docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument))
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 app.use("/api/citas", citaRoutes);
 app.use("/api", auth);

@@ -27,7 +27,7 @@ export const EditBarberos = ({ barbero, funcionEditar, setVisible,usuario }) => 
     e.preventDefault();
    const {experiencia,biografia_barbero,especialidad,num_barbero}=formData
  const result = await actualizar({experiencia,biografia_barbero,especialidad,barbero,num_barbero},`${API_URLS.actualizarBarbero}/${usuario}`);
-      if (funcionEditar(result)) {
+ if (funcionEditar(result)) {
         setModalOpen(false);
         setFormData({
           biografia_barbero: '',

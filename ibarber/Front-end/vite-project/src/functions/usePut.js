@@ -26,7 +26,7 @@ export const actualizar = async (usuario, url) => {
     if (response.ok) {
       const resultados = await response.json();
       mostrarMensajeExito(resultados.message);
-      return true;
+      return resultados;
     } else {
       const errorResponse = await response.json();
       mostrarMensajeError(errorResponse.message);

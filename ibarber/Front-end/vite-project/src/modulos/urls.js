@@ -19,7 +19,7 @@ export const API_URLS = {
   obtenerInfoUsuario:`${API_BASE_URL}/date-user`,
   actualizarBarbero:`${API_BASE_URL}/barberia/edit-barber`,
   obtenerCitasFiltradas: `${API_BASE_URL}/citas`,
-  actualizarContrasena:`${API_BASE_URL}/usuario-password`
+  actualizarContrasena:`${API_BASE_URL}/usuario-password`,
   obtenerImage:`${API_BASE}`,
   deleteCita: `${API_BASE_URL}/citas`
 };

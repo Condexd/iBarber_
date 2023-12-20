@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { actualizar } from '../../functions/usePut';
 import "../../Estilos/edit.css"
 import { API_URLS } from '../../modulos/urls';

@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from "react";
+import { useState, useContext, useEffect } from "react";
 import { API_URLS } from "../../modulos/urls";
 import { UserContext } from "../context/UserContext";
 import { actualizar } from "../../functions/usePut";

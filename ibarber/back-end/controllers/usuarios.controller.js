@@ -1,4 +1,5 @@
 import { usuarioModel } from "../Modulos/barril.js";
+import bcrypt from 'bcrypt';
 
 export const putUsuario = async (req, res) => {
   try {
@@ -17,7 +18,34 @@ export const putUsuario = async (req, res) => {
   }
 }
 
+export const cambioContrasena = async (req, res) => {
+  const { id } = req.params;
+  const { contrasenaActual, nuevaContrasena } = req.body;
 
+  try {
+    const usuario = await usuarioModel.findOne({ "usuario": id });
+
+    if (!usuario) {
+      return res.status(404).json({ message: `Usuario no encontrado: ${id}`});
+    }
+
+    const passwordMatch = await bcrypt.compare(contrasenaActual, usuario.password);
+
+    if (!passwordMatch) {
+      return res.status(401).json({ message: 'La contraseña actual es incorrecta' });
+    }
+
+    const nuevaContrasenaEncriptada = await bcrypt.hash(nuevaContrasena, 10);
+    usuario.password = nuevaContrasenaEncriptada;
+
+    await usuario.save();
+
+    res.status(200).json({ message: 'Contraseña actualizada exitosamente' });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: 'Error interno del servidor' });
+  }
+};
 
 export const obtenerUsuario = async (req, res) => {
   const {id}=req.params

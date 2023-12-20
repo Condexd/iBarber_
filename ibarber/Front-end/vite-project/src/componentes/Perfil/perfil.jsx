@@ -6,6 +6,7 @@ import PerfilForm from "./PerfilForm";
 import PerfilInfo from "./PerfilInfo";
 import { mostrarConfirmacion } from "../../modulos/confirms";
 import { useFetch } from "../../Hooks/useFetch";
+import CambioContrasenaModal from './CambioContrasenaModal';
 
 function Perfil() {
   const { userData } = useContext(UserContext);
@@ -19,6 +20,7 @@ function Perfil() {
   const [telefono, setTelefono] = useState("");
   const [barbero, setBarbero] = useState("");
   const [active, setActive] = useState(false);
+  const [showCambioContrasenaModal, setShowCambioContrasenaModal] = useState(false);
 
   useEffect(() => {
     if (data) {
@@ -78,6 +80,10 @@ function Perfil() {
           telefono={telefono}
           ciudad={ciudad}
         />
+        <button onClick={() => setShowCambioContrasenaModal(true)}>Cambiar Contraseña</button>
+        {showCambioContrasenaModal && (
+          <CambioContrasenaModal setVisible={setShowCambioContrasenaModal} />
+        )}
       </div>
     </main>
   );

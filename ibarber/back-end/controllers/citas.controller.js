@@ -131,7 +131,8 @@ export const deleteCita = async (req, res) => {
       });
     }
     res.status(200).json({
-      message: 'Cita eliminada'
+      message: 'Cita eliminada',
+      cuerpo: req.params.id
     });
   } catch (error) {
     res.status(500).json({

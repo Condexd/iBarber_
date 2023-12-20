@@ -51,7 +51,7 @@ export const MisBarberos = () => {
       '¿Estás seguro de Eliminar este Barbero?'
     );
   if(confirmacion.isConfirmed){
-    if (await deleteBarber(barberoId)) {
+    if (await deleteBarber(`${API_URLS.eliminarBarbero}/${barberoId}`)) {
       const updatedData = data.filter((barbero) => barbero._id !== barberoId);
       setState({data:updatedData,
                 isLoading:false,

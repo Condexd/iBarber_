@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 function PerfilForm({
   nombres,
@@ -12,9 +12,11 @@ function PerfilForm({
   setCorreo,
   setTelefono,
   setCiudad,
+  handleFileChange,
 }) {
+
   return (
-    <form className="w-50 p-3" onSubmit={handleSubmit}>
+    <form className="w-50 p-3" onSubmit={handleSubmit} >
       <ul className="row gap-3" id="datos-personales">
         <h2>Mis datos</h2>
         <li className="col-5 row">
@@ -71,6 +73,15 @@ function PerfilForm({
             <option value="Medellín">Medellín</option>
             <option value="Ciudad3">Ciudad3</option>
           </select>
+        </li>
+        <li className="row">
+          <label>Foto de Perfil</label>
+          <input
+            type="file"
+            accept="image/*"
+            onChange={handleFileChange}
+            name="perfil"
+          />
         </li>
         <li className="row">
           <div className="mt-5 d-flex align-content-center">

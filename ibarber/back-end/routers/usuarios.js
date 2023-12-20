@@ -1,6 +1,7 @@
 import { Router } from "../Modulos/barril.js";
 import { obtenerUsuario, putUsuario, cambioContrasena } from "../controllers/usuarios.controller.js";
 
+
 const router = Router();
 
 router.put('/usuario/:id', putUsuario);

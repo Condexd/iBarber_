@@ -1,5 +1,5 @@
 import { BarberiaModel, citaModel, usuarioModel } from "../Modulos/barril.js";
-
+import moment from 'moment';
 export const getCitas = async (req, res) => {
   try {
     const { usuario } = req.params;
@@ -58,20 +58,41 @@ export const getCita = async (req, res) => {
   }
 }
 
+
+
 export const postCita = async (req, res) => {
   try {
-    const barberoEncontrado = await BarberiaModel.findOne({ 'barberos.usuario': req.body.barbero })
-    const barber= await usuarioModel.findOne({ 'usuario': req.body.barbero })
+    const barberoEncontrado = await BarberiaModel.findOne({ 'barberos.usuario': req.body.barbero });
+    const barber = await usuarioModel.findOne({ 'usuario': req.body.barbero });
+    const { fecha } = req.body;
 
-    if (!barber.active){
+    if (!barber.active) {
       return res.status(404).json({
         message: 'Barbero no disponible'
-      })
+      });
     }
-    if (!barberoEncontrado){
+
+    if (!barberoEncontrado) {
       return res.status(404).json({
         message: 'Barbero no encontrado'
-      })
+      });
+    }
+
+    // Convertir la fecha en formato de cadena a un objeto de Moment.js
+    const nuevaFecha = moment(fecha, 'DD/MM/YYYY, HH:mm:ss');
+
+    // Obtener todas las citas programadas para el barbero
+    const citasBarbero = await citaModel.find({ 'barbero': req.body.barbero }).sort({ fecha: 1 });
+
+    // Verificar si hay al menos 30 minutos de diferencia con cada cita existente
+    for (let i = 0; i < citasBarbero.length; i++) {
+      const tiempoDiferencia = nuevaFecha.diff(moment(citasBarbero[i].fecha, 'DD/MM/YYYY, HH:mm:ss'), 'minutes');
+
+      if (tiempoDiferencia >= 0 && tiempoDiferencia < 30) {
+        return res.status(400).json({
+          message: 'No se pudo crear la cita en esta hora. Por favor, intenta agendar otra cita después de al menos 30 minutos'
+        });
+      }
     }
 
     const cita = await citaModel.create(req.body);
@@ -85,7 +106,8 @@ export const postCita = async (req, res) => {
       error: error.message
     });
   }
-}
+};
+
 
 export const putCita = async (req, res) => {
   try {

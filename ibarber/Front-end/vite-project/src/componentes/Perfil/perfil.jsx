@@ -8,11 +8,10 @@ import { mostrarConfirmacion } from "../../modulos/confirms";
 import { useFetch } from "../../Hooks/useFetch";
 import CambioContrasenaModal from './CambioContrasenaModal';
 
-function Perfil() {
+function Perfil({logout}) {
   const { userData } = useContext(UserContext);
   const apiUrl = `${API_URLS.obtenerInfoUsuario}/${userData.usuario}`;
   const { data } = useFetch(apiUrl);
-
   const [nombres, setNombres] = useState("");
   const [apellidos, setApellidos] = useState("");
   const [correo, setCorreo] = useState("");
@@ -21,10 +20,10 @@ function Perfil() {
   const [barbero, setBarbero] = useState("");
   const [active, setActive] = useState(false);
   const [showCambioContrasenaModal, setShowCambioContrasenaModal] = useState(false);
-
   const [fotoPerfil, setFotoPerfil] = useState(null);
   const [imgPreview, setImgPreview] = useState("");
   const [imgVersion, setImgVersion] = useState(Date.now());
+
   useEffect(() => {
     if (data) {
       setNombres(data.usuario.nombres);
@@ -101,6 +100,7 @@ function Perfil() {
           telefono={telefono}
           ciudad={ciudad}
           handleFileChange={handleFileChange}
+          logout={logout}
         />
         <button onClick={() => setShowCambioContrasenaModal(true)}>Cambiar Contraseña</button>
         {showCambioContrasenaModal && (

@@ -12,9 +12,8 @@ import { CitaForm } from "./citas/CitaForm";
 import { MisCitas } from "./citas/MisCitas";
 
 
-// Asegúrate de importar el UserProvider desde el archivo correcto
 
-function Rutas({ isAuthenticated, setIsAuthenticated }) {
+function Rutas({ isAuthenticated, setIsAuthenticated,logout }) {
   return (
     <Routes>
       <Route
@@ -24,7 +23,7 @@ function Rutas({ isAuthenticated, setIsAuthenticated }) {
       <Route path="/" element={<Navigate to="/Home" />} />
       {isAuthenticated ? (
         <>
-          <Route path="/perfil" element={<Perfil />} />
+          <Route path="/perfil" element={<Perfil logout={logout} />} />
           <Route path="/mi-barberia" element={<MiBarberia />} />
           <Route path="/empleados" element={<MisBarberos />} />
           <Route path="/new-empleado" element={<CrearBarbero />} />

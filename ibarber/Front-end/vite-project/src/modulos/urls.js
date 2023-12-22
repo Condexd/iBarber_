@@ -21,5 +21,6 @@ export const API_URLS = {
   obtenerCitasFiltradas: `${API_BASE_URL}/citas`,
   actualizarContrasena:`${API_BASE_URL}/usuario-password`,
   obtenerImage:`${API_BASE}`,
-  deleteCita: `${API_BASE_URL}/citas`
+  deleteCita: `${API_BASE_URL}/citas`,
+  deleteCuenta:`${API_BASE_URL}/usuario-delete/`,
 };

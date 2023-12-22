@@ -22,12 +22,14 @@ function App() {
     localStorage.removeItem('token');
     localStorage.removeItem("userData");
     setIsAuthenticated(false);
-    navigate("/")
-    // Usar navigate para redirigir al usuario a la ruta '/inicio'
+    navigate("/");
   };
 
   return (
-      <><Cabecero isAuthenticated={isAuthenticated} logout={logout} /><Rutas isAuthenticated={isAuthenticated} setIsAuthenticated={setIsAuthenticated} /></>
+      <><Cabecero isAuthenticated={isAuthenticated} logout={logout} /><Rutas isAuthenticated={isAuthenticated}
+       setIsAuthenticated={setIsAuthenticated}
+       logout={logout}
+        /></>
 
   );
 }

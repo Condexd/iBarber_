@@ -1,19 +1,27 @@
+import { mostrarConfirmacion } from "../../modulos/confirms";
+import { deleteFun } from "../../functions/deleteFun";
+import { API_URLS } from "../../modulos/urls";
+import { UserContext } from "../context/UserContext";
+import { useContext } from "react";
 
-function PerfilForm({
-  nombres,
-  apellidos,
-  correo,
-  telefono,
-  ciudad,
-  handleSubmit,
-  setNombres,
-  setApellidos,
-  setCorreo,
-  setTelefono,
-  setCiudad,
-  handleFileChange,
+function PerfilForm({nombres,apellidos, correo, telefono, ciudad, handleSubmit, setNombres, setApellidos, setCorreo,
+   setTelefono, setCiudad, handleFileChange,logout
 }) {
+  const { userData } = useContext(UserContext);
+  const deleteAccount= async(event)=>{
+    event.preventDefault();
+    const confirmacion = await mostrarConfirmacion(
+      "¿Eliminar?",
+      "¿Estás seguro de Eliminar esta cuenta?"
+    );
+    if (confirmacion.isConfirmed) {
+      const result = await deleteFun(`${API_URLS.deleteCuenta}${userData.usuario}`)
+      if(result){
+       logout();
+      }
 
+    };
+  }
   return (
     <form className="w-50 p-3" onSubmit={handleSubmit} >
       <ul className="row gap-3" id="datos-personales">
@@ -89,7 +97,7 @@ function PerfilForm({
               className="btn btn-success"
               value="Guardar cambios"
             />
-            <button className="btn btn-link">Cancelar</button>
+            <button className="btn btn-link" onClick={deleteAccount}>Eliminar Cuenta</button>
           </div>
         </li>
       </ul>

@@ -6,7 +6,7 @@ import { API_URLS } from "../../modulos/urls";
 import "../../Estilos/misCitas.css";
 import { mostrarMensajeExitoDelete } from "../../modulos/alertas";
 import { mostrarConfirmacion } from "../../modulos/confirms";
-import { deleteCita } from "../../functions/deleteCita";
+import { deleteFun } from "../../functions/deleteFun";
 
 export const MisCitas = () => {
   const { userData } = useContext(UserContext);
@@ -21,7 +21,7 @@ export const MisCitas = () => {
       "¿Estás seguro de cancelar esta cita?"
     );
     if (confirmacion.isConfirmed) {
-      const { cuerpo } = await deleteCita(`${API_URLS.deleteCita}/${citaId}`);
+      const { cuerpo } = await deleteFun(`${API_URLS.deleteCita}/${citaId}`);
 
       let updatedData = {};
 

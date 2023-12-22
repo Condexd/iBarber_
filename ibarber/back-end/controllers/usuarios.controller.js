@@ -89,3 +89,19 @@ export const obtenerUsuario = async (req, res) => {
     res.status(500).json({ message: 'Error interno del servidor' });
   }
 };
+
+export const deleteAccount = async (req, res) => {
+  const { id } = req.params;
+
+  try {
+    const result = await usuarioModel.deleteOne({ usuario: id });
+    if (result.deletedCount === 1) {
+      return res.status(200).json({ message: 'Cuenta eliminada exitosamente' });
+    } else {
+      return res.status(404).json({ message: 'No se encontró la cuenta para eliminar' });
+    }
+  } catch (error) {
+    console.error(error);
+    return res.status(500).json({ message: 'Error al eliminar la cuenta' });
+  }
+};

@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import Boton from "./boton";
 
 function Cabecero({ isAuthenticated, logout }) {
-  const { userData, setUserData } = useContext(UserContext);
+  const { userData} = useContext(UserContext);
   const [visible, setVisible] = useState(userData.barberia);
   const [menuVisible, setMenuVisible] = useState(false);
 

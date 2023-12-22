@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
-import { BrowserRouter as Router, Route, Routes,useNavigate, Navigate, } from 'react-router-dom'; // Asegúrate de importar useNavigate
+import {useNavigate } from 'react-router-dom';
 import Cabecero from "./componentes/layout/cabecero";
-import Footer from "./componentes/layout/footer";
 import Rutas from "./componentes/rutas";
 
 function App() {
@@ -10,7 +9,7 @@ function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   // Efecto para verificar la autenticación al cargar la página
   useEffect(() => { 
-    const token = localStorage.getItem('token');  
+    const token = localStorage.getItem('token');
     // Verificar si hay un token almacenado en localStorage (puedes personalizar esto)
     if (token) {
       setIsAuthenticated(true);

@@ -4,7 +4,6 @@ import FormularioBarberia from './FormularioBarberia';
 import { mostrarConfirmacion } from "../../modulos/confirms";
 import { API_URLS } from '../../modulos/urls';
 import { UserContext } from '../context/UserContext';
-import { actualizar } from '../../functions/usePut';
 import { useFetch } from '../../Hooks/useFetch';
 import { update } from '../../functions/updateBarber';
 

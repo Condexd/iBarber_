@@ -4,3 +4,4 @@
 http
 uploads/*
 !uploads/barber.jpg
+!uploads/Usuario.png

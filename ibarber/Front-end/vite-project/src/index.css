@@ -8,6 +8,7 @@
 @import url("./Estilos/recuperar.css");
 @import url("./Estilos/registrar.css");
 @import url("./Estilos/formCita.css");
+@import url("./Estilos/modalcontraseña.css");
 html{
     height: 100vh;
     width: 100vw;

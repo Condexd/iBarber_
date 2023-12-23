@@ -2,7 +2,6 @@ import { useState, useEffect, useContext } from 'react';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
 import { actualizar } from '../../functions/usePut'; 
 import { API_URLS } from '../../modulos/urls';
-import "../../Estilos/modalcontraseña.css";
 import { UserContext } from "../context/UserContext";
 
 const CambioContrasenaModal = ({ setVisible }) => {

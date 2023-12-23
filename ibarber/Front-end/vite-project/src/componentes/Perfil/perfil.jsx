@@ -5,8 +5,7 @@ import { actualizar } from "../../functions/usePut";
 import PerfilForm from "./PerfilForm";
 import PerfilInfo from "./PerfilInfo";
 import { mostrarConfirmacion } from "../../modulos/confirms";
-import { useFetch } from "../../Hooks/useFetch";
-import CambioContrasenaModal from './CambioContrasenaModal';
+import { useFetch } from "../../Hooks/useFetch";;
 
 function Perfil({logout}) {
   const { userData } = useContext(UserContext);
@@ -19,7 +18,6 @@ function Perfil({logout}) {
   const [telefono, setTelefono] = useState("");
   const [barbero, setBarbero] = useState("");
   const [active, setActive] = useState(false);
-  const [showCambioContrasenaModal, setShowCambioContrasenaModal] = useState(false);
   const [fotoPerfil, setFotoPerfil] = useState(null);
   const [imgPreview, setImgPreview] = useState("");
   const [imgVersion, setImgVersion] = useState(Date.now());
@@ -102,10 +100,6 @@ function Perfil({logout}) {
           handleFileChange={handleFileChange}
           logout={logout}
         />
-        <button onClick={() => setShowCambioContrasenaModal(true)}>Cambiar Contraseña</button>
-        {showCambioContrasenaModal && (
-          <CambioContrasenaModal setVisible={setShowCambioContrasenaModal} />
-        )}
       </div>
     </main>
   );

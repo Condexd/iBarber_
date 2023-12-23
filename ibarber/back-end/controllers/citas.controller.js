@@ -96,6 +96,20 @@ export const postCita = async (req, res) => {
     }
 
     const cita = await citaModel.create(req.body);
+
+    // Enviar correo electrónico de confirmación al cliente
+    const cliente = await usuarioModel.findOne({ 'usuario': req.body.cliente });
+    if (cliente && cliente.correo) {
+      const detallesCita = {
+        barbero: req.body.barbero,
+        fecha: req.body.fecha,
+        hora: req.body.hora,
+      };
+
+      const mensaje = correoelectronicoConfirmacion(cliente.usuario, detallesCita);
+      await enviarCorreo(cliente.correo, 'Confirmación de Cita', mensaje);
+    }
+
     res.status(201).json({
       message: 'Cita creada!',
       data: cita

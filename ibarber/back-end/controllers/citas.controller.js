@@ -1,4 +1,4 @@
-import { BarberiaModel, citaModel, usuarioModel } from "../Modulos/barril.js";
+import { BarberiaModel, citaModel, usuarioModel,correoelectronicoConfirmacion,enviarCorreo } from "../Modulos/barril.js";
 import moment from 'moment';
 export const getCitas = async (req, res) => {
   try {
@@ -64,7 +64,7 @@ export const postCita = async (req, res) => {
   try {
     const barberoEncontrado = await BarberiaModel.findOne({ 'barberos.usuario': req.body.barbero });
     const barber = await usuarioModel.findOne({ 'usuario': req.body.barbero });
-    const { fecha } = req.body;
+    const { fecha, hora } = req.body;
 
     if (!barber.active) {
       return res.status(404).json({
@@ -78,15 +78,15 @@ export const postCita = async (req, res) => {
       });
     }
 
-    // Convertir la fecha en formato de cadena a un objeto de Moment.js
-    const nuevaFecha = moment(fecha, 'DD/MM/YYYY, HH:mm:ss');
+    // Convertir la fecha y hora en formato de cadena a objetos de Moment.js
+    const nuevaFecha = moment(`${fecha} ${hora}`, 'DD/MM/YYYY HH:mm:ss');
 
     // Obtener todas las citas programadas para el barbero
     const citasBarbero = await citaModel.find({ 'barbero': req.body.barbero }).sort({ fecha: 1 });
 
     // Verificar si hay al menos 30 minutos de diferencia con cada cita existente
     for (let i = 0; i < citasBarbero.length; i++) {
-      const tiempoDiferencia = nuevaFecha.diff(moment(citasBarbero[i].fecha, 'DD/MM/YYYY, HH:mm:ss'), 'minutes');
+      const tiempoDiferencia = nuevaFecha.diff(moment(citasBarbero[i].fecha, 'DD/MM/YYYY HH:mm:ss'), 'minutes');
 
       if (tiempoDiferencia >= 0 && tiempoDiferencia < 30) {
         return res.status(400).json({
@@ -102,25 +102,35 @@ export const postCita = async (req, res) => {
     if (cliente && cliente.correo) {
       const detallesCita = {
         barbero: req.body.barbero,
-        fecha: req.body.fecha,
-        hora: req.body.hora,
+        fecha: nuevaFecha.format('DD/MM/YYYY'),
+        hora: nuevaFecha.format('HH:mm:ss'),
       };
 
       const mensaje = correoelectronicoConfirmacion(cliente.usuario, detallesCita);
-      await enviarCorreo(cliente.correo, 'Confirmación de Cita', mensaje);
-    }
+      const resultado = await enviarCorreo(cliente.correo, 'Confirmación de Cita', mensaje);
 
+      if (resultado) {
+        return res.status(201).json({
+          message: 'Cita creada!',
+          data: cita
+        });
+      }
+    }
     res.status(201).json({
       message: 'Cita creada!',
       data: cita
     });
+
   } catch (error) {
+    console.error('Error al crear la cita:', error);
+
     res.status(500).json({
       message: 'Error al crear la cita',
       error: error.message
     });
   }
 };
+
 
 
 export const putCita = async (req, res) => {

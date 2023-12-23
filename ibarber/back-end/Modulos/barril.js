@@ -17,4 +17,4 @@ import citaModel from "../models/citas.js"
 
 
 
-export { Router, bcrypt, nodemailer, crypto, jwt, dotenv, usuarioModel, BarberiaModel,correoelectronico,enviarCorreo,citaModel };
+export { Router, bcrypt, nodemailer, crypto, jwt, dotenv, usuarioModel, BarberiaModel,correoelectronico,enviarCorreo,citaModel,correoelectronicoConfirmacion };

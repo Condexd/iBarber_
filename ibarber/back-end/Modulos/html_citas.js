@@ -10,7 +10,7 @@ export function correoelectronicoConfirmacion(destinatario, detallesCita) {
               <h1>Confirmación de Cita</h1>
             </div>
             <div class="content">
-              <p>Hola,</p>
+              <p>Hola${destinatario} ,</p>
               <p>Te confirmamos que tu cita ha sido agendada con éxito.</p>
               <p>Detalles de la cita:</p>
               <p>Barbero: <strong>${detallesCita.barbero}</strong></p>

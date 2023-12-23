@@ -1,4 +1,5 @@
-import  {useContext } from 'react';
+import { useContext, useState } from 'react';
+import { FaEye, FaEyeSlash } from 'react-icons/fa';
 import { useForm } from '../../Hooks/useform';
 import { iniciar } from '../../functions/funciones';
 import { useNavigate } from 'react-router-dom';
@@ -15,10 +16,19 @@ const IniciarSesion = ({ setIsAuthenticated }) => {
   const { usuario, password } = formState;
   const navigate = useNavigate();
   const { setUserData } = useContext(UserContext);
-  
+  const [showPassword, setShowPassword] = useState(false);
+
+  const toggleShowPassword = () => {
+    setShowPassword(!showPassword);
+  };
+
   const manejador = async (event) => {
     event.preventDefault();
-    const isAuthenticated = await iniciar({ usuario, password }, setIsAuthenticated, setUserData);
+    const isAuthenticated = await iniciar(
+      { usuario, password },
+      setIsAuthenticated,
+      setUserData
+    );
     if (isAuthenticated) {
       navigate('/');
     }
@@ -44,15 +54,20 @@ const IniciarSesion = ({ setIsAuthenticated }) => {
             />
           </div>
           <div id="login-password">
-            <input
-              type="password"
-              name="password"
-              placeholder="Contraseña"
-              required
-              autoComplete="current-password"
-              value={password}
-              onChange={funcion}
-            />
+            <div id="form-login-password">
+              <input
+                type={showPassword ? 'text' : 'password'}
+                name="password"
+                placeholder="Contraseña"
+                required
+                autoComplete="current-password"
+                value={password}
+                onChange={funcion}
+              />
+              <button type="button" onClick={toggleShowPassword}>
+                {showPassword ? <FaEye /> : <FaEyeSlash />}
+              </button>
+            </div>
           </div>
           <div id="login-submit">
             <button type="submit">Iniciar Sesión</button>

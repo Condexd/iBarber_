@@ -5,7 +5,11 @@ const citaSchema = new Schema({
   cliente: String,
   barbero: String,
   cita_realizada: Boolean,
-  cita_cancelada: Boolean
+  cita_cancelada: Boolean,
+  confirmacion_barbero: {
+    estadoCita: { type: String, enum: ['pendiente', 'aceptado'], default: 'pendiente' },
+    comentario: String
+  }
 });
 
 const Cita = model('Cita', citaSchema);

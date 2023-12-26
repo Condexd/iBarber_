@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { getCita, getCitas, postCita, putCita, deleteCita } from "../controllers/citas.controller.js";
+import { getCita, getCitas, postCita, putCita, deleteCita,patchCita } from "../controllers/citas.controller.js";
 
 const router = Router();
 
@@ -12,5 +12,6 @@ router.post('/', postCita);
 router.put('/:id', putCita);
 
 router.delete('/:id', deleteCita);
+router.patch("/updateCita/:id",patchCita)
 
 export default router;

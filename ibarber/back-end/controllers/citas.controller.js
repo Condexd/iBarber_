@@ -17,20 +17,12 @@ export const getCitas = async (req, res) => {
 
     let clienteEncontrado = citasCliente.length > 0;
     let barberoEncontrado = citasBarbero.length > 0;
-
     let response = {};
 
     // Devolver las citas correspondientes al tipo de usuario
-    if (clienteEncontrado) {
-      response.cliente = citasCliente;
-    } else if (barberoEncontrado) {
-      response.barbero = citasBarbero;
-    } else {
-      return res.status(404).json({
-        message: 'No se encontró el usuario'
-      });
-    }
-
+    response.cliente = clienteEncontrado ? citasCliente : null;
+    response.barbero = barberoEncontrado ? citasBarbero : null;
+   
     // Devolver la respuesta con las citas encontradas para el usuario
     return res.status(200).json(response);
   } catch (error) {
@@ -187,3 +179,32 @@ export const deleteCita = async (req, res) => {
     });
   }
 }
+
+export const patchCita = async (req, res) => {
+  try {
+    const citaId = req.params.id;
+    console.log(citaId, req.body.estadoCita );
+
+    const citaActualizada = await citaModel.findByIdAndUpdate(
+      citaId,
+      { $set: { "confirmacion_barbero.estadoCita": req.body.estadoCita } },
+      { new: true }
+    );
+
+    if (!citaActualizada) {
+      return res.status(404).json({
+        message: "Cita no encontrada",
+      });
+    }
+
+    res.status(200).json({
+      message: "Cita actualizada",
+      data: citaActualizada,
+    });
+  } catch (error) {
+    res.status(500).json({
+      message: "Error al actualizar la cita",
+      error: error.message,
+    });
+  }
+};

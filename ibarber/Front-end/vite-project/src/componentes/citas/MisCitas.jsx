@@ -1,19 +1,31 @@
-import { useContext } from "react";
+import { useContext, useState, useEffect } from "react";
 import { UserContext } from "../context/UserContext";
 import { useFetch } from "../../Hooks/useFetch";
-
 import { API_URLS } from "../../modulos/urls";
 import "../../Estilos/misCitas.css";
 import { mostrarMensajeExitoDelete } from "../../modulos/alertas";
 import { mostrarConfirmacion } from "../../modulos/confirms";
 import { deleteFun } from "../../functions/deleteFun";
-
+import { updateLittle } from "../../functions/Patch";
+import CitaItem from "./citaItem";
 export const MisCitas = () => {
   const { userData } = useContext(UserContext);
   const { data, isLoading, hasError, setState } = useFetch(
     `${API_URLS.obtenerCitasFiltradas}/${userData.usuario}`
   );
+  const ChangeCita = async (citaId, event) => {
+    const confirmacion = await mostrarConfirmacion(
+      "¿Enviar datos?",
+      "¿Estás seguro de aceptar la cita?"
+    );
 
+    if (confirmacion.isConfirmed) {
+      const result = await updateLittle(`${API_URLS.updateCita}/${citaId}`, {
+        estadoCita: "aceptado",
+      });
+      return result;
+    }
+  };
   const handleDelete = async (citaId, event) => {
     event.preventDefault();
     const confirmacion = await mostrarConfirmacion(
@@ -38,11 +50,11 @@ export const MisCitas = () => {
       }
 
       setState({ data: updatedData, isLoading: false, haserror: null });
-      mostrarMensajeExitoDelete("Cita eliminada correctamente");
+      mostrarMensajeExitoDelete("Cita Cancelada");
     }
   };
 
-  const renderCitas = (citas, tipo) => {
+  function renderCitas(citas, tipo) {
     return (
       <div className="citas-container" key={tipo}>
         <div
@@ -54,29 +66,18 @@ export const MisCitas = () => {
         </div>
         <ul className="citas-list">
           {citas.map((cita) => (
-            <li className="cita-item" key={cita._id}>
-              <div>
-                <span className="cita-property">Fecha:</span> {cita.fecha}
-                <br />
-                <span className="cita-property">Cliente:</span> {cita.cliente}
-                <br />
-                <span className="cita-property">Barbero:</span> {cita.barbero}
-              </div>
-
-              <aside>
-                <button
-                  className="eliminar-cita"
-                  onClick={(event) => handleDelete(cita._id, event)}
-                >
-                  Cancelar cita
-                </button>
-              </aside>
-            </li>
+            <CitaItem
+              key={cita._id}
+              cita={cita}
+              tipo={tipo}
+              onAccept={ChangeCita}
+              onCancel={handleDelete}
+            />
           ))}
         </ul>
       </div>
     );
-  };
+  }
 
   if (isLoading) {
     return <div>Cargando...</div>;

@@ -73,7 +73,7 @@ const CambioContrasenaModal = ({ setVisible }) => {
         </span>
         <h2 className='Cambiar-contrasena'>Cambiar Contraseña</h2>
         <form onSubmit={handleSubmit} className='form-content'>
-          <div className='contenedorees'>
+          <div className='contenedor-password'>
             <label htmlFor="contrasenaActual">Contraseña Actual</label>
             <input
               type={showPassword.contrasenaActual ? 'text' : 'password'}
@@ -84,12 +84,13 @@ const CambioContrasenaModal = ({ setVisible }) => {
             />
             <button
               type="button"
+              className="show-password-btn"
               onClick={() => handleToggleShowPassword('contrasenaActual')}
             >
               {showPassword.contrasenaActual ? <FaEye /> : <FaEyeSlash />}
             </button>
           </div>
-          <div className='contenedorees'>
+          <div className='contenedor-password'>
             <label htmlFor="nuevaContrasena">Nueva Contraseña</label>
             <input
               type={showPassword.nuevaContrasena ? 'text' : 'password'}
@@ -100,14 +101,16 @@ const CambioContrasenaModal = ({ setVisible }) => {
             />
             <button
               type="button"
+              className="show-password-btn"
               onClick={() => handleToggleShowPassword('nuevaContrasena')}
             >
               {showPassword.nuevaContrasena ? <FaEye /> : <FaEyeSlash />}
             </button>
           </div>
-          <div className='contenedorees'>
+          <div className='contenedor-password'>
             <label htmlFor="confirmarContrasena">Confirmar Contraseña</label>
             <input
+              className="input-password" 
               type={showPassword.confirmarContrasena ? 'text' : 'password'}
               id="confirmarContrasena"
               name="confirmarContrasena"
@@ -116,12 +119,13 @@ const CambioContrasenaModal = ({ setVisible }) => {
             />
             <button
               type="button"
+              className="show-password-btn"
               onClick={() => handleToggleShowPassword('confirmarContrasena')}
             >
               {showPassword.confirmarContrasena ? <FaEye /> : <FaEyeSlash />}
             </button>
           </div>
-          <button className='botonCambiarContrasena' type="submit">Cambiar Contraseña</button>
+          <button className='change-password-btn' type="submit">Cambiar Contraseña</button>
         </form>
       </div>
     </div>

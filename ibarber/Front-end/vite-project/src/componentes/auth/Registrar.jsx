@@ -4,6 +4,9 @@ import { Link } from 'react-router-dom';
 import { mostrarConfirmacion } from '../../modulos/confirms';
 import { API_URLS } from "../../modulos/urls";
 import { useNavigate } from "react-router-dom";
+import { FaEye, FaEyeSlash } from 'react-icons/fa';
+import { useState } from 'react';
+
 function Registrar() {
   const{formState,funcion}=useForm({
         nombres:"",
@@ -15,6 +18,11 @@ function Registrar() {
   })
   const{nombres,apellidos,usuario,password,email}=formState
 const navigate=useNavigate();
+const [showPassword, setShowPassword] = useState(false);
+
+const toggleShowPassword = () => {
+  setShowPassword(!showPassword);
+};
 
   const manejador = async (event) => {
     event.preventDefault();
@@ -84,15 +92,21 @@ const navigate=useNavigate();
           </ul>
           <ul id="form-password">
             <li>
-              <input
-                type="password"
-                id="password"
-                autoComplete="email"
-                name="password"
-                placeholder="Contraseña"
-                required
-                value={password}
-                onChange={funcion} />
+              <div id="form-register-password">
+                <input
+                  type={showPassword ? 'text' : 'password'}
+                  id="password"
+                  autoComplete="new-password"
+                  name="password"
+                  placeholder="Contraseña"
+                  required
+                  value={password}
+                  onChange={funcion}
+                />
+                <button type="button" onClick={toggleShowPassword}>
+                  {showPassword ? <FaEye /> : <FaEyeSlash />}
+                </button>
+              </div>
             </li>
           </ul>
           <ul id="form-button">

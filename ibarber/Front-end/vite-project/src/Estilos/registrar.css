@@ -1,8 +1,3 @@
-ul, ol {
-  margin: 0;
-  padding: 0;
-}
-
 #form-container {
   height: 75vh;
   display: flex;
@@ -23,7 +18,10 @@ ul, ol {
   column-gap: 8px;
 }
 
-#form-register > #form-title, #form-email, #form-button, #form-cuentaCreada {
+#form-register > #form-title,
+#form-register > #form-email,
+#form-register > #form-button,
+#form-register > #form-cuentaCreada {
   grid-column: 1/3;
 }
 
@@ -48,8 +46,53 @@ ul, ol {
   margin-top: 8px;
 }
 
+#form-register-password {
+  position: relative;
+}
+
+#form-register-password > input {
+  width: 100%;
+  height: 38px;
+  border-radius: 4px;
+  border: 1px solid gray;
+}
+
+#form-register-password > button {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 38px;
+  height: 38px;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+#form-register-password > button:hover {
+  background-color: #dddddd;
+}
+
+#form-register-password > button > svg {
+  width: 18px;
+  height: 18px;
+  color: #333;
+}
+
+#form-button {
+  grid-column: 1/3;
+}
+
 #form-cuentaCreada {
   display: flex;
   justify-content: center;
   margin-bottom: 8px;
+}
+
+dl, ol, ul {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+ol, ul {
+  padding-left: 0;
 }

@@ -2,7 +2,6 @@ import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { UserContext } from "../context/UserContext";
 function PerfilInfo({ nombres,apellidos, img,setActive,active,barbero,barberia }) {
-  const { userData,  } = useContext(UserContext);
   return (
     <section className="p-3 w-25 d-flex align-items-center justify-content-center" >
       <div className="d-flex flex-column gap-1"> 

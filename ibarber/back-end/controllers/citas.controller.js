@@ -1,9 +1,10 @@
-import { BarberiaModel, citaModel, usuarioModel,correoelectronicoConfirmacion,enviarCorreo } from "../Modulos/barril.js";
+import { BarberiaModel, citaModel, usuarioModel,correoelectronicoConfirmacion,enviarCorreo,verificarTokenYObtenerUsuario } from "../Modulos/barril.js";
 import moment from 'moment';
 export const getCitas = async (req, res) => {
   try {
-    const { usuario } = req.params;
-
+    console.log("hola")
+    const token = req.headers.authorization;
+    const {usuario} = await verificarTokenYObtenerUsuario(token);
     // Buscar las citas en las que el usuario sea cliente o barbero
     const citasUsuario = await citaModel.find({ $or: [{ cliente: usuario }, { barbero: usuario }] });
 
@@ -54,6 +55,9 @@ export const getCita = async (req, res) => {
 
 export const postCita = async (req, res) => {
   try {
+    const token = req.headers.authorization;
+   await verificarTokenYObtenerUsuario(token);
+
     const barberoEncontrado = await BarberiaModel.findOne({ 'barberos.usuario': req.body.barbero });
     const barber = await usuarioModel.findOne({ 'usuario': req.body.barbero });
     const { fecha, hora } = req.body;

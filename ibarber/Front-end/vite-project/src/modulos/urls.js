@@ -18,10 +18,10 @@ export const API_URLS = {
   obtenerBarberosNombreBarberia: `${API_BASE_URL}/barberos`,
   obtenerInfoUsuario:`${API_BASE_URL}/date-user`,//autenticada
   actualizarBarbero:`${API_BASE_URL}/barberia/edit-barber`,//necesita
-  obtenerCitasFiltradas: `${API_BASE_URL}/citas`,//necesita
+  obtenerCitasFiltradas: `${API_BASE_URL}/citas/misCitas`,//autenticado
   actualizarContrasena:`${API_BASE_URL}/usuario-password`,//autenticada
   obtenerImage:`${API_BASE}`,
-  deleteCita: `${API_BASE_URL}/citas`,//necesita
+  deleteCita: `${API_BASE_URL}/citas`,//NO
   deleteCuenta:`${API_BASE_URL}/usuario-delete`,//autenticada
-  updateCita:`${API_BASE_URL}/citas/updateCita`//necesita
+  updateCita:`${API_BASE_URL}/citas/updateCita`//NO
 };

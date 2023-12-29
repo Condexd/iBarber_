@@ -1,10 +1,10 @@
 import { useState, useContext } from "react";
-import { enviador } from "../../functions/usePost";
 import { mostrarConfirmacion } from "../../modulos/confirms";
 import { API_URLS } from "../../modulos/urls";
 import { useFetch } from "../../Hooks/useFetch";
 import { UserContext } from "../context/UserContext";
 import { mostrarMensajeError } from "../../modulos/alertas";
+import { enviadorAuth } from "../../functions/usePostAuth";
 
 export const CitaForm = () => {
   const { userData } = useContext(UserContext);
@@ -65,7 +65,7 @@ export const CitaForm = () => {
     const fechaHoraFormateada = fechaHoraSeleccionada.toLocaleString();
 
     // Enviar los datos
-    enviador(API_URLS.agendar_cita, {
+    enviadorAuth(API_URLS.agendar_cita, {
       fecha: fechaHoraFormateada,
       barbero,
       cliente: userData.usuario,

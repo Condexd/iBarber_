@@ -1,6 +1,5 @@
 import { useContext, useState, useEffect } from "react";
 import { UserContext } from "../context/UserContext";
-import { useFetch } from "../../Hooks/useFetch";
 import { API_URLS } from "../../modulos/urls";
 import "../../Estilos/misCitas.css";
 import { mostrarMensajeExitoDelete } from "../../modulos/alertas";
@@ -8,11 +7,11 @@ import { mostrarConfirmacion } from "../../modulos/confirms";
 import { deleteFun } from "../../functions/deleteFun";
 import { updateLittle } from "../../functions/Patch";
 import CitaItem from "./citaItem";
+import { useFetchuno } from "../../Hooks/useFetchintento";
 export const MisCitas = () => {
   const { userData } = useContext(UserContext);
-  const { data, isLoading, hasError, setState } = useFetch(
-    `${API_URLS.obtenerCitasFiltradas}/${userData.usuario}`
-  );
+  const { data, isLoading, hasError, setState } = useFetchuno(`${API_URLS.obtenerCitasFiltradas}`);
+
   const ChangeCita = async (citaId, event) => {
     const confirmacion = await mostrarConfirmacion(
       "¿Enviar datos?",

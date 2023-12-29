@@ -10,13 +10,14 @@ import { deleteBarber } from '../../functions/delete';
 import { mostrarMensajeExitoDelete } from '../../modulos/alertas';
 import { mostrarConfirmacion } from '../../modulos/confirms';
 import { EditBarberos } from './EditBarberos';
+import { useFetchuno } from '../../Hooks/useFetchintento';
 export const MisBarberos = () => {
   const { userData} = useContext(UserContext);
   const [usuario] = useState(userData.usuario);
   const [barbero, setBarbero] = useState('');
   const [visible, setVisible] = useState(false);
-  const apiUrl = `${API_URLS.obtenerBarberos}/${usuario}`;
-  const { data, isLoading, haserror,setState } = useFetch(apiUrl);
+  const apiUrl = `${API_URLS.obtenerBarberos}`;
+  const { data, isLoading, haserror,setState } = useFetchuno(apiUrl);
 
   const handleEdit = (barber,event) => {
     event.preventDefault();

@@ -59,10 +59,11 @@ export const getBarberia = async (req, res) => {
 }
 
 export const getBarberos = async (req, res) => {
-  const barberiaId = req.params.id;
+  const token = req.headers.authorization;
+  const {usuario:id} = await verificarTokenYObtenerUsuario(token);
 
   try {
-    const barberia = await BarberiaModel.findOne({ "dueño.usuario": barberiaId });
+    const barberia = await BarberiaModel.findOne({ "dueño.usuario": id });
     if (barberia) {
       const barberos = barberia.barberos;
       res.status(200).json(barberos);
@@ -169,7 +170,9 @@ export const deleteBarber = async (req, res) => {
 
 
 export const postBarber = async (req, res) => {
-  const { id } = req.params;
+
+  const token = req.headers.authorization;
+  const {usuario:id} = await verificarTokenYObtenerUsuario(token);
   const { usuario, numero, biografia, especialidad, experiencia } = req.body;
 
   try {

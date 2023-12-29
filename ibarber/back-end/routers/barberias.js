@@ -4,13 +4,13 @@ const router = Router();
 
 //registro de barberia
 router.post("/barberia", registroBarberia);
-router.post("/barberia/new-barber/:id",postBarber);
+router.post("/barberia/new-barber",postBarber);
 
 router.get('/barberias', getBarberias);
 
 router.get('/barberia/info', getBarberia);
 
-router.get('/barberia/barberos/:id', getBarberos);
+router.get('/barberia/barberos', getBarberos);
 
 router.get('/barberos', getBarberosall);
 router.get('/barberos/:id', obtenerBarberosPorNombreBarberia);

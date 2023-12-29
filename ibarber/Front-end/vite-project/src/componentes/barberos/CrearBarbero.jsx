@@ -1,11 +1,8 @@
 import { useState ,useContext} from 'react';
-import { UserContext } from '../context/UserContext';
-import { enviador } from '../../functions/usePost';
 import { API_URLS } from '../../modulos/urls';
 import { useNavigate } from 'react-router-dom';
+import { enviadorAuth } from '../../functions/usePostAuth';
 export const CrearBarbero = () => {
-  const { userData} = useContext(UserContext);
-  const [usuarioDueño, setUsuarioDueño] = useState(userData.usuario);
   const [usuario, setUsuario] = useState('');
   const [numero, setNumero] = useState('');
   const [biografia, setBiografia] = useState('');
@@ -31,9 +28,8 @@ export const CrearBarbero = () => {
   const navigate = useNavigate();
   const handleSubmit =async (event) => {
     event.preventDefault();
-    const result = await enviador(`${API_URLS.crearBarbero}/${usuarioDueño}`,{ usuario, numero, biografia, especialidad, experiencia })
+    const result = await enviadorAuth(`${API_URLS.crearBarbero}`,{ usuario, numero, biografia, especialidad, experiencia })
     if(result){
-     console.log(result)
      navigate("/empleados") }
   };
 

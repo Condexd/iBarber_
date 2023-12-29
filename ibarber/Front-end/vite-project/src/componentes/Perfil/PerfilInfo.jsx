@@ -1,10 +1,8 @@
 import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { UserContext } from "../context/UserContext";
-function PerfilInfo({ nombres,apellidos, img,setActive,active,barbero }) {
+function PerfilInfo({ nombres,apellidos, img,setActive,active,barbero,barberia }) {
   const { userData,  } = useContext(UserContext);
-  const [visible] = useState(userData.barberia);
-
   return (
     <section className="p-3 w-25 d-flex align-items-center justify-content-center" >
       <div className="d-flex flex-column gap-1"> 
@@ -22,7 +20,7 @@ function PerfilInfo({ nombres,apellidos, img,setActive,active,barbero }) {
           </span>
         </div>
         <div>
-          {!visible && (
+          {!barberia && (
             <Link to="/new-barberia">
               <button className="btn btn-success mt-2 fs-6">
                 Crear mi barbería

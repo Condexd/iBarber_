@@ -20,6 +20,7 @@ export const registroBarberia = async (req, res) => {
     });
 
     const result = await newBarberia.save();
+    await usuarioModel.findOneAndUpdate({ usuario: usuario }, { $set: { barberia: true } });
     res.status(201).json({ message: "Registro exitoso", data: result });
   } catch (error) {
     console.error("Error al registrar la barbería:", error);

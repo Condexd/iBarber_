@@ -4,6 +4,7 @@ const citaSchema = new Schema({
   fecha: String,
   cliente: String,
   barbero: String,
+  reseña: String,
   cita_realizada: Boolean,
   cita_cancelada: Boolean,
   confirmacion_barbero: {

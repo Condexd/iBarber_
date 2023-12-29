@@ -5,12 +5,13 @@ import { actualizar } from "../../functions/usePut";
 import PerfilForm from "./PerfilForm";
 import PerfilInfo from "./PerfilInfo";
 import { mostrarConfirmacion } from "../../modulos/confirms";
-import { useFetch } from "../../Hooks/useFetch";;
+import { useFetchuno } from "../../Hooks/useFetchintento";
+;
 
 function Perfil({logout}) {
   const { userData } = useContext(UserContext);
-  const apiUrl = `${API_URLS.obtenerInfoUsuario}/${userData.usuario}`;
-  const { data } = useFetch(apiUrl);
+  const apiUrl = `${API_URLS.obtenerInfoUsuario}`;
+  const { data } = useFetchuno(apiUrl);
   const [nombres, setNombres] = useState("");
   const [apellidos, setApellidos] = useState("");
   const [correo, setCorreo] = useState("");

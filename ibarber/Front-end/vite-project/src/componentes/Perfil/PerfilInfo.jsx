@@ -1,38 +1,50 @@
 import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { UserContext } from "../context/UserContext";
-function PerfilInfo({ nombres,apellidos, img,setActive,active,barbero }) {
-  const { userData,  } = useContext(UserContext);
+import { FaCamera } from "react-icons/fa";
+
+function PerfilInfo({ nombres, apellidos, img, setActive, active, barbero, handleFileChange }) {
+  const { userData } = useContext(UserContext);
   const [visible] = useState(userData.barberia);
 
   return (
-    <section className="p-3 w-25 d-flex align-items-center justify-content-center" >
-      <div className="d-flex flex-column gap-1"> 
-        <img
-          id="img-perfil"
-          className="rounded-circle"
-          src={img}
-          width={200}
-          height={200}
-          alt="Perfil"
-        />
+    <section className="info-profile">
+      <div className="info-profile__container">
         <div>
-          <span className="text-start lh-lg semibold fs-5">
-            {nombres} {apellidos}
-          </span>
+          <img
+            className="profile-image"
+            src={img}
+            width={200}
+            height={200}
+            alt="Perfil"
+          />
+          <label className="label--upload-image">
+            <input
+              className="input-image--profile"
+              type="file"
+              accept="image/*"
+              onChange={handleFileChange}
+              name="perfil"
+            />
+            <span className="camera-container">
+              <FaCamera className="camera-container__camera-icon" />
+            </span>
+          </label>
+        </div>
+        <div className="info-profile__container__data">
+          <span className="profile-data">{nombres}</span>
+          <span className="profile-data">{apellidos}</span>
         </div>
         <div>
           {!visible && (
             <Link to="/new-barberia">
-              <button className="btn btn-success mt-2 fs-6">
-                Crear mi barbería
-              </button>
+              <button className="">Crear mi barbería</button>
             </Link>
           )}
         </div>
-        <div >
+        <div>
           {barbero > 0 && (
-            <div className="contenedorbtn">
+            <div className="profile-">
               <label className="switch">
                 <input
                   type="checkbox"

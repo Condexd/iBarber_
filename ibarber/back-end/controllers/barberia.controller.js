@@ -96,7 +96,7 @@ export const obtenerBarberosPorNombreBarberia = async (req, res) => {
 
 export const updateBarberia = async (req, res) => {
   const nombreUsuario = req.params.id;
-  const { nombre, ciudad ,descripcion, email, telefono } = req.body;
+  const { nombre, ciudad, descripcion, email, telefono, direccion } = req.body;
 
   try {
     const updatedBarberia = await BarberiaModel.findOneAndUpdate(
@@ -106,7 +106,8 @@ export const updateBarberia = async (req, res) => {
         nombre_ciudad: ciudad,
         descripcion_barberia:descripcion,
         email: email,
-        telefono : telefono
+        telefono : telefono, 
+        direccion_barberia : direccion
       },
       { new: true }
     );

@@ -1,4 +1,4 @@
-const FormularioBarberia = ({ nombre, setNombre, descripcion, setDescripcion, email, setEmail, telefono, setTelefono, ciudad, setCiudad, handleSubmit }) => {
+const FormularioBarberia = ({ nombre, setNombre, descripcion, setDescripcion, email, setEmail, telefono, setTelefono, ciudad, setCiudad, direccion, setDireccion,handleSubmit }) => {
   return (
     <form className="w-50 p-3" onSubmit={handleSubmit}>
       <ul className="row gap-3" id="datos-personales">
@@ -35,12 +35,24 @@ const FormularioBarberia = ({ nombre, setNombre, descripcion, setDescripcion, em
             <option value="Cali">Cali</option>
           </select>
         </li>
+        <li className="col-5 row">
+          <label>Dirección</label>
+          <input
+            type="text"
+            name="direccion"
+            required
+            placeholder="Dirección"
+            value={direccion}
+            onChange={(e) => setDireccion(e.target.value)}
+          />
+        </li>
         <li className="row">
           <div className="mt-5 d-flex align-content-center">
             <input type="submit" className="btn btn-success" value="Guardar cambios" />
             <button className="btn btn-link">Cancelar</button>
           </div>
         </li>
+        
       </ul>
     </form>
   );

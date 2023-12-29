@@ -2,26 +2,26 @@
 const API_BASE_URL = 'http://localhost:3300/api';
 const API_BASE=`http://localhost:3300`
 export const API_URLS = {
-  BARBERIA: `${API_BASE_URL}/barberia`,
+  BARBERIA: `${API_BASE_URL}/barberia`,//no
   USUARIO: `${API_BASE_URL}/usuario`,//autenticada,
-  Registrar: `${API_BASE_URL}/Registrar`,
-  LOGIN: `${API_BASE_URL}/login`,
-  RECUPERAR: `${API_BASE_URL}/recuperar`,
-  ActualizarBarberia:`${API_BASE_URL}/barberia/`,
+  Registrar: `${API_BASE_URL}/Registrar`,//no
+  LOGIN: `${API_BASE_URL}/login`,//no
+  RECUPERAR: `${API_BASE_URL}/recuperar`,//no
+  ActualizarBarberia:`${API_BASE_URL}/barberia/actualizado`,//autenticado
   obtenerBarberos:`${API_BASE_URL}/barberia/barberos`,
-  crearBarbero:`${API_BASE_URL}/barberia/new-barber`,
-  eliminarBarbero:`${API_BASE_URL}/barberia/delete-barber`,
-  obtenerDatosBarberia:`${API_BASE_URL}/barberia`,
+  crearBarbero:`${API_BASE_URL}/barberia/new-barber`,//necesita
+  eliminarBarbero:`${API_BASE_URL}/barberia/delete-barber`,//necesita
+  obtenerDatosBarberia:`${API_BASE_URL}/barberia/info`,//autenticado
   obtenerBarberias:`${API_BASE_URL}/barberias`,
   obtenerBarberosAll:`${API_BASE_URL}/barberos`,
-  agendar_cita: `${API_BASE_URL}/citas`,
+  agendar_cita: `${API_BASE_URL}/citas`,//necesita
   obtenerBarberosNombreBarberia: `${API_BASE_URL}/barberos`,
   obtenerInfoUsuario:`${API_BASE_URL}/date-user`,//autenticada
-  actualizarBarbero:`${API_BASE_URL}/barberia/edit-barber`,
-  obtenerCitasFiltradas: `${API_BASE_URL}/citas`,
-  actualizarContrasena:`${API_BASE_URL}/usuario-password`,
+  actualizarBarbero:`${API_BASE_URL}/barberia/edit-barber`,//necesita
+  obtenerCitasFiltradas: `${API_BASE_URL}/citas`,//necesita
+  actualizarContrasena:`${API_BASE_URL}/usuario-password`,//autenticada
   obtenerImage:`${API_BASE}`,
-  deleteCita: `${API_BASE_URL}/citas`,
-  deleteCuenta:`${API_BASE_URL}/usuario-delete`,
-  updateCita:`${API_BASE_URL}/citas/updateCita`
+  deleteCita: `${API_BASE_URL}/citas`,//necesita
+  deleteCuenta:`${API_BASE_URL}/usuario-delete`,//autenticada
+  updateCita:`${API_BASE_URL}/citas/updateCita`//necesita
 };

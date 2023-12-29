@@ -1,4 +1,4 @@
-import { BarberiaModel, usuarioModel } from "../Modulos/barril.js";
+import { BarberiaModel, usuarioModel,verificarTokenYObtenerUsuario } from "../Modulos/barril.js";
 
 export const registroBarberia = async (req, res) => {
   try {
@@ -42,10 +42,11 @@ export const getBarberias = async (req, res) => {
 }
 
 export const getBarberia = async (req, res) => {
-  const barberiaId = req.params.id;
+  const token = req.headers.authorization;
+  const {usuario:id} = await verificarTokenYObtenerUsuario(token);
 
   try {
-    const barberia = await BarberiaModel.findOne({"dueño.usuario":barberiaId});
+    const barberia = await BarberiaModel.findOne({"dueño.usuario":id});
     if (barberia) {
       res.status(200).json(barberia);
     } else {
@@ -95,7 +96,10 @@ export const obtenerBarberosPorNombreBarberia = async (req, res) => {
 
 
 export const updateBarberia = async (req, res) => {
-  const nombreUsuario = req.params.id;
+
+  const token = req.headers.authorization;
+  const {usuario:id} = await verificarTokenYObtenerUsuario(token);
+  const nombreUsuario = id;
   const { nombre, ciudad, descripcion, email, telefono, direccion } = req.body;
 
   try {

@@ -3,15 +3,12 @@ import PerfilBarberia from './PerfilBarberia';
 import FormularioBarberia from './FormularioBarberia';
 import { mostrarConfirmacion } from "../../modulos/confirms";
 import { API_URLS } from '../../modulos/urls';
-import { UserContext } from '../context/UserContext';
-import { useFetch } from '../../Hooks/useFetch';
-import { update } from '../../functions/updateBarber';
+import { useFetchuno } from '../../Hooks/useFetchintento';
+import { actualizar } from '../../functions/usePut';
 
 export const MiBarberia = () => {
-  const { userData } = useContext(UserContext);
-  const [visible] = useState(userData.usuario);
-  const apiUrl = `${API_URLS.obtenerDatosBarberia}/${visible}`;
-  const { data} = useFetch(apiUrl);
+  const apiUrl = `${API_URLS.obtenerDatosBarberia}`;
+  const { data} = useFetchuno(apiUrl);
 
   const [nombre, setNombre] = useState('');
   const [descripcion, setDescripcion] = useState('');
@@ -42,7 +39,6 @@ export const MiBarberia = () => {
     );
     if (confirmacion.isConfirmed) {
       const formData = {
-        _id: visible,
         nombre,
         descripcion,
         email,
@@ -50,7 +46,7 @@ export const MiBarberia = () => {
         ciudad,
         direccion,
       };
-      await update(formData, API_URLS.ActualizarBarberia);
+      await actualizar(formData, API_URLS.ActualizarBarberia);
     }
   };
 

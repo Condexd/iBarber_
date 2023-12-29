@@ -1,4 +1,4 @@
-import { useState, useEffect, useContext } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
 import { actualizar } from '../../functions/usePut'; 
 import { API_URLS } from '../../modulos/urls';
@@ -39,9 +39,7 @@ const CambioContrasenaModal = ({ setVisible }) => {
     });
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-
+  const handleCambiarContrasena = async () => {
     const { contrasenaActual, nuevaContrasena, confirmarContrasena } = formData;
 
     if (nuevaContrasena !== confirmarContrasena) {
@@ -55,6 +53,7 @@ const CambioContrasenaModal = ({ setVisible }) => {
       nuevaContrasena,
     }, `${API_URLS.actualizarContrasena}/${userData.usuario}`);
 
+    console.log(result);
     // Puedes manejar el resultado, cerrar el modal, etc.
     setModalOpen(false);
     setVisible(false);
@@ -72,7 +71,7 @@ const CambioContrasenaModal = ({ setVisible }) => {
           &times;
         </span>
         <h2 className='Cambiar-contrasena'>Cambiar Contraseña</h2>
-        <form onSubmit={handleSubmit} className='form-content'>
+        <div className='form-content'>
           <div className='contenedor-password'>
             <label htmlFor="contrasenaActual">Contraseña Actual</label>
             <input
@@ -125,8 +124,10 @@ const CambioContrasenaModal = ({ setVisible }) => {
               {showPassword.confirmarContrasena ? <FaEye /> : <FaEyeSlash />}
             </button>
           </div>
-          <button className='change-password-btn' type="submit">Cambiar Contraseña</button>
-        </form>
+          <button className='change-password-btn' onClick={handleCambiarContrasena}>
+            Cambiar Contraseña
+          </button>
+        </div>
       </div>
     </div>
   );

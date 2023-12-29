@@ -18,6 +18,7 @@ export const MiBarberia = () => {
   const [email, setEmail] = useState('');
   const [telefono, setTelefono] = useState('');
   const [ciudad, setCiudad] = useState('');
+  const [direccion, setDireccion] = useState('');
 console.log(ciudad)
 
   useEffect(() => {
@@ -27,6 +28,7 @@ console.log(ciudad)
       setEmail(data.email);
       setTelefono(data.telefono);
       setCiudad(data.nombre_ciudad);
+      setDireccion(data.direccion);
     }
   }, [data]);
   const handleSubmit = async (e) => {
@@ -46,6 +48,7 @@ console.log(ciudad)
         email,
         telefono,
         ciudad,
+        direccion,
       };
       await update(formData, API_URLS.ActualizarBarberia);
     }
@@ -71,6 +74,8 @@ console.log(ciudad)
             setTelefono={setTelefono}
             ciudad={ciudad}
             setCiudad={setCiudad}
+            direccion={direccion}
+            setDireccion={setDireccion}
             handleSubmit={handleSubmit}
           />
         </div>

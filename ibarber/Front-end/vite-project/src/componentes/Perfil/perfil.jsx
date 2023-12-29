@@ -6,7 +6,6 @@ import PerfilForm from "./PerfilForm";
 import PerfilInfo from "./PerfilInfo";
 import { mostrarConfirmacion } from "../../modulos/confirms";
 import { useFetchuno } from "../../Hooks/useFetchintento";
-;
 
 function Perfil({logout}) {
   const { userData } = useContext(UserContext);
@@ -76,8 +75,8 @@ function Perfil({logout}) {
   };
 
   return (
-    <main id="main" className="p-2 d-flex mt-5 justify-content-center">
-      <div className="d-flex justify-content-evenly flex-wrap">
+    <main className="profile">
+      <div className="profile__container">
         <PerfilInfo
           nombres={nombres}
           apellidos={apellidos}
@@ -85,6 +84,7 @@ function Perfil({logout}) {
           active={active}
           setActive={setActive}
           img={imgPreview}
+          handleFileChange={handleFileChange}
         />
         <PerfilForm
           nombres={nombres}
@@ -98,7 +98,6 @@ function Perfil({logout}) {
           setCiudad={setCiudad}
           telefono={telefono}
           ciudad={ciudad}
-          handleFileChange={handleFileChange}
           logout={logout}
         />
       </div>

@@ -1,11 +1,14 @@
 import { mostrarMensajeError, mostrarMensajeErrorInesperado } from "../modulos/alertas";
 
 export const deleteFun=async(url)=>{
+
+  const token = localStorage.getItem("token"); 
     try {
         const response = await fetch(url, {
           method: 'DELETE',
           headers: {
             'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`
           },
         });
         if (response.ok) {

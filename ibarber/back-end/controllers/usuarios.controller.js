@@ -12,7 +12,11 @@ const __dirname = dirname(__filename);
 
 export const putUsuario = async (req, res) => {
   try {
-    const usuarioId = req.params.id;
+
+    const token = req.headers.authorization;
+
+    const {usuario} = await verificarTokenYObtenerUsuario(token);
+    const usuarioId=usuario;
     const datosActualizar = req.body;
 
     const propiedadesActualizar = {
@@ -57,7 +61,8 @@ export const putUsuario = async (req, res) => {
 };
 
 export const cambioContrasena = async (req, res) => {
-  const { id } = req.params;
+  const token = req.headers.authorization;
+  const {usuario:id} = await verificarTokenYObtenerUsuario(token);
   const { contrasenaActual, nuevaContrasena } = req.body;
 
   try {
@@ -111,7 +116,8 @@ export const obtenerUsuario = async (req, res) => {
 
 
 export const deleteAccount = async (req, res) => {
-  const { id } = req.params;
+  const token = req.headers.authorization;
+  const {usuario:id} = await verificarTokenYObtenerUsuario(token);
 
   try {
     const result = await usuarioModel.deleteOne({ usuario: id });

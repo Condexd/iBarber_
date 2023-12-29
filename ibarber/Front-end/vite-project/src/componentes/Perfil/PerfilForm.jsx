@@ -21,7 +21,6 @@ function PerfilForm({
   setCiudad,
   logout,
 }) {
-  const { userData } = useContext(UserContext);
   const [showCambioContrasenaModal, setShowCambioContrasenaModal] =
     useState(false);
 
@@ -38,7 +37,7 @@ function PerfilForm({
     );
     if (confirmacion.isConfirmed) {
       const result = await deleteFun(
-        `${API_URLS.deleteCuenta}${userData.usuario}`
+        `${API_URLS.deleteCuenta}`
       );
       if (result) {
         logout();

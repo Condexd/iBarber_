@@ -5,7 +5,6 @@ import { API_URLS } from '../../modulos/urls';
 import { UserContext } from "../context/UserContext";
 
 const CambioContrasenaModal = ({ setVisible }) => {
-  const { userData } = useContext(UserContext);
   const [formData, setFormData] = useState({
     contrasenaActual: '',
     nuevaContrasena: '',
@@ -51,7 +50,7 @@ const CambioContrasenaModal = ({ setVisible }) => {
     const result = await actualizar({
       contrasenaActual,
       nuevaContrasena,
-    }, `${API_URLS.actualizarContrasena}/${userData.usuario}`);
+    }, `${API_URLS.actualizarContrasena}`);
 
     console.log(result);
     // Puedes manejar el resultado, cerrar el modal, etc.

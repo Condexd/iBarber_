@@ -14,11 +14,14 @@ export const actualizar = async (usuario, url) => {
       // Agregar la propiedad al objeto usuario
       usuario.fotoPerfil = archivoBase64;
     }
+    
+    const token = localStorage.getItem("token"); 
 
     const response = await fetch(`${url}`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`, 
       },
       body: JSON.stringify(usuario),
     });

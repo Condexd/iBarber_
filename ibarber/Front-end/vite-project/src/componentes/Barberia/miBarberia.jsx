@@ -19,7 +19,7 @@ export const MiBarberia = () => {
   const [telefono, setTelefono] = useState('');
   const [ciudad, setCiudad] = useState('');
   const [direccion, setDireccion] = useState('');
-console.log(ciudad)
+
 
   useEffect(() => {
     if (data) {

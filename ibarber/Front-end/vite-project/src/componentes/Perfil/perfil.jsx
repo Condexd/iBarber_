@@ -8,7 +8,6 @@ import { mostrarConfirmacion } from "../../modulos/confirms";
 import { useFetchuno } from "../../Hooks/useFetchintento";
 
 function Perfil({logout}) {
-  const { userData } = useContext(UserContext);
   const apiUrl = `${API_URLS.obtenerInfoUsuario}`;
   const { data } = useFetchuno(apiUrl);
   const [nombres, setNombres] = useState("");
@@ -69,7 +68,7 @@ function Perfil({logout}) {
           active,
           fotoPerfil,
         },
-        `${API_URLS.USUARIO}${userData.usuario}`
+        `${API_URLS.USUARIO}`
       );
     }
   };

@@ -4,8 +4,8 @@ import { obtenerUsuario, putUsuario, cambioContrasena, deleteAccount } from "../
 
 const router = Router();
 
-router.put('/usuario/:id', putUsuario);
+router.put('/usuario', putUsuario);
 router.get("/date-user",obtenerUsuario)
-router.put('/usuario-password/:id', cambioContrasena);
-router.delete('/usuario-delete/:id', deleteAccount);
+router.put('/usuario-password', cambioContrasena);
+router.delete('/usuario-delete', deleteAccount);
 export default router;

@@ -61,11 +61,12 @@ export const putUsuario = async (req, res) => {
 };
 
 export const cambioContrasena = async (req, res) => {
-  const token = req.headers.authorization;
-  const {usuario:id} = await verificarTokenYObtenerUsuario(token);
+
   const { contrasenaActual, nuevaContrasena } = req.body;
 
   try {
+    const token = req.headers.authorization;
+    const {usuario:id} = await verificarTokenYObtenerUsuario(token);
     const usuario = await usuarioModel.findOne({ usuario: id });
 
     if (!usuario) {
@@ -116,10 +117,9 @@ export const obtenerUsuario = async (req, res) => {
 
 
 export const deleteAccount = async (req, res) => {
-  const token = req.headers.authorization;
-  const {usuario:id} = await verificarTokenYObtenerUsuario(token);
-
   try {
+    const token = req.headers.authorization;
+    const {usuario:id} = await verificarTokenYObtenerUsuario(token);
     const result = await usuarioModel.deleteOne({ usuario: id });
     if (result.deletedCount === 1) {
       return res.status(200).json({ message: "Cuenta eliminada exitosamente" });

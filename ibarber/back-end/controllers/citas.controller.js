@@ -2,7 +2,6 @@ import { BarberiaModel, citaModel, usuarioModel,correoelectronicoConfirmacion,en
 import moment from 'moment';
 export const getCitas = async (req, res) => {
   try {
-    console.log("hola")
     const token = req.headers.authorization;
     const {usuario} = await verificarTokenYObtenerUsuario(token);
     // Buscar las citas en las que el usuario sea cliente o barbero

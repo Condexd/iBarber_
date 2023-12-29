@@ -1,9 +1,9 @@
 import { useForm } from '../../Hooks/useform';
-import { RegistrarBarberia } from '../../functions/Registrobarberia';
 import { API_URLS } from '../../modulos/urls';
 import { UserContext } from '../context/UserContext';
 import { useNavigate } from 'react-router-dom';
 import { useContext ,useState} from 'react';
+import { enviadorAuth } from '../../functions/usePostAuth';
 
 export const Crearbarberia = () => {
   const { userData, setUserData } = useContext(UserContext);
@@ -25,9 +25,8 @@ export const Crearbarberia = () => {
     console.log(usuario)
     console.log(nombre_barberia, direccion_barberia, nombre_ciudad, descripcion_barberia, email, telefono)
     if(nombre_ciudad==="seleccionar" || nombre_ciudad==="")return;
-    const result = await RegistrarBarberia(API_URLS.BARBERIA, { nombre_barberia, direccion_barberia, nombre_ciudad, usuario, descripcion_barberia, email, telefono});
-    if(result.ok){
-      console.log(result)
+    const result = await enviadorAuth(API_URLS.BARBERIA, { nombre_barberia, direccion_barberia, nombre_ciudad, usuario, descripcion_barberia, email, telefono});
+    if(result){
       navigate("/mi-barberia")
     }
     setUserData(prevUserData => ({

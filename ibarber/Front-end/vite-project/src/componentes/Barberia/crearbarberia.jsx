@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import { useContext ,useState} from 'react';
 
 export const Crearbarberia = () => {
-  const { userData } = useContext(UserContext);
+  const { userData, setUserData } = useContext(UserContext);
   const [usuario, setUsuario] = useState(userData.usuario);
 
   const { formState, funcion } = useForm({
@@ -30,6 +30,10 @@ export const Crearbarberia = () => {
       console.log(result)
       navigate("/mi-barberia")
     }
+    setUserData(prevUserData => ({
+      ...prevUserData, // Clonar las propiedades existentes
+      barberia: true // Cambiar la propiedad "barberia" a false
+    }));
   };
 
   return (

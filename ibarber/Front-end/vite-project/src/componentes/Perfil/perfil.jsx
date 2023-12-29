@@ -18,7 +18,6 @@ function Perfil({logout}) {
   const [telefono, setTelefono] = useState("");
   const [barbero, setBarbero] = useState("");
   const [active, setActive] = useState(false);
-  const [barberia, setBarberia] = useState(false);
   const [fotoPerfil, setFotoPerfil] = useState(null);
   const [imgPreview, setImgPreview] = useState("");
   const [imgVersion, setImgVersion] = useState(Date.now());
@@ -32,7 +31,6 @@ function Perfil({logout}) {
       setCorreo(data.usuario.correo);
       setBarbero(data.usuario.roles.length);
       setActive(data.usuario.active);
-      setBarberia(data.usuario.barberia)
       setFotoPerfil(`${API_URLS.obtenerImage}${data.usuario.fotoPerfil}` || "");
       setImgPreview(`${API_URLS.obtenerImage}${data.usuario.fotoPerfil}?v=${imgVersion}` || "");
 
@@ -86,7 +84,6 @@ function Perfil({logout}) {
           active={active}
           setActive={setActive}
           img={imgPreview}
-          barberia={barberia}
         />
         <PerfilForm
           nombres={nombres}

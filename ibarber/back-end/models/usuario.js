@@ -7,7 +7,6 @@ const usuarioSchema = new Schema({
   correo: String,
   password: String,
   telefono: String,
-  barberia:Boolean,
   nombre_ciudad: String,
   fotoPerfil: { type: String, default: '/uploads/Usuario.png' }, 
   roles: [String],

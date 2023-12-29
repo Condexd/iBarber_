@@ -23,7 +23,6 @@ export const postUsuario = async (req, res) => {
       password: contrasenaencriptada,
       correo: email,
       active:false,
-      barberia:false
     });
 
     const result = await data.save();
@@ -44,14 +43,18 @@ export const loginUsuario = async (req, res) => {
     const contraseñaValida = await bcrypt.compare(password, user.password);// Compara la contraseña ingresada con la contraseña almacenada en la base de datos
 
     if (!contraseñaValida)return res.status(401).json({ message: 'Contraseña incorrecta' });
+
+    const usuarioTieneBarberia = await BarberiaModel.findOne({ "dueño.usuario": usuario });
     // Genera un token JWT con la información del usuario (puedes personalizar el payload)
     const token = jwt.sign({ usuarioId: user._id }, 'tu_secreto_secreto', {
       expiresIn: '1h', // Define la expiración del token (ejemplo: 1 hora)
     });
+    const barberia = usuarioTieneBarberia ? true : false;
     res.status(200).json({
       message: 'Inicio de sesión exitoso',
       token,
       user: {
+        barberia,
         usuario: user.usuario,
       },
     });

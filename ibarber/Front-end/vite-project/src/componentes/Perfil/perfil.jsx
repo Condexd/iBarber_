@@ -6,7 +6,6 @@ import PerfilForm from "./PerfilForm";
 import PerfilInfo from "./PerfilInfo";
 import { mostrarConfirmacion } from "../../modulos/confirms";
 import { useFetch } from "../../Hooks/useFetch";
-import CambioContrasenaModal from './CambioContrasenaModal';
 
 function Perfil() {
   const { userData } = useContext(UserContext);
@@ -20,7 +19,6 @@ function Perfil() {
   const [telefono, setTelefono] = useState("");
   const [barbero, setBarbero] = useState("");
   const [active, setActive] = useState(false);
-  const [showCambioContrasenaModal, setShowCambioContrasenaModal] = useState(false);
 
   const [fotoPerfil, setFotoPerfil] = useState(null);
   const [imgPreview, setImgPreview] = useState("");
@@ -78,8 +76,8 @@ function Perfil() {
   };
 
   return (
-    <main id="main" className="p-2 d-flex mt-5 justify-content-center">
-      <div className="d-flex justify-content-evenly flex-wrap">
+    <main className="profile">
+      <div className="profile__container">
         <PerfilInfo
           nombres={nombres}
           apellidos={apellidos}
@@ -102,10 +100,6 @@ function Perfil() {
           ciudad={ciudad}
           handleFileChange={handleFileChange}
         />
-        <button onClick={() => setShowCambioContrasenaModal(true)}>Cambiar Contraseña</button>
-        {showCambioContrasenaModal && (
-          <CambioContrasenaModal setVisible={setShowCambioContrasenaModal} />
-        )}
       </div>
     </main>
   );

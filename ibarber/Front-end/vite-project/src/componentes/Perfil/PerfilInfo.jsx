@@ -6,25 +6,27 @@ function PerfilInfo({ nombres,apellidos, img,setActive,active,barbero }) {
   const [visible] = useState(userData.barberia);
 
   return (
-    <section className="p-3 w-25 d-flex align-items-center justify-content-center" >
-      <div className="d-flex flex-column gap-1"> 
+    <section className="info-profile" >
+      <div className="info-profile__container">
         <img
-          id="img-perfil"
-          className="rounded-circle"
+          className="profile-image"
           src={img}
           width={200}
           height={200}
           alt="Perfil"
         />
-        <div>
-          <span className="text-start lh-lg semibold fs-5">
-            {nombres} {apellidos}
+        <div className="info-profile__container__data">
+          <span className="profile-data">
+            {nombres}
+          </span>
+          <span className="profile-data">
+            {apellidos}
           </span>
         </div>
         <div>
           {!visible && (
             <Link to="/new-barberia">
-              <button className="btn btn-success mt-2 fs-6">
+              <button className="">
                 Crear mi barbería
               </button>
             </Link>
@@ -32,7 +34,7 @@ function PerfilInfo({ nombres,apellidos, img,setActive,active,barbero }) {
         </div>
         <div >
           {barbero > 0 && (
-            <div className="contenedorbtn">
+            <div className="profile-">
               <label className="switch">
                 <input
                   type="checkbox"

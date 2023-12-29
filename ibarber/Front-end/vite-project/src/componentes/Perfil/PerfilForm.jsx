@@ -1,3 +1,4 @@
+import { FaCamera } from "react-icons/fa";
 
 function PerfilForm({
   nombres,
@@ -15,12 +16,13 @@ function PerfilForm({
 }) {
 
   return (
-    <form className="w-50 p-3" onSubmit={handleSubmit} >
-      <ul className="row gap-3" id="datos-personales">
-        <h2>Mis datos</h2>
-        <li className="col-5 row">
-          <label>Nombres</label>
+    <form className="form--profile" onSubmit={handleSubmit} >
+      <ul className="form__container" id="datos-personales">
+        <h2 className="form__container__heading col-3">Mis datos</h2>
+        <li className="form__container__group">
+          <label className="label--profile" >Nombres</label>
           <input
+            className="input--profile"
             type="text"
             name="nombres"
             required
@@ -28,9 +30,10 @@ function PerfilForm({
             onChange={(e) => setNombres(e.target.value)}
           />
         </li>
-        <li className="col-5 row">
-          <label>Apellidos</label>
+        <li className="form__container__group">
+          <label className="label--profile" >Apellidos</label>
           <input
+            className="input--profile"
             type="text"
             name="apellidos"
             required
@@ -38,9 +41,22 @@ function PerfilForm({
             onChange={(e) => setApellidos(e.target.value)}
           />
         </li>
-        <li className="col-5 row">
-          <label>Email</label>
+        <li className="form__container__group">
+          <label className="label--profile" >Usuario</label>
           <input
+            className="input--profile"
+            type="text"
+            name="usuario"
+            required
+            disabled
+            // value={apellidos}
+            // onChange={(e) => setApellidos(e.target.value)}
+          />
+        </li>
+        <li className="form__container__group">
+          <label className="label--profile" >Email</label>
+          <input
+            className="input--profile"
             type="email"
             name="email"
             required
@@ -48,9 +64,10 @@ function PerfilForm({
             onChange={(e) => setCorreo(e.target.value)}
           />
         </li>
-        <li className="col-5 row">
-          <label>Teléfono<span>(+57)</span></label>
+        <li className="form__container__group">
+          <label className="label--profile" >Teléfono<span>(+57)</span></label>
           <input
+            className="input--profile"
             type="text"
             name="telefono"
             required
@@ -59,9 +76,10 @@ function PerfilForm({
             placeholder="Tu número"
           />
         </li>
-        <li className="col-5 row">
-          <label>Ciudad</label>
+        <li className="form__container__group">
+          <label className="label--profile" >Ciudad</label>
           <select
+            className="select--profile"
             name="ciudad"
             required
             value={ciudad}
@@ -73,23 +91,41 @@ function PerfilForm({
             <option value="Ciudad3">Ciudad3</option>
           </select>
         </li>
-        <li className="row">
-          <label>Foto de Perfil</label>
-          <input
-            type="file"
-            accept="image/*"
-            onChange={handleFileChange}
-            name="perfil"
-          />
+        <li className="form__container__group col-3">
+          <label className="label--profile" >Biografia</label>
+          <textarea
+            className="textarea--description"
+            type="text"
+            name="usuario"
+            required
+            rows="4"
+            // value={apellidos}
+            // onChange={(e) => setApellidos(e.target.value)}
+          >
+          </textarea>
         </li>
-        <li className="row">
-          <div className="mt-5 d-flex align-content-center">
+        <li className="form__container__group">
+          <label className="label--upload-image" >
             <input
+              className="input-image--profile"
+              type="file"
+              accept="image/*"
+              onChange={handleFileChange}
+              name="perfil"
+            />
+            <span className="camera-container">
+              <FaCamera className="camera-container__camera-icon"/>
+            </span>
+          </label>
+        </li>
+        <li className="form__container__group col-3">
+          <div className="form__container__group__element">
+            <input
+              className="button button-green"
               type="submit"
-              className="btn btn-success"
               value="Guardar cambios"
             />
-            <button className="btn btn-link">Cancelar</button>
+            <button className="button button-red">Eliminar cuenta</button>
           </div>
         </li>
       </ul>

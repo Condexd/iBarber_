@@ -1,3 +1,8 @@
+:root {
+  --primary-color: #655CC9;
+  --secondary-color: #157347;
+}
+
 /* LogoutButton.css */
 
 .boton-logout {
@@ -11,6 +16,26 @@
 
 .boton-logout:hover {
   background-color: #574eb8;
+}
+
+.button {
+  padding: 10px 15px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  color: white;
+}
+
+.button-purple {
+  background-color: var(--primary-color);
+}
+
+.button-green {
+ background-color: var(--secondary-color);
+}
+
+.button-red {
+  background-color: #E32636;
 }
 
 /* Estilos para el toast */

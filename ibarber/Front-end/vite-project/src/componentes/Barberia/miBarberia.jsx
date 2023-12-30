@@ -52,8 +52,8 @@ export const MiBarberia = () => {
 
   return (
     <>
-      <main id="main" className="p-2 d-flex mt-5 justify-content-center align-items-center">
-        <div className="d-flex justify-content-evenly flex-wrap">
+      <main className="profile">
+        <div className="profile__container">
           <PerfilBarberia
             nombre={nombre}
             descripcion={descripcion}

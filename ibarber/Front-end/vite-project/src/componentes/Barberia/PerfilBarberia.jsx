@@ -1,19 +1,31 @@
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
+import { FaCamera } from "react-icons/fa";
 
 const PerfilBarberia = ({ nombre, descripcion, ciudad }) => {
   return (
-    <section className="p-3 w-25">
-      <div className="d-flex flex-column gap-1">
-        <img
-          id="img-perfil"
-          className="rounded-circle"
-          src="https://static.vecteezy.com/system/resources/previews/015/025/551/non_2x/barber-shop-building-with-mustache-icon-cartoon-icon-illustration-barber-shop-building-icon-concept-isolated-premium-flat-cartoon-style-vector.jpg"
-          width={200}
-          height={200}
-          alt="Perfil"
-        />
+    <section className="info-profile">
+      <div className="info-profile__container">
         <div>
-          <span className="text-start lh-lg semibold fs-5">
+          <img
+            className="profile-image"
+            src="https://static.vecteezy.com/system/resources/previews/015/025/551/non_2x/barber-shop-building-with-mustache-icon-cartoon-icon-illustration-barber-shop-building-icon-concept-isolated-premium-flat-cartoon-style-vector.jpg"
+            alt="Imagen de perfil"
+          />
+          <label className="label--upload-image">
+            <input
+              className="input-image--profile"
+              type="file"
+              accept="image/*"
+              // onChange={handleFileChange}
+              name="perfil"
+            />
+            <span className="camera-container">
+              <FaCamera className="camera-container__camera-icon" />
+            </span>
+          </label>
+        </div>
+        <div className="info-profile__container__data">
+          <span className="profile-data">
             {nombre} {descripcion} {ciudad}
           </span>
         </div>

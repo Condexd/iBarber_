@@ -16,7 +16,7 @@ function PerfilInfo({ nombres, apellidos, img, setActive, active, barbero, handl
             src={img}
             width={200}
             height={200}
-            alt="Perfil"
+            alt="Imagen de perfil"
           />
           <label className="label--upload-image">
             <input

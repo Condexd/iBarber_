@@ -96,6 +96,10 @@ li {
     margin-right: 5px;
 }
 
+.icono-menu {
+    display: none;
+}
+
 .buscador-img:hover {
     cursor: pointer;
 }

@@ -1,12 +1,4 @@
-import { usuarioModel } from "../Modulos/barril.js";
-import bcrypt from "bcrypt";
-import { fileURLToPath } from "url";
-import { dirname } from "path";
-import { promises as fsPromises } from "fs";
-import path from "path";
-import Usuario from "../models/usuario.js";
-import { verificarTokenYObtenerUsuario } from "../Modulos/barril.js";
-
+import { usuarioModel,bcrypt,fileURLToPath,dirname,fsPromises,path,verificarTokenYObtenerUsuario} from "../Modulos/barril.js";
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
@@ -40,7 +32,7 @@ export const putUsuario = async (req, res) => {
       propiedadesActualizar.fotoPerfil = `/uploads/${fileName}`;
     }
     const options = { new: true };
-    const resultado = await Usuario.findOneAndUpdate(
+    const resultado = await usuarioModel.findOneAndUpdate(
       { usuario: usuarioId },
       propiedadesActualizar,
       options

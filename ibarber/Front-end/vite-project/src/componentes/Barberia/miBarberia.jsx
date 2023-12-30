@@ -1,22 +1,24 @@
-import{ useState, useContext, useEffect } from 'react';
-import PerfilBarberia from './PerfilBarberia';
-import FormularioBarberia from './FormularioBarberia';
+import { useState, useContext, useEffect } from "react";
+import PerfilBarberia from "./PerfilBarberia";
+import FormularioBarberia from "./FormularioBarberia";
 import { mostrarConfirmacion } from "../../modulos/confirms";
-import { API_URLS } from '../../modulos/urls';
-import { useFetchuno } from '../../Hooks/useFetchintento';
-import { actualizar } from '../../functions/usePut';
+import { API_URLS } from "../../modulos/urls";
+import { useFetchuno } from "../../Hooks/useFetchintento";
+import { actualizar } from "../../functions/usePut";
 
 export const MiBarberia = () => {
   const apiUrl = `${API_URLS.obtenerDatosBarberia}`;
-  const { data} = useFetchuno(apiUrl);
+  const { data } = useFetchuno(apiUrl);
 
-  const [nombre, setNombre] = useState('');
-  const [descripcion, setDescripcion] = useState('');
-  const [email, setEmail] = useState('');
-  const [telefono, setTelefono] = useState('');
-  const [ciudad, setCiudad] = useState('');
-  const [direccion, setDireccion] = useState('');
-
+  const [nombre, setNombre] = useState("");
+  const [descripcion, setDescripcion] = useState("");
+  const [email, setEmail] = useState("");
+  const [telefono, setTelefono] = useState("");
+  const [ciudad, setCiudad] = useState("");
+  const [direccion, setDireccion] = useState("");
+  const [fotoPerfil, setFotoPerfil] = useState(null);
+  const [imgPreview, setImgPreview] = useState("");
+  const [imgVersion, setImgVersion] = useState(Date.now());
 
   useEffect(() => {
     if (data) {
@@ -26,8 +28,26 @@ export const MiBarberia = () => {
       setTelefono(data.telefono);
       setCiudad(data.nombre_ciudad);
       setDireccion(data.direccion);
+      setFotoPerfil(`${API_URLS.obtenerImage}${data.fotoPerfil}` || "");
+      setImgPreview(
+        `${API_URLS.obtenerImage}${data.fotoPerfil}?v=${imgVersion}` || ""
+      );
     }
   }, [data]);
+
+  const handleFileChange = (e) => {
+    const file = e.target.files[0];
+    setFotoPerfil(file);
+    setImgVersion(Date.now());
+    const reader = new FileReader();
+    reader.onloadend = () => {
+      setImgPreview(reader.result);
+    };
+    if (file) {
+      reader.readAsDataURL(file);
+    }
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (ciudad === "seleccionar") return;
@@ -35,7 +55,6 @@ export const MiBarberia = () => {
     const confirmacion = await mostrarConfirmacion(
       "¿Actualizar datos?",
       "¿Estás seguro de que deseas actualizar los datos?"
-      
     );
     if (confirmacion.isConfirmed) {
       const formData = {
@@ -45,6 +64,7 @@ export const MiBarberia = () => {
         telefono,
         ciudad,
         direccion,
+        fotoPerfil,
       };
       await actualizar(formData, API_URLS.ActualizarBarberia);
     }
@@ -58,6 +78,8 @@ export const MiBarberia = () => {
             nombre={nombre}
             descripcion={descripcion}
             ciudad={ciudad}
+            img={imgPreview}
+            handleFileChange={handleFileChange}
           />
           <FormularioBarberia
             nombre={nombre}

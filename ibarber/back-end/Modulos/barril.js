@@ -12,10 +12,14 @@ import {correoelectronicoConfirmacion} from "./html_citas.js"
 import { enviarCorreo } from "./nodemailer.js";
 import citaModel from "../models/citas.js"
 import { verificarTokenYObtenerUsuario } from "../middleware/authMiddleware.js";
+import { promises as fsPromises } from "fs";
+import path from "path";
+import { fileURLToPath } from "url";
+import { dirname } from "path";
 
 
 
 
-
-
-export { Router, bcrypt, nodemailer, crypto, jwt, dotenv, usuarioModel, BarberiaModel,correoelectronico,enviarCorreo,citaModel,correoelectronicoConfirmacion,verificarTokenYObtenerUsuario };
+export { Router, bcrypt, nodemailer, crypto, jwt, dotenv, usuarioModel, BarberiaModel,correoelectronico,enviarCorreo,citaModel,correoelectronicoConfirmacion,verificarTokenYObtenerUsuario 
+,fsPromises,path,fileURLToPath,dirname
+};

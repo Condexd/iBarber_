@@ -2,7 +2,13 @@ import {
   BarberiaModel,
   usuarioModel,
   verificarTokenYObtenerUsuario,
+  fsPromises,path,fileURLToPath,dirname
 } from "../Modulos/barril.js";
+
+
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
 export const registroBarberia = async (req, res) => {
   try {
@@ -113,24 +119,39 @@ export const obtenerBarberosPorNombreBarberia = async (req, res) => {
   }
 };
 
+
 export const updateBarberia = async (req, res) => {
-  const { nombre, ciudad, descripcion, email, telefono, direccion } = req.body;
+  const { nombre, ciudad, descripcion, email, telefono, direccion, fotoPerfil } = req.body;
 
   try {
     const token = req.headers.authorization;
     const { usuario: id } = await verificarTokenYObtenerUsuario(token);
     const nombreUsuario = id;
+
+    const propiedadesActualizar = {
+      nombre_barberia: nombre,
+      nombre_ciudad: ciudad,
+      descripcion_barberia: descripcion,
+      email: email,
+      telefono: telefono,
+      direccion_barberia: direccion,
+    };
+
+    if (fotoPerfil && fotoPerfil.length > 100) {
+      const base64Data = fotoPerfil.replace(/^data:image\/\w+;base64,/, "");
+      const buffer = Buffer.from(base64Data, "base64");
+      const fileName = `imagen_barber${nombreUsuario}.jpg`;
+      const uploadsFolderPath = path.join(__dirname, "..", "uploads");
+      const filePath = path.join(uploadsFolderPath, fileName);
+      await fsPromises.writeFile(filePath, buffer);
+      propiedadesActualizar.fotoPerfil = `/uploads/${fileName}`;
+    }
+
+    const options = { new: true };
     const updatedBarberia = await BarberiaModel.findOneAndUpdate(
       { "dueño.usuario": nombreUsuario },
-      {
-        nombre_barberia: nombre,
-        nombre_ciudad: ciudad,
-        descripcion_barberia: descripcion,
-        email: email,
-        telefono: telefono,
-        direccion_barberia: direccion,
-      },
-      { new: true }
+      propiedadesActualizar,
+      options
     );
 
     if (!updatedBarberia)

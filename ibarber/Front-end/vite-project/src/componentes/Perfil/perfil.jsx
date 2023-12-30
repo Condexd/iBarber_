@@ -1,13 +1,12 @@
 import { useState, useContext, useEffect } from "react";
 import { API_URLS } from "../../modulos/urls";
-import { UserContext } from "../context/UserContext";
 import { actualizar } from "../../functions/usePut";
 import PerfilForm from "./PerfilForm";
 import PerfilInfo from "./PerfilInfo";
 import { mostrarConfirmacion } from "../../modulos/confirms";
 import { useFetchuno } from "../../Hooks/useFetchintento";
 
-function Perfil({logout}) {
+function Perfil({ logout }) {
   const apiUrl = `${API_URLS.obtenerInfoUsuario}`;
   const { data } = useFetchuno(apiUrl);
   const [nombres, setNombres] = useState("");
@@ -31,8 +30,10 @@ function Perfil({logout}) {
       setBarbero(data.usuario.roles.length);
       setActive(data.usuario.active);
       setFotoPerfil(`${API_URLS.obtenerImage}${data.usuario.fotoPerfil}` || "");
-      setImgPreview(`${API_URLS.obtenerImage}${data.usuario.fotoPerfil}?v=${imgVersion}` || "");
-
+      setImgPreview(
+        `${API_URLS.obtenerImage}${data.usuario.fotoPerfil}?v=${imgVersion}` ||
+          ""
+      );
     }
   }, [data]);
 
@@ -58,7 +59,7 @@ function Perfil({logout}) {
     );
 
     if (confirmacion.isConfirmed) {
-        const result=await actualizar(
+      const result = await actualizar(
         {
           nombres,
           telefono,

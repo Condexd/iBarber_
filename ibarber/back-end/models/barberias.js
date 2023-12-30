@@ -15,6 +15,7 @@ const barberiaSchema = new Schema({
   nombre_ciudad: String,
   email: String,
   telefono: String,
+  fotoPerfil: { type: String, default: '/uploads/Usuario.png' },
   dueño: {
     usuario: { type: String, required: true },
     nombre_dueño: String,

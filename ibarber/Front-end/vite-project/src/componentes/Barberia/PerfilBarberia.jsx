@@ -1,14 +1,14 @@
 import { Link } from "react-router-dom";
 import { FaCamera } from "react-icons/fa";
 
-const PerfilBarberia = ({ nombre, descripcion, ciudad }) => {
+const PerfilBarberia = ({ nombre, descripcion, ciudad,handleFileChange, img }) => {
   return (
     <section className="info-profile">
       <div className="info-profile__container">
         <div>
           <img
             className="profile-image"
-            src="https://static.vecteezy.com/system/resources/previews/015/025/551/non_2x/barber-shop-building-with-mustache-icon-cartoon-icon-illustration-barber-shop-building-icon-concept-isolated-premium-flat-cartoon-style-vector.jpg"
+             src={img}
             alt="Imagen de perfil"
           />
           <label className="label--upload-image">
@@ -16,7 +16,7 @@ const PerfilBarberia = ({ nombre, descripcion, ciudad }) => {
               className="input-image--profile"
               type="file"
               accept="image/*"
-              // onChange={handleFileChange}
+              onChange={handleFileChange}
               name="perfil"
             />
             <span className="camera-container">

@@ -225,12 +225,16 @@ export const cancelarCitasAutomaticamente = async () => {
     const todasLasCitas = await citaModel.find();
     const fechaActual = moment();
     const citasPorCancelar = todasLasCitas.filter((cita) => {
-      const fechaCita = moment(cita.fecha, 'M/D/YYYY, HH:mm:ss');
-     return (
+      const fechaCita = moment(cita.fecha, 'D/M/YYYY, HH:mm:ss');
+      const tiempoRestante = moment.duration(fechaCita.diff(fechaActual));
+      const minutosRestantes = tiempoRestante.asMinutes();
+
+      return (
         cita.confirmacion_barbero.estadoCita === 'pendiente' &&
-        fechaCita.isSameOrAfter(fechaActual.subtract(10, 'minutes'))
-      )
+        minutosRestantes <= 10
+      );
     });
+
     const resultado = await citaModel.deleteMany({
       _id: { $in: citasPorCancelar.map((cita) => cita._id) },
     });

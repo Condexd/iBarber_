@@ -60,7 +60,8 @@ export const postCita = async (req, res) => {
     const barberoEncontrado = await BarberiaModel.findOne({ 'barberos.usuario': req.body.barbero });
     const barber = await usuarioModel.findOne({ 'usuario': req.body.barbero });
     const { fecha, hora } = req.body;
-
+    // Obtener la fecha y hora actuales
+    const fechaActual = moment();
     if (!barber.active) {
       return res.status(404).json({
         message: 'Barbero no disponible'
@@ -72,9 +73,14 @@ export const postCita = async (req, res) => {
         message: 'Barbero no encontrado'
       });
     }
-
-    // Convertir la fecha y hora en formato de cadena a objetos de Moment.js
+    // Verificar si la nueva fecha es al menos 30 minutos después de la fecha y hora actuales
     const nuevaFecha = moment(`${fecha} ${hora}`, 'DD/MM/YYYY HH:mm:ss');
+    const tiempoDiferenciaActual = nuevaFecha.diff(fechaActual, 'minutes');
+    if (tiempoDiferenciaActual < 30) {
+      return res.status(400).json({
+        message: 'No se pudo crear la cita. Debes agendarla al menos 30 minutos después de la hora actual.'
+      });
+    }
 
     // Obtener todas las citas programadas para el barbero
     const citasBarbero = await citaModel.find({ 'barbero': req.body.barbero }).sort({ fecha: 1 });
@@ -91,16 +97,19 @@ export const postCita = async (req, res) => {
     }
 
     const cita = await citaModel.create(req.body);
-
-    // Enviar correo electrónico de confirmación al cliente
     const cliente = await usuarioModel.findOne({ 'usuario': req.body.cliente });
     if (cliente && cliente.correo) {
       const detallesCita = {
         barbero: req.body.barbero,
         fecha: nuevaFecha.format('DD/MM/YYYY'),
         hora: nuevaFecha.format('HH:mm:ss'),
+        nombreBarberia:  barberoEncontrado.nombre_barberia,
+        direccionBarberia:barberoEncontrado.direccion_barberia,
+        telefonoBarberia:barberoEncontrado.telefono,
+        correoBarberia:barberoEncontrado.email,
+        nombreDeBarbero:barber.nombres,
+        telefonoBarbero:barber.telefono
       };
-
       const mensaje = correoelectronicoConfirmacion(cliente.usuario, detallesCita);
       const resultado = await enviarCorreo(cliente.correo, 'Confirmación de Cita', mensaje);
 
@@ -209,5 +218,25 @@ export const patchCita = async (req, res) => {
       message: "Error al actualizar la cita",
       error: error.message,
     });
+  }
+};
+export const cancelarCitasAutomaticamente = async () => {
+  try {
+    const todasLasCitas = await citaModel.find();
+    const fechaActual = moment();
+    const citasPorCancelar = todasLasCitas.filter((cita) => {
+      const fechaCita = moment(cita.fecha, 'M/D/YYYY, HH:mm:ss');
+     return (
+        cita.confirmacion_barbero.estadoCita === 'pendiente' &&
+        fechaCita.isSameOrAfter(fechaActual.subtract(10, 'minutes'))
+      )
+    });
+    const resultado = await citaModel.deleteMany({
+      _id: { $in: citasPorCancelar.map((cita) => cita._id) },
+    });
+
+    console.log(`${resultado.deletedCount} citas canceladas automáticamente.`);
+  } catch (error) {
+    console.error('Error al cancelar citas automáticamente:', error);
   }
 };

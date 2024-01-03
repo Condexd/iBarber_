@@ -9,8 +9,8 @@ import usuarioRoutes from "./routers/usuarios.js"
 import citaRoutes from "./routers/citas.js"
 import swaggerUi from 'swagger-ui-express';
 import swaggerDocument from './swagger.json' assert { type: "json" };
-
-
+import { cancelarCitasAutomaticamente } from "./controllers/citas.controller.js";
+import cron from 'node-cron';
 import { dirname } from 'path';
 import { fileURLToPath } from 'url';
 dotenv.config();
@@ -37,6 +37,9 @@ database.on("error", (error) => {
 
 database.once("connected", () => {
   console.log("database connected");
+});
+cron.schedule('* * * * *', () => {
+  cancelarCitasAutomaticamente();
 });
 
 app.use('/api/docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument))

@@ -42,11 +42,6 @@ function Cabecero({ isAuthenticated, logout }) {
           {isAuthenticated && (
             <>
               <li>
-                <Link to="/new-cita" onClick={closeMenu}>
-                  Agendar cita
-                </Link>
-              </li>
-              <li>
                 <Link to="/citas" onClick={closeMenu}>
                   Mis citas
                 </Link>

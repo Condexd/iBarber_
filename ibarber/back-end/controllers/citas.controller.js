@@ -55,7 +55,7 @@ export const getCita = async (req, res) => {
 export const postCita = async (req, res) => {
   try {
     const token = req.headers.authorization;
-   await verificarTokenYObtenerUsuario(token);
+  const cliente= await verificarTokenYObtenerUsuario(token);
 
     const barberoEncontrado = await BarberiaModel.findOne({ 'barberos.usuario': req.body.barbero });
     const barber = await usuarioModel.findOne({ 'usuario': req.body.barbero });
@@ -97,7 +97,7 @@ export const postCita = async (req, res) => {
     }
 
     const cita = await citaModel.create(req.body);
-    const cliente = await usuarioModel.findOne({ 'usuario': req.body.cliente });
+
     if (cliente && cliente.correo) {
       const detallesCita = {
         barbero: req.body.barbero,

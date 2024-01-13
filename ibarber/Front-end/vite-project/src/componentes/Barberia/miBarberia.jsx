@@ -19,7 +19,6 @@ export const MiBarberia = () => {
   const [fotoPerfil, setFotoPerfil] = useState(null);
   const [imgPreview, setImgPreview] = useState("");
   const [imgVersion, setImgVersion] = useState(Date.now());
-
   useEffect(() => {
     if (data) {
       setNombre(data.nombre_barberia);
@@ -27,7 +26,7 @@ export const MiBarberia = () => {
       setEmail(data.email);
       setTelefono(data.telefono);
       setCiudad(data.nombre_ciudad);
-      setDireccion(data.direccion);
+      setDireccion(data.direccion_barberia|| "");
       setFotoPerfil(`${API_URLS.obtenerImage}${data.fotoPerfil}` || "");
       setImgPreview(
         `${API_URLS.obtenerImage}${data.fotoPerfil}?v=${imgVersion}` || ""

@@ -18,6 +18,7 @@ export const putUsuario = async (req, res) => {
       correo: datosActualizar.correo,
       apellidos: datosActualizar.apellidos,
       active: datosActualizar.active,
+      biografia:datosActualizar.biografia
     };
     if (datosActualizar.fotoPerfil.length > 100) {
       const base64Data = datosActualizar.fotoPerfil.replace(

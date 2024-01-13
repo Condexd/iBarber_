@@ -1,8 +1,6 @@
 import { mostrarConfirmacion } from "../../modulos/confirms";
 import { deleteFun } from "../../functions/deleteFun";
 import { API_URLS } from "../../modulos/urls";
-import { UserContext } from "../context/UserContext";
-import { useContext } from "react";
 import { useState } from "react";
 import CambioContrasenaModal from "./CambioContrasenaModal";
 import { FaRegEdit } from "react-icons/fa";
@@ -20,6 +18,9 @@ function PerfilForm({
   setTelefono,
   setCiudad,
   logout,
+  user,
+  biografia,
+  setBiografia
 }) {
   const [showCambioContrasenaModal, setShowCambioContrasenaModal] =
     useState(false);
@@ -78,8 +79,7 @@ function PerfilForm({
             name="usuario"
             required
             disabled
-            // value={apellidos}
-            // onChange={(e) => setApellidos(e.target.value)}
+             value={user}
           />
         </li>
         <li className="form__container__group">
@@ -139,7 +139,7 @@ function PerfilForm({
             value={ciudad}
             onChange={(e) => setCiudad(e.target.value)}
           >
-            <option>Seleccionar</option>
+            <option value="seleccionar">Seleccionar</option>
             <option value="Bogotá">Bogotá</option>
             <option value="Medellín">Medellín</option>
             <option value="Cali">Cali</option>
@@ -153,8 +153,8 @@ function PerfilForm({
             name="usuario"
             required
             rows="4"
-            // value={apellidos}
-            // onChange={(e) => setApellidos(e.target.value)}
+            value={biografia}
+            onChange={(e) => setBiografia(e.target.value)}
           ></textarea>
         </li>
         <li className="form__container__group col-3">

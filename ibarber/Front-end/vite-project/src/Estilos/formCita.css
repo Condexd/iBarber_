@@ -55,16 +55,17 @@
 }
 
 /* Estilos para el botón de agendar */
-.agendar-btnci{
+.agendar-btn{
   background-color: #655CC9;
   color: #fff;
   border: none;
   border-radius: 4px;
   padding: 10px 20px;
   cursor: pointer;
+  text-decoration: none;
   transition: background-color 0.3s ease;
 }
 
-.agendar-btnci:hover {
-  background-color: #534bad;
+.agendar-btn:hover {
+  background-color: #000003;
 }

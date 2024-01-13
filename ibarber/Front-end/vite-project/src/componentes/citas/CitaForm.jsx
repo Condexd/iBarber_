@@ -1,16 +1,17 @@
-import { useState, useContext } from "react";
+import { useState} from "react";
 import { mostrarConfirmacion } from "../../modulos/confirms";
 import { API_URLS } from "../../modulos/urls";
 import { useFetch } from "../../Hooks/useFetch";
-import { UserContext } from "../context/UserContext";
+import { useParams } from "react-router-dom";
 import { mostrarMensajeError } from "../../modulos/alertas";
 import { enviadorAuth } from "../../functions/usePostAuth";
 
 export const CitaForm = () => {
-  const { userData } = useContext(UserContext);
+  const { id } = useParams();
   const { data } = useFetch(
-    `${API_URLS.obtenerBarberosNombreBarberia}/${userData.name}`
+    `${API_URLS.obtenerBarberosNombreBarberia}/${id}`
   );
+
   const [barbero, setBarbero] = useState("");
   const [fecha, setFecha] = useState("");
   const [hora, setHora] = useState("");
@@ -65,10 +66,7 @@ export const CitaForm = () => {
     const fechaHoraFormateada = fechaHoraSeleccionada.toLocaleString();
 
     // Enviar los datos
-    enviadorAuth(API_URLS.agendar_cita, {
-      fecha: fechaHoraFormateada,
-      barbero,
-      cliente: userData.usuario,
+    enviadorAuth(API_URLS.agendar_cita, {fecha: fechaHoraFormateada,barbero,
     });
   };
   
@@ -129,7 +127,7 @@ export const CitaForm = () => {
         className="form-control hora-input"
       />
 
-      <button type="submit" className="btn btn-primary agendar-btnci">
+      <button type="submit" className="btn btn-primary agendar-btn">
         Agendar cita
       </button>
     </div>

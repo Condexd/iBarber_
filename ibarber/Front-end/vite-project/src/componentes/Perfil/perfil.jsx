@@ -6,6 +6,7 @@ import PerfilInfo from "./PerfilInfo";
 import { mostrarConfirmacion } from "../../modulos/confirms";
 import { useFetchuno } from "../../Hooks/useFetchintento";
 
+
 function Perfil({ logout }) {
   const apiUrl = `${API_URLS.obtenerInfoUsuario}`;
   const { data } = useFetchuno(apiUrl);
@@ -15,7 +16,9 @@ function Perfil({ logout }) {
   const [ciudad, setCiudad] = useState("");
   const [telefono, setTelefono] = useState("");
   const [barbero, setBarbero] = useState("");
+  const [usuario, setUsuario] = useState("");
   const [active, setActive] = useState(false);
+  const [biografia, setBiografia] = useState("");
   const [fotoPerfil, setFotoPerfil] = useState(null);
   const [imgPreview, setImgPreview] = useState("");
   const [imgVersion, setImgVersion] = useState(Date.now());
@@ -29,6 +32,8 @@ function Perfil({ logout }) {
       setCorreo(data.usuario.correo);
       setBarbero(data.usuario.roles.length);
       setActive(data.usuario.active);
+      setUsuario(data.usuario.usuario);
+      setBiografia(data.usuario.biografia);
       setFotoPerfil(`${API_URLS.obtenerImage}${data.usuario.fotoPerfil}` || "");
       setImgPreview(
         `${API_URLS.obtenerImage}${data.usuario.fotoPerfil}?v=${imgVersion}` ||
@@ -52,6 +57,7 @@ function Perfil({ logout }) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (ciudad === "seleccionar") return;
 
     const confirmacion = await mostrarConfirmacion(
       "¿Actualizar datos?",
@@ -68,6 +74,7 @@ function Perfil({ logout }) {
           apellidos,
           active,
           fotoPerfil,
+          biografia,
         },
         `${API_URLS.USUARIO}`
       );
@@ -99,6 +106,9 @@ function Perfil({ logout }) {
           telefono={telefono}
           ciudad={ciudad}
           logout={logout}
+          user={usuario}
+          biografia={biografia}
+          setBiografia={setBiografia}
         />
       </div>
     </main>

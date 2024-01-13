@@ -25,7 +25,7 @@ function Rutas({ isAuthenticated, logout }) {
             <Route path="/empleados" element={<MisBarberos />} />
             <Route path="/new-empleado" element={<CrearBarbero />} />
             <Route path="/new-barberia" element={<Crearbarberia />} />
-            <Route path="/new-cita" element={<CitaForm />} />
+            <Route path="/new-cita/:id" element={<CitaForm />} />
             <Route path="/citas" element={<MisCitas />} />
           </>
         )}

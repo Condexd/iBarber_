@@ -102,11 +102,11 @@ export const getBarberos = async (req, res) => {
 export const obtenerBarberosPorNombreBarberia = async (req, res) => {
   try {
     const { id } = req.params;
-
-    const barberia = await BarberiaModel.findOne({ nombre_barberia: id });
+console.log(id)
+    const barberia = await BarberiaModel.findOne({ _id: id });
 
     if (!barberia) {
-      return res.status(404).json({ nombreBarberia });
+      return res.status(404).json({ id });
     }
 
     const barberos = barberia.barberos;

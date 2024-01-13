@@ -22,8 +22,6 @@ export const Crearbarberia = () => {
   const navigate = useNavigate();
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(usuario)
-    console.log(nombre_barberia, direccion_barberia, nombre_ciudad, descripcion_barberia, email, telefono)
     if(nombre_ciudad==="seleccionar" || nombre_ciudad==="")return;
     const result = await enviadorAuth(API_URLS.BARBERIA, { nombre_barberia, direccion_barberia, nombre_ciudad, usuario, descripcion_barberia, email, telefono});
     if(result){

@@ -1,20 +1,34 @@
 // BarberiaCard.js
+import "../../../Estilos/cards.css";
 import { Link } from "react-router-dom";
-import { BsShop } from "react-icons/bs";
-const BarberiaCard = ({ name, description,id }) => {
+import { API_URLS } from "../../../modulos/urls";
+import { FaStar } from "react-icons/fa";
+import { FaLocationDot } from "react-icons/fa6";
 
-  
+const BarberiaCard = ({ name, description, id, image, city }) => {
   return (
-    <div className="carta barberia">
-      <div className="titulos">
-        <h3>{name}</h3>
-      </div>
-      <div className="imagen">
-        <BsShop />
-      </div>
-      <p>{description}</p>
-          <Link  className="agendar-btn" to={`/new-cita/${id}`} >Agendar</Link>
-    </div>
+    <Link className="link-sin-estilos" to={`/new-cita/${id}`}>
+      <article className="card-barberia">
+      <section className="card-barberia__header">
+        <img
+          className="card-barberia__header__image"
+          src={`${API_URLS.obtenerImage}${image}`}
+        />
+      </section>
+      <section className="card-barberia__footer">
+        <div className="card-barberia__footer__heading">
+          <h3 className="card-barberia__footer__heading__nombre">{name}</h3>
+          <span>
+            5.0 <FaStar className="estrella" />
+          </span>
+        </div>
+        <div className="card-barberia__footer__heading__location">
+          <span className="card-barberia__footer__heading__location__city"> <FaLocationDot /> {city}</span>
+        </div>
+        <p className="card-barberia__footer__text">{description}</p>
+      </section>
+    </article>
+    </Link>
   );
 };
 

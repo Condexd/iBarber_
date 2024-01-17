@@ -30,13 +30,15 @@ const BarberShop = () => {
         {/* Barberias Section */}
         <div className="barberias">
           <h2>Barberias:</h2>
-          <div className="cartas-barberia">
+          <div className="cards-container">
             {barberiasData.map((barberia, index) => (
               <BarberiaCard
-              id={barberia._id}
+                id={barberia._id}
+                image={barberia.fotoPerfil}
                 key={index}
                 name={barberia.nombre_barberia}
                 description={barberia.descripcion_barberia}
+                city={barberia.nombre_ciudad}
               />
             ))}
           </div>

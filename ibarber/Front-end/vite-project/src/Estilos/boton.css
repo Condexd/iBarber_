@@ -45,6 +45,12 @@
   background-color: #E32636;
 }
 
+.link-sin-estilos {
+  text-decoration: none;
+  color: inherit; /* Hereda el color del texto del elemento padre */
+  cursor: pointer; /* Cambia el cursor a una mano cuando pasa sobre el enlace */
+}
+
 /* Estilos para el toast */
 .Toastify__toast-container {
   z-index: 9999;

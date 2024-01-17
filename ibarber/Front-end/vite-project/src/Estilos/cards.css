@@ -1,0 +1,74 @@
+body {
+  background-color: #f6f6f6;
+}
+
+.cards-container {
+  display: grid;
+  gap: 1.25rem;
+  grid-auto-rows: auto;
+  grid-template-columns: repeat(auto-fill, minmax(215px, 1fr));
+}
+
+.card-barberia {
+  border-radius: 6px;
+  overflow: hidden;
+  /* box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px; */
+}
+
+.card-barberia__header {
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  border-radius: 6px;
+}
+
+/* TODO: hover en la imagen, como una sombra inset */
+.card-barberia__header:hover {
+
+}
+
+.card-barberia__header__image:hover {
+
+}
+
+.card-barberia__footer {
+  padding: 8px;
+  display: grid;
+  gap: 8px;
+}
+
+.card-barberia__footer__heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.card-barberia__footer__heading__location {
+
+}
+
+.card-barberia__footer__heading__location__city {
+  color: #636363;
+}
+
+.estrella {
+  color: rgb(250, 196, 0);
+}
+
+.card-barberia__footer__text {
+  /* Contenedor de bloque flexible en el contexto de textos */
+  display: -webkit-box;
+  /* Las lineas se apilaran verticalmente */
+  -webkit-box-orient: vertical;
+  /* Establece el número máximo de líneas que se mostrarán */
+  -webkit-line-clamp: 3; /* Puedes ajustar este valor según tus necesidades */
+  /* Añade puntos suspensivos al final del texto que se corta */
+  text-overflow: ellipsis;
+  overflow: hidden;
+  margin: 0;
+}
+
+.card-barberia__footer__heading__nombre {
+  margin: 0;
+}

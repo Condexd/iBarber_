@@ -38,7 +38,7 @@ function PerfilInfo({ nombres, apellidos, img, setActive, active, barbero, handl
         <div>
           {!visible && (
             <Link to="/new-barberia">
-              <button className="">Crear mi barbería</button>
+              <button className="button button-green">Crear mi barbería</button>
             </Link>
           )}
         </div>

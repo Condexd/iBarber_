@@ -8,12 +8,10 @@ import { RecuperarContraseña } from "./componentes/auth/RecuperarContraseña";
 
 function App() {
   const navigate = useNavigate();
-  // Estado para verificar si el usuario está autenticado
   const [isAuthenticated, setIsAuthenticated] = useState(false);
-  // Efecto para verificar la autenticación al cargar la página
+
   useEffect(() => {
     const token = localStorage.getItem("token");
-    // Verificar si hay un token almacenado en localStorage (puedes personalizar esto)
     if (token) {
       setIsAuthenticated(true);
     }

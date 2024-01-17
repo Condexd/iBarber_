@@ -4,6 +4,7 @@ body {
 
 .cards-container {
   display: grid;
+  padding: 1.3rem 2rem;
   gap: 1.25rem;
   grid-auto-rows: auto;
   grid-template-columns: repeat(auto-fill, minmax(215px, 1fr));
@@ -12,7 +13,11 @@ body {
 .card-barberia {
   border-radius: 6px;
   overflow: hidden;
-  /* box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px; */
+  
+}
+.card-barberia__header__image:hover{
+  filter: grayscale(0%); 
+  animation: desaturate 4s linear infinite; 
 }
 
 .card-barberia__header {

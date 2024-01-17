@@ -92,8 +92,6 @@ input:focus, input:active {
   border: 2px solid rgb(189, 187, 198);
   border-radius: 8px;
   box-shadow: 3px 3px 5px rgba(179, 10, 10, 0.2);
-  filter: grayscale(0%); 
-  animation: desaturate 4s linear infinite; 
 }
 
 @keyframes desaturate {

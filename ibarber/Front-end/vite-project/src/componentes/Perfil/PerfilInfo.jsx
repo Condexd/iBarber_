@@ -10,7 +10,7 @@ function PerfilInfo({ nombres, apellidos, img, setActive, active, barbero, handl
   return (
     <section className="info-profile">
       <div className="info-profile__container">
-        <div>
+        <div className="info-profile_child"> 
           <img
             className="profile-image"
             src={img}

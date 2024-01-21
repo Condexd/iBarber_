@@ -109,7 +109,7 @@ console.log(id)
       return res.status(404).json({ id });
     }
 
-    const barberos = barberia.barberos;
+    const barberos = barberia;
 
     res.status(200).json({ barberos });
   } catch (error) {

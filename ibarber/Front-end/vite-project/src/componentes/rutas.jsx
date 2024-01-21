@@ -5,7 +5,7 @@ import { Crearbarberia } from "./Barberia/crearbarberia";
 import { MiBarberia } from "./Barberia/miBarberia";
 import { MisBarberos } from "./barberos/MisBarberos";
 import { CrearBarbero } from "./barberos/CrearBarbero";
-import { CitaForm } from "./citas/CitaForm";
+import { MainCita } from "./citas/AgendarCita/MainCita";
 import { MisCitas } from "./citas/MisCitas";
 
 import Cabecero from "./layout/cabecero";
@@ -25,7 +25,7 @@ function Rutas({ isAuthenticated, logout }) {
             <Route path="/empleados" element={<MisBarberos />} />
             <Route path="/new-empleado" element={<CrearBarbero />} />
             <Route path="/new-barberia" element={<Crearbarberia />} />
-            <Route path="/new-cita/:id" element={<CitaForm />} />
+            <Route path="/new-cita/:id" element={<MainCita />} />
             <Route path="/citas" element={<MisCitas />} />
           </>
         )}

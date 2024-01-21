@@ -13,6 +13,7 @@ const Boton = ({ logout }) => {
         position: toast.POSITION.TOP_RIGHT,
         autoClose: false,
         closeOnClick: false,
+        duration: 3000,
       }
     );
 

@@ -38,7 +38,7 @@ export const Crearbarberia = () => {
 
       <main id="form-barber-container">
         <div className='img-container'>
-        <img src="http://localhost:3300/uploads/barber.jpg"  loading="lazy" alt="Imagen de la barbería" /> 
+        <img src="http://localhost:3300/uploads/barber.jpg" className='animate__animated animate__fadeInLeft'  loading="lazy" alt="Imagen de la barbería" /> 
         </div>
         <form onSubmit={handleSubmit} id="form-barber">
           <div id="login-title">

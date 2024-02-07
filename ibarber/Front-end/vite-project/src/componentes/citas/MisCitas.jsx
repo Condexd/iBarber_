@@ -1,4 +1,4 @@
-import { useContext, useState, useEffect } from "react";
+import { useContext} from "react";
 import { UserContext } from "../context/UserContext";
 import { API_URLS } from "../../modulos/urls";
 import "../../Estilos/misCitas.css";
@@ -8,6 +8,7 @@ import { deleteFun } from "../../functions/deleteFun";
 import { updateLittle } from "../../functions/Patch";
 import CitaItem from "./citaItem";
 import { useFetchuno } from "../../Hooks/useFetchintento";
+import { Nocitas } from "./Nocitas";
 export const MisCitas = () => {
   const { userData } = useContext(UserContext);
   const { data, isLoading, hasError, setState } = useFetchuno(`${API_URLS.obtenerCitasFiltradas}`);
@@ -87,7 +88,7 @@ export const MisCitas = () => {
   }
 
   if (!data || (!data.cliente && !data.barbero)) {
-    return <div>No hay citas para mostrar.</div>;
+    return <Nocitas/>
   }
 
   const citasCliente = data.cliente

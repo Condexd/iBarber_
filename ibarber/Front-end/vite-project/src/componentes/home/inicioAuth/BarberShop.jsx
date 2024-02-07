@@ -22,7 +22,7 @@ const BarberShop = () => {
   if (hasErrorBarberias || hasErrorBarberos) {
     return <p>Please try again later.</p>;
   }
- console.log(barberiasData)
+ console.log(barberosData)
   return (
     <div className="cuerpo">
       <h1 className="titleUser">Hola, {userData.usuario}</h1>
@@ -53,14 +53,11 @@ const BarberShop = () => {
           <div className="cartas-barbero">
             {barberosData.map((grupo, index) => (
               <div key={index}>
-                {grupo.barberos.map((barbero, subIndex) => (
-                  
                   <BarberoCard
-                    key={subIndex}
-                    name={barbero.usuario}
-                    biography={barbero.biografia_barbero}
+                    key={index}
+                    name={grupo.usuario}
+                    biography={grupo.biografia_barbero}
                   />
-                ))}
               </div>
             ))}
           </div>

@@ -264,7 +264,7 @@ export const postBarber = async (req, res) => {
 // Ruta para obtener todos los barberos de todas las barberías
 export const getBarberosall = async (req, res) => {
   try {
-    const barberos = await BarberiaModel.find({}, "barberos");
+    const barberos = await usuarioModel.find({ roles: 'barbero' });
     res.json(barberos);
   } catch (error) {
     res.status(500).json({ error: "Error al obtener los barberos" });

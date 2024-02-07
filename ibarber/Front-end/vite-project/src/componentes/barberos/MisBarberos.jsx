@@ -1,4 +1,4 @@
-import { useContext, useState} from 'react';
+import { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useFetch } from '../../Hooks/useFetch';
 import { UserContext } from '../context/UserContext';
@@ -11,15 +11,19 @@ import { mostrarMensajeExitoDelete } from '../../modulos/alertas';
 import { mostrarConfirmacion } from '../../modulos/confirms';
 import { EditBarberos } from './EditBarberos';
 import { useFetchuno } from '../../Hooks/useFetchintento';
+import { CrearBarbero } from './CrearBarbero';
+
 export const MisBarberos = () => {
-  const { userData} = useContext(UserContext);
+  const { userData } = useContext(UserContext);
   const [usuario] = useState(userData.usuario);
   const [barbero, setBarbero] = useState('');
   const [visible, setVisible] = useState(false);
-  const apiUrl = `${API_URLS.obtenerBarberos}`;
-  const { data, isLoading, haserror,setState } = useFetchuno(apiUrl);
+  const [crearBarberoModalOpen, setCrearBarberoModalOpen] = useState(false);
 
-  const handleEdit = (barber,event) => {
+  const apiUrl = `${API_URLS.obtenerBarberos}`;
+  const { data, isLoading, haserror, setState } = useFetchuno(apiUrl);
+
+  const handleEdit = (barber, event) => {
     event.preventDefault();
     setBarbero(barber);
     setVisible(true);
@@ -28,11 +32,10 @@ export const MisBarberos = () => {
   const funcionEditar = (contenido) => {
     let result = data.map((barberia) => {
       if (barberia.usuario === contenido.usuario) {
-  
-      barberia.num_barbero=contenido.num_barbero
-      barberia.biografia_barbero=contenido.biografia_barbero
-      barberia.especialidad=contenido.especialidad
-      barberia.experiencia=contenido.experiencia
+        barberia.num_barbero = contenido.num_barbero;
+        barberia.biografia_barbero = contenido.biografia_barbero;
+        barberia.especialidad = contenido.especialidad;
+        barberia.experiencia = contenido.experiencia;
       }
       return barberia;
     });
@@ -41,26 +44,34 @@ export const MisBarberos = () => {
       isLoading: false,
       hasError: null,
     });
-
     return true;
   };
 
-  const handleDelete = async (barberoId,event) => {
+  const handleDelete = async (barberoId, event) => {
     event.preventDefault();
     const confirmacion = await mostrarConfirmacion(
       '¿Enviar datos?',
       '¿Estás seguro de Eliminar este Barbero?'
     );
-  if(confirmacion.isConfirmed){
-    if (await deleteBarber(`${API_URLS.eliminarBarbero}/${barberoId}`)) {
-      const updatedData = data.filter((barbero) => barbero._id !== barberoId);
-      setState({data:updatedData,
-                isLoading:false,
-                haserror:null
-      });
-      mostrarMensajeExitoDelete();
+    if (confirmacion.isConfirmed) {
+      if (await deleteBarber(`${API_URLS.eliminarBarbero}/${barberoId}`)) {
+        const updatedData = data.filter((barbero) => barbero._id !== barberoId);
+        setState({
+          data: updatedData,
+          isLoading: false,
+          haserror: null,
+        });
+        mostrarMensajeExitoDelete();
+      }
     }
-  }
+  };
+
+  const handleOpenCrearBarberoModal = () => {
+    setCrearBarberoModalOpen(true);
+  };
+
+  const handleCloseCrearBarberoModal = () => {
+    setCrearBarberoModalOpen(false);
   };
 
   const columns = [
@@ -92,15 +103,15 @@ export const MisBarberos = () => {
       name: 'Acciones',
       options: {
         customBodyRender: (value, tableMeta, updateValue) => {
-          const barberoUser = tableMeta.rowData[1]
-          const barberoId = tableMeta.rowData[0]
+          const barberoUser = tableMeta.rowData[1];
+          const barberoId = tableMeta.rowData[0];
           return (
             <>
               <IconButton
                 variant="contained"
                 color="success"
                 className="mt-2 fs-6"
-                onClick={(event) => handleEdit(barberoUser,event)}
+                onClick={(event) => handleEdit(barberoUser, event)}
               >
                 <FiEdit />
               </IconButton>
@@ -139,16 +150,28 @@ export const MisBarberos = () => {
     <>
       <div className="container mt-5">
         <h2>Mis empleados</h2>
-        <Link to="/new-empleado">
-          <IconButton variant="contained" color="success" className="mt-2 fs-6">
-            <span>
-              <FiEdit /> Agregar Barbero
-            </span>
-          </IconButton>
-        </Link>
-        <div id="formularioBarberosContainer"></div>
-        {visible && <EditBarberos setVisible={setVisible} funcionEditar={funcionEditar} barbero={barbero} usuario={usuario} />
-         }
+        <IconButton
+          variant="contained"
+          color="success"
+          className="mt-2 fs-6"
+          onClick={handleOpenCrearBarberoModal}
+        >
+          <span>
+            <FiEdit /> Agregar Barbero
+          </span>
+        </IconButton>
+        <CrearBarbero
+          isOpen={crearBarberoModalOpen}
+          onRequestClose={handleCloseCrearBarberoModal}
+        />
+        {visible && (
+          <EditBarberos
+            setVisible={setVisible}
+            funcionEditar={funcionEditar}
+            barbero={barbero}
+            usuario={usuario}
+          />
+        )}
         {isLoading ? (
           <p>Cargando...</p>
         ) : haserror ? (

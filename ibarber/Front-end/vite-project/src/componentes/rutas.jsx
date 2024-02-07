@@ -4,7 +4,6 @@ import Perfil from "./Perfil/perfil";
 import { Crearbarberia } from "./Barberia/crearbarberia";
 import { MiBarberia } from "./Barberia/miBarberia";
 import { MisBarberos } from "./barberos/MisBarberos";
-import { CrearBarbero } from "./barberos/CrearBarbero";
 import { MainCita } from "./citas/AgendarCita/MainCita";
 import { MisCitas } from "./citas/MisCitas";
 
@@ -23,7 +22,6 @@ function Rutas({ isAuthenticated, logout }) {
             <Route path="/perfil" element={<Perfil logout={logout} />} />
             <Route path="/mi-barberia" element={<MiBarberia />} />
             <Route path="/empleados" element={<MisBarberos />} />
-            <Route path="/new-empleado" element={<CrearBarbero />} />
             <Route path="/new-barberia" element={<Crearbarberia />} />
             <Route path="/new-cita/:id" element={<MainCita />} />
             <Route path="/citas" element={<MisCitas />} />

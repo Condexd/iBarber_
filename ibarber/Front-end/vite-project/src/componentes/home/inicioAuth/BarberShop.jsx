@@ -54,7 +54,6 @@ const BarberShop = () => {
             {barberosData.map((grupo, index) => (
               <div key={index}>
                 {grupo.barberos.map((barbero, subIndex) => (
-                  
                   <BarberoCard
                     key={subIndex}
                     name={barbero.usuario}

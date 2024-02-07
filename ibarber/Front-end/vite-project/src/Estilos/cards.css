@@ -13,7 +13,6 @@ body {
 .card-barberia {
   border-radius: 6px;
   overflow: hidden;
-  
 }
 .card-barberia__header__image:hover{
   filter: grayscale(60%); 
@@ -31,8 +30,6 @@ body {
 .card-barberia__header:hover {
 
 }
-
-
 
 .card-barberia__footer {
   padding: 8px;

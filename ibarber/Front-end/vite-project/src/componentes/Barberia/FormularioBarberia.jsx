@@ -84,7 +84,7 @@ const FormularioBarberia = ({
             className="textarea--description"
             type="text"
             name="descripcion"
-            required
+            rows="6"
             value={descripcion}
             onChange={(e) => setDescripcion(e.target.value)}
           ></textarea>

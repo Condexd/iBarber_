@@ -46,7 +46,7 @@ const toggleShowPassword = () => {
                 id="nombres"
                 name="nombres"
                 required
-                pattern="[A-Za-z]*"
+                pattern="^[A-Za-zÀ-ÿ\s']+$"
                 placeholder="Nombres"
                 value={nombres}
                 onChange={funcion} />
@@ -58,7 +58,7 @@ const toggleShowPassword = () => {
                 type="text"
                 id="apellidos"
                 name="apellidos"
-                pattern="[A-Za-z]*"
+                pattern="^[A-Za-zÀ-ÿ\s']+$"
                 placeholder="Apellidos"
                 required
                 value={apellidos}

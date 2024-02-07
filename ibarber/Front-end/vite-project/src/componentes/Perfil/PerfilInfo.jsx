@@ -10,14 +10,14 @@ function PerfilInfo({ nombres, apellidos, img, setActive, active, barbero, handl
   return (
     <section className="info-profile">
       <div className="info-profile__container">
-        <div className="info-profile_child"> 
-          <img
-            className="profile-image"
-            src={img}
-            width={200}
-            height={200}
-            alt="Imagen de perfil"
-          />
+        <div className="info-profile_child">
+          <div className="info-profile_child__image-container">
+            <img
+              className="profile-image"
+              src={img}
+              alt="Imagen de perfil"
+            />
+          </div>
           <label className="label--upload-image">
             <input
               className="input-image--profile"

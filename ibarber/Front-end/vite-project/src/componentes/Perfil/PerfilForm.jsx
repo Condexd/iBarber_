@@ -124,7 +124,6 @@ function PerfilForm({
             className="input--profile"
             type="text"
             name="telefono"
-            required
             value={telefono}
             onChange={(e) => setTelefono(e.target.value)}
             placeholder="Tu número"
@@ -135,7 +134,6 @@ function PerfilForm({
           <select
             className="select--profile"
             name="ciudad"
-            required
             value={ciudad}
             onChange={(e) => setCiudad(e.target.value)}
           >
@@ -151,8 +149,7 @@ function PerfilForm({
             className="textarea--description"
             type="text"
             name="usuario"
-            required
-            rows="4"
+            rows="6"
             value={biografia}
             onChange={(e) => setBiografia(e.target.value)}
           ></textarea>

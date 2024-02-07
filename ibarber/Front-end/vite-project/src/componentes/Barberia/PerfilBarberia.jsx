@@ -5,12 +5,14 @@ const PerfilBarberia = ({ nombre, descripcion, ciudad,handleFileChange, img }) =
   return (
     <section className="info-profile">
       <div className="info-profile__container">
-        <div>
-          <img
-            className="profile-image"
-             src={img}
-            alt="Imagen de perfil"
-          />
+        <div className="info-profile_child">
+          <div className="info-profile_child__image-container">
+            <img
+              className="profile-image"
+              src={img}
+              alt="Imagen de perfil"
+            />
+          </div>
           <label className="label--upload-image">
             <input
               className="input-image--profile"
@@ -25,9 +27,17 @@ const PerfilBarberia = ({ nombre, descripcion, ciudad,handleFileChange, img }) =
           </label>
         </div>
         <div className="info-profile__container__data">
-          <span className="profile-data">
-            {nombre} {descripcion} {ciudad}
-          </span>
+          <div className="profile-data">
+            {nombre}
+
+            <span>
+              {ciudad}
+            </span>
+
+            <span className="barberia-description">
+              {descripcion}
+            </span>
+          </div>
         </div>
         <div>
           <Link to="/empleados">

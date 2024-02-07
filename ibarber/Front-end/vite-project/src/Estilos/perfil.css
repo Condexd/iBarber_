@@ -11,8 +11,15 @@
   max-width: 250px;
   padding: 8px;
 }
-.info-profile_child {
+.info-profile_child__image-container {
+  max-width: 200px;
   aspect-ratio: 1/1;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  border-radius: 50%;
+  border: 4px solid #f4f4f4;
+  box-shadow: rgba(0, 0, 0, 0.23) 0px 0px 6px;
 }
 
 .info-profile__container__data {
@@ -21,12 +28,6 @@
 }
 
 .profile-image {
-  width: 200px;
-  height: auto;
-  aspect-ratio: 1/1;
-  border-radius: 50%;
-  border: 4px solid #f4f4f4;
-  box-shadow: rgba(0, 0, 0, 0.23) 0px 0px 6px;
 }
 
 .profile__container {
@@ -97,6 +98,19 @@
 
 .textarea--description:focus {
   outline: none;
+}
+
+.barberia-description {
+    /* Contenedor de bloque flexible en el contexto de textos */
+    display: -webkit-box;
+    /* Las lineas se apilaran verticalmente */
+    -webkit-box-orient: vertical;
+    /* Establece el número máximo de líneas que se mostrarán */
+    -webkit-line-clamp: 3; /* Puedes ajustar este valor según tus necesidades */
+    /* Añade puntos suspensivos al final del texto que se corta */
+    text-overflow: ellipsis;
+    overflow: hidden;
+    margin: 0;
 }
 
 .input--profile {
@@ -231,7 +245,7 @@ input:checked+.slider:before {
     flex-wrap: wrap;
   }
 
-  .profile-image {
+  .info-profile_child__image-container {
     width: 150px;
   }
 

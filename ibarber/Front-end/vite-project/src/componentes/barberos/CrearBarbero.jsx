@@ -64,56 +64,51 @@ export const CrearBarbero = ({ isOpen, onRequestClose }) => {
             &times;
           </span>
           <h2 className='Cambiar-contrasena'>Añadir Empleado</h2>
-          <main id="form-container">
-            <form id="form-register" onSubmit={handleSubmit}>
-              <div id="form-title">
-                <h3>Añadir empleado</h3>
-              </div>
-              <ul id="form-email">
-                <li>
+          <form id="form-content" onSubmit={handleSubmit}>
+            <div className='contenedorees'>
+                  <label htmlFor="usuario">Usuario:</label>
                   <input
                     type="text"
-                    id="usuario"
-                    name="usuario"
+                    id="biografia_barbero"
+                    name="biografia_barbero"
                     value={usuario}
                     onChange={handleUsuarioChange}
                     required
                     placeholder="Usuario"
-                  />
-                </li>
-              </ul>
-              <ul id="form-num">
-                <li>
-                  <input 
+                  /> 
+            </div>
+            <div className='contenedorees'>
+                <label htmlFor="numero">Número:</label>
+                <input 
                   type="text" 
-                  id="numero"
-                  name="numero"
+                  id="num_barbero"
+                  name="num_barbero"
                   value={numero}
                   onChange={handleNumeroChange}
                   required
                   placeholder="Número"
-                  />
-                </li>
-              </ul>
-              <ul id="form-bio">
-                <li>
-                  <input 
+                />
+              </div>
+            <div className='contenedorees'>
+                <label htmlFor="biografia">Biografía:</label>
+                <input 
                   type="text" 
-                  id="biografia" 
-                  name="biografia"
+                  id="biografia_barbero" 
+                  name="biografia_barbero"
                   value={biografia} 
                   onChange={handleBiografiaChange}
                   required
                   placeholder="Biografía"
-                  />
-                </li>
-              </ul>
-              <ul id="form-esp">
+                />
+            </div>
+            <div className='contenedorees'>
+                <label htmlFor="especialidad">Especialidad:</label>
                 <select 
-                name="especialidad" 
-                value={especialidad}
-                onChange={handleEspecialidadChange}
-                className=""
+                  name="especialidad" 
+                  value={especialidad}
+                  onChange={handleEspecialidadChange}
+                  id='biografia_barbero'
+                  className="biografia_barbero"
                 >
                   <option value="Seleccionar">Selecciona Especialidad</option>
                   <option value="Corte de cabello">Corte de cabello</option>
@@ -121,28 +116,22 @@ export const CrearBarbero = ({ isOpen, onRequestClose }) => {
                   <option value="Barba">Barba</option>
                   <option value="Coloracion de cabello">Coloración de cabello</option>
                 </select>
-              </ul>
-              <ul id="form-username">
-                <li>
-                  <input
-                    type="number"
-                    id="experiencia"
-                    autoComplete="experiencia"
-                    name="experiencia"
-                    value={experiencia}
-                    onChange={handleExperienciaChange}
-                    placeholder="Años de experiencia"
-                    required
-                  />
-                </li>
-              </ul>
-              <ul id="form-button">
-                <li>
-                  <button type="submit">Agregar barbero</button>
-                </li>
-              </ul>
-            </form>
-          </main>
+              </div>
+            <div className='contenedorees'>
+                <label htmlFor="experiencia">Años de experiencia:</label>
+                <input
+                  type="number"
+                  id="experiencia"
+                  autoComplete="experiencia"
+                  name="experiencia"
+                  value={experiencia}
+                  onChange={handleExperienciaChange}
+                  placeholder="Años de experiencia"
+                  required
+                />
+            </div>
+              <button  className='botonEditar' type="submit">Agregar barbero</button>
+          </form>
         </div>
       </div>
     </>

@@ -1,4 +1,5 @@
 import "../Estilos/notFound.css"
+import { API_URLS } from "../modulos/urls"
 import { ButtonGoBack } from "./botones/ButtonGoBack"
 
 export const NotFoundPage = () => {
@@ -6,7 +7,7 @@ export const NotFoundPage = () => {
     <main className="contenedor-not-found">
       <div className="columnas-not-found">
         <div>
-          <img className="image-not-found" src="https://raw.githubusercontent.com/Condexd/iBarber_/develop/ibarber/back-end/uploads/astronauta-corazon.webp" />
+          <img className="image-not-found" src={`${API_URLS.obtenerImage}${"/uploads/astronauta-corazon.webp"}`}/>
         </div>
         <div className="oops-container">
           <span className="oops">

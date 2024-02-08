@@ -1,10 +1,22 @@
 import "../Estilos/notFound.css"
+import { ButtonGoBack } from "./botones/ButtonGoBack"
 
 export const NotFoundPage = () => {
   return (
     <main className="contenedor-not-found">
-      <div>
-        <img src="https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.shutterstock.com%2Fes%2Fsearch%2Fastronauta-saludando&psig=AOvVaw1iAFxhck27S1VNSBq2YZWs&ust=1707437865324000&source=images&cd=vfe&opi=89978449&ved=0CBIQjRxqFwoTCOjBwpq8moQDFQAAAAAdAAAAABAg" />
+      <div className="columnas-not-found">
+        <div>
+          <img className="image-not-found" src="https://raw.githubusercontent.com/Condexd/iBarber_/develop/ibarber/back-end/uploads/astronauta-corazon.webp" />
+        </div>
+        <div className="oops-container">
+          <span className="oops">
+            Oops!
+          </span>
+          <span>
+            Esta página no está disponible.
+          </span>
+          <ButtonGoBack/>
+        </div>
       </div>
     </main>
   )

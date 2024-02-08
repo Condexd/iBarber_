@@ -1,6 +1,7 @@
 :root {
   --primary-color: #655CC9;
   --secondary-color: #157347;
+  --primary-hover-color: #574faf;
 }
 
 /* LogoutButton.css */
@@ -43,6 +44,23 @@
 
 .button-red {
   background-color: #E32636;
+}
+
+.goback {
+  border: none;
+  cursor: pointer;
+  padding: 6px 14px;
+  font-size: 26px;
+  font-family: Helvetica;
+  font-weight: 600;
+  background-color: var(--primary-color);
+  border-radius: 10px;
+  width: 70%;
+  color: rgb(238, 238, 238);
+}
+
+.goback:hover {
+  background-color: var(--primary-hover-color);
 }
 
 .link-sin-estilos {

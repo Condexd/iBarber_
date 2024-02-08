@@ -4,7 +4,7 @@ import "../../../Estilos/inicio.css";
 import { useFetch } from "../../../Hooks/useFetch";
 import { API_URLS } from "../../../modulos/urls";
 import { UserContext } from "../../context/UserContext";
-import BarberoCard from "./BarberosCard";
+import { MultipleItems } from "../../layout/MultipleItems";
 import BarberiaCard from "./BarberiaCard";
 
 const BarberShop = () => {
@@ -22,7 +22,8 @@ const BarberShop = () => {
   if (hasErrorBarberias || hasErrorBarberos) {
     return <p>Please try again later.</p>;
   }
- console.log(barberosData)
+
+  console.log(barberosData)
   return (
     <div className="cuerpo">
       <h1 className="titleUser">Hola, {userData.usuario}</h1>
@@ -48,23 +49,7 @@ const BarberShop = () => {
         </div>
 
         {/* Barberos Section */}
-        <div className="barberos">
-          <h2>Barberos:</h2>
-          <div className="cartas-barbero">
-            {barberosData.map((grupo, index) => (
-              <div key={index}>
-                  <BarberoCard
-                    key={index}
-                    name={grupo.usuario}
-                    biography={grupo.biografia_barbero}
-                  />
-              </div>
-            ))}
-          </div>
-          <div className="ver-mas">
-            <button className="ver-btn">Ver más</button>
-          </div>
-        </div>
+        <MultipleItems barberosData ={barberosData} />
       </section>
     </div>
   );

@@ -9,11 +9,11 @@ export const MainCita = () => {
   const { data } = useFetch(`${API_URLS.obtenerBarberosNombreBarberia}/${id}`);
 
   return (
-    <div className="row mt-5 containerCita d-flex justify-content-center">
-      <div className="col-lg-4 d-flex justify-content-center align-items-center">
+    <div className="row mt-5 containerCita d-flex justify-content-center p-0 ">
+      <div className="col-lg-4 d-flex justify-content-center align-items-center mb-5 p-0 ">
         <BarberiaInfo barberoInfo={data?.barberos} />
       </div>
-      <div className="col-lg-4 d-flex justify-content-center align-items-center ">
+      <div className="col-lg-4 d-flex justify-content-center align-items-center p-0 ">
         <CitaForm barberoInfo={data?.barberos} />
       </div>
     </div>

@@ -9,6 +9,7 @@ import { MainCita } from "./citas/AgendarCita/MainCita";
 import { MisCitas } from "./citas/MisCitas";
 
 import Cabecero from "./layout/cabecero";
+import { NotFoundPage } from "./NotFoundPage";
 
 function Rutas({ isAuthenticated, logout }) {
   return (
@@ -17,7 +18,7 @@ function Rutas({ isAuthenticated, logout }) {
       <Routes>
         <Route path="/Home" element={<Inicio isAuthenticated={isAuthenticated} />} />
         <Route path="/" element={<Navigate to="/Home" />} />
-
+        <Route path="*" element={<NotFoundPage />} />
         {isAuthenticated && (
           <>
             <Route path="/perfil" element={<Perfil logout={logout} />} />

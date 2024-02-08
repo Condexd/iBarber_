@@ -5,6 +5,9 @@ import { enviadorAuth } from '../../functions/usePostAuth';
 
 export const CrearBarbero = ({ isOpen, onRequestClose }) => {
   const [usuario, setUsuario] = useState('');
+  const [nombres, setNombres] = useState('');
+  const [apellidos, setApellidos] = useState('');
+  const [correo, setCorreo] = useState('');
   const [numero, setNumero] = useState('');
   const [biografia, setBiografia] = useState('');
   const [especialidad, setEspecialidad] = useState('');
@@ -18,6 +21,18 @@ export const CrearBarbero = ({ isOpen, onRequestClose }) => {
 
   const handleUsuarioChange = (event) => {
     setUsuario(event.target.value);
+  };
+
+  const handleNombresChange = (event) => {
+    setNombres(event.target.value);
+  };
+
+  const handleApellidosChange = (event) => {
+    setApellidos(event.target.value);
+  };
+
+  const handleCorreoChange = (event) => {
+    setCorreo(event.target.value);
   };
 
   const handleNumeroChange = (event) => {
@@ -38,7 +53,7 @@ export const CrearBarbero = ({ isOpen, onRequestClose }) => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    const result = await enviadorAuth(`${API_URLS.crearBarbero}`, { usuario, numero, biografia, especialidad, experiencia });
+    const result = await enviadorAuth(`${API_URLS.crearBarbero}`, { usuario, nombres, apellidos, correo, numero, biografia, especialidad, experiencia });
     if (result) {
       navigate("/empleados");
     }
@@ -71,6 +86,39 @@ export const CrearBarbero = ({ isOpen, onRequestClose }) => {
                   name="usuario"
                   value={usuario}
                   onChange={handleUsuarioChange}
+                  required
+                />
+              </div>
+              <div className='contenedor-create'>
+                <label htmlFor="nombres">Nombres:</label>
+                <input
+                  type="text"
+                  id="nombres"
+                  name="nombres"
+                  value={nombres}
+                  onChange={handleNombresChange}
+                  required
+                />
+              </div>
+              <div className='contenedor-create'>
+                <label htmlFor="apellidos">Apellidos:</label>
+                <input
+                  type="text"
+                  id="apellidos"
+                  name="apellidos"
+                  value={apellidos}
+                  onChange={handleApellidosChange}
+                  required
+                />
+              </div>
+              <div className='contenedor-create'>
+                <label htmlFor="correo">Correo:</label>
+                <input
+                  type="text"
+                  id="correo"
+                  name="correo"
+                  value={correo}
+                  onChange={handleCorreoChange}
                   required
                 />
               </div>

@@ -32,6 +32,9 @@ export const MisBarberos = () => {
   const funcionEditar = (contenido) => {
     let result = data.map((barberia) => {
       if (barberia.usuario === contenido.usuario) {
+        barberia.nombres = contenido.nombres;
+        barberia.apellidos = contenido.apellidos;
+        barberia.correo = contenido.correo;
         barberia.num_barbero = contenido.num_barbero;
         barberia.biografia_barbero = contenido.biografia_barbero;
         barberia.especialidad = contenido.especialidad;
@@ -82,6 +85,18 @@ export const MisBarberos = () => {
     {
       name: 'usuario',
       field: 'usuario',
+    },
+    {
+      name: 'nombres',
+      field: 'nombres',
+    },
+    {
+      name: 'apellidos',
+      field: 'apellidos',
+    },
+    {
+      name: 'correo',
+      field: 'correo',
     },
     {
       name: 'num_barbero',

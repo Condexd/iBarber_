@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { actualizar } from '../../functions/usePut';
 import { API_URLS } from '../../modulos/urls';
 
-export const EditBarbero = ({ barbero, funcionEditar, setVisible, usuario }) => {
+export const EditBarberos = ({ barbero, funcionEditar, setVisible, usuario }) => {
   const [formData, setFormData] = useState({
     biografia_barbero: '',
     especialidad: '',

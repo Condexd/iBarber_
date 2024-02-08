@@ -204,7 +204,7 @@ export const deleteBarber = async (req, res) => {
 };
 
 export const postBarber = async (req, res) => {
-  const { usuario, numero, biografia, especialidad, experiencia } = req.body;
+  const { usuario, nombres, apellidos, correo, numero, biografia, especialidad, experiencia } = req.body;
 
   try {
     const token = req.headers.authorization;
@@ -234,6 +234,9 @@ export const postBarber = async (req, res) => {
         $push: {
           barberos: {
             usuario: barbero.usuario,
+            nombres,
+            apellidos,
+            correo,
             num_barbero: numero,
             biografia_barbero: biografia,
             especialidad,

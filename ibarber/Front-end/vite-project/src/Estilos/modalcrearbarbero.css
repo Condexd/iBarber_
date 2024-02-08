@@ -1,0 +1,106 @@
+.modal-overlay-create {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    z-index: 100; 
+}
+
+.modal-overlay-create.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal-content-create {
+    position: relative; 
+    background: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    max-width: 400px;
+    width: 100%;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    z-index: 100;
+}
+
+.modal-close-create {
+    position: absolute; 
+    top: 10px; 
+    right: 10px; 
+    color: #555;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+  
+
+.crear-barbero-title {
+    color: #333;
+    margin-top: 20px;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.contenedor-create {
+    position: relative;
+    margin-bottom: 15px;
+}
+
+.contenedor-create input,
+.contenedor-create textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    transition: border-color 0.3s ease;
+}
+
+.contenedor-create input:focus,
+.contenedor-create textarea:focus {
+    border-color: #655CC9; 
+    outline: none;
+}
+
+.contenedor-create button {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #777;
+    font-size: 18px;
+    transition: color 0.3s ease;
+}
+
+.contenedor-create button:hover {
+    color: #555;
+}
+
+.add-barbero-btn {
+    background-color: #655CC9;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 16px;
+    margin-top: 15px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.add-barbero-btn:hover {
+    background-color: #4b468e;
+}
+

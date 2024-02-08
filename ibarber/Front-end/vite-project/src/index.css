@@ -9,6 +9,8 @@
 @import url("./Estilos/registrar.css");
 @import url("./Estilos/formCita.css");
 @import url("./Estilos/modalcontraseña.css");
+@import url("./Estilos/modalcrearbarbero.css");
+@import url("./Estilos/edit.css");
 html{
     height: 100vh;
     width: 100vw;

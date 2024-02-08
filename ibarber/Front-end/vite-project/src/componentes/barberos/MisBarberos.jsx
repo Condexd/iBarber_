@@ -29,6 +29,7 @@ export const MisBarberos = () => {
     setVisible(true);
   };
 
+
   const funcionEditar = (contenido) => {
     let result = data.map((barberia) => {
       if (barberia.usuario === contenido.usuario) {
@@ -50,6 +51,17 @@ export const MisBarberos = () => {
     return true;
   };
 
+  const agregar = (nuevoBarbero) => {
+    setState(prevState => ({
+      ...prevState,
+      data: [...prevState.data, nuevoBarbero],
+      isLoading: false,
+      hasError: null,
+    }));
+    handleCloseCrearBarberoModal()
+  };
+  
+
   const handleDelete = async (barberoId, event) => {
     event.preventDefault();
     const confirmacion = await mostrarConfirmacion(
@@ -68,6 +80,7 @@ export const MisBarberos = () => {
       }
     }
   };
+
 
   const handleOpenCrearBarberoModal = () => {
     setCrearBarberoModalOpen(true);
@@ -99,12 +112,12 @@ export const MisBarberos = () => {
       field: 'correo',
     },
     {
-      name: 'num_barbero',
-      field: 'num_barbero',
+      name: 'telefono',
+      field: 'telefono',
     },
     {
-      name: 'biografia_barbero',
-      field: 'biografia_barbero',
+      name: 'biografia',
+      field: 'biografia',
     },
     {
       name: 'especialidad',
@@ -178,6 +191,7 @@ export const MisBarberos = () => {
         <CrearBarbero
           isOpen={crearBarberoModalOpen}
           onRequestClose={handleCloseCrearBarberoModal}
+          agregar={agregar}
         />
         {visible && (
           <EditBarberos

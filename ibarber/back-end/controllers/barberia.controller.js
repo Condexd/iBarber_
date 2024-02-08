@@ -79,14 +79,34 @@ export const getBarberia = async (req, res) => {
   }
 };
 
+
 export const getBarberos = async (req, res) => {
   try {
     const token = req.headers.authorization;
     const { usuario: id } = await verificarTokenYObtenerUsuario(token);
-    const barberia = await BarberiaModel.findOne({ "dueño.usuario": id });
+    const barberia = await BarberiaModel.findOne({ "dueño.usuario": id }).populate('barberos');
+
     if (barberia) {
       const barberos = barberia.barberos;
-      res.status(200).json(barberos);
+      const barberosConInfo = [];
+      for (const barbero of barberos) {
+        const infoBarbero = await usuarioModel.findOne({ usuario: barbero.usuario }).lean();
+        const barberoCompleto = {
+          usuario: infoBarbero.usuario,
+          nombres: infoBarbero.nombres,
+          telefono:infoBarbero.telefono,
+          apellidos: infoBarbero.apellidos,
+          correo: infoBarbero.correo,
+          biografia:infoBarbero.biografia,
+          fotoPerfil: infoBarbero.fotoPerfil,
+          especialidad: barbero.especialidad,
+          experiencia: barbero.experiencia,
+          _id:barbero._id
+        };
+        barberosConInfo.push(barberoCompleto);
+      }
+
+      res.status(200).json(barberosConInfo);
     } else {
       res.status(404).json({ message: "Barbería no encontrada" });
     }
@@ -98,6 +118,8 @@ export const getBarberos = async (req, res) => {
     res.status(500).json({ message: "Error interno del servidor" });
   }
 };
+
+
 
 export const obtenerBarberosPorNombreBarberia = async (req, res) => {
   try {
@@ -204,7 +226,7 @@ export const deleteBarber = async (req, res) => {
 };
 
 export const postBarber = async (req, res) => {
-  const { usuario, nombres, apellidos, correo, numero, biografia, especialidad, experiencia } = req.body;
+  const { usuario, especialidad, experiencia } = req.body;
 
   try {
     const token = req.headers.authorization;
@@ -220,7 +242,6 @@ export const postBarber = async (req, res) => {
     const barberiaExistente = await BarberiaModel.findOne({
       "barberos.usuario": usuario,
     });
-
     if (barberiaExistente) {
       return res
         .status(400)
@@ -234,11 +255,6 @@ export const postBarber = async (req, res) => {
         $push: {
           barberos: {
             usuario: barbero.usuario,
-            nombres,
-            apellidos,
-            correo,
-            num_barbero: numero,
-            biografia_barbero: biografia,
             especialidad,
             experiencia,
           },
@@ -252,17 +268,31 @@ export const postBarber = async (req, res) => {
         .status(404)
         .json({ message: "No se encontró la barbería para el dueño dado" });
     }
-    await usuarioModel.updateOne(
-      { usuario: barbero.usuario },
-      { $push: { roles: "barbero" } }
-    );
-    // Si todo está bien, devolver la barbería actualizada
-    res.status(200).json(updatedBarberia);
+
+    // Obtener información adicional del barbero
+    const infoBarbero = await usuarioModel.findOne({ usuario: usuario }).lean();
+
+    // Obtener el ID del barbero recién agregado
+    const idBarbero = updatedBarberia.barberos.find(barbero => barbero.usuario === usuario)._id;
+
+    const barberoCompleto = {
+      usuario: infoBarbero.usuario,
+      nombres: infoBarbero.nombres,
+      apellidos: infoBarbero.apellidos,
+      correo: infoBarbero.correo,
+      especialidad: especialidad,
+      experiencia: experiencia,
+      _id: idBarbero
+    };
+
+    res.status(200).json(barberoCompleto);
   } catch (error) {
     console.error("Error al procesar la solicitud:", error);
     res.status(500).json({ message: "Error interno del servidor" });
   }
 };
+
+
 
 // Ruta para obtener todos los barberos de todas las barberías
 export const getBarberosall = async (req, res) => {

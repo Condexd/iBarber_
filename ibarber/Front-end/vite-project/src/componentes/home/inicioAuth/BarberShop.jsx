@@ -23,7 +23,6 @@ const BarberShop = () => {
     return <p>Please try again later.</p>;
   }
 
-  console.log(barberosData)
   return (
     <div className="cuerpo">
       <h1 className="titleUser">Hola, {userData.usuario}</h1>

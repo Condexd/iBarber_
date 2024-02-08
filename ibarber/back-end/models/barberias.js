@@ -2,11 +2,6 @@ import { Schema, model } from "mongoose";
 
 const barberoSchema = new Schema({
   usuario: String,
-  nombres: String,
-  apellidos: String,
-  correo: String,
-  num_barbero: String,
-  biografia_barbero: String,
   especialidad: String,
   experiencia: Number,
 });

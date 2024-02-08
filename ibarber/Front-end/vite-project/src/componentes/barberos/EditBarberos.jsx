@@ -1,14 +1,13 @@
 import { useState, useEffect } from 'react';
 import { actualizar } from '../../functions/usePut';
-import "../../Estilos/edit.css"
 import { API_URLS } from '../../modulos/urls';
 
-export const EditBarberos = ({ barbero, funcionEditar, setVisible, usuario }) => {
+export const EditBarbero = ({ barbero, funcionEditar, setVisible, usuario }) => {
   const [formData, setFormData] = useState({
     biografia_barbero: '',
     especialidad: '',
-    experiencia: "",
-    num_barbero: ""
+    experiencia: '',
+    num_barbero: '',
   });
 
   const [isModalOpen, setModalOpen] = useState(false);
@@ -27,14 +26,17 @@ export const EditBarberos = ({ barbero, funcionEditar, setVisible, usuario }) =>
   const handleSubmit = async (e) => {
     e.preventDefault();
     const { experiencia, biografia_barbero, especialidad, num_barbero } = formData;
-    const result = await actualizar({ experiencia, biografia_barbero, especialidad, barbero, num_barbero }, `${API_URLS.actualizarBarbero}/${usuario}`);
+    const result = await actualizar(
+      { experiencia, biografia_barbero, especialidad, barbero, num_barbero },
+      `${API_URLS.actualizarBarbero}/${usuario}`
+    );
     if (funcionEditar(result)) {
       setModalOpen(false);
       setFormData({
         biografia_barbero: '',
         especialidad: '',
-        experiencia: "",
-        num_barbero: ""
+        experiencia: '',
+        num_barbero: '',
       });
     }
     setVisible(false);
@@ -45,8 +47,8 @@ export const EditBarberos = ({ barbero, funcionEditar, setVisible, usuario }) =>
     setFormData({
       biografia_barbero: '',
       especialidad: '',
-      experiencia: "",
-      num_barbero: ""
+      experiencia: '',
+      num_barbero: '',
     });
     setVisible(false);
   };
@@ -57,20 +59,21 @@ export const EditBarberos = ({ barbero, funcionEditar, setVisible, usuario }) =>
         <span className="modal-close" onClick={closeModal}>
           &times;
         </span>
-        <h2 className='edit'>{barbero}</h2>
-        <div className='form-content'>
-          <div className='contenedor-password'>
+        <h2 className="edit">{barbero}</h2>
+        <div className="form-content">
+          <div className="contenedor-password">
             <label htmlFor="biografia_barbero">Biografía barbero:</label>
             <textarea
+              className="biografia-input" // Añadido para el estilo
               type="text"
               id="biografia_barbero"
               name="biografia_barbero"
               value={formData.biografia_barbero}
               onChange={handleChange}
-              rows="6" 
+              rows="10" // Ajusta el número de filas
             />
           </div>
-          <div className='contenedor-password'>
+          <div className="contenedor-edit">
             <label htmlFor="especialidad">Especialidad:</label>
             <input
               type="text"
@@ -81,7 +84,7 @@ export const EditBarberos = ({ barbero, funcionEditar, setVisible, usuario }) =>
             />
           </div>
 
-          <div className='contenedor-password'>
+          <div className="contenedor-edit">
             <label htmlFor="experiencia">Experiencia:</label>
             <input
               type="number"
@@ -91,8 +94,8 @@ export const EditBarberos = ({ barbero, funcionEditar, setVisible, usuario }) =>
               onChange={handleChange}
             />
           </div>
-          <div className='contenedor-password'>
-            <label htmlFor="num_barbero">Número arbero:</label>
+          <div className="contenedor-edit">
+            <label htmlFor="num_barbero">Número barbero:</label>
             <input
               type="number"
               id="num_barbero"
@@ -101,7 +104,7 @@ export const EditBarberos = ({ barbero, funcionEditar, setVisible, usuario }) =>
               onChange={handleChange}
             />
           </div>
-          <button className='change-password-btn' onClick={handleSubmit}>
+          <button className="change-password-btn" onClick={handleSubmit}>
             Guardar Cambios
           </button>
         </div>

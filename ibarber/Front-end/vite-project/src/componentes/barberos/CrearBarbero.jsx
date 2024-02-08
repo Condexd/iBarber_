@@ -2,21 +2,18 @@ import { useState, useEffect } from 'react';
 import { API_URLS } from '../../modulos/urls';
 import { useNavigate } from 'react-router-dom';
 import { enviadorAuth } from '../../functions/usePostAuth';
-import "../../Estilos/edit.css";
 
 export const CrearBarbero = ({ isOpen, onRequestClose }) => {
   const [usuario, setUsuario] = useState('');
   const [numero, setNumero] = useState('');
   const [biografia, setBiografia] = useState('');
-  const [especialidad, setEspecialidad] = useState('Seleccionar');
+  const [especialidad, setEspecialidad] = useState('');
   const [experiencia, setExperiencia] = useState('');
   const navigate = useNavigate();
   const [isFormOpen, setIsFormOpen] = useState(false);
 
   useEffect(() => {
-    if (isOpen) {
-      setIsFormOpen(true);
-    }
+    setIsFormOpen(isOpen);
   }, [isOpen]);
 
   const handleUsuarioChange = (event) => {
@@ -58,82 +55,75 @@ export const CrearBarbero = ({ isOpen, onRequestClose }) => {
 
   return (
     <>
-      <div className={`modal-overlay ${isFormOpen ? 'active' : ''}`}>
-        <div className={`modal-content ${isFormOpen ? 'active' : ''}`}>
-          <span className="modal-close" onClick={handleCloseModal}>
-            &times;
-          </span>
-          <h2 className='Cambiar-contrasena'>Añadir Empleado</h2>
-          <form id="form-content" onSubmit={handleSubmit}>
-            <div className='contenedorees'>
-                  <label htmlFor="usuario">Usuario:</label>
-                  <input
-                    type="text"
-                    id="biografia_barbero"
-                    name="biografia_barbero"
-                    value={usuario}
-                    onChange={handleUsuarioChange}
-                    required
-                    placeholder="Usuario"
-                  /> 
-            </div>
-            <div className='contenedorees'>
+      {isFormOpen && (
+        <div className="modal-overlay-create active">
+          <div className="modal-content-create">
+            <button className="modal-close-create" onClick={handleCloseModal}>
+              &times;
+            </button>
+            <h2 className='crear-barbero-title'>Añadir Empleado</h2>
+            <form id="form-content-create" onSubmit={handleSubmit}>
+              <div className='contenedor-create'>
+                <label htmlFor="usuario">Usuario:</label>
+                <input
+                  type="text"
+                  id="usuario"
+                  name="usuario"
+                  value={usuario}
+                  onChange={handleUsuarioChange}
+                  required
+                />
+              </div>
+              <div className='contenedor-create'>
                 <label htmlFor="numero">Número:</label>
-                <input 
-                  type="text" 
-                  id="num_barbero"
-                  name="num_barbero"
+                <input
+                  type="text"
+                  id="numero"
+                  name="numero"
                   value={numero}
                   onChange={handleNumeroChange}
                   required
-                  placeholder="Número"
                 />
               </div>
-            <div className='contenedorees'>
+              <div className='contenedor-create'>
                 <label htmlFor="biografia">Biografía:</label>
-                <input 
-                  type="text" 
-                  id="biografia_barbero" 
+                <textarea
+                  type="text"
+                  id="biografia_barbero"
                   name="biografia_barbero"
-                  value={biografia} 
+                  value={biografia}
                   onChange={handleBiografiaChange}
                   required
-                  placeholder="Biografía"
+                  rows="6" 
                 />
-            </div>
-            <div className='contenedorees'>
+              </div>
+              <div className='contenedor-create'>
                 <label htmlFor="especialidad">Especialidad:</label>
-                <select 
-                  name="especialidad" 
+                <input
+                  type="text"
+                  id="especialidad"
+                  name="especialidad"
                   value={especialidad}
                   onChange={handleEspecialidadChange}
-                  id='biografia_barbero'
-                  className="biografia_barbero"
-                >
-                  <option value="Seleccionar">Selecciona Especialidad</option>
-                  <option value="Corte de cabello">Corte de cabello</option>
-                  <option value="Corte para niños">Corte para niños</option>
-                  <option value="Barba">Barba</option>
-                  <option value="Coloracion de cabello">Coloración de cabello</option>
-                </select>
+                  required
+                />
               </div>
-            <div className='contenedorees'>
+              <div className='contenedor-create'>
                 <label htmlFor="experiencia">Años de experiencia:</label>
                 <input
                   type="number"
                   id="experiencia"
-                  autoComplete="experiencia"
                   name="experiencia"
                   value={experiencia}
                   onChange={handleExperienciaChange}
-                  placeholder="Años de experiencia"
                   required
                 />
-            </div>
-              <button  className='botonEditar' type="submit">Agregar barbero</button>
-          </form>
+              </div>
+              <button className='add-barbero-btn' type="submit">Agregar barbero</button>
+            </form>
+          </div>
         </div>
-      </div>
+      )}
     </>
   );
 };

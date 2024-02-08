@@ -1,8 +1,7 @@
-import React, { useState, useEffect, useContext } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
 import { actualizar } from '../../functions/usePut'; 
 import { API_URLS } from '../../modulos/urls';
-import { UserContext } from "../context/UserContext";
 
 const CambioContrasenaModal = ({ setVisible }) => {
   const [formData, setFormData] = useState({

@@ -49,7 +49,7 @@ const BarberShop = () => {
         </div>
 
         {/* Barberos Section */}
-        <MultipleItems barberosDatas ={barberosData} />
+        <MultipleItems barberosData ={barberosData} />
       </section>
     </div>
   );

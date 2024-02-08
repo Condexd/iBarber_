@@ -279,6 +279,7 @@ export const postBarber = async (req, res) => {
       usuario: infoBarbero.usuario,
       nombres: infoBarbero.nombres,
       apellidos: infoBarbero.apellidos,
+      telefono:infoBarbero.telefono,
       correo: infoBarbero.correo,
       especialidad: especialidad,
       experiencia: experiencia,

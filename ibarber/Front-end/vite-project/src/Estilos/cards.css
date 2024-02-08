@@ -14,8 +14,13 @@ body {
   border-radius: 6px;
   overflow: hidden;
 }
+
+.card-barberia__header__image {
+  transition: filter 0.3s ease;
+}
+
 .card-barberia__header__image:hover{
-  filter: grayscale(60%); 
+  filter: grayscale(15%); 
 }
 
 .card-barberia__header {

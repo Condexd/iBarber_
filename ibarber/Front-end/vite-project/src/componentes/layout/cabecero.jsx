@@ -28,7 +28,7 @@ function Cabecero({ isAuthenticated, logout }) {
           <Link className="logo-img-contenedor" to="/" onClick={closeMenu}>
             <img
               className="logo-img"
-              src="https://github.com/Condexd/_iBarber_/blob/main/proyectoweb/index/images/logo-ibarber.png?raw=true"
+              src={`${API_URLS.obtenerImage}/uploads/logo-ibarber.png`}
               width="55px"
               height="auto"
               alt="Logo"

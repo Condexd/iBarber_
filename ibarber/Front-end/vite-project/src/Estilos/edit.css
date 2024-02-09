@@ -51,8 +51,7 @@
   margin-bottom: 15px;
 }
 
-.contenedor-edit input,
-.contenedor-edit textarea {
+.contenedor-edit input {
   width: 100%;
   padding: 10px;
   border: 1px solid #ccc;
@@ -78,7 +77,7 @@
   color: #555;
 }
 
-.change-password-btn {
+.change-info-btn {
   background-color: #655CC9;
   color: #fff;
   border: none;
@@ -90,28 +89,12 @@
   transition: background-color 0.3s ease;
 }
 
-.change-password-btn:hover {
+.change-info-btn:hover {
   background-color: #4b468e;
 }
 
-.contenedor-edit input:focus,
-.contenedor-edit textarea:focus {
+.contenedor-edit input:focus{
   border-color: #655CC9;
   outline: none;
 }
 
-
-
-.contenedor-password textarea {
-  width: 100%;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  margin-bottom: 10px;
-  transition: border-color 0.3s ease;
-  height: 120px; 
-}
-.contenedor-password textarea:focus {
-  border-color: #655CC9;
-  outline: none;
-}

@@ -310,8 +310,6 @@ export const actualizarBarbero = async (req, res) => {
     const { id } = req.params;
     const {
       barbero,
-      num_barbero,
-      biografia_barbero,
       especialidad,
       experiencia,
     } = req.body;
@@ -332,8 +330,6 @@ export const actualizarBarbero = async (req, res) => {
 
     // Actualiza las propiedades del barbero encontrado
     Object.assign(barberoEncontrado, {
-      num_barbero,
-      biografia_barbero,
       especialidad,
       experiencia,
     });

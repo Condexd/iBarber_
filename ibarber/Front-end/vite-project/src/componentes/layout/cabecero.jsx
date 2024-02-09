@@ -2,6 +2,7 @@ import { useState, useContext, useEffect } from "react";
 import { UserContext } from "../context/UserContext";
 import { Link } from "react-router-dom";
 import Boton from "./boton";
+import { API_URLS } from "../../modulos/urls";
 
 function Cabecero({ isAuthenticated, logout }) {
   const { userData} = useContext(UserContext);
@@ -64,7 +65,7 @@ function Cabecero({ isAuthenticated, logout }) {
                 <Link to="/perfil" onClick={closeMenu}>
                   <img
                     className="rounded-circle"
-                    src="https://i.pinimg.com/474x/f3/16/ce/f316cef6a7a1e732baf48a36808411b4.jpg"
+                    src={`${API_URLS.obtenerImage}/uploads/imagen_${userData.usuario}.jpg`}
                     height={35}
                     width={35}
                     alt="Perfil"

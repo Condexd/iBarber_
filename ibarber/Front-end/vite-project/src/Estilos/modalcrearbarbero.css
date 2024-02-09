@@ -55,8 +55,7 @@
     margin-bottom: 15px;
 }
 
-.contenedor-create input,
-.contenedor-create textarea {
+.contenedor-create input{
     width: 100%;
     padding: 10px;
     border: 1px solid #ccc;
@@ -65,8 +64,7 @@
     transition: border-color 0.3s ease;
 }
 
-.contenedor-create input:focus,
-.contenedor-create textarea:focus {
+.contenedor-create input:focus{
     border-color: #655CC9; 
     outline: none;
 }

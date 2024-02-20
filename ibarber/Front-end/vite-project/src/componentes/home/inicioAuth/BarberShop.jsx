@@ -15,10 +15,10 @@ const BarberShop = ({logout}) => {
   const { data: barberosData, hasError: hasErrorBarberos, isLoading: isLoadingBarberos } = useFetchuno(apiUrlBarberos);
 
   useEffect(() => {
-    if (hasErrorBarberias === 'Unauthorized') {
+    if (hasErrorBarberias === 'Unauthorized' && hasErrorBarberos=== 'Unauthorized') {
       logout();
     }
-  }, [hasErrorBarberias, logout]);
+  }, [hasErrorBarberias, logout,hasErrorBarberos]);
 
   if (isLoadingBarberias || isLoadingBarberos) {
     return <p>Loading...</p>;

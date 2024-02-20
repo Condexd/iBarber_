@@ -8,12 +8,12 @@ export const API_URLS = {
   LOGIN: `${API_BASE_URL}/login`,//no
   RECUPERAR: `${API_BASE_URL}/recuperar`,//no
   ActualizarBarberia:`${API_BASE_URL}/barberia/actualizado`,//autenticado
-  obtenerBarberos:`${API_BASE_URL}/barberia/barberos`,//
+  obtenerBarberos:`${API_BASE_URL}/barberia/barberos`,//autenticado
   crearBarbero:`${API_BASE_URL}/barberia/new-barber`,//autenticado
   eliminarBarbero:`${API_BASE_URL}/barberia/delete-barber`,//necesita
   obtenerDatosBarberia:`${API_BASE_URL}/barberia/info`,//autenticado
-  obtenerBarberias:`${API_BASE_URL}/barberias`,//no
-  obtenerBarberosAll:`${API_BASE_URL}/barberos`,//no
+  obtenerBarberias:`${API_BASE_URL}/barberias`,//autenticado
+  obtenerBarberosAll:`${API_BASE_URL}/barberos`,//autenticado
   agendar_cita: `${API_BASE_URL}/citas`,//autenticado
   obtenerBarberosNombreBarberia: `${API_BASE_URL}/barberos`,
   obtenerInfoUsuario:`${API_BASE_URL}/date-user`,//autenticada

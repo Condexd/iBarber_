@@ -1,29 +1,12 @@
-import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
 import { Route, Routes } from "react-router-dom";
 import Rutas from "./componentes/rutas";
 import Registrar from "./componentes/auth/Registrar";
 import IniciarSesion from "./componentes/auth/inicioSesion";
 import { RecuperarContraseña } from "./componentes/auth/RecuperarContraseña";
+import { useAuthentication } from "./Hooks/useAuthentication";
 
 function App() {
-  const navigate = useNavigate();
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
-
-  useEffect(() => {
-    const token = localStorage.getItem("token");
-    if (token) {
-      setIsAuthenticated(true);
-    }
-  }, []);
-  // Función para cerrar sesión
-  const logout = () => {
-    // Eliminar el token al cerrar sesión
-    localStorage.removeItem("token");
-    localStorage.removeItem("userData");
-    setIsAuthenticated(false);
-    navigate("/");
-  };
+  const { isAuthenticated, setIsAuthenticated, logout } = useAuthentication();
 
   return (
     <>

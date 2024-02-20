@@ -49,6 +49,9 @@ export const putUsuario = async (req, res) => {
     }
   } catch (error) {
     console.error(error);
+    if (error.message === "Token inválido") {
+      return res.status(401).json({ message: "Token inválido" });
+    }
     res.status(400).json({ message: "No se pudo actualizar" });
   }
 };
@@ -99,9 +102,8 @@ export const obtenerUsuario = async (req, res) => {
     res.status(200).json({ usuario });
   } catch (error) {
     console.error(error);
-
-    if (error.name === "JsonWebTokenError") {
-      return res.status(401).json({ message: "Token inválido" });
+    if (error.message === "Token expirado") {
+      return res.status(401).json({ message: "Token expirado" });
     }
 
     res.status(500).json({ message: "Error interno del servidor" });

@@ -9,7 +9,7 @@ import { useFetchuno } from "../../Hooks/useFetchintento";
 
 function Perfil({ logout }) {
   const apiUrl = `${API_URLS.obtenerInfoUsuario}`;
-  const { data } = useFetchuno(apiUrl);
+  const { data ,hasError} = useFetchuno(apiUrl);
   const [nombres, setNombres] = useState("");
   const [apellidos, setApellidos] = useState("");
   const [correo, setCorreo] = useState("");
@@ -22,6 +22,12 @@ function Perfil({ logout }) {
   const [fotoPerfil, setFotoPerfil] = useState(null);
   const [imgPreview, setImgPreview] = useState("");
   const [imgVersion, setImgVersion] = useState(Date.now());
+
+  useEffect(() => {
+    if (hasError === 'Unauthorized') {
+      logout();
+    }
+  }, [hasError, logout]);
 
   useEffect(() => {
     if (data) {

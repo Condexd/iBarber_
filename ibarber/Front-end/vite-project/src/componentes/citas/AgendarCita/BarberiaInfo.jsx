@@ -4,7 +4,7 @@ import { FaStar } from "react-icons/fa";
 
 export const BarberiaInfo = ({ barberoInfo }) => {
   return (
-    <div className="row d-flex justify-content-end">
+    <div className="row d-flex justify-content-end mt-5">
       <div className="col-md-12">
         <div className="card shadow-lg animate__animated animate__fadeInLeft">
           <picture className="d-flex justify-content-center">
@@ -12,7 +12,7 @@ export const BarberiaInfo = ({ barberoInfo }) => {
               src={`${API_URLS.obtenerImage}${barberoInfo?.fotoPerfil}`}
               alt=""
               className="card-img-top grayscale-filter w-100"
-              style={{ maxHeight: "250px", objectFit: "cover" }}
+              style={{ maxHeight: "200px", objectFit: "cover" }}
             />
           </picture>
 

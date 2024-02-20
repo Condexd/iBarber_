@@ -1,19 +1,24 @@
 
-import { useContext } from "react";
-import "../../../Estilos/inicio.css";
-import { useFetch } from "../../../Hooks/useFetch";
+import { useContext,useEffect } from "react";
 import { API_URLS } from "../../../modulos/urls";
 import { UserContext } from "../../context/UserContext";
 import { MultipleItems } from "../../layout/MultipleItems";
 import BarberiaCard from "./BarberiaCard";
+import { useFetchuno } from "../../../Hooks/useFetchintento";
 
-const BarberShop = () => {
+const BarberShop = ({logout}) => {
   const { userData } = useContext(UserContext);
   const apiUrlBarberias = API_URLS.obtenerBarberias;
-  const { data: barberiasData, hasError: hasErrorBarberias, isLoading: isLoadingBarberias } = useFetch(apiUrlBarberias);
+  const { data: barberiasData, hasError: hasErrorBarberias, isLoading: isLoadingBarberias } = useFetchuno(apiUrlBarberias);
 
   const apiUrlBarberos = API_URLS.obtenerBarberosAll;
-  const { data: barberosData, hasError: hasErrorBarberos, isLoading: isLoadingBarberos } = useFetch(apiUrlBarberos);
+  const { data: barberosData, hasError: hasErrorBarberos, isLoading: isLoadingBarberos } = useFetchuno(apiUrlBarberos);
+
+  useEffect(() => {
+    if (hasErrorBarberias === 'Unauthorized') {
+      logout();
+    }
+  }, [hasErrorBarberias, logout]);
 
   if (isLoadingBarberias || isLoadingBarberos) {
     return <p>Loading...</p>;
@@ -43,7 +48,7 @@ const BarberShop = () => {
             ))}
           </div>
           <div className="ver-mas">
-            <button className="ver-btn">Ver más</button>
+            <button className="boton-logout">Ver más</button>
           </div>
         </div>
 

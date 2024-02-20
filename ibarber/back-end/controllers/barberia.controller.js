@@ -51,6 +51,8 @@ export const registroBarberia = async (req, res) => {
 
 export const getBarberias = async (req, res) => {
   try {
+    const token = req.headers.authorization;
+    await verificarTokenYObtenerUsuario(token);
     const barberias = await BarberiaModel.find();
     if (barberias) {
       res.status(200).json(barberias);
@@ -58,7 +60,10 @@ export const getBarberias = async (req, res) => {
       res.status(404).json({ message: "No se encontraron barberías" });
     }
   } catch (error) {
-    console.error("Error al obtener las barberías:", error);
+    if (error.message === "Token expirado") {
+      return res.status(401).json({ message: "Token expirado" });
+    }
+
     res.status(500).json({ message: "Error interno del servidor" });
   }
 };
@@ -74,7 +79,10 @@ export const getBarberia = async (req, res) => {
       res.status(404).json({ message: "Barbería no encontrada" });
     }
   } catch (error) {
-    console.error("Error al obtener la barbería:", error);
+    if (error.message === "Token expirado") {
+      return res.status(401).json({ message: "Token expirado" });
+    }
+
     res.status(500).json({ message: "Error interno del servidor" });
   }
 };
@@ -111,10 +119,9 @@ export const getBarberos = async (req, res) => {
       res.status(404).json({ message: "Barbería no encontrada" });
     }
   } catch (error) {
-    console.error(
-      "Error al obtener la lista de barberos de la barbería:",
-      error
-    );
+    if (error.message === "Token expirado") {
+      return res.status(401).json({ message: "Token expirado" });
+    }
     res.status(500).json({ message: "Error interno del servidor" });
   }
 };
@@ -124,7 +131,6 @@ export const getBarberos = async (req, res) => {
 export const obtenerBarberosPorNombreBarberia = async (req, res) => {
   try {
     const { id } = req.params;
-console.log(id)
     const barberia = await BarberiaModel.findOne({ _id: id });
 
     if (!barberia) {
@@ -297,10 +303,17 @@ export const postBarber = async (req, res) => {
 
 // Ruta para obtener todos los barberos de todas las barberías
 export const getBarberosall = async (req, res) => {
+  
   try {
+    const token = req.headers.authorization;
+    await verificarTokenYObtenerUsuario(token);
     const barberos = await usuarioModel.find({ roles: 'barbero' });
     res.json(barberos);
   } catch (error) {
+    if (error.message === "Token expirado") {
+      return res.status(401).json({ message: "Token expirado" });
+    }
+
     res.status(500).json({ error: "Error al obtener los barberos" });
   }
 };

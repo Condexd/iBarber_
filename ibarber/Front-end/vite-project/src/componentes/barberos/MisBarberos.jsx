@@ -1,6 +1,4 @@
-import { useContext, useState } from 'react';
-import { Link } from 'react-router-dom';
-import { useFetch } from '../../Hooks/useFetch';
+import { useContext, useState,useEffect } from 'react';
 import { UserContext } from '../context/UserContext';
 import { IconButton } from '@mui/material';
 import { FiEdit, FiTrash2 } from 'react-icons/fi';
@@ -13,7 +11,7 @@ import { EditBarberos } from './EditBarberos';
 import { useFetchuno } from '../../Hooks/useFetchintento';
 import { CrearBarbero } from './CrearBarbero';
 
-export const MisBarberos = () => {
+export const MisBarberos = ({logout}) => {
   const { userData } = useContext(UserContext);
   const [usuario] = useState(userData.usuario);
   const [barbero, setBarbero] = useState('');
@@ -21,8 +19,13 @@ export const MisBarberos = () => {
   const [crearBarberoModalOpen, setCrearBarberoModalOpen] = useState(false);
 
   const apiUrl = `${API_URLS.obtenerBarberos}`;
-  const { data, isLoading, haserror, setState } = useFetchuno(apiUrl);
+  const { data, isLoading, hasError, setState } = useFetchuno(apiUrl);
 
+  useEffect(() => {
+    if (hasError === 'Unauthorized') {
+      logout();
+    }
+  }, [hasError, logout]);
   const handleEdit = (barber, event) => {
     event.preventDefault();
     setBarbero(barber);
@@ -203,7 +206,7 @@ export const MisBarberos = () => {
         )}
         {isLoading ? (
           <p>Cargando...</p>
-        ) : haserror ? (
+          ) : hasError ? (
           <p>Error al cargar datos</p>
         ) : (
           <MUIDataTable title={''} data={data} columns={columns} options={options} />

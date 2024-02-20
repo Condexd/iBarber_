@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-
 export const useFetchuno = (url) => {
   const [state, setState] = useState({
     data: null,
@@ -21,7 +20,7 @@ export const useFetchuno = (url) => {
       });
 
       if (!response.ok) {
-        throw new Error(`Error: ${response.message}`);
+        throw new Error(response.statusText);
       }
 
       const data = await response.json();
@@ -32,7 +31,6 @@ export const useFetchuno = (url) => {
         hasError: null,
       });
     } catch (error) {
-      console.error(error.message);
 
       setState({
         data: null,
@@ -43,7 +41,7 @@ export const useFetchuno = (url) => {
   };
 
   useEffect(() => {
-    const token = localStorage.getItem("token"); 
+    const token = localStorage.getItem("token");
 
     if (token) {
       getFetch(token);
@@ -54,6 +52,5 @@ export const useFetchuno = (url) => {
     data: state.data,
     isLoading: state.isLoading,
     hasError: state.hasError,
-    setState,
   };
 };

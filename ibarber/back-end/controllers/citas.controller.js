@@ -26,10 +26,9 @@ export const getCitas = async (req, res) => {
     // Devolver la respuesta con las citas encontradas para el usuario
     return res.status(200).json(response);
   } catch (error) {
-    res.status(500).json({
-      message: 'Error al obtener las citas',
-      error: error.message
-    });
+    if (error.message === "Token inválido") {
+      return res.status(401).json({ message: "Token inválido" });
+    }
   }
 };
 

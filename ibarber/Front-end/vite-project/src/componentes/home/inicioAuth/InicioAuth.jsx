@@ -1,7 +1,7 @@
 import BarberShop from "./BarberShop"
 
-export const InicioAuth = () => {
+export const InicioAuth = ({logout}) => {
   return (
-   < BarberShop/>
+   < BarberShop logout={logout} />
   )
 }

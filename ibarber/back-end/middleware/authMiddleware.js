@@ -1,5 +1,6 @@
 import { usuarioModel } from "../Modulos/barril.js";
 import jwt from "jsonwebtoken";
+
 export const verificarTokenYObtenerUsuario = async (token) => {
   try {
     // Verificar la existencia del token
@@ -17,17 +18,27 @@ export const verificarTokenYObtenerUsuario = async (token) => {
     const tokenBearer = tokenParts[1];
 
     // Verificar y decodificar el token
-    const decodedToken = jwt.verify(tokenBearer, "tu_secreto_secreto");
+    try {
+      const decodedToken = jwt.verify(tokenBearer, "tu_secreto_secreto");
 
-    const usuarioId = decodedToken.usuarioId;
-    // Buscar el usuario en la base de datos
-    const usuario = await usuarioModel.findOne({ usuario: usuarioId });
+      const usuarioId = decodedToken.usuarioId;
+      // Buscar el usuario en la base de datos
+      const usuario = await usuarioModel.findOne({ usuario: usuarioId });
 
-    if (!usuario) {
-      throw new Error("Usuario no encontrado");
+      if (!usuario) {
+        throw new Error("Usuario no encontrado");
+      }
+
+      return usuario;
+    } catch (error) {
+      if (error.name === "TokenExpiredError") {
+        throw new Error("Token expirado");
+      } else {
+        throw error;
+      }
     }
-    return usuario;
   } catch (error) {
     throw error;
   }
 };
+

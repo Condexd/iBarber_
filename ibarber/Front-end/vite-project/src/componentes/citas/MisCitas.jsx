@@ -1,4 +1,4 @@
-import { useContext} from "react";
+import { useContext,useEffect} from "react";
 import { UserContext } from "../context/UserContext";
 import { API_URLS } from "../../modulos/urls";
 import "../../Estilos/misCitas.css";
@@ -9,9 +9,14 @@ import { updateLittle } from "../../functions/Patch";
 import CitaItem from "./citaItem";
 import { useFetchuno } from "../../Hooks/useFetchintento";
 import { Nocitas } from "./Nocitas";
-export const MisCitas = () => {
+export const MisCitas = ({logout}) => {
   const { userData } = useContext(UserContext);
   const { data, isLoading, hasError, setState } = useFetchuno(`${API_URLS.obtenerCitasFiltradas}`);
+  useEffect(() => {
+    if (hasError === 'Unauthorized') {
+      logout();
+    }
+  }, [hasError, logout]);
 
   const ChangeCita = async (citaId, event) => {
     const confirmacion = await mostrarConfirmacion(
@@ -79,13 +84,7 @@ export const MisCitas = () => {
     );
   }
 
-  if (isLoading) {
-    return <div>Cargando...</div>;
-  }
 
-  if (hasError) {
-    return <div>Error al cargar las citas</div>;
-  }
 
   if (!data || (!data.cliente && !data.barbero)) {
     return <Nocitas/>

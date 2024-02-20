@@ -6,9 +6,15 @@ import { API_URLS } from "../../modulos/urls";
 import { useFetchuno } from "../../Hooks/useFetchintento";
 import { actualizar } from "../../functions/usePut";
 
-export const MiBarberia = () => {
+export const MiBarberia = ({logout}) => {
   const apiUrl = `${API_URLS.obtenerDatosBarberia}`;
-  const { data } = useFetchuno(apiUrl);
+  const { data,hasError } = useFetchuno(apiUrl);
+
+  useEffect(() => {
+    if (hasError === 'Unauthorized') {
+      logout();
+    }
+  }, [hasError, logout]);
 
   const [nombre, setNombre] = useState("");
   const [descripcion, setDescripcion] = useState("");

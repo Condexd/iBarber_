@@ -17,30 +17,30 @@ export const MisBarberos = ({logout}) => {
   const [barbero, setBarbero] = useState('');
   const [visible, setVisible] = useState(false);
   const [crearBarberoModalOpen, setCrearBarberoModalOpen] = useState(false);
+  const [barberoEspecialidad, setBarberoEspecialidad] = useState('');
+  const [barberoExperiencia, setBarberoExperiencia] = useState('');
 
   const apiUrl = `${API_URLS.obtenerBarberos}`;
   const { data, isLoading, hasError, setState } = useFetchuno(apiUrl);
+
 
   useEffect(() => {
     if (hasError === 'Unauthorized') {
       logout();
     }
   }, [hasError, logout]);
-  const handleEdit = (barber, event) => {
+  const handleEdit = (barber, barberoEspecialidad, barberoExperiencia, event) => {
     event.preventDefault();
     setBarbero(barber);
     setVisible(true);
+    setBarberoEspecialidad (barberoEspecialidad);
+    setBarberoExperiencia (barberoExperiencia);
   };
 
 
   const funcionEditar = (contenido) => {
     let result = data.map((barberia) => {
       if (barberia.usuario === contenido.usuario) {
-        barberia.nombres = contenido.nombres;
-        barberia.apellidos = contenido.apellidos;
-        barberia.correo = contenido.correo;
-        barberia.num_barbero = contenido.num_barbero;
-        barberia.biografia_barbero = contenido.biografia_barbero;
         barberia.especialidad = contenido.especialidad;
         barberia.experiencia = contenido.experiencia;
       }
@@ -136,13 +136,15 @@ export const MisBarberos = ({logout}) => {
         customBodyRender: (value, tableMeta, updateValue) => {
           const barberoUser = tableMeta.rowData[1];
           const barberoId = tableMeta.rowData[0];
+          const barberoEspecialidad = tableMeta.rowData[7];
+          const barberoExperiencia = tableMeta.rowData[8];
           return (
             <>
               <IconButton
                 variant="contained"
                 color="success"
                 className="mt-2 fs-6"
-                onClick={(event) => handleEdit(barberoUser, event)}
+                onClick={(event) => handleEdit(barberoUser, barberoEspecialidad, barberoExperiencia, event)}
               >
                 <FiEdit />
               </IconButton>
@@ -202,6 +204,9 @@ export const MisBarberos = ({logout}) => {
             funcionEditar={funcionEditar}
             barbero={barbero}
             usuario={usuario}
+            barberoExperiencia ={barberoExperiencia}
+            barberoEspecialidad = {barberoEspecialidad}
+
           />
         )}
         {isLoading ? (

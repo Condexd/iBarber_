@@ -16,10 +16,10 @@ import { promises as fsPromises } from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
 import { dirname } from "path";
-
+import Review from "../models/resenas.js";
 
 
 
 export { Router, bcrypt, nodemailer, crypto, jwt, dotenv, usuarioModel, BarberiaModel,correoelectronico,enviarCorreo,citaModel,correoelectronicoConfirmacion,verificarTokenYObtenerUsuario 
-,fsPromises,path,fileURLToPath,dirname
+,fsPromises,path,fileURLToPath,dirname,Review
 };

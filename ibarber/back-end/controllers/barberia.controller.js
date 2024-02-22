@@ -130,6 +130,8 @@ export const getBarberos = async (req, res) => {
 
 export const obtenerBarberosPorNombreBarberia = async (req, res) => {
   try {
+    const token = req.headers.authorization;
+    const { usuario } = await verificarTokenYObtenerUsuario(token);
     const { id } = req.params;
     const barberia = await BarberiaModel.findOne({ _id: id });
 

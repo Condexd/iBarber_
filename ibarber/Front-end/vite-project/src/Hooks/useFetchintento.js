@@ -52,5 +52,6 @@ export const useFetchuno = (url) => {
     data: state.data,
     isLoading: state.isLoading,
     hasError: state.hasError,
+    setState
   };
 };

@@ -47,6 +47,12 @@ function Cabecero({ isAuthenticated, logout }) {
                   Mis citas
                 </Link>
               </li>
+
+              <li>
+                <Link to="/reviews" onClick={closeMenu}>
+                 reseñas
+                </Link>
+              </li>
               {visible && (
                 <>
                   <li>

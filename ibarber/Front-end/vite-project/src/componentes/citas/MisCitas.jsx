@@ -1,4 +1,4 @@
-import { useContext,useEffect} from "react";
+import { useContext,useEffect,useState} from "react";
 import { UserContext } from "../context/UserContext";
 import { API_URLS } from "../../modulos/urls";
 import "../../Estilos/misCitas.css";
@@ -12,6 +12,7 @@ import { Nocitas } from "./Nocitas";
 export const MisCitas = ({logout}) => {
   const { userData } = useContext(UserContext);
   const { data, isLoading, hasError, setState } = useFetchuno(`${API_URLS.obtenerCitasFiltradas}`);
+
   useEffect(() => {
     if (hasError === 'Unauthorized') {
       logout();
@@ -84,7 +85,9 @@ export const MisCitas = ({logout}) => {
     );
   }
 
-
+  if (isLoading) {
+    return <div>Cargando...</div>; 
+  }
 
   if (!data || (!data.cliente && !data.barbero)) {
     return <Nocitas/>

@@ -9,9 +9,12 @@ import { MisCitas } from "./citas/MisCitas";
 
 import Cabecero from "./layout/cabecero";
 import { NotFoundPage } from "./NotFoundPage";
+import SideMenu from "./reseñas/reseñasList";
 
 function Rutas({ isAuthenticated, logout }) {
+  
   return (
+
     <>
       <Cabecero isAuthenticated={isAuthenticated} logout={logout} />
       <Routes>
@@ -24,8 +27,9 @@ function Rutas({ isAuthenticated, logout }) {
             <Route path="/mi-barberia" element={<MiBarberia logout={logout} />} />
             <Route path="/empleados" element={<MisBarberos logout={logout}/>} />
             <Route path="/new-barberia" element={<Crearbarberia />} />
-            <Route path="/new-cita/:id" element={<MainCita />} />
+            <Route path="/new-cita/:id" element={<MainCita  logout={logout}/>} />
             <Route path="/citas" element={<MisCitas logout={logout}/>} />
+            <Route path="/reviews/*" element={<SideMenu />} />
           </>
         )}
       </Routes>

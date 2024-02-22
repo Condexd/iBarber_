@@ -1,0 +1,56 @@
+import { BarberiaModel, Review, citaModel, usuarioModel,verificarTokenYObtenerUsuario } from "../Modulos/barril.js";
+export const crearResena = async (req, res) => {
+    try {
+      const token = req.headers.authorization;
+      const { usuario } = await verificarTokenYObtenerUsuario(token); // Cambiado a usuarioId
+      console.log(req.body)
+      // Extraer los datos de la reseña del cuerpo de la solicitud
+      const { title, body, rating, citaId } = req.body; // Añadido citaId aquí
+  
+      // Verificar si la cita existe
+      const citaExistente = await citaModel.findById(citaId);
+      
+      // Verificar si la cita y el usuario existen
+      if (!citaExistente || !usuario) { // Cambiado a citaExistente y usuario
+        return res.status(404).json({ message: 'La cita o el usuario no existen en nuestra base de datos' });
+      }
+  
+      // Crear una nueva instancia de reseña con los datos proporcionados
+      const newReview = new Review({
+        title,
+        body,
+        rating,
+        cita: citaId, // Cambiado a citaId
+        usuario: usuario // Utilizar el ID del usuario
+      });
+  
+      // Guardar la nueva reseña en la base de datos
+      await newReview.save();
+  
+      // Responder con la nueva reseña creada
+      res.status(201).json(newReview);
+    } catch (error) {
+      // Manejar cualquier error que ocurra durante el proceso
+      console.error('Error en la solicitud:', error);
+      res.status(500).json({ message: 'Hubo un error al procesar tu solicitud' });
+    }
+  }
+
+
+  export const obtenerResenas = async (req, res) => {
+    try {
+      const token = req.headers.authorization;
+      const { usuario } = await verificarTokenYObtenerUsuario(token);
+      
+      // Obtener todas las reseñas de la base de datos
+      const reviews = await Review.find();
+  
+      // Responder con las reseñas encontradas
+      res.status(200).json(reviews);
+    } catch (error) {
+      // Manejar cualquier error que ocurra durante el proceso
+      console.error('Error en la solicitud:', error);
+      res.status(500).json({ message: 'Hubo un error al procesar tu solicitud' });
+    }
+  }
+  

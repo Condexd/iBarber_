@@ -6,7 +6,6 @@ export const getCitas = async (req, res) => {
     const {usuario} = await verificarTokenYObtenerUsuario(token);
     // Buscar las citas en las que el usuario sea cliente o barbero
     const citasUsuario = await citaModel.find({ $or: [{ cliente: usuario }, { barbero: usuario }] });
-
     if (citasUsuario.length === 0) {
       return res.status(200).json({ message: 'No tienes citas agendadas' });
     }
@@ -54,8 +53,8 @@ export const getCita = async (req, res) => {
 export const postCita = async (req, res) => {
   try {
     const token = req.headers.authorization;
-  const cliente= await verificarTokenYObtenerUsuario(token);
-
+  const {usuario:cliente}= await verificarTokenYObtenerUsuario(token);
+  req.body.cliente = cliente;
     const barberoEncontrado = await BarberiaModel.findOne({ 'barberos.usuario': req.body.barbero });
     const barber = await usuarioModel.findOne({ 'usuario': req.body.barbero });
     const { fecha, hora } = req.body;

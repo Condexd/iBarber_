@@ -23,5 +23,7 @@ export const API_URLS = {
   obtenerImage:`${API_BASE}`,
   deleteCita: `${API_BASE_URL}/citas`,//pendiente
   deleteCuenta:`${API_BASE_URL}/usuario-delete`,//autenticada
-  updateCita:`${API_BASE_URL}/citas/updateCita`//pendiente
+  updateCita:`${API_BASE_URL}/citas/updateCita`,//pendiente
+  resenas:`${API_BASE_URL}/resena`,
+  obtenerResenas:`${API_BASE_URL}/obtenerResenas`
 };

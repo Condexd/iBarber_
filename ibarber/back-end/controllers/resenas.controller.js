@@ -36,21 +36,19 @@ export const crearResena = async (req, res) => {
     }
   }
 
-
   export const obtenerResenas = async (req, res) => {
     try {
-      const token = req.headers.authorization;
-      const { usuario } = await verificarTokenYObtenerUsuario(token);
-      
-      // Obtener todas las reseñas de la base de datos
-      const reviews = await Review.find();
-  
-      // Responder con las reseñas encontradas
-      res.status(200).json(reviews);
+        const token = req.headers.authorization;
+        const { usuario } = await verificarTokenYObtenerUsuario(token);
+
+        // Filtrar las reseñas por el usuario obtenido
+        const reviews = await Review.find({ usuario: usuario });
+
+        // Responder con las reseñas encontradas
+        res.status(200).json(reviews);
     } catch (error) {
-      // Manejar cualquier error que ocurra durante el proceso
-      console.error('Error en la solicitud:', error);
-      res.status(500).json({ message: 'Hubo un error al procesar tu solicitud' });
+        // Manejar cualquier error que ocurra durante el proceso
+        console.error('Error en la solicitud:', error);
+        res.status(500).json({ message: 'Hubo un error al procesar tu solicitud' });
     }
-  }
-  
+}

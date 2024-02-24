@@ -26,7 +26,7 @@ export const MisCitas = ({logout}) => {
     );
 
     if (confirmacion.isConfirmed) {
-      const result = await updateLittle(`${API_URLS.updateCita}/${citaId}`, {
+      const result = await updateLittle(`${API_URLS.updateCita}/${citaId._id}`, {
         estadoCita: "aceptado",
       });
       return result;

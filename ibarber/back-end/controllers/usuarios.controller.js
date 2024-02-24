@@ -49,8 +49,8 @@ export const putUsuario = async (req, res) => {
     }
   } catch (error) {
     console.error(error);
-    if (error.message === "Token inválido") {
-      return res.status(401).json({ message: "Token inválido" });
+    if (error.message === "Token expirado") {
+      return res.status(401).json({ message: "Token expirado" });
     }
     res.status(400).json({ message: "No se pudo actualizar" });
   }

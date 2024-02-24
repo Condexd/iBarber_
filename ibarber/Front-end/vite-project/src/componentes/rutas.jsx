@@ -10,7 +10,7 @@ import { MisCitas } from "./citas/MisCitas";
 import Cabecero from "./layout/cabecero";
 import { NotFoundPage } from "./NotFoundPage";
 import SideMenu from "./reseñas/reseñasList";
-
+import SearchResults from "./layout/SearchResults";
 function Rutas({ isAuthenticated, logout }) {
   
   return (
@@ -30,6 +30,7 @@ function Rutas({ isAuthenticated, logout }) {
             <Route path="/new-cita/:id" element={<MainCita  logout={logout}/>} />
             <Route path="/citas" element={<MisCitas logout={logout}/>} />
             <Route path="/reviews/*" element={<SideMenu />} />
+            <Route path="/search" element={<SearchResults />} />
           </>
         )}
       </Routes>

@@ -3,7 +3,7 @@ import { UserContext } from "../context/UserContext";
 import { Link } from "react-router-dom";
 import Boton from "./boton";
 import { API_URLS } from "../../modulos/urls";
-
+import SearchForm from "./Search";
 function Cabecero({ isAuthenticated, logout }) {
   const { userData} = useContext(UserContext);
   const [visible, setVisible] = useState(userData.barberia);
@@ -34,14 +34,17 @@ function Cabecero({ isAuthenticated, logout }) {
               alt="Logo"
             />
           </Link>
+         
           <div className="icono-menu" onClick={toggleMenu}>
             &#9776;
           </div>
         </div>
 
         <ul className={`contenedor2-navegacion ${menuVisible ? "visible" : ""}`}>
+     
           {isAuthenticated && (
             <>
+               <SearchForm/>
               <li>
                 <Link to="/citas" onClick={closeMenu}>
                   Mis citas

@@ -47,8 +47,9 @@ export const crearResena = async (req, res) => {
         // Responder con las reseñas encontradas
         res.status(200).json(reviews);
     } catch (error) {
-        // Manejar cualquier error que ocurra durante el proceso
-        console.error('Error en la solicitud:', error);
+      if (error.message === "Token expirado") {
+        return res.status(401).json({ message: "Token expirado" });
+      }
         res.status(500).json({ message: 'Hubo un error al procesar tu solicitud' });
     }
 }

@@ -25,5 +25,6 @@ export const API_URLS = {
   deleteCuenta:`${API_BASE_URL}/usuario-delete`,//autenticada
   updateCita:`${API_BASE_URL}/citas/updateCita`,//pendiente
   resenas:`${API_BASE_URL}/resena`,
-  obtenerResenas:`${API_BASE_URL}/obtenerResenas`
+  obtenerResenas:`${API_BASE_URL}/obtenerResenas`,
+  filtrarBarberiaPorNombre:`${API_BASE_URL}/filtrarBarberiaPorNombre`
 };

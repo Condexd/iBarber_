@@ -143,6 +143,9 @@ export const obtenerBarberosPorNombreBarberia = async (req, res) => {
 
     res.status(200).json({ barberos });
   } catch (error) {
+    if (error.message === "Token expirado") {
+      return res.status(401).json({ message: "Token expirado" });
+    }
     res
       .status(500)
       .json({ message: "Error al obtener los barberos", error: error.message });
@@ -296,7 +299,9 @@ export const postBarber = async (req, res) => {
 
     res.status(200).json(barberoCompleto);
   } catch (error) {
-    console.error("Error al procesar la solicitud:", error);
+    if (error.message === "Token expirado") {
+      return res.status(401).json({ message: "Token expirado" });
+    }
     res.status(500).json({ message: "Error interno del servidor" });
   }
 };
@@ -355,5 +360,26 @@ export const actualizarBarbero = async (req, res) => {
   } catch (error) {
     console.error(error);
     res.status(500).json({ mensaje: "Error interno del servidor" });
+  }
+};
+
+
+
+export const filtrarBarberiaPorNombre = async (req, res) => {
+  try {
+    const { nombre } = req.body;
+    const token = req.headers.authorization;
+    const { usuario } = await verificarTokenYObtenerUsuario(token); 
+    // Realizar el filtrado por nombre utilizando el modelo de Mongoose
+    const barberiasFiltradas = await BarberiaModel.find({ 
+      nombre_barberia: nombre });
+
+    // Devolver las barberías filtradas como respuesta
+    res.json(barberiasFiltradas);
+  } catch (error) {
+    if (error.message === "Token expirado") {
+      return res.status(401).json({ message: "Token expirado" });
+    }
+    res.status(500).json({ message: 'Hubo un error al procesar tu solicitud' });
   }
 };

@@ -25,7 +25,7 @@ export const getCitas = async (req, res) => {
     // Devolver la respuesta con las citas encontradas para el usuario
     return res.status(200).json(response);
   } catch (error) {
-    if (error.message === "Token inválido") {
+    if (error.message === "Token expirado") {
       return res.status(401).json({ message: "Token inválido" });
     }
   }
@@ -41,6 +41,9 @@ export const getCita = async (req, res) => {
     }
     res.status(200).json(cita);
   } catch (error) {
+    if (error.message === "Token expirado") {
+      return res.status(401).json({ message: "Token inválido" });
+    }
     res.status(500).json({
       message: 'Error al obtener la cita',
       error: error.message
@@ -124,7 +127,9 @@ export const postCita = async (req, res) => {
     });
 
   } catch (error) {
-    console.error('Error al crear la cita:', error);
+    if (error.message === "Token expirado") {
+      return res.status(401).json({ message: "Token inválido" });
+    }
 
     res.status(500).json({
       message: 'Error al crear la cita',

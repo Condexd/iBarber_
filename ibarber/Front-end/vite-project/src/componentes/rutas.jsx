@@ -29,7 +29,7 @@ function Rutas({ isAuthenticated, logout }) {
             <Route path="/new-barberia" element={<Crearbarberia />} />
             <Route path="/new-cita/:id" element={<MainCita  logout={logout}/>} />
             <Route path="/citas" element={<MisCitas logout={logout}/>} />
-            <Route path="/reviews/*" element={<SideMenu />} />
+            <Route path="/reviews/*" element={<SideMenu  logout={logout}/>} />
             <Route path="/search" element={<SearchResults />} />
           </>
         )}

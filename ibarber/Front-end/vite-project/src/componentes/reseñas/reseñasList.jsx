@@ -1,11 +1,16 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import { API_URLS } from '../../modulos/urls';
 import { useFetchuno } from '../../Hooks/useFetchintento';
 
-const SideMenu = () => {
+const SideMenu = ({logout}) => {
   const apiUrl = `${API_URLS.obtenerResenas}`;
   const { data, hasError } = useFetchuno(apiUrl);
 
+  useEffect(() => {
+    if (hasError === 'Unauthorized') {
+      logout();
+    }
+  }, [hasError, logout]);
   return (
     <div>
       <ul>

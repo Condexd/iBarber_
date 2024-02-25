@@ -26,5 +26,6 @@ export const API_URLS = {
   updateCita:`${API_BASE_URL}/citas/updateCita`,//pendiente
   resenas:`${API_BASE_URL}/resena`,
   obtenerResenas:`${API_BASE_URL}/obtenerResenas`,
-  filtrarBarberiaPorNombre:`${API_BASE_URL}/filtrarBarberiaPorNombre`
+  filtrarBarberiaPorNombre:`${API_BASE_URL}/filtrarBarberiaPorNombre`,
+  notificationBell:`${API_BASE_URL}/notificationBell`
 };

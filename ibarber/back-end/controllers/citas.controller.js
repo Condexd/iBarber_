@@ -223,6 +223,22 @@ export const patchCita = async (req, res) => {
     });
   }
 };
+
+export const notificationBell = async (req, res) => {
+  try {
+    const token = req.headers.authorization;
+  const {usuario}= await verificarTokenYObtenerUsuario(token);
+  const cita = await citaModel.findOne({ 'usuario': usuario })
+  res.json(cita)
+  } catch (error) {
+    res.status(500).json({
+      message: "Error al actualizar la cita",
+      error: error.message,
+    });
+  }
+};
+
+
 export const cancelarCitasAutomaticamente = async () => {
   try {
     const todasLasCitas = await citaModel.find();

@@ -32,9 +32,9 @@ const CitaItem = ({ cita, tipo, onAccept, onCancel }) => {
         <br />
         {tipo === "cliente" && cita.confirmacion_barbero && (
           <>
-          <button onClick={()=>handleOpenModal(cita._id)}>Agregar Nueva Reseña</button>{" "}
             <span className="cita-property">Confirmación:</span>{" "}
             {cita.confirmacion_barbero.estadoCita}
+            <button  className="agendar-btn mx-3" onClick={()=>handleOpenModal(cita._id)}>Agregar Nueva Reseña</button>
           </>
         )}
       </div>

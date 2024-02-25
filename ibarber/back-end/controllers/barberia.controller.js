@@ -365,14 +365,24 @@ export const actualizarBarbero = async (req, res) => {
 
 
 
-export const filtrarBarberiaPorNombre = async (req, res) => {
+export const filtrarBarberia = async (req, res) => {
   try {
-    const { nombre } = req.body;
+    let { termino } = req.body;
     const token = req.headers.authorization;
     const { usuario } = await verificarTokenYObtenerUsuario(token); 
-    // Realizar el filtrado por nombre utilizando el modelo de Mongoose
+
+    // Utilizar una expresión regular para buscar tanto con acentos como sin acentos
     const barberiasFiltradas = await BarberiaModel.find({ 
-      nombre_barberia: nombre });
+      $or: [
+        { nombre_barberia: { $regex: new RegExp(termino, 'i') } },
+        { 'barberos.usuario': { $regex: new RegExp(termino, 'i') } },
+        { 'barberos.especialidad': { $regex: new RegExp(termino, 'i') } },
+        { nombre_ciudad: { $regex: new RegExp(termino, 'i') } },
+        { direccion_barberia: { $regex: new RegExp(termino, 'i') } },
+        { descripcion_barberia: { $regex: new RegExp(termino, 'i') } },
+        { 'dueño.nombre_dueño': { $regex: new RegExp(termino, 'i') } },
+      ]
+    });
 
     // Devolver las barberías filtradas como respuesta
     res.json(barberiasFiltradas);

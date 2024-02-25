@@ -19,7 +19,7 @@ function SearchResults() {
 
       if (searchQuery) {
         try {
-          const response = await enviadorAuth2(API_URLS.filtrarBarberiaPorNombre, { nombre:searchQuery });
+          const response = await enviadorAuth2(API_URLS.filtrarBarberiaPorNombre, { termino:searchQuery });
           setResults(response);
         } catch (error) {
           console.error("Error fetching search results:", error);

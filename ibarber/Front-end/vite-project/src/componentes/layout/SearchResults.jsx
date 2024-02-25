@@ -1,11 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
-import { enviadorAuth } from "../../functions/usePostAuth";
 import { API_URLS } from "../../modulos/urls";
 import BarberiaCard from "../home/inicioAuth/BarberiaCard";
 import { enviadorAuth2 } from "../../functions/usePostAuth2";
-
-function SearchResults() {
+function SearchResults({ logout }) {
   const location = useLocation();
   const searchQuery = new URLSearchParams(location.search).get("q");
   const [results, setResults] = useState([]);
@@ -19,11 +17,15 @@ function SearchResults() {
 
       if (searchQuery) {
         try {
-          const response = await enviadorAuth2(API_URLS.filtrarBarberiaPorNombre, { termino:searchQuery });
+          const response = await enviadorAuth2(API_URLS.filtrarBarberiaPorNombre, { termino: searchQuery });
           setResults(response);
         } catch (error) {
           console.error("Error fetching search results:", error);
-          setError("Error al buscar. Por favor, inténtalo de nuevo más tarde.");
+          if (error.response && error.response.status === 401) { // Verifica si el error es de no autorización (401)
+            logout(); // Llama a la función logout si el usuario no está autorizado
+          } else {
+            setError("Error al buscar. Por favor, inténtalo de nuevo más tarde.");
+          }
         } finally {
           setLoading(false);
         }
@@ -31,7 +33,7 @@ function SearchResults() {
     };
 
     fetchData();
-  }, [searchQuery]);
+  }, [searchQuery, logout]);
 
   if (loading) {
     return <div>Cargando...</div>;

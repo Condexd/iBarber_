@@ -25,7 +25,7 @@ const BarberiaCard = ({ name, description, id, image, city }) => {
         <div className="card-barberia__footer__heading__location">
           <span className="card-barberia__footer__heading__location__city"> <FaLocationDot /> {city}</span>
         </div>
-        <p className="card-barberia__footer__text">{description}</p>
+        <p className="description-text">{description}</p>
       </section>
     </article>
     </Link>

@@ -1,3 +1,5 @@
+import { API_URLS } from "../../modulos/urls";
+
 const Footer = () => {
   return (
     <footer className="pie-pagina">
@@ -5,7 +7,7 @@ const Footer = () => {
         <div className="box">
           <figure>
             <a href="#">
-              <img src="https://github.com/Condexd/_iBarber_/blob/main/proyectoweb/index/images/logo-ibarber.png?raw=true" alt="Logo iBarber" />
+              <img src={`${API_URLS.obtenerImage}/uploads/logo-ibarber.png`} alt="Logo iBarber" />
             </a>
           </figure>
         </div>

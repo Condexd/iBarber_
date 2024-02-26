@@ -60,7 +60,7 @@ body {
   color: rgb(250, 196, 0);
 }
 
-.card-barberia__footer__text {
+.description-text {
   /* Contenedor de bloque flexible en el contexto de textos */
   display: -webkit-box;
   /* Las lineas se apilaran verticalmente */

@@ -1,0 +1,45 @@
+
+.review-section {
+  display: flex;
+  justify-content: center;
+}
+
+.review-container {
+  padding: 0;
+  border-radius: 4px;
+}
+
+.review-container-child {
+  background-color: wheat;
+  width: auto;
+  max-width: 1200px;
+  display: flex;
+  justify-content: space-between;
+  padding: 8px;
+  margin: 0;
+  gap: 80px;
+}
+
+.review-left-containter {
+  background-color: lightpink;
+}
+
+.review-experience {
+  width: auto;
+  max-width: 400px;
+}
+
+.review-right-containter {
+  background-color: lightblue;
+  display: flex;
+  justify-content: space-between;
+}
+
+.review-barbershop-image-container {
+  aspect-ratio: 1 / 1;
+}
+
+.review-barbershop-image {
+  width: 100px;
+  height: auto;
+}

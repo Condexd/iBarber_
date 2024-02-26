@@ -47,7 +47,7 @@ export const loginUsuario = async (req, res) => {
     const usuarioTieneBarberia = await BarberiaModel.findOne({ "dueño.usuario": usuario });
     // Genera un token JWT con la información del usuario (puedes personalizar el payload)
     const token = jwt.sign({ usuarioId: user.usuario }, 'tu_secreto_secreto', {
-      expiresIn: '30m', // Define la expiración del token (ejemplo: 1 hora)
+      expiresIn: '2d', // Define la expiración del token (ejemplo: 1 hora)
     });
     const barberia = usuarioTieneBarberia ? true : false;
     res.status(200).json({

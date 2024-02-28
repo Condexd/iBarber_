@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { API_URLS } from "../../modulos/urls";
 import { useFetchuno } from "../../Hooks/useFetchintento";
 import "../../Estilos/reviews.css";
+import { FaStar } from "react-icons/fa";
 
 const SideMenu = ({ logout }) => {
   const apiUrl = `${API_URLS.obtenerResenas}`;
@@ -21,7 +22,7 @@ const SideMenu = ({ logout }) => {
               <ul className="review-container-child">
                 <li key={index} className="review-left-containter">
                   <h5 className="review-title">{item.title}</h5>
-                    <span className="review-rating">Rating: {item.rating}</span>
+                    <span className="review-rating"><FaStar className="estrella" /> {item.rating}</span>
                   <div className="">
                     <span className="review-experience description-text">{item.body}</span>
                   </div>
@@ -32,8 +33,10 @@ const SideMenu = ({ logout }) => {
                   </a>
                   <div>
                     <h5 className="review-title">Barbería Olos</h5>
-                    <span className="review-barbershop-name">Barbero</span>
-                    <span className="review-barber-name">Brayan Cortez</span>
+                    <div>
+                      <span className="review-barbershop-name">Barbero</span>
+                      <span className="review-barber-name gray-text">Brayan Cortez</span>
+                    </div>
                   </div>
                 </li>
               </ul>

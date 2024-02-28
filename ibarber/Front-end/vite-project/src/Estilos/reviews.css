@@ -2,6 +2,7 @@
 .review-section {
   display: flex;
   justify-content: center;
+  flex-direction: row;
 }
 
 .review-container {
@@ -10,27 +11,40 @@
 }
 
 .review-container-child {
-  background-color: wheat;
   width: auto;
   max-width: 1200px;
   display: flex;
   justify-content: space-between;
-  padding: 8px;
+  padding: 12px;
   margin: 0;
   gap: 80px;
+  margin-top: 10px;
+  background-color: white;
+  border-radius: 6px;
 }
 
 .review-left-containter {
-  background-color: lightpink;
+  padding-left: 5px;
+}
+
+.review-title {
+  font-size: 24px;
+  font-weight: 500;
+
 }
 
 .review-experience {
   width: auto;
   max-width: 400px;
+  color: #575757;
+  font-size: 14px;
+}
+
+.gray-text {
+  color: #575757;
 }
 
 .review-right-containter {
-  background-color: lightblue;
   display: flex;
   justify-content: space-between;
 }
@@ -40,6 +54,8 @@
 }
 
 .review-barbershop-image {
-  width: 100px;
+  width: 110px;
   height: auto;
+  border-radius: 10px;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
 }

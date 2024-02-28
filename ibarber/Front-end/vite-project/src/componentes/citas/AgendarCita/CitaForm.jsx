@@ -5,8 +5,10 @@ import { API_URLS } from "../../../modulos/urls";
 import { mostrarMensajeError } from "../../../modulos/alertas";
 import { enviadorAuth } from "../../../functions/usePostAuth";
 import { Form } from "./form";
+import { useParams } from "react-router-dom";
 
 const CitaForm = ({ barberoInfo }) => {
+  const { id } = useParams();
   const [barbero, setBarbero] = useState("");
   const [fecha, setFecha] = useState("");
   const [hora, setHora] = useState("");
@@ -50,7 +52,7 @@ const CitaForm = ({ barberoInfo }) => {
     const fechaHoraFormateada = fechaHoraSeleccionada.toLocaleString();
 
     // Enviar los datos
-    enviadorAuth(API_URLS.agendar_cita, { fecha: fechaHoraFormateada, barbero });
+    enviadorAuth(API_URLS.agendar_cita, { fecha: fechaHoraFormateada, barbero,barberiaId:id });
   };
 
   const handleBarberoChange = (event) => {

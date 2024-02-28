@@ -5,7 +5,7 @@ export const crearResena = async (req, res) => {
       const { usuario } = await verificarTokenYObtenerUsuario(token); // Cambiado a usuarioId
       console.log(req.body)
       // Extraer los datos de la reseña del cuerpo de la solicitud
-      const { title, body, rating, citaId } = req.body; // Añadido citaId aquí
+      const { title, body, rating, citaId,barberiaId,barbero } = req.body; // Añadido citaId aquí
   
       // Verificar si la cita existe
       const citaExistente = await citaModel.findById(citaId);
@@ -20,8 +20,11 @@ export const crearResena = async (req, res) => {
         title,
         body,
         rating,
-        cita: citaId, // Cambiado a citaId
-        usuario: usuario // Utilizar el ID del usuario
+        cita: citaId,
+        usuario,
+        barberiaId,
+        barbero
+
       });
   
       // Guardar la nueva reseña en la base de datos

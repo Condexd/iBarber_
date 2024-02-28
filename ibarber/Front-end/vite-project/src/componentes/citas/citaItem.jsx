@@ -4,16 +4,21 @@ import AddReviewModal from "../reseñas/reseñasForm";
 const CitaItem = ({ cita, tipo, onAccept, onCancel }) => {
   const [estado, setEstado] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [selectedCitaId, setSelectedCitaId] = useState(null); // Estado para almacenar el ID de la cita seleccionada
-
-  const handleOpenModal = (citaId) => { // Modifica handleOpenModal para aceptar citaId
+  const [selectedCitaId, setSelectedCitaId] = useState(null);
+  const [selectedBarberiaId, setSelectedBarberiaId] = useState(null); 
+  const [selectedBarbero, setSelectedBarbero] = useState(null); 
+  const handleOpenModal = (citaId,barberiaId,barbero) => {
     setIsModalOpen(true);
-    setSelectedCitaId(citaId); // Al abrir el modal, establece el ID de la cita seleccionada
+    setSelectedBarberiaId(barberiaId)
+    setSelectedCitaId(citaId);
+    setSelectedBarbero(barbero) 
   };
 
   const handleCloseModal = () => {
     setIsModalOpen(false);
-    setSelectedCitaId(null); // Al cerrar el modal, reinicia el ID de la cita seleccionada
+    setSelectedCitaId(null);
+    setSelectedBarberiaId(null)
+    setSelectedBarbero(null) 
   };
 
   const handleAccept = async (cita, event) => {
@@ -34,7 +39,7 @@ const CitaItem = ({ cita, tipo, onAccept, onCancel }) => {
           <>
             <span className="cita-property">Confirmación:</span>{" "}
             {cita.confirmacion_barbero.estadoCita}
-            <button  className="agendar-btn mx-3" onClick={()=>handleOpenModal(cita._id)}>Agregar Nueva Reseña</button>
+            <button  className="agendar-btn mx-3" onClick={()=>handleOpenModal(cita._id,cita.barberiaId,cita.barbero)}>Agregar Nueva Reseña</button>
           </>
         )}
       </div>
@@ -68,7 +73,7 @@ const CitaItem = ({ cita, tipo, onAccept, onCancel }) => {
       
       {/* Agregar el modal dentro del componente solo para tipo === "cliente" */}
       {tipo === "cliente" && (
-        <AddReviewModal isOpen={isModalOpen} onClose={handleCloseModal} citaId={selectedCitaId} />
+        <AddReviewModal isOpen={isModalOpen} onClose={handleCloseModal} citaId={selectedCitaId}  barberiaId={selectedBarberiaId} barbero={selectedBarbero} />
       )}
     </li>
   );

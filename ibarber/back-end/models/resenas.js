@@ -4,6 +4,7 @@ const reviewSchema = new Schema({
   title: String,
   body: String,
   rating: Number,
+  barbero:String,
   cita: {
     type: SchemaTypes.ObjectId,
     ref: 'citas'

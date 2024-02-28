@@ -35,7 +35,8 @@ const SideMenu = ({ logout }) => {
                     <h5 className="review-title">Barbería Olos</h5>
                     <div>
                       <span className="review-barbershop-name">Barbero</span>
-                      <span className="review-barber-name gray-text">Brayan Cortez</span>
+                      <br />
+                      <span className="review-barber-name gray-text">{item.barbero} </span>
                     </div>
                   </div>
                 </li>

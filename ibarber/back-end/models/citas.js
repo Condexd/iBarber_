@@ -1,9 +1,13 @@
-import { Schema, model } from "mongoose";
+import { Schema, model,SchemaTypes } from "mongoose";
 
 const citaSchema = new Schema({
   fecha: String,
   cliente: String,
   barbero: String,
+  barberiaId: {
+    type: SchemaTypes.ObjectId,
+    ref: 'barberias'
+  },
   cita_realizada: Boolean,
   cita_cancelada: Boolean,
   confirmacion_barbero: {

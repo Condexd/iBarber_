@@ -3,22 +3,26 @@ import { Box, Modal, TextField, Button } from '@mui/material';
 import { enviadorAuth } from '../../functions/usePostAuth';
 import { API_URLS } from '../../modulos/urls';
 
-const AddReviewModal = ({ isOpen, onClose, citaId }) => {
+const AddReviewModal = ({ isOpen, onClose, citaId ,barberiaId,barbero }) => {
   const [formData, setFormData] = useState({
     title: '',
     body: '',
     rating: '',
-    citaId: '' // Inicialmente no asignamos citaId
+    citaId: '',
+    barberiaId: '',
+    barbero:""
   });
 
   useEffect(() => {
-    if (citaId !== null) {
+    if (citaId !== null && barberiaId !== null) {
       setFormData(prevState => ({
         ...prevState,
-        citaId: citaId
+        citaId,
+        barberiaId,
+        barbero
       }));
     }
-  }, [citaId]); // Este efecto se ejecutará cada vez que citaId cambie
+  }, [citaId,barberiaId]); // Este efecto se ejecutará cada vez que citaId cambie
 
   const commonInputStyles = {
     '& label.Mui-focused': {
@@ -46,7 +50,7 @@ const AddReviewModal = ({ isOpen, onClose, citaId }) => {
     e.preventDefault();
 
     enviadorAuth(API_URLS.resenas, formData);
-    setFormData({ title: '', body: '', rating: '', citaId: '' }); // Reiniciamos formData
+    setFormData({ title: '', body: '', rating: '', citaId: '', barberiaId :"" ,barbero:""}); // Reiniciamos formData
     onClose(); // Cerrar el modal después de enviar el formulario
   };
 
@@ -92,6 +96,27 @@ const AddReviewModal = ({ isOpen, onClose, citaId }) => {
             name="citaId"
             type="text"
             value={formData.citaId}
+            onChange={handleChange}
+            hidden
+          /> 
+
+          <TextField
+            fullWidth
+            margin="normal"
+            label="ID de la barberia"
+            name="barberiaId"
+            type="text"
+            value={formData.barberiaId}
+            onChange={handleChange}
+            hidden
+          /> 
+          <TextField
+            fullWidth
+            margin="normal"
+            label="ID de la barberia"
+            name="barbero"
+            type="text"
+            value={formData.barbero}
             onChange={handleChange}
             hidden
           /> 

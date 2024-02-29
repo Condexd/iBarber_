@@ -73,6 +73,19 @@ body {
   margin: 0;
 }
 
+.description-title {
+  /* Contenedor de bloque flexible en el contexto de textos */
+  display: -webkit-box;
+  /* Las lineas se apilaran verticalmente */
+  -webkit-box-orient: vertical;
+  /* Establece el número máximo de líneas que se mostrarán */
+  -webkit-line-clamp: 2; /* Puedes ajustar este valor según tus necesidades */
+  /* Añade puntos suspensivos al final del texto que se corta */
+  text-overflow: ellipsis;
+  overflow: hidden;
+  margin: 0;
+}
+
 .card-barberia__footer__heading__nombre {
   margin: 0;
 }

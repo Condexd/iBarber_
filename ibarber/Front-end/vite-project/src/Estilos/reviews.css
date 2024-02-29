@@ -28,9 +28,9 @@
 }
 
 .review-title {
-  font-size: 24px;
+  font-size: 20px;
   font-weight: 500;
-
+  max-width: 400px;
 }
 
 .review-experience {
@@ -47,6 +47,11 @@
 .review-right-containter {
   display: flex;
   justify-content: space-between;
+  gap: 14px;
+}
+
+.review-right-containter:hover {
+  cursor: pointer;
 }
 
 .review-barbershop-image-container {
@@ -54,8 +59,23 @@
 }
 
 .review-barbershop-image {
-  width: 110px;
+  width: 105px;
   height: auto;
   border-radius: 10px;
   box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+}
+
+.review-barbery-info {
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  color: black;
+}
+
+.review-barber-name {
+  text-decoration: none;
+}
+
+.review-barber-name:hover {
+  text-decoration: underline;
 }

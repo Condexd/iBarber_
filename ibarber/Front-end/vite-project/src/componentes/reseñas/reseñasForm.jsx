@@ -60,6 +60,7 @@ const AddReviewModal = ({ isOpen, onClose, citaId ,barberiaId,barbero }) => {
         <h2>Agregar Nueva Reseña</h2>
         <form onSubmit={handleSubmit}>
           <TextField
+            required
             fullWidth
             margin="normal"
             label="Título"
@@ -69,6 +70,7 @@ const AddReviewModal = ({ isOpen, onClose, citaId ,barberiaId,barbero }) => {
             sx={commonInputStyles}
           />
           <TextField
+            required
             fullWidth
             margin="normal"
             label="Reseña"
@@ -80,6 +82,7 @@ const AddReviewModal = ({ isOpen, onClose, citaId ,barberiaId,barbero }) => {
             sx={commonInputStyles}
           />
           <TextField
+            required
             fullWidth
             margin="normal"
             label="Calificación"

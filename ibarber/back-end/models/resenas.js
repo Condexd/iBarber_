@@ -1,7 +1,10 @@
 import { Schema, model, SchemaTypes } from "mongoose";
 
 const reviewSchema = new Schema({
-  title: String,
+  title: {
+    type: String,
+    maxlength: 50  // Limitar el título a 50 caracteres
+  },
   body: String,
   rating: Number,
   barbero:String,

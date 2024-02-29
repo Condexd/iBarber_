@@ -3,6 +3,8 @@ import { API_URLS } from "../../modulos/urls";
 import { useFetchuno } from "../../Hooks/useFetchintento";
 import "../../Estilos/reviews.css";
 import { FaStar } from "react-icons/fa";
+import { Link } from "react-router-dom";
+
 
 const SideMenu = ({ logout }) => {
   const apiUrl = `${API_URLS.obtenerResenas}`;
@@ -21,7 +23,7 @@ const SideMenu = ({ logout }) => {
             <>
               <ul className="review-container-child">
                 <li key={index} className="review-left-containter">
-                  <h5 className="review-title">{item.title}</h5>
+                  <h5 className="review-title description-title">{item.title}</h5>
                     <span className="review-rating"><FaStar className="estrella" /> {item.rating}</span>
                   <div className="">
                     <span className="review-experience description-text">{item.body}</span>
@@ -33,11 +35,12 @@ const SideMenu = ({ logout }) => {
                   </a>
                   <div>
                     <h5 className="review-title">Barbería Olos</h5>
-                    <div>
+                    <Link className="review-barbery-info">
                       <span className="review-barbershop-name">Barbero</span>
-                      <br />
-                      <span className="review-barber-name gray-text">{item.barbero} </span>
-                    </div>
+                      <div>
+                        <span className="review-barber-name gray-text">Brayan Cortez</span>
+                      </div>
+                    </Link>
                   </div>
                 </li>
               </ul>

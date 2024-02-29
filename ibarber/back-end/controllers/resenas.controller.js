@@ -56,3 +56,21 @@ export const crearResena = async (req, res) => {
         res.status(500).json({ message: 'Hubo un error al procesar tu solicitud' });
     }
 }
+
+export const obtenerResenasTodos = async (req, res) => {
+    try {
+        const token = req.headers.authorization;
+        const { usuario } = await verificarTokenYObtenerUsuario(token);
+  
+        const reviews = await Review.find().sort({ rating: -1 }).limit(5);
+        console.log("Reseñas obtenidas:", reviews);
+        res.status(200).json(reviews);
+    } catch (error) {
+        if (error.message === "Token expirado") {
+            console.log("Token expirado");
+            return res.status(401).json({ message: "Token expirado" });
+        }
+        console.error('Hubo un error al procesar la solicitud:', error);
+        res.status(500).json({ message: 'Hubo un error al procesar tu solicitud' });
+    }
+  }

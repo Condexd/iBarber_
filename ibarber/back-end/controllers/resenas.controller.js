@@ -61,7 +61,6 @@ export const obtenerResenasTodos = async (req, res) => {
     try {
         const token = req.headers.authorization;
         const { usuario } = await verificarTokenYObtenerUsuario(token);
-  
         const reviews = await Review.find().sort({ rating: -1 }).limit(5);
         console.log("Reseñas obtenidas:", reviews);
         res.status(200).json(reviews);

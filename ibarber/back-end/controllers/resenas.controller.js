@@ -56,7 +56,6 @@ export const crearResena = async (req, res) => {
         res.status(500).json({ message: 'Hubo un error al procesar tu solicitud' });
     }
 }
-
 export const obtenerResenasTodos = async (req, res) => {
     try {
         const token = req.headers.authorization;

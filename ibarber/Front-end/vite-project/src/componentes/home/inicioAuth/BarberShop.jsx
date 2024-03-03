@@ -47,14 +47,13 @@ const BarberShop = ({logout}) => {
               />
             ))}
           </div>
-          <div className="ver-mas">
-            <button className="boton-logout">Ver más</button>
-          </div>
         </div>
-
-        {/* Barberos Section */}
+        </section>
+        <section>
+          <h3 className="text">Barberos Recomendados</h3>
         <MultipleItems barberosData ={barberosData} />
-      </section>
+        </section>
+  
     </div>
   );
 };

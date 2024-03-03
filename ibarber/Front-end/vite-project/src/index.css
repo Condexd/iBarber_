@@ -11,6 +11,7 @@
 @import url("./Estilos/modalcontraseña.css");
 @import url("./Estilos/modalcrearbarbero.css");
 @import url("./Estilos/edit.css");
+@import url("./Estilos/MultipleItems.css");
 html{
     height: 100vh;
     width: 100vw;

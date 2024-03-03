@@ -1,0 +1,21 @@
+.cardBarber {
+    cursor: pointer;
+    transition: filter 0.3s ease;
+  }
+.cardBarber:hover{
+    filter: grayscale(15%); 
+}
+.text{
+  color:#655CC9;
+  text-align: center;
+
+}
+  /* Cambia el color de las flechas de navegación */
+.slick-prev:before,
+.slick-next:before {
+  color: #574EB8; /* Cambia el color a tu preferencia */
+}
+.barbero-name{
+    color:black;
+  text-decoration: none;
+}

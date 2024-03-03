@@ -308,14 +308,32 @@ export const postBarber = async (req, res) => {
 
 
 
-// Ruta para obtener todos los barberos de todas las barberías
 export const getBarberosall = async (req, res) => {
   
   try {
     const token = req.headers.authorization;
     await verificarTokenYObtenerUsuario(token);
-    const barberos = await usuarioModel.find({ roles: 'barbero' });
-    res.json(barberos);
+
+    // Consultar solo las propiedades 'usuario' y 'fotoPerfil' de los barberos
+    const barberos = await usuarioModel.find({ roles: 'barbero' }).select('usuario fotoPerfil');
+
+    // Obtener los IDs de los usuarios barberos
+    const idsBarberos = barberos.map(barbero => barbero.usuario);
+
+    // Consultar las barberías que contienen los barberos encontrados
+    const barberias = await BarberiaModel.find({ "barberos.usuario": { $in: idsBarberos } });
+
+    // Construir la respuesta final
+    const barberosConIdBarberia = barberos.map(barbero => {
+      const barberia = barberias.find(b => b.barberos.some(b => b.usuario === barbero.usuario));
+      return {
+        usuario: barbero.usuario,
+        fotoPerfil: barbero.fotoPerfil,
+        barberia: barberia ? barberia._id : null
+      };
+    });
+
+    res.json(barberosConIdBarberia);
   } catch (error) {
     if (error.message === "Token expirado") {
       return res.status(401).json({ message: "Token expirado" });
@@ -324,6 +342,7 @@ export const getBarberosall = async (req, res) => {
     res.status(500).json({ error: "Error al obtener los barberos" });
   }
 };
+
 
 export const actualizarBarbero = async (req, res) => {
   try {

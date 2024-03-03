@@ -5,9 +5,10 @@ import { API_URLS } from "../../../modulos/urls";
 import { mostrarMensajeError } from "../../../modulos/alertas";
 import { enviadorAuth } from "../../../functions/usePostAuth";
 import { Form } from "./form";
-import { useParams } from "react-router-dom";
-
+import { Navigate, useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 const CitaForm = ({ barberoInfo }) => {
+ const  navigate=useNavigate();
   const { id } = useParams();
   const [barbero, setBarbero] = useState("");
   const [fecha, setFecha] = useState("");
@@ -52,7 +53,9 @@ const CitaForm = ({ barberoInfo }) => {
     const fechaHoraFormateada = fechaHoraSeleccionada.toLocaleString();
 
     // Enviar los datos
-    enviadorAuth(API_URLS.agendar_cita, { fecha: fechaHoraFormateada, barbero,barberiaId:id });
+   const resultado= await enviadorAuth(API_URLS.agendar_cita, { fecha: fechaHoraFormateada, barbero,barberiaId:id });
+   if(resultado)
+   navigate("/citas");
   };
 
   const handleBarberoChange = (event) => {

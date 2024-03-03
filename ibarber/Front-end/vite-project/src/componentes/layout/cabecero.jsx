@@ -1,11 +1,13 @@
 import { useState, useContext, useEffect } from "react";
 import { UserContext } from "../context/UserContext";
 import { Link } from "react-router-dom";
+import { FaCalendarAlt, FaStar, FaBuilding, FaUser, FaSignInAlt, FaUserPlus } from 'react-icons/fa'; // Importar iconos de Font Awesome
 import Boton from "./boton";
 import { API_URLS } from "../../modulos/urls";
 import SearchForm from "./Search";
+
 function Cabecero({ isAuthenticated, logout }) {
-  const { userData} = useContext(UserContext);
+  const { userData } = useContext(UserContext);
   const [visible, setVisible] = useState(userData.barberia);
   const [menuVisible, setMenuVisible] = useState(false);
 
@@ -47,25 +49,25 @@ function Cabecero({ isAuthenticated, logout }) {
                <SearchForm/>
               <li>
                 <Link to="/citas" onClick={closeMenu}>
-                  Mis citas
+                  <FaCalendarAlt /> Mis citas
                 </Link>
               </li>
 
               <li>
                 <Link to="/reviews" onClick={closeMenu}>
-                 reseñas
+                  <FaStar /> Reseñas
                 </Link>
               </li>
               {visible && (
                 <>
                   <li>
                     <Link to="/mi-barberia" onClick={closeMenu}>
-                      Mi barbería
+                      <FaBuilding /> Mi barbería
                     </Link>
                   </li>
                   <li>
                     <Link to="/empleados" onClick={closeMenu}>
-                      Mis empleados
+                      <FaUser /> Mis empleados
                     </Link>
                   </li>
                 </>
@@ -90,7 +92,7 @@ function Cabecero({ isAuthenticated, logout }) {
             <>
               <li>
                 <Link className="boton-login" to="/Login" onClick={closeMenu}>
-                  Iniciar sesión
+                  <FaSignInAlt /> Iniciar sesión
                 </Link>
               </li>
               <li>
@@ -99,7 +101,7 @@ function Cabecero({ isAuthenticated, logout }) {
                   to="/registrarse"
                   onClick={closeMenu}
                 >
-                  Registrarse
+                  <FaUserPlus /> Registrarse
                 </Link>
               </li>
             </>

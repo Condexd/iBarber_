@@ -198,11 +198,10 @@ export const updateBarberia = async (req, res) => {
 };
 
 export const deleteBarberia = async (req, res) => {
-  const barberiaId = req.params.id;
-
+  const token = req.headers.authorization;
+  const {usuario} = await verificarTokenYObtenerUsuario(token);
   try {
-    const deletedBarberia = await BarberiaModel.findByIdAndRemove(barberiaId);
-
+    const deletedBarberia = await BarberiaModel.findOneAndRemove({"dueño.usuario":usuario});
     if (!deletedBarberia) {
       return res.status(404).json({ message: "Barbería no encontrada" });
     }
@@ -412,3 +411,4 @@ export const filtrarBarberia = async (req, res) => {
     res.status(500).json({ message: 'Hubo un error al procesar tu solicitud' });
   }
 };
+

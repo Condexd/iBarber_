@@ -19,7 +19,7 @@ router.get('/barberos/:id', obtenerBarberosPorNombreBarberia);
 
 router.put('/barberia/actualizado', updateBarberia);
 
-router.delete('/barberia/:id', deleteBarberia);
+router.delete('/deleteBarberia', deleteBarberia);
 router.delete('/barberia/delete-barber/:id',deleteBarber)
 router.put("/barberia/edit-barber/:id",actualizarBarbero)
 

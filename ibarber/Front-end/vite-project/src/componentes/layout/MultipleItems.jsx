@@ -40,8 +40,8 @@ export function MultipleItems({ barberosData }) {
     <div className="container mt-3">
         <Slider {...settings}>
           {barberosData.map((barbero, index) => (
-           <Link className="barbero-name" to={`/new-cita/${barbero.barberia} `}>
-            <div key={index}>
+           <Link className="barbero-name" to={`/new-cita/${barbero.barberia}`} key={index}>
+            <div>
               <div className="barbero-card d-flex flex-column align-items-center">
                 <img
                   src={`${API_URLS.obtenerImage}${barbero.fotoPerfil}`}

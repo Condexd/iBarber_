@@ -49,25 +49,25 @@ function Cabecero({ isAuthenticated, logout }) {
                <SearchForm/>
               <li>
                 <Link to="/citas" onClick={closeMenu}>
-                  <FaCalendarAlt /> Mis citas
+                  <FaCalendarAlt /> 
                 </Link>
               </li>
 
               <li>
                 <Link to="/reviews" onClick={closeMenu}>
-                  <FaStar /> Reseñas
+                  <FaStar /> 
                 </Link>
               </li>
               {visible && (
                 <>
                   <li>
                     <Link to="/mi-barberia" onClick={closeMenu}>
-                      <FaBuilding /> Mi barbería
+                      <FaBuilding />
                     </Link>
                   </li>
                   <li>
                     <Link to="/empleados" onClick={closeMenu}>
-                      <FaUser /> Mis empleados
+                      <FaUser />
                     </Link>
                   </li>
                 </>

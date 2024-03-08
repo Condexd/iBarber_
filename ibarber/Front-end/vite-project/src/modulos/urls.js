@@ -27,5 +27,6 @@ export const API_URLS = {
   resenas:`${API_BASE_URL}/resena`,
   obtenerResenas:`${API_BASE_URL}/obtenerResenas`,
   filtrarBarberiaPorNombre:`${API_BASE_URL}/filtrarBarberiaPorNombre`,
-  notificationBell:`${API_BASE_URL}/notificationBell`
+  notificationBell:`${API_BASE_URL}/notificationBell`,
+  deleteBarberia:`${API_BASE_URL}/deleteBarberia`,//autenticada
 };

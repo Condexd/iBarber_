@@ -1,18 +1,34 @@
-const FormularioBarberia = ({
-  nombre,
-  setNombre,
-  descripcion,
-  setDescripcion,
-  email,
-  setEmail,
-  telefono,
-  setTelefono,
-  ciudad,
-  setCiudad,
-  direccion,
-  setDireccion,
+import { mostrarConfirmacion } from "../../modulos/confirms";
+import { deleteFun } from "../../functions/deleteFun";
+import { API_URLS } from "../../modulos/urls";
+import { UserContext } from "../context/UserContext";
+import { useContext } from "react";
+import { useNavigate } from "react-router-dom";
+
+const FormularioBarberia = ({ nombre, setNombre, descripcion, setDescripcion, email,setEmail,telefono,setTelefono,ciudad,setCiudad,direccion,setDireccion,
   handleSubmit,
 }) => {
+  const { userData, setUserData } = useContext(UserContext);
+const navigate= useNavigate();
+  const deleteAccount = async (event) => {
+    event.preventDefault();
+    const confirmacion = await mostrarConfirmacion(
+      "¿Eliminar?",
+      "¿Estás seguro de Eliminar esta Barberia?"
+    );
+    if (confirmacion.isConfirmed) {
+      const result = await deleteFun(
+        `${API_URLS.deleteBarberia}`
+      );
+      if(result) {
+        setUserData(prevUserData => ({
+        ...prevUserData,
+        barberia: false
+      }));
+      navigate("/home")
+    }
+    }
+  };
   return (
     <form className="form--profile" onSubmit={handleSubmit}>
       <ul className="form__container" id="datos-personales">
@@ -96,7 +112,9 @@ const FormularioBarberia = ({
               type="submit"
               value="Guardar cambios"
             />
-            <button className="button button-red">Cancelar</button>
+             <button className="button button-red" onClick={deleteAccount}>
+              Eliminar Barberia
+            </button>
           </div>
         </li>
       </ul>

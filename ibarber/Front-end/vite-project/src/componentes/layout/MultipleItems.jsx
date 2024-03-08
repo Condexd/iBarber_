@@ -41,13 +41,13 @@ export function MultipleItems({ barberosData }) {
         <Slider {...settings}>
           {barberosData.map((barbero, index) => (
            <Link className="barbero-name" to={`/new-cita/${barbero.barberia}`} key={index}>
-            <div>
+            <div  style={{ margin: "0 10px" }}>
               <div className="barbero-card d-flex flex-column align-items-center">
-                <img
+              <img
                   src={`${API_URLS.obtenerImage}${barbero.fotoPerfil}`}
                   alt={barbero.name}
                   className="barbero-image rounded cardBarber"
-                  style={{ maxHeight: "200px", objectFit: "cover"}}
+                  style={{ width: "200px", height: "200px", objectFit: "cover"}}
                 />
                 <div className="barbero-details text-center mt-2">
                   <p className="barbero-name">{barbero.usuario}</p>

@@ -1,42 +1,46 @@
-import { useContext, useState,useEffect } from 'react';
-import { UserContext } from '../context/UserContext';
-import { IconButton } from '@mui/material';
-import { FiEdit, FiTrash2 } from 'react-icons/fi';
-import MUIDataTable from 'mui-datatables';
-import { API_URLS } from '../../modulos/urls';
-import { deleteBarber } from '../../functions/delete';
-import { mostrarMensajeExitoDelete } from '../../modulos/alertas';
-import { mostrarConfirmacion } from '../../modulos/confirms';
-import { EditBarberos } from './EditBarberos';
-import { useFetchuno } from '../../Hooks/useFetchintento';
-import { CrearBarbero } from './CrearBarbero';
+import React, { useContext, useState, useEffect } from "react";
+import { UserContext } from "../context/UserContext";
+import { IconButton } from "@mui/material";
+import { FiEdit, FiTrash2 } from "react-icons/fi";
+import MUIDataTable from "mui-datatables";
+import { API_URLS } from "../../modulos/urls";
+import { deleteBarber } from "../../functions/delete";
+import { mostrarMensajeExitoDelete } from "../../modulos/alertas";
+import { mostrarConfirmacion } from "../../modulos/confirms";
+import { EditBarberos } from "./EditBarberos";
+import { useFetchuno } from "../../Hooks/useFetchintento";
+import { CrearBarbero } from "./CrearBarbero";
 
-export const MisBarberos = ({logout}) => {
+export const MisBarberos = ({ logout }) => {
   const { userData } = useContext(UserContext);
   const [usuario] = useState(userData.usuario);
-  const [barbero, setBarbero] = useState('');
+  const [barbero, setBarbero] = useState("");
   const [visible, setVisible] = useState(false);
   const [crearBarberoModalOpen, setCrearBarberoModalOpen] = useState(false);
-  const [barberoEspecialidad, setBarberoEspecialidad] = useState('');
-  const [barberoExperiencia, setBarberoExperiencia] = useState('');
+  const [barberoEspecialidad, setBarberoEspecialidad] = useState("");
+  const [barberoExperiencia, setBarberoExperiencia] = useState("");
 
   const apiUrl = `${API_URLS.obtenerBarberos}`;
   const { data, isLoading, hasError, setState } = useFetchuno(apiUrl);
 
-
   useEffect(() => {
-    if (hasError === 'Unauthorized') {
+    if (hasError === "Unauthorized") {
       logout();
     }
   }, [hasError, logout]);
-  const handleEdit = (barber, barberoEspecialidad, barberoExperiencia, event) => {
+
+  const handleEdit = (
+    barber,
+    barberoEspecialidad,
+    barberoExperiencia,
+    event
+  ) => {
     event.preventDefault();
     setBarbero(barber);
     setVisible(true);
-    setBarberoEspecialidad (barberoEspecialidad);
-    setBarberoExperiencia (barberoExperiencia);
+    setBarberoEspecialidad(barberoEspecialidad);
+    setBarberoExperiencia(barberoExperiencia);
   };
-
 
   const funcionEditar = (contenido) => {
     let result = data.map((barberia) => {
@@ -55,21 +59,20 @@ export const MisBarberos = ({logout}) => {
   };
 
   const agregar = (nuevoBarbero) => {
-    setState(prevState => ({
+    setState((prevState) => ({
       ...prevState,
       data: [...prevState.data, nuevoBarbero],
       isLoading: false,
       hasError: null,
     }));
-    handleCloseCrearBarberoModal()
+    handleCloseCrearBarberoModal();
   };
-  
 
   const handleDelete = async (barberoId, event) => {
     event.preventDefault();
     const confirmacion = await mostrarConfirmacion(
-      '¿Enviar datos?',
-      '¿Estás seguro de Eliminar este Barbero?'
+      "¿Enviar datos?",
+      "¿Estás seguro de Eliminar este Barbero?"
     );
     if (confirmacion.isConfirmed) {
       if (await deleteBarber(`${API_URLS.eliminarBarbero}/${barberoId}`)) {
@@ -84,7 +87,6 @@ export const MisBarberos = ({logout}) => {
     }
   };
 
-
   const handleOpenCrearBarberoModal = () => {
     setCrearBarberoModalOpen(true);
   };
@@ -95,56 +97,78 @@ export const MisBarberos = ({logout}) => {
 
   const columns = [
     {
-      name: '_id',
-      field: '_id',
+      name: "_id",
+      field: "_id",
     },
     {
-      name: 'usuario',
-      field: 'usuario',
-    },
-    {
-      name: 'nombres',
-      field: 'nombres',
-    },
-    {
-      name: 'apellidos',
-      field: 'apellidos',
-    },
-    {
-      name: 'correo',
-      field: 'correo',
-    },
-    {
-      name: 'telefono',
-      field: 'telefono',
-    },
-    {
-      name: 'biografia',
-      field: 'biografia',
-    },
-    {
-      name: 'especialidad',
-      field: 'especialidad',
-    },
-    {
-      name: 'experiencia',
-      field: 'experiencia',
-    },
-    {
-      name: 'Acciones',
+      name: "fotoPerfil",
+      label: "Foto de Perfil",
       options: {
         customBodyRender: (value, tableMeta, updateValue) => {
-          const barberoUser = tableMeta.rowData[1];
+          return (
+            <img
+              src={`${API_URLS.obtenerImage}${value}`}
+              alt="Foto de Perfil"
+              style={{ width: 100, height: 100, borderRadius: "10%" }}
+            />
+          );
+        },
+      },
+    },
+    {
+      name: "usuario",
+      field: "usuario",
+    },
+    {
+      name: "nombres",
+      field: "nombres",
+    },
+    {
+      name: "apellidos",
+      field: "apellidos",
+    },
+    {
+      name: "correo",
+      field: "correo",
+    },
+    {
+      name: "telefono",
+      field: "telefono",
+    },
+    {
+      name: "biografia",
+      field: "biografia",
+    },
+    {
+      name: "especialidad",
+      field: "especialidad",
+    },
+    {
+      name: "experiencia",
+      field: "experiencia",
+    },
+    {
+      name: "Acciones",
+      options: {
+        customBodyRender: (value, tableMeta, updateValue) => {
+          const barberoUser = tableMeta.rowData[2];
           const barberoId = tableMeta.rowData[0];
-          const barberoEspecialidad = tableMeta.rowData[7];
-          const barberoExperiencia = tableMeta.rowData[8];
+          const barberoEspecialidad = tableMeta.rowData[8];
+          const barberoExperiencia = tableMeta.rowData[9];
           return (
             <>
               <IconButton
                 variant="contained"
                 color="success"
                 className="mt-2 fs-6"
-                onClick={(event) => handleEdit(barberoUser, barberoEspecialidad, barberoExperiencia, event)}
+                onClick={(event) =>
+                  handleEdit(
+                    barberoUser,
+                    barberoEspecialidad,
+                    barberoExperiencia,
+                    event
+                  )
+                }
               >
                 <FiEdit />
               </IconButton>
@@ -164,35 +188,35 @@ export const MisBarberos = ({logout}) => {
   ];
 
   const options = {
-    filterType: 'textField',
-    responsive: 'standard',
-    selectableRows: 'none',
+    filterType: "textField",
+    responsive: "vertical",
+    selectableRows: "none",
     rowsPerPageOptions: [5, 10, 20],
     elevation: 0,
     download: true,
     print: true,
     setCellProps: () => ({
       style: {
-        fontSize: '14px',
-        fontWeight: 'bold',
+        fontSize: "14px",
+        fontWeight: "bold",
       },
     }),
   };
 
   return (
     <>
-      <div className="container mt-5">
-        <h2>Mis empleados</h2>
-        <IconButton
-          variant="contained"
-          color="success"
-          className="mt-2 fs-6"
-          onClick={handleOpenCrearBarberoModal}
-        >
-          <span>
-            <FiEdit /> Agregar Barbero
-          </span>
-        </IconButton>
+      <div className="container-fluid">
+        <div className="mt-3">
+          <IconButton
+            variant="contained"
+            color="success"
+            onClick={handleOpenCrearBarberoModal}
+          >
+            <span>
+              <FiEdit /> Agregar Barbero
+            </span>
+          </IconButton>
+        </div>
         <CrearBarbero
           isOpen={crearBarberoModalOpen}
           onRequestClose={handleCloseCrearBarberoModal}
@@ -204,17 +228,21 @@ export const MisBarberos = ({logout}) => {
             funcionEditar={funcionEditar}
             barbero={barbero}
             usuario={usuario}
-            barberoExperiencia ={barberoExperiencia}
-            barberoEspecialidad = {barberoEspecialidad}
-
+            barberoExperiencia={barberoExperiencia}
+            barberoEspecialidad={barberoEspecialidad}
           />
         )}
         {isLoading ? (
           <p>Cargando...</p>
-          ) : hasError ? (
+        ) : hasError ? (
           <p>Error al cargar datos</p>
         ) : (
-          <MUIDataTable title={''} data={data} columns={columns} options={options} />
+          <MUIDataTable
+            title={<h3 className="">Mis Barberos</h3>}
+            data={data}
+            columns={columns}
+            options={options}
+          />
         )}
       </div>
     </>

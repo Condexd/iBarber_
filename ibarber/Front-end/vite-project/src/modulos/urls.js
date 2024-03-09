@@ -29,4 +29,5 @@ export const API_URLS = {
   filtrarBarberiaPorNombre:`${API_BASE_URL}/filtrarBarberiaPorNombre`,
   notificationBell:`${API_BASE_URL}/notificationBell`,
   deleteBarberia:`${API_BASE_URL}/deleteBarberia`,//autenticada
+  obtenerMejoresResenas:`${API_BASE_URL}/ResenasAll`,
 };

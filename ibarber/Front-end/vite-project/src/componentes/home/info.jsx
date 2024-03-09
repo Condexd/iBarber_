@@ -1,10 +1,10 @@
 const info = () => {
   return (
     <><><section className="contenedor-sobre-nosotros">
-          <h2 className="titulo1">Nuestro servicio</h2>
+          <h2 className="titulo1 animate__animated animate__fadeIn">Nuestro servicio</h2>
           <div className="sobre-nosotros">
-              <img src="https://github.com/Condexd/_iBarber_/blob/main/ibarber/Front-end/vite-project/src/imgcar/cortar.jpg?raw=true" alt="" className="imagen-nosotros" />
-              <div className="contenido-textos">
+              <img src="https://github.com/Condexd/_iBarber_/blob/main/ibarber/Front-end/vite-project/src/imgcar/cortar.jpg?raw=true" alt="" className="imagen-nosotros animate__animated animate__fadeInLeft" />
+              <div className="contenido-textos animate__animated animate__fadeInRight">
                   <h3><span>1</span>¿Quiénes Somos?</h3>
                   <p>Somos un sistema de gestión de citas para barberías. Conectamos clientes y barberos para una experiencia conveniente. Simplificamos la reserva de citas, eliminando esperas innecesarias y ofreciendo flexibilidad. Potenciamos a las barberías y barberos con herramientas eficientes. Mejoramos la interacción entre clientes y profesionales de la barbería.</p>
                   <h3><span>2</span>iBarber</h3>

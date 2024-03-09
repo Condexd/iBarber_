@@ -72,13 +72,11 @@ function Cabecero({ isAuthenticated, logout }) {
                   </li>
                 </>
               )}
-              <li>
+              <li className="header-profile-image-container">
                 <Link to="/perfil" onClick={closeMenu}>
                   <img
-                    className="rounded-circle"
+                    className="header-profile-image"
                     src={`${API_URLS.obtenerImage}/uploads/imagen_${userData.usuario}.jpg`}
-                    height={35}
-                    width={35}
                     alt="Perfil"
                   />
                 </Link>

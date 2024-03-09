@@ -135,6 +135,20 @@ li {
         'opsz' 48
 }
 
+.header-profile-image-container {
+    aspect-ratio: 1 / 1;
+    display: flex;
+    justify-content: center;
+    border-radius: 50%;
+    width: 35px;
+    overflow: hidden;
+}
+
+.header-profile-image {
+    height: 35px;
+    width: auto;
+}
+
 /* Ajustes para pantallas pequeñas */
 @media screen and (max-width: 767px) {
     .contenedor1-navegacion {

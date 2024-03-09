@@ -33,10 +33,10 @@ const BarberShop = ({ logout }) => {
 
   return (
     <div className="cuerpo">
-      <h1 className="titleUser">Hola, {userData.usuario}</h1>
+      {/* <h1 className="titleUser">Hola, {userData.usuario}</h1> */}
       <section className="cont-cartas">
-        <div className="barberias">
-          <h2>Barberias:</h2>
+        <div className="barberias mt-3">
+          <h3>Barberias</h3>
           <div className="cards-container">
             {barberiasData.map((barberia, index) => (
               <BarberiaCard
@@ -52,11 +52,11 @@ const BarberShop = ({ logout }) => {
         </div>
       </section>
       <section>
-        <h3 className="text">Barberos Recomendados</h3>
+        <h3 className="text mt-5">Barberos Recomendados</h3>
         <MultipleItems barberosData={barberosData} />
       </section>
       <section>
-        <h3 className="text">Mejores Reseñas</h3>
+        <h3 className="text mt-5">Mejores Reseñas</h3>
         <div className="reviews-container" style={{ maxWidth: '800px', margin: '0 auto' }}>
           {reviewsData.map((review, index) => (
             <div key={index} style={{ backgroundColor: '#f9f9f9', padding: '20px', marginBottom: '20px', borderRadius: '5px', border: '1px solid #ccc', boxShadow: '0px 2px 4px rgba(0, 0, 0, 0.1)' }}>

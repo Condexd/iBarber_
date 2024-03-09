@@ -11,7 +11,7 @@ export function MultipleItems({ barberosData }) {
     infinite: true,
     speed: 500, // Ajusta la velocidad de la transición entre slides
     autoplaySpeed: 3000, // Ajusta el intervalo de tiempo entre transiciones automáticas
-    slidesToShow: 3,
+    slidesToShow: 5,
     slidesToScroll: 1,
     autoplay: true,
     swipeToSlide: true,

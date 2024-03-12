@@ -5,12 +5,13 @@
 
 .title-barber {
   text-align: center;
+  color:var(--primary-color)
 }
 #boton-crear-barberia {
-  background-color: #157347;
+  background-color:var(--primary-color);
   color: white;
   border: none;
-  border-radius: 4px;
+  border-radius: 15px;
   padding: 10px 40px;
   cursor: pointer;
   transition: ease-in-out 5sg;
@@ -19,32 +20,30 @@
 #btn-enviar-barbero {
   margin: auto;
 }
-
 #form-barber-container {
+  position: relative; 
   display: flex;
   justify-content: center;
-  align-items: flex-start;
+  align-items: center;
   background-color: #f8f9fa;
   padding: 20px;
   height: 100vh;
+
 }
 
 
 
 #form-barber {
-  margin-top: 6.25rem;
-  margin-right: 10px;
-  box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.4);
-  width: 50rem;
-  height: auto;
-  padding: 1.5rem 4.5rem;
+  width: 40%;
+  margin-left: 0;
+  padding: 40px;
+  z-index: 1; 
   display: flex;
   flex-direction: column;
   row-gap: 16px;
   background-color: white;
-  border-radius: 4px;
-  box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.4);
-  margin-left: 40px;
+  border-radius: 15px;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1)
 }
 
 #form-barber input,
@@ -61,38 +60,46 @@ input:focus, input:active {
 }
 
 #form-barber button:hover {
-  background-color: #0b3c25;
+  background-color: #5750aa;
 }
 
-@media (max-width: 898px) {
+.img-container img {
+  position: absolute;
+  background-size: cover;
+  height: 80px;
+  top: 70px;
+  border: 2px solid rgb(189, 187, 198);
+  border-radius: 8px;
+  box-shadow: 3px 3px 5px rgba(179, 10, 10, 0.2);
+  margin-right: 2rem;
+}
+@media (max-width: 908px) {
   .img-container img {
-    width: 20rem;
-    margin-top: 10px;
-    height: auto;
+    position: absolute;
+    background-size: cover;
+    height: 20px;
+    top: 10px;
   }
 
   #form-barber-container {
+    position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
+    height: auto;
   }
 
   #form-barber {
-    width: 70%;
-    margin-top: 10px;
-    padding: 40px;
+    width: 60%;
     margin-left: 0;
+    margin-top: 3rem;
+    padding: 40px;
+    z-index: 1;
   }
 }
-.img-container img {
-  margin-top: 7.25rem;
-  background-size: cover;
-  width: 23rem;
-  border: 2px solid rgb(189, 187, 198);
-  border-radius: 8px;
-  box-shadow: 3px 3px 5px rgba(179, 10, 10, 0.2);
-}
+
+
 
 @keyframes desaturate {
   0% {

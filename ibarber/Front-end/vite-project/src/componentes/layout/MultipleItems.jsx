@@ -9,32 +9,38 @@ export function MultipleItems({ barberosData }) {
   
   const settings = {
     infinite: true,
-    speed: 500, // Ajusta la velocidad de la transición entre slides
-    autoplaySpeed: 3000, // Ajusta el intervalo de tiempo entre transiciones automáticas
-    slidesToShow: 5,
+    speed: 500,
+    autoplaySpeed: 3000,
+    slidesToShow: 4,
     slidesToScroll: 1,
     autoplay: true,
     swipeToSlide: true,
-    arrows:true,
+    arrows: true,
     adaptiveHeight: true,
     lazyLoad: 'ondemand',
+    pauseOnHover: true,
+    pauseOnFocus: true,
+    centerMode: true,
+    centerPadding: '10px',
     responsive: [
       {
         breakpoint: 1024,
         settings: {
           slidesToShow: 2,
-          slidesToScroll: 1
+          slidesToScroll: 1,
         }
       },
       {
         breakpoint: 600,
         settings: {
           slidesToShow: 1,
-          slidesToScroll: 1
+          slidesToScroll: 1,
+          centerPadding: '0px',
         }
-      }
+      },
     ]
   };
+  
 
   return (
     <div className="container mt-3">

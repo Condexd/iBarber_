@@ -1,10 +1,10 @@
 import React, { useContext, useEffect } from "react";
 import { API_URLS } from "../../../modulos/urls";
 import { UserContext } from "../../context/UserContext";
-import { FaStar } from 'react-icons/fa';
 import { useFetchuno } from "../../../Hooks/useFetchintento";
 import BarberiaCard from "./BarberiaCard";
 import { MultipleItems } from "../../layout/MultipleItems";
+import { Reviews } from "./reviews";
 
 const BarberShop = ({ logout }) => {
   const { userData } = useContext(UserContext);
@@ -56,21 +56,8 @@ const BarberShop = ({ logout }) => {
         <MultipleItems barberosData={barberosData} />
       </section>
       <section>
-        <h3 className="text mt-5">Mejores Reseñas</h3>
-        <div className="reviews-container" style={{ maxWidth: '800px', margin: '0 auto' }}>
-          {reviewsData.map((review, index) => (
-            <div key={index} style={{ backgroundColor: '#f9f9f9', padding: '20px', marginBottom: '20px', borderRadius: '5px', border: '1px solid #ccc', boxShadow: '0px 2px 4px rgba(0, 0, 0, 0.1)' }}>
-              <div>
-                <h5>{review.title}</h5>
-                <div>
-                  <FaStar style={{ color: 'gold', marginRight: '5px' }} /> 
-                  <span>{review.rating}</span>
-                </div>
-                <p style={{ wordWrap: 'break-word' }}>{review.body}</p>
-              </div>
-            </div>
-          ))}
-        </div>
+      <h3 className="text mt-5">Mejores Reseñas</h3>
+      <Reviews reviewsData={reviewsData} />
       </section>
     </div>
   );

@@ -21,7 +21,7 @@ const SideMenu = ({ logout }) => {
         {data &&
           data.map((item, index) => (
             <>
-              <ul className="review-container-child">
+              <ul className="review-container-child animate__animated animate__fadeIn">
                 <li key={index} className="review-left-containter">
                   <h5 className="review-title description-title">{item.title}</h5>
                     <span className="review-rating"><FaStar className="estrella" /> {item.rating}</span>

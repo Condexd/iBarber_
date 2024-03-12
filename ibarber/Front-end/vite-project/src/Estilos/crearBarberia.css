@@ -27,14 +27,11 @@
   align-items: center;
   background-color: #f8f9fa;
   padding: 20px;
-  height: 100vh;
-
 }
-
-
 
 #form-barber {
   width: 40%;
+  min-width: 450px;
   margin-left: 0;
   padding: 40px;
   z-index: 1; 
@@ -66,37 +63,12 @@ input:focus, input:active {
 .img-container img {
   position: absolute;
   background-size: cover;
-  height: 80px;
+  left: 80px;
   top: 70px;
   border: 2px solid rgb(189, 187, 198);
   border-radius: 8px;
   box-shadow: 3px 3px 5px rgba(179, 10, 10, 0.2);
   margin-right: 2rem;
-}
-@media (max-width: 908px) {
-  .img-container img {
-    position: absolute;
-    background-size: cover;
-    height: 20px;
-    top: 10px;
-  }
-
-  #form-barber-container {
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-    height: auto;
-  }
-
-  #form-barber {
-    width: 60%;
-    margin-left: 0;
-    margin-top: 3rem;
-    padding: 40px;
-    z-index: 1;
-  }
 }
 
 

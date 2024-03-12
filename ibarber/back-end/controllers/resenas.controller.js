@@ -3,7 +3,6 @@ export const crearResena = async (req, res) => {
     try {
       const token = req.headers.authorization;
       const { usuario } = await verificarTokenYObtenerUsuario(token); // Cambiado a usuarioId
-      console.log(req.body)
       // Extraer los datos de la reseña del cuerpo de la solicitud
       const { title, body, rating, citaId,barberiaId,barbero } = req.body; // Añadido citaId aquí
   
@@ -61,7 +60,6 @@ export const obtenerResenasTodos = async (req, res) => {
         const token = req.headers.authorization;
         const { usuario } = await verificarTokenYObtenerUsuario(token);
         const reviews = await Review.find().sort({ rating: -1 }).limit(5);
-        console.log("Reseñas obtenidas:", reviews);
         res.status(200).json(reviews);
     } catch (error) {
         if (error.message === "Token expirado") {

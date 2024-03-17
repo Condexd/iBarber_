@@ -1,14 +1,100 @@
 :root {
-  --primary-color: #655CC9;
+  --primary-color: #655cc9;
   --secondary-color: #157347;
 }
 
-.title-barber {
-  text-align: center;
-  color:var(--primary-color)
+.subContainer {
+  min-width: 50%;
+  max-width: 1000px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
 }
+#form-barber-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(to bottom, rgba(102, 92, 199, 0.05), rgba(102, 92, 199, 0.1)), #f6f6f6;
+  min-height: 80vh;
+  background-size: cover;
+}
+
+#form-barber {
+  margin-top: 2rem;
+  min-width: 30.125rem;
+  max-width: 50rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  row-gap: 10px;
+
+  border-radius: 15px;
+  box-shadow: 0px 1px 0px rgba(251, 255, 254, 0.1);
+  
+}
+.containerImage {
+  display: flex;
+  justify-content: center;
+  max-width: 50rem;
+  min-width: 10rem;
+  width: 30%; 
+  max-height: auto;
+}
+.containerImage img {
+ width: 100%;
+  height: auto;
+  background-size: cover;
+}
+
+#form-barber input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ededed;
+  border-radius: 4px;
+  margin: 5px 0;
+}
+
+#form-barber input:focus {
+  box-shadow: 0 0 5px var(--primary-color);
+}
+
+input:focus,
+input:active {
+  outline: none;
+}
+
+#form-barber button:hover {
+  background-color: #5750aa;
+}
+
+.login-username {
+  display: flex;
+  justify-content: center;
+  width: 80%;
+}
+.login-city {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.city-title-container {
+  display: flex;
+  width: 75%;
+}
+
+#form-barber select {
+  width: 80%;
+  padding: 10px;
+  border: 1px solid #f6f6f6;;
+  border-radius: 4px;
+  margin: 5px 0;
+}
+
 #boton-crear-barberia {
-  background-color:var(--primary-color);
+  background-color: var(--primary-color);
   color: white;
   border: none;
   border-radius: 15px;
@@ -20,73 +106,74 @@
 #btn-enviar-barbero {
   margin: auto;
 }
-#form-barber-container {
-  position: relative; 
+.title-barber {
+  text-align: center;
+  color: #000000;
+  animation: candyTitle 5s infinite alternate;
+}
+
+@keyframes candyTitle {
+  0% {
+    color: #000000;
+  }
+  50% {
+    color: var(--primary-color);
+  }
+  100% {
+    color: #000000;
+  }
+}
+
+
+
+
+
+.recommendations-section {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #f8f9fa;
-  padding: 20px;
-}
-
-#form-barber {
-  width: 40%;
-  min-width: 450px;
-  margin-left: 0;
-  padding: 40px;
-  z-index: 1; 
-  display: flex;
-  flex-direction: column;
-  row-gap: 16px;
-  background-color: white;
+  margin-top: 4rem;
+  padding: 2rem;
+  background-color: #f6f6f6;
   border-radius: 15px;
-  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1)
+  box-shadow: 0px 1px 0px rgba(251, 255, 254, 0.1);
+
 }
 
-#form-barber input,
-#form-barber select {
-  width: 100%;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  margin: 5px 0;
+.recommendations-section h2 {
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
 }
 
-input:focus, input:active {
-  outline: none;
+.recommendation-content {
+  display: flex;
+  align-items: center;
 }
 
-#form-barber button:hover {
-  background-color: #5750aa;
-}
-
-.img-container img {
-  position: absolute;
-  background-size: cover;
-  left: 80px;
-  top: 70px;
-  border: 2px solid rgb(189, 187, 198);
-  border-radius: 8px;
-  box-shadow: 3px 3px 5px rgba(179, 10, 10, 0.2);
+.recommendation-content img {
+  width: 200px;
+  height: auto;
   margin-right: 2rem;
+    background-color: transparent;
 }
 
+.recommendation-text {
+  flex: 1;
+  color: #676666;
+  font-family: Arial, Helvetica, sans-serif;
+}
 
+.recommendation-text p,
+.recommendation-text li {
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
 
-@keyframes desaturate {
-  0% {
-    filter: grayscale(0%); 
-  }
-  25% {
-    filter: grayscale(10%); 
-  }
-  50% {
-    filter: grayscale(20%);
-  }
-  75% {
-    filter: grayscale(30%); 
-  }
-  100% {
-    filter: grayscale(0%); 
-  }
+.recommendation-text ul {
+  list-style: none;
+  padding-left: 1rem;
+}
+
+.recommendation-text ul li {
+  margin-bottom: 0.5rem;
 }

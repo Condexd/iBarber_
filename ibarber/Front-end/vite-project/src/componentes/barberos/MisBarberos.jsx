@@ -205,7 +205,7 @@ export const MisBarberos = ({ logout }) => {
 
   return (
     <>
-      <div className="container-fluid">
+      <div className="container-fluid animate__animated animate__fadeIn">
         <div className="mt-3">
           <IconButton
             variant="contained"
@@ -233,7 +233,7 @@ export const MisBarberos = ({ logout }) => {
           />
         )}
         {isLoading ? (
-          <p>Cargando...</p>
+          <p className="animate__animated animate__fadeIn">Cargando...</p>
         ) : hasError ? (
           <p>Error al cargar datos</p>
         ) : (

@@ -51,8 +51,8 @@ const BarberShop = ({ logout }) => {
           </div>
         </div>
       </section>
-      <section>
-        <h3 className="text mt-5">Barberos Recomendados</h3>
+      <section className="animate__animated animate__fadeIn">
+        <h3 className="text mt-5 ">Barberos Recomendados</h3>
         <MultipleItems barberosData={barberosData} />
       </section>
       <section>

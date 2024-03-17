@@ -43,7 +43,7 @@ export function MultipleItems({ barberosData }) {
   
 
   return (
-    <div className="container mt-3">
+    <div className="container mt-3 ">
         <Slider {...settings}>
           {barberosData.map((barbero, index) => (
            <Link className="barbero-name" to={`/new-cita/${barbero.barberia}`} key={index}>

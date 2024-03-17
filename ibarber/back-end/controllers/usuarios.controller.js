@@ -1,4 +1,4 @@
-import { usuarioModel,bcrypt,fileURLToPath,dirname,fsPromises,path,verificarTokenYObtenerUsuario} from "../Modulos/barril.js";
+import { usuarioModel,bcrypt,fileURLToPath,dirname,fsPromises,path,verificarTokenYObtenerUsuario, BarberiaModel} from "../Modulos/barril.js";
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
@@ -126,5 +126,38 @@ export const deleteAccount = async (req, res) => {
   } catch (error) {
     console.error(error);
     return res.status(500).json({ message: "Error al eliminar la cuenta" });
+  }
+};
+
+
+export const trabajoEnMiBarberia = async (req, res) => {
+  try {
+    const token = req.headers.authorization;
+    const { usuario } = await verificarTokenYObtenerUsuario(token);
+    console.log(usuario)
+    const result = await BarberiaModel.findOne({ "barberos.usuario": usuario });
+    console.log(result)
+    if (result) {
+      const datosSencillos = {
+        nombre_barberia: result.nombre_barberia,
+        direccion_barberia: result.direccion_barberia,
+        nombre_ciudad: result.nombre_ciudad,
+        descripcion_barberia: result.direccion_barberia,
+        nombre_ciudad:result.nombre_ciudad,
+        email:result.email,
+        telefono:result.telefono,
+        fotoPerfil:result.fotoPerfil
+      };
+      console.log(datosSencillos)
+      res.status(200).json(datosSencillos);
+    } else {
+      res.status(404).json({ message: "El usuario no trabaja en ninguna barbería" });
+    }
+  } catch (error) {
+    console.error(error);
+    if (error.message === "Token expirado") {
+      return res.status(401).json({ message: "Token expirado" });
+    }
+    res.status(500).json({ message: "Error interno del servidor" });
   }
 };

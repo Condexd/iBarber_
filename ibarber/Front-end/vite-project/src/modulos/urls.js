@@ -30,4 +30,5 @@ export const API_URLS = {
   notificationBell:`${API_BASE_URL}/notificationBell`,
   deleteBarberia:`${API_BASE_URL}/deleteBarberia`,//autenticada
   obtenerMejoresResenas:`${API_BASE_URL}/ResenasAll`,
+trabajoEnMiBarberia:`${API_BASE_URL}/usuario-barberia`//autenticada
 };

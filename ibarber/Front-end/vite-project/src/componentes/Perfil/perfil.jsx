@@ -5,11 +5,14 @@ import PerfilForm from "./PerfilForm";
 import PerfilInfo from "./PerfilInfo";
 import { mostrarConfirmacion } from "../../modulos/confirms";
 import { useFetchuno } from "../../Hooks/useFetchintento";
-
+import { BarberDate } from "./BarberDate";
 
 function Perfil({ logout }) {
   const apiUrl = `${API_URLS.obtenerInfoUsuario}`;
   const { data ,hasError} = useFetchuno(apiUrl);
+  const apiUrl2 = `${API_URLS.trabajoEnMiBarberia}`;
+  const { data: data2,} = useFetchuno(apiUrl2);
+  const [infoBarberia, setInfoBarberia] = useState([]);
   const [nombres, setNombres] = useState("");
   const [apellidos, setApellidos] = useState("");
   const [correo, setCorreo] = useState("");
@@ -47,6 +50,12 @@ function Perfil({ logout }) {
       );
     }
   }, [data]);
+
+  useEffect(() => {
+    if (data2) {
+      setInfoBarberia([data2]);
+    }
+  }, [data2]);
 
   const handleFileChange = (e) => {
     const file = e.target.files[0];
@@ -88,36 +97,41 @@ function Perfil({ logout }) {
   };
 
   return (
-    <main className="profile">
-      <div className="profile__container">
-        <PerfilInfo
-          nombres={nombres}
-          apellidos={apellidos}
-          barbero={barbero}
-          active={active}
-          setActive={setActive}
-          img={imgPreview}
-          handleFileChange={handleFileChange}
-        />
-        <PerfilForm
-          nombres={nombres}
-          setNombres={setNombres}
-          apellidos={apellidos}
-          setApellidos={setApellidos}
-          correo={correo}
-          setCorreo={setCorreo}
-          handleSubmit={handleSubmit}
-          setTelefono={setTelefono}
-          setCiudad={setCiudad}
-          telefono={telefono}
-          ciudad={ciudad}
-          logout={logout}
-          user={usuario}
-          biografia={biografia}
-          setBiografia={setBiografia}
-        />
-      </div>
-    </main>
+    <>
+      <main className="profile animate__animated animate__fadeIn">
+        <div className="profile__container">
+          <PerfilInfo
+            nombres={nombres}
+            apellidos={apellidos}
+            barbero={barbero}
+            active={active}
+            setActive={setActive}
+            img={imgPreview}
+            handleFileChange={handleFileChange} />
+          <PerfilForm
+            nombres={nombres}
+            setNombres={setNombres}
+            apellidos={apellidos}
+            setApellidos={setApellidos}
+            correo={correo}
+            setCorreo={setCorreo}
+            handleSubmit={handleSubmit}
+            setTelefono={setTelefono}
+            setCiudad={setCiudad}
+            telefono={telefono}
+            ciudad={ciudad}
+            logout={logout}
+            user={usuario}
+            biografia={biografia}
+            setBiografia={setBiografia} />
+        </div>
+      </main>
+      <section className="mt-5">
+      {infoBarberia && infoBarberia.map((barberia, index) => (
+          <BarberDate key={index} barberia={barberia} />
+        ))}
+      </section>
+    </>
   );
 }
 

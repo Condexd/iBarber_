@@ -4,7 +4,7 @@ import { ButtonGoBack } from "./botones/ButtonGoBack"
 
 export const NotFoundPage = () => {
   return (
-    <main className="contenedor-not-found">
+    <main className="contenedor-not-found animate__animated animate__fadeIn">
       <div className="columnas-not-found">
         <div>
           <img className="image-not-found" src={`${API_URLS.obtenerImage}${"/uploads/astronauta-corazon.webp"}`}/>

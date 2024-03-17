@@ -77,7 +77,7 @@ export const MiBarberia = ({logout}) => {
 
   return (
     <>
-      <main className="profile">
+      <main className="profile animate__animated animate__fadeIn">
         <div className="profile__container">
           <PerfilBarberia
             nombre={nombre}

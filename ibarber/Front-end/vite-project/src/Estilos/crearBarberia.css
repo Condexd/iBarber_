@@ -4,6 +4,7 @@
 }
 
 .subContainer {
+  margin: 2rem 0 0 0;
   min-width: 50%;
   max-width: 1000px;
   display: flex;
@@ -20,14 +21,14 @@
 }
 
 #form-barber {
-  margin-top: 2rem;
+  padding: 1rem 0 0 0;
   min-width: 30.125rem;
   max-width: 50rem;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  row-gap: 10px;
+  row-gap: 6px;
 
   border-radius: 15px;
   box-shadow: 0px 1px 0px rgba(251, 255, 254, 0.1);

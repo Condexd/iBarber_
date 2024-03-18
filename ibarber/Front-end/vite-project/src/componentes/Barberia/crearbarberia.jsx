@@ -56,7 +56,6 @@ export const Crearbarberia = () => {
             <img
               src={`${API_URLS.obtenerImage}/uploads/fondbar.png`}
               alt=""
-              srcset=""
               className="animate__animated animate__fadeInLeft"
             />
           </picture>
@@ -71,7 +70,7 @@ export const Crearbarberia = () => {
                   name="nombre_barberia"
                   placeholder="Nombre de la barbería"
                   required
-                  clasNam="nombre_barberia"
+                  className="nombre_barberia"
                   value={nombre_barberia}
                   onChange={funcion}
                 />

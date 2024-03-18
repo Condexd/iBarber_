@@ -4,6 +4,7 @@ import { useFetchuno } from "../../Hooks/useFetchintento";
 import "../../Estilos/reviews.css";
 import { FaStar } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import { NoReviews } from "./NoReviews";
 
 const SideMenu = ({ logout }) => {
   const apiUrl = `${API_URLS.obtenerResenas}`;
@@ -44,7 +45,7 @@ const SideMenu = ({ logout }) => {
             </ul>
           ))
         ) : (
-          <div>No hay reseñas disponibles.</div>
+         <NoReviews />
         )}
       </div>
     </main>

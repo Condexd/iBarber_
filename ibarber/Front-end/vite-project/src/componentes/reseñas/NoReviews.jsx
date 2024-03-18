@@ -1,8 +1,9 @@
-import "../Estilos/notFound.css"
-import { API_URLS } from "../modulos/urls"
-import { ButtonGoBack } from "./botones/ButtonGoBack"
+import "../../Estilos/notFound.css"
+import { API_URLS } from "../../modulos/urls";
+import { ButtonGoBack } from "../botones/ButtonGoBack";
 
-export const NotFoundPage = (mensaje) => {
+export const NoReviews = () => {
+
   return (
     <main className="contenedor-not-found animate__animated animate__fadeIn">
       <div className="columnas-not-found">
@@ -14,7 +15,7 @@ export const NotFoundPage = (mensaje) => {
             Oops!
           </span>
           <span>
-            Esta página no está disponible.
+            Aún no tienes citas agendadas.
           </span>
           <ButtonGoBack/>
         </div>

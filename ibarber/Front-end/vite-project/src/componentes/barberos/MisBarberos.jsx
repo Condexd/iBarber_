@@ -76,7 +76,7 @@ export const MisBarberos = ({ logout }) => {
     );
     if (confirmacion.isConfirmed) {
       if (await deleteBarber(`${API_URLS.eliminarBarbero}/${barberoId}`)) {
-        const updatedData = data.filter((barbero) => barbero._id !== barberoId);
+        const updatedData = data.filter((barbero) => barbero.usuario !== barberoId);
         setState({
           data: updatedData,
           isLoading: false,
@@ -152,7 +152,7 @@ export const MisBarberos = ({ logout }) => {
       options: {
         customBodyRender: (value, tableMeta, updateValue) => {
           const barberoUser = tableMeta.rowData[2];
-          const barberoId = tableMeta.rowData[0];
+          const barberoId = tableMeta.rowData[2];
           const barberoEspecialidad = tableMeta.rowData[8];
           const barberoExperiencia = tableMeta.rowData[9];
           return (

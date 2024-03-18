@@ -196,44 +196,66 @@ export const updateBarberia = async (req, res) => {
     res.status(500).json({ message: "Error interno del servidor" });
   }
 };
-
 export const deleteBarberia = async (req, res) => {
   const token = req.headers.authorization;
-  const {usuario} = await verificarTokenYObtenerUsuario(token);
+  const { usuario } = await verificarTokenYObtenerUsuario(token);
+  
   try {
-    const deletedBarberia = await BarberiaModel.findOneAndRemove({"dueño.usuario":usuario});
+    // Buscar y eliminar la barbería
+    const deletedBarberia = await BarberiaModel.findOneAndRemove({"dueño.usuario": usuario});
+    
     if (!deletedBarberia) {
       return res.status(404).json({ message: "Barbería no encontrada" });
     }
 
-    res.status(200).json({ message: "Barbería eliminada con éxito" });
+    // Buscar todos los barberos asociados a la barbería eliminada
+    const barberos = deletedBarberia.barberos.map(barbero => barbero.usuario);
+
+    // Actualizar el rol de barbero a vacío y el estado 'active' a false para cada barbero encontrado
+    await usuarioModel.updateMany(
+      { usuario: { $in: barberos } }, // Buscar por los usuarios de los barberos
+      { $set: { roles: [], active: false } } // Dejar el campo roles vacío y establecer 'active' a false
+    );
+
+    res.status(200).json({ message: "Barbería eliminada con éxito. Roles y estado de barberos actualizados." });
   } catch (error) {
     console.error("Error al eliminar la barbería:", error);
     res.status(500).json({ message: "Error interno del servidor" });
   }
 };
+
 export const deleteBarber = async (req, res) => {
   const barberoId = req.params.id;
 
   try {
     const updatedBarberia = await BarberiaModel.findOneAndUpdate(
       // Buscar la barbería que tiene un barbero con el ID dado
-      { "barberos._id": barberoId },
+      { "barberos.usuario": barberoId },
       // Utilizar $pull para eliminar el barbero con el ID dado del array 'barberos'
-      { $pull: { barberos: { _id: barberoId } } },
+      { $pull: { barberos: { usuario: barberoId } } },
       // Opciones: 'new: true' devuelve el documento actualizado
       { new: true }
     );
+
+    // Verificar si se actualizó correctamente la barbería
     if (updatedBarberia) {
-      res.status(200).json({ message: "Barbero eliminado con éxito" });
+      // Eliminar el rol del usuario al eliminarlo como barbero
+      await usuarioModel.findOneAndUpdate(
+        { usuario: barberoId },
+        { $set: { roles: [] } }, // Dejar el campo roles vacío
+        { new: true }
+      );
+
+      res.status(200).json({ message: "Barbero eliminado con éxito. Rol eliminado." });
     } else {
-      res.status(404).json({ message: "Barbero no encontrado" });
+      res.status(404).json({ message: "Barbero no encontrado." });
     }
   } catch (error) {
     console.error("Error al eliminar el barbero:", error);
-    res.status(500).json({ message: "Error interno del servidor" });
+    res.status(500).json({ message: "Error interno del servidor." });
   }
 };
+
 
 export const postBarber = async (req, res) => {
   const { usuario, especialidad, experiencia } = req.body;
@@ -279,17 +301,23 @@ export const postBarber = async (req, res) => {
         .json({ message: "No se encontró la barbería para el dueño dado" });
     }
 
-    // Obtener información adicional del barbero
-    const infoBarbero = await usuarioModel.findOne({ usuario: usuario }).lean();
-
     // Obtener el ID del barbero recién agregado
     const idBarbero = updatedBarberia.barberos.find(barbero => barbero.usuario === usuario)._id;
+
+    // Actualizar la información del usuario para reflejar el nuevo rol de barbero
+    await usuarioModel.findOneAndUpdate(
+      { usuario: usuario },
+      { $push: { roles: "barbero" } } // Agregar el rol de barbero
+    );
+
+    // Obtener información adicional del barbero
+    const infoBarbero = await usuarioModel.findOne({ usuario: usuario }).lean();
 
     const barberoCompleto = {
       usuario: infoBarbero.usuario,
       nombres: infoBarbero.nombres,
       apellidos: infoBarbero.apellidos,
-      telefono:infoBarbero.telefono,
+      telefono: infoBarbero.telefono,
       correo: infoBarbero.correo,
       especialidad: especialidad,
       experiencia: experiencia,

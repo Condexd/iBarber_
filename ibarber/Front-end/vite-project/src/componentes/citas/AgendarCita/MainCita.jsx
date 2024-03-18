@@ -18,7 +18,7 @@ export const MainCita = ({logout}) => {
       <div className="col-lg-4 d-flex justify-content-center align-items-center mb-5 p-0 ">
         <BarberiaInfo barberoInfo={data?.barberos} />
       </div>
-      <div className="col-lg-4 d-flex justify-content-center align-items-center p-0 ">
+      <div className="col-lg-5 d-flex justify-content-center align-items-center p-0 ">
         <CitaForm barberoInfo={data?.barberos} />
       </div>
     </div>

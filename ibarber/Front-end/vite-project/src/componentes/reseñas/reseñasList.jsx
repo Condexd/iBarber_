@@ -9,7 +9,7 @@ import { NoReviews } from "./NoReviews";
 const SideMenu = ({ logout }) => {
   const apiUrl = `${API_URLS.obtenerResenas}`;
   const { data, hasError } = useFetchuno(apiUrl);
-
+  console.log(data)
   useEffect(() => {
     if (hasError === "Unauthorized") {
       logout();

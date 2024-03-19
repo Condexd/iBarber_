@@ -116,7 +116,7 @@ const AddReviewModal = ({ isOpen, onClose, citaId ,barberiaId,barbero }) => {
           <TextField
             fullWidth
             margin="normal"
-            label="ID de la barberia"
+            label="userbarber"
             name="barbero"
             type="text"
             value={formData.barbero}

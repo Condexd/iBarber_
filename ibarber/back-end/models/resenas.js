@@ -12,7 +12,8 @@ const reviewSchema = new Schema({
     type: SchemaTypes.ObjectId,
     ref: 'citas'
   },
-  usuario: String
+  usuario: String,
+  barberiaId:String
 });
 
 const Review = model('Review', reviewSchema);

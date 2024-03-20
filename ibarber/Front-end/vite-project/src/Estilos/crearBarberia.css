@@ -89,7 +89,7 @@ input:active {
 #form-barber select {
   width: 80%;
   padding: 10px;
-  border: 1px solid #f6f6f6;;
+  border: 1px solid #f6f6f6;
   border-radius: 4px;
   margin: 5px 0;
 }
@@ -101,7 +101,7 @@ input:active {
   border-radius: 15px;
   padding: 10px 40px;
   cursor: pointer;
-  transition: ease-in-out 5sg;
+  transition: ease-in-out 5s;
 }
 
 #btn-enviar-barbero {

@@ -52,6 +52,7 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  font-size: 15px;
 }
 
 .card-barberia__footer__heading__location__city {
@@ -60,6 +61,11 @@ body {
 
 .estrella {
   color: rgb(250, 196, 0);
+  margin-bottom: 4px;
+}
+
+.location-icon {
+  margin-bottom: 4px;
 }
 
 .description-text {
@@ -90,4 +96,37 @@ body {
 
 .card-barberia__footer__heading__nombre {
   margin: 0;
+}
+
+@media only screen and (max-width: 488px) {
+  .description-text {
+    -webkit-line-clamp: 2;
+    font-size: 13px;
+    font-family: Helvetica, Arial, sans-serif;
+  }
+
+  .card-barberia__footer__heading__location {
+    font-size: 13px;
+  }
+
+  .location-icon {
+    font-size: 10px;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .cards-container {
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 0.7rem;
+  }
+
+  .card-barberia__footer__heading__nombre {
+    font-size: 18px;
+  }
+
+  .card-barberia__footer {
+    padding: 10px 8px 8px 8px;
+    display: grid;
+    gap: 5px;
+  }
 }

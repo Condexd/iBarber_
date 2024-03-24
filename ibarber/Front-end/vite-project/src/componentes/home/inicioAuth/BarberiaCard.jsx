@@ -20,7 +20,7 @@ const BarberiaCard = ({ name, description, id, image, city }) => {
           <h3 className="card-barberia__footer__heading__nombre">{name}</h3>
         </div>
         <div className="card-barberia__footer__heading__location">
-          <span className="card-barberia__footer__heading__location__city"> <FaLocationDot /> {city}
+          <span className="card-barberia__footer__heading__location__city"> <FaLocationDot className="location-icon" /> {city}
           </span>
           <span>
             5.0 <FaStar className="estrella" />

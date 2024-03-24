@@ -1,3 +1,4 @@
+import "../../../Estilos/inicio.css"
 import React, { useContext, useEffect } from "react";
 import { API_URLS } from "../../../modulos/urls";
 import { UserContext } from "../../context/UserContext";
@@ -36,7 +37,7 @@ const BarberShop = ({ logout }) => {
       {/* <h1 className="titleUser">Hola, {userData.usuario}</h1> */}
       <section className="cont-cartas">
         <div className="barberias mt-3">
-          <h3>Barberias</h3>
+          <h3 className="heading-inicio" >Barberias</h3>
           <div className="cards-container">
             {barberiasData.map((barberia, index) => (
               <BarberiaCard

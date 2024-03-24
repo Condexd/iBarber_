@@ -7,12 +7,15 @@
 /* .cont-cartas {
 } */
 
+.heading-inicio {
+    margin-left: 13px;
+}
+
 .cartas-barberia, .cartas-barbero {
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
     width: 100%;
-
 }
 
 .carta, .carta-b {

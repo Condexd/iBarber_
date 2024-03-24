@@ -2,6 +2,7 @@ import { useState, useContext, useEffect } from "react";
 import { UserContext } from "../context/UserContext";
 import { Link } from "react-router-dom";
 import { FaCalendarAlt, FaStar, FaBuilding, FaUser, FaSignInAlt, FaUserPlus } from 'react-icons/fa'; // Importar iconos de Font Awesome
+import { FiMenu } from "react-icons/fi";
 import Boton from "./boton";
 import { API_URLS } from "../../modulos/urls";
 import SearchForm from "./Search";
@@ -27,6 +28,11 @@ function Cabecero({ isAuthenticated, logout }) {
     <header className="cabecero">
       <nav className="navegacion">
         <div className="contenedor1-navegacion">
+
+          <div className="icono-menu" onClick={toggleMenu}>
+            <FiMenu className="icono-hamburguesa" />
+          </div>
+
           <Link className="logo-img-contenedor" to="/" onClick={closeMenu}>
             <img
               className="logo-img"
@@ -36,17 +42,14 @@ function Cabecero({ isAuthenticated, logout }) {
               alt="Logo"
             />
           </Link>
-         
-          <div className="icono-menu" onClick={toggleMenu}>
-            &#9776;
-          </div>
+
         </div>
 
         <ul className={`contenedor2-navegacion ${menuVisible ? "visible" : ""}`}>
-     
+
           {isAuthenticated && (
             <>
-               <SearchForm/>
+               <SearchForm className="buscador" />
               <li>
                 <Link to="/citas" onClick={closeMenu}>
                   <FaCalendarAlt /> 

@@ -18,6 +18,7 @@
 .fuente{
 font-weight: bold; 
  color: #655CC9;
+ font-size: 2rem;
 
 }
 
@@ -45,7 +46,6 @@ font-weight: bold;
   background-color: #000003;
 }
 
-
 .subContainerInfo{
   min-width: 25rem;
 }
@@ -60,6 +60,9 @@ font-weight: bold;
 
   .estrella {
     font-size: 1rem; 
+  }
+  .fuente{
+    font-size: 1.6rem;
   }
 }
 

@@ -44,3 +44,38 @@ font-weight: bold;
 .agendar-btn:hover {
   background-color: #000003;
 }
+
+
+.subContainerInfo{
+  min-width: 25rem;
+}
+@media only screen and (max-width: 600px) {
+  .card-title {
+    font-size: 1rem; 
+  }
+
+  .list-group-item {
+    font-size: 0.9rem; 
+  }
+
+  .estrella {
+    font-size: 1rem; 
+  }
+}
+
+
+@media only screen and (max-width: 1200px) {
+  .card-title {
+    font-size: 1.3rem;
+  }
+
+  .list-group-item {
+    font-size: 0.9rem;
+  }
+
+  .estrella {
+    font-size: 1rem;
+  }
+
+}
+

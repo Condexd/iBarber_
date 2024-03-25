@@ -59,7 +59,8 @@ export const Crearbarberia = () => {
               className="animate__animated animate__fadeInLeft"
             />
           </picture>
-          <section className="containerForm   animate__animated animate__fadeInRight">
+          <section className="containerForm p-5   animate__animated animate__fadeInRight">
+            <div className="containerSubForm">
             <form onSubmit={handleSubmit} id="form-barber">
               <div id="login-title">
                 <h3 className="title-barber">Crear Barbería</h3>
@@ -141,6 +142,8 @@ export const Crearbarberia = () => {
                 </button>
               </div>
             </form>
+            </div>
+            
           </section>
         </div>
       </main>

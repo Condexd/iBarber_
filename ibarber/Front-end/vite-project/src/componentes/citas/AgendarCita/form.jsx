@@ -13,7 +13,7 @@ export const Form = ({
 }) => {
   return (
     <form onSubmit={handleSubmit} className="form container">
-      <div className="col-12 d-flex flex-column">
+      <div className="col-12 d-flex flex-column p-3">
         <h3 className="mb-4 text-center fuente">Agenda tu cita</h3>
         <div className="mb-3">
           <label htmlFor="barbero" className="form-label">Barbero</label>

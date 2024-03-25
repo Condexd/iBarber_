@@ -1,4 +1,4 @@
-import  { useState, useContext, useEffect } from "react";
+import { useState, useContext, useEffect, useMemo } from "react";
 import { UserContext } from "../context/UserContext";
 import CabeceroMenu from "./cabeceroMenu";
 import { API_URLS } from "../../modulos/urls";
@@ -7,17 +7,27 @@ function Cabecero({ isAuthenticated, logout }) {
   const { userData } = useContext(UserContext);
   const [visible, setVisible] = useState(userData.barberia);
   const [menuVisible, setMenuVisible] = useState(false);
-  const [hasProfileImage, setHasProfileImage] = useState(false);
 
   useEffect(() => {
     setVisible(userData.barberia);
   }, [userData.barberia]);
 
+  const profileImageUrl = useMemo(() => {
+    if (isAuthenticated) {
+      return `${API_URLS.obtenerImage}/uploads/imagen_${userData.usuario}.jpg`;
+    }
+    return null;
+  }, [isAuthenticated, userData.usuario]);
+
+  const [hasProfileImage, setHasProfileImage] = useState(false);
+
   useEffect(() => {
     const checkProfileImage = async () => {
       try {
-        const response = await fetch(`${API_URLS.obtenerImage}/uploads/imagen_${userData.usuario}.jpg`);
-        setHasProfileImage(response.ok);
+        if (profileImageUrl) {
+          const response = await fetch(profileImageUrl);
+          setHasProfileImage(response.ok);
+        }
       } catch (error) {
         console.error('Error al verificar la existencia de la imagen de perfil:', error);
       }
@@ -26,7 +36,7 @@ function Cabecero({ isAuthenticated, logout }) {
     if (isAuthenticated) {
       checkProfileImage();
     }
-  }, [isAuthenticated, userData.usuario]);
+  }, [isAuthenticated, profileImageUrl]);
 
   const toggleMenu = () => {
     setMenuVisible(!menuVisible);

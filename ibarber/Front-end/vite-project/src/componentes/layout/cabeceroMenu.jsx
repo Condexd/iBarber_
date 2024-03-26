@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
 import { FaCalendarAlt, FaStar, FaBuilding, FaUser, FaUserPlus } from 'react-icons/fa';
 import { FiLogIn } from "react-icons/fi";
-import { BsPersonAdd } from "react-icons/bs";
 import { FiMenu } from "react-icons/fi";
 import Boton from "./boton";
 import SearchForm from "./Search";
@@ -91,7 +90,7 @@ function CabeceroMenu({ isAuthenticated, userData, visible, hasProfileImage, tog
                 to="/registrarse"
                 onClick={closeMenu}
               >
-                <BsPersonAdd /> Registrarse
+                <FaUserPlus /> Registrarse
               </Link>
             </li>
           </>

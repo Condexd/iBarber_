@@ -6,6 +6,14 @@
 
 /* LogoutButton.css */
 
+/* Estilos por defecto para las notificaciones Toastify */
+.Toastify__toast-container {
+  width: 320px;
+  display: flex;
+  justify-content: center;
+}
+
+
 .boton-logout {
   background-color: #655cc9;
   color: #fff;
@@ -80,6 +88,8 @@
   border-radius: 4px;
   margin-top:2rem ;
   margin-right:4.25rem;
+  display: flex;
+  justify-content: center;
 }
 
 .Toastify__toast-body {
@@ -105,4 +115,32 @@
 .Toastify__toast-body button:hover {
   background-color: #423b8c;
   color: #fff;
+}
+
+.Toastify__progress-bar--info {
+  background-color: #423b8c;
+}
+
+/* Estilos para adaptar las notificaciones Toastify en dispositivos móviles */
+@media (max-width: 600px) {
+  .Toastify__toast-container {
+    width: 100%; 
+    font-size: 1rem;
+    top: 45% !important;
+    left:60% !important;
+    transform: translate(-50%, -50%);
+  }
+
+  .Toastify__toast {
+    margin-bottom: .625rem; 
+    padding: 1rem;
+  }
+  .Toastify__toast--info p{
+      font-size: 0.9rem;
+  }
+  .Toastify__toast-body button{
+    padding: 3px 3px;
+    font-size: 0.8rem;
+  }
+
 }

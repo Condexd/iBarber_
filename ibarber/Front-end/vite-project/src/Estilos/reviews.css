@@ -6,14 +6,13 @@
 }
 
 .review-container {
-  width: 100%;
+  width: 76%;
   padding: 0;
   border-radius: 4px;
 }
 
 .review-container-child {
   width: auto;
-  max-width: 1200px;
   display: flex;
   justify-content: space-between;
   padding: 12px;

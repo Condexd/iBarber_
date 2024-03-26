@@ -1,9 +1,12 @@
 import { Link } from "react-router-dom";
-import { FaCalendarAlt, FaStar, FaBuilding, FaUser, FaSignInAlt, FaUserPlus } from 'react-icons/fa';
+import { FaCalendarAlt, FaStar, FaBuilding, FaUser, FaUserPlus } from 'react-icons/fa';
+import { FiLogIn } from "react-icons/fi";
+import { BsPersonAdd } from "react-icons/bs";
 import { FiMenu } from "react-icons/fi";
 import Boton from "./boton";
 import SearchForm from "./Search";
 import { API_URLS } from "../../modulos/urls";
+
 
 function CabeceroMenu({ isAuthenticated, userData, visible, hasProfileImage, toggleMenu, closeMenu, logout,menuVisible }) {
   return (
@@ -79,7 +82,7 @@ function CabeceroMenu({ isAuthenticated, userData, visible, hasProfileImage, tog
           <>
             <li>
               <Link className="boton-login" to="/Login" onClick={closeMenu}>
-                <FaSignInAlt /> Iniciar sesión
+              <FiLogIn /> Iniciar sesión
               </Link>
             </li>
             <li>
@@ -88,7 +91,7 @@ function CabeceroMenu({ isAuthenticated, userData, visible, hasProfileImage, tog
                 to="/registrarse"
                 onClick={closeMenu}
               >
-                <FaUserPlus /> Registrarse
+                <BsPersonAdd /> Registrarse
               </Link>
             </li>
           </>

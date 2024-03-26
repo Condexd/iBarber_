@@ -1,5 +1,6 @@
 import React from 'react';
 import { ToastContainer, toast } from 'react-toastify';
+import { IoLogOutOutline } from "react-icons/io5";
 import 'react-toastify/dist/ReactToastify.css';
 import "../../Estilos/boton.css"
 const Boton = ({ logout }) => {
@@ -20,7 +21,7 @@ const Boton = ({ logout }) => {
   return (
     <div>
       <button className="boton-logout" onClick={notify}>
-        Cerrar sesión
+      <IoLogOutOutline className='logout-logo' /> Cerrar sesión
       </button>
       <ToastContainer />
     </div>

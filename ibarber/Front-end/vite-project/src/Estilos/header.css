@@ -112,7 +112,7 @@ li {
     border: none;
     border-radius: 5px;
     background-color: var(--primary-color);
-    padding: 8px 8px;
+    padding: 6px 6px;
     color: white !important;
 }
 
@@ -148,6 +148,10 @@ li {
 .header-profile-image {
     height: 35px;
     width: auto;
+}
+
+.logout-logo {
+    margin-bottom: 4px;
 }
 
 /* Ajustes para pantallas pequeñas */
@@ -203,6 +207,14 @@ li {
 
     .perfil-img {
         margin-right: 10px;
+    }
+
+    .boton-login,
+    .boton-registrarse,
+    .boton-acceder,
+    .boton-logout {
+        background-color: transparent;
+        color: black !important;
     }
 
     @keyframes slideDown {

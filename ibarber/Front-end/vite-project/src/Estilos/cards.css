@@ -99,11 +99,6 @@ body {
 }
 
 @media only screen and (max-width: 488px) {
-  .description-text {
-    -webkit-line-clamp: 2;
-    font-size: 13px;
-    font-family: Helvetica, Arial, sans-serif;
-  }
 
   .card-barberia__footer__heading__location {
     font-size: 13px;

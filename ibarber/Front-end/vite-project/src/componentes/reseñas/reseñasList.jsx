@@ -32,7 +32,7 @@ const SideMenu = ({ logout }) => {
                 <a className="review-barbershop-image-container">
                   <img className="review-barbershop-image" src="https://www.ftccollege.edu/wp-content/uploads/2023/08/barber-shop-1.jpg"/>
                 </a>
-                <div>
+                <div className="review-right-containter-child">
                   <h5 className="review-title">Barbería Olos</h5>
                   <Link className="review-barbery-info">
                     <span className="review-barbershop-name">Barbero</span>

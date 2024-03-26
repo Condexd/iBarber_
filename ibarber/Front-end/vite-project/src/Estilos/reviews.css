@@ -6,6 +6,7 @@
 }
 
 .review-container {
+  width: 100%;
   padding: 0;
   border-radius: 4px;
 }
@@ -24,13 +25,16 @@
 }
 
 .review-left-containter {
-  padding-left: 5px;
+  margin-left: 5px;
+}
+
+.title-container {
+  max-width: 400px;
 }
 
 .review-title {
   font-size: 20px;
   font-weight: 500;
-  max-width: 400px;
 }
 
 .review-experience {
@@ -47,7 +51,7 @@
 .review-right-containter {
   display: flex;
   justify-content: space-between;
-  gap: 14px;
+  gap: 16px;
 }
 
 .review-right-containter:hover {
@@ -56,6 +60,8 @@
 
 .review-barbershop-image-container {
   aspect-ratio: 1 / 1;
+  max-width: 105px;
+  min-width: 90px;
 }
 
 .review-barbershop-image {
@@ -78,4 +84,109 @@
 
 .review-barber-name:hover {
   text-decoration: underline;
+}
+
+@media only screen and (max-width: 900px) {
+
+  .review-container-child {
+    gap: 40px;
+  }
+
+  .review-rating {
+    font-size: 14px;
+  }
+
+  .review-container {
+    width: 90%;
+  }
+
+  .review-experience {
+    max-width: 340px;
+  }
+
+  .review-barbershop-image {
+    width: 90px;
+  }
+
+  .review-title {
+    font-size: 18px;
+  }
+
+  .review-right-containter-child {
+    font-size: 14px;
+    margin-right: 5px;
+  }
+
+  .review-experience {
+    font-size: 13px;
+  }
+
+}
+
+@media only screen and (max-width: 570px) {
+  .review-container-child {
+    gap: 25px;
+  }
+
+  .review-container {
+    width: 96%;
+  }
+
+  .review-container-child {
+    padding: 6px;
+  }
+
+  .review-barbershop-image-container {
+    min-width: 90px;
+  }
+}
+
+@media only screen and (max-width: 510px) {
+  .review-right-containter {
+    gap: 10px;
+  }
+
+  .review-experience {
+    font-size: 12px;
+  }
+
+  .review-right-containter-child {
+    font-size: 12px;
+  }
+
+  .review-title {
+    font-size: 16px;
+  }
+
+  .review-rating {
+    font-size: 12px;
+  }
+}
+
+@media only screen and (max-width: 399px) {
+  .review-barbershop-image {
+    width: 70px;
+  }
+
+  .review-barbershop-image-container {
+    min-width: 70px;
+  }
+
+  .review-container-child {
+    gap: 15px;
+  }
+}
+
+@media only screen and (max-width: 375px) {
+  .review-title {
+    font-size: 13px;
+  }
+
+  .review-experience {
+    font-size: 10px;
+  }
+
+  .review-right-containter-child {
+    font-size: 10px;
+  }
 }

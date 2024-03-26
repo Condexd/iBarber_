@@ -151,7 +151,7 @@ li {
 }
 
 /* Ajustes para pantallas pequeñas */
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 774px) {
     .contenedor1-navegacion {
         justify-content: space-between;
         height: 100%;

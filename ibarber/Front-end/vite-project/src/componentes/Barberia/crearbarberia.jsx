@@ -147,7 +147,13 @@ export const Crearbarberia = () => {
           </section>
         </div>
       </main>
+      <article className="mt-3">
+      <h2 className='subTitle d-flex justify-content-center'>
+        ¡Prepárate para abrir tu propia barbería!
+      </h2>
       <RecomendacionBarber/>
+      </article>
+   
     </>
   );
 };

@@ -16,7 +16,7 @@
   justify-content: center;
   align-items: center;
   background: linear-gradient(to bottom, rgba(102, 92, 199, 0.05), rgba(102, 92, 199, 0.1)), #f6f6f6;
-  min-height: 100vh;
+  min-height: 83vh;
   background-size: cover;
 }
 
@@ -206,6 +206,9 @@ color: var(--primary-color);
     margin: 0.4rem 0.4rem;
     font-size: 1.3rem;
 
+  }
+  .recommendations-section{
+    margin: 0;
   }
  
 }

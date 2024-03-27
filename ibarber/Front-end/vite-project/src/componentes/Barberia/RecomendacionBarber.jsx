@@ -10,9 +10,6 @@ export const RecomendacionBarber = () => {
   >
     <section className="recommendations-section ">
       <div>
-      <h2 className='subTitle'>
-        ¡Prepárate para abrir tu propia barbería!
-      </h2>
       <div className="recommendation-content animate__animated animate__fadeIn">
         <img
           src={`${API_URLS.obtenerImage}/uploads/boceto.jpg`}

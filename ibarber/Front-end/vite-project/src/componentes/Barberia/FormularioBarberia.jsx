@@ -25,7 +25,7 @@ const navigate= useNavigate();
         ...prevUserData,
         barberia: false
       }));
-      navigate("/home")
+      navigate("/")
     }
     }
   };

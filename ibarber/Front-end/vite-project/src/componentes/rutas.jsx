@@ -18,8 +18,7 @@ function Rutas({ isAuthenticated, logout }) {
     <>
       <Cabecero isAuthenticated={isAuthenticated} logout={logout} />
       <Routes>
-        <Route path="/Home" element={<Inicio isAuthenticated={isAuthenticated} logout={logout} />} />
-        <Route path="/" element={<Navigate to="/Home" />} />
+        <Route path="/" element={<Inicio isAuthenticated={isAuthenticated} logout={logout} />} />
         <Route path="*" element={<NotFoundPage />} />
         {isAuthenticated && (
           <>

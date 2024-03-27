@@ -4,6 +4,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { API_URLS } from "../../modulos/urls";
 import { Link } from "react-router-dom";
+import ScrollAnimation from "react-animate-on-scroll";
 
 export function MultipleItems({ barberosData }) {
   
@@ -41,29 +42,55 @@ export function MultipleItems({ barberosData }) {
       },
     ]
   };
-  
+
+  const isMobile = window.innerWidth <= 600; // Define el ancho máximo para dispositivos móviles
 
   return (
     <div className="container mt-3 ">
+      {isMobile && ( // Renderiza ScrollAnimation solo en dispositivos móviles
+        <ScrollAnimation animateIn="animate__animated animate__fadeIn" duration={0.6} animateOnce>
+          <Slider {...settings}>
+            {barberosData.map((barbero, index) => (
+              <Link className="barbero-name" to={`/new-cita/${barbero.barberia}`} key={index}>
+                <div  style={{ margin: "0 10px" }}>
+                  <div className="barbero-card d-flex flex-column align-items-center">
+                    <img
+                      src={`${API_URLS.obtenerImage}${barbero.fotoPerfil}`}
+                      alt={barbero.name}
+                      className="barbero-image rounded cardBarber"
+                      style={{ width: "200px", height: "200px", objectFit: "cover"}}
+                    />
+                    <div className="barbero-details text-center mt-2">
+                      <p className="barbero-name">{barbero.usuario}</p>
+                    </div>
+                  </div>
+                </div>
+              </Link>
+            ))}
+          </Slider>
+        </ScrollAnimation>
+      )}
+      {!isMobile && ( // Renderiza Slider directamente en otros dispositivos
         <Slider {...settings}>
           {barberosData.map((barbero, index) => (
-           <Link className="barbero-name" to={`/new-cita/${barbero.barberia}`} key={index}>
-            <div  style={{ margin: "0 10px" }}>
-              <div className="barbero-card d-flex flex-column align-items-center">
-              <img
-                  src={`${API_URLS.obtenerImage}${barbero.fotoPerfil}`}
-                  alt={barbero.name}
-                  className="barbero-image rounded cardBarber"
-                  style={{ width: "200px", height: "200px", objectFit: "cover"}}
-                />
-                <div className="barbero-details text-center mt-2">
-                  <p className="barbero-name">{barbero.usuario}</p>
+            <Link className="barbero-name" to={`/new-cita/${barbero.barberia}`} key={index}>
+              <div  style={{ margin: "0 10px" }}>
+                <div className="barbero-card d-flex flex-column align-items-center">
+                  <img
+                    src={`${API_URLS.obtenerImage}${barbero.fotoPerfil}`}
+                    alt={barbero.name}
+                    className="barbero-image rounded cardBarber"
+                    style={{ width: "200px", height: "200px", objectFit: "cover"}}
+                  />
+                  <div className="barbero-details text-center mt-2">
+                    <p className="barbero-name">{barbero.usuario}</p>
+                  </div>
                 </div>
               </div>
-            </div>
             </Link>
           ))}
         </Slider>
+      )}
     </div>
   );
 }

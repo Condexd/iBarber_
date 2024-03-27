@@ -3,6 +3,8 @@ import { useLocation } from "react-router-dom";
 import { API_URLS } from "../../modulos/urls";
 import BarberiaCard from "../home/inicioAuth/BarberiaCard";
 import { enviadorAuth2 } from "../../functions/usePostAuth2";
+import { NotFoundPage } from "../NotFoundPage";
+
 function SearchResults({ logout }) {
   const location = useLocation();
   const searchQuery = new URLSearchParams(location.search).get("q");
@@ -21,8 +23,8 @@ function SearchResults({ logout }) {
           setResults(response);
         } catch (error) {
           console.error("Error fetching search results:", error);
-          if (error.response && error.response.status === 401) { // Verifica si el error es de no autorización (401)
-            logout(); // Llama a la función logout si el usuario no está autorizado
+          if (error.response && error.response.status === 401) {
+            logout();
           } else {
             setError("Error al buscar. Por favor, inténtalo de nuevo más tarde.");
           }
@@ -45,22 +47,24 @@ function SearchResults({ logout }) {
 
   return (
     <div>
-      <h2>Resultados de búsqueda para: {searchQuery}</h2>
       {results.length === 0 ? (
-        <p>No se encontraron resultados para la búsqueda "{searchQuery}".</p>
+        <NotFoundPage mensaje="No se encontraron resultados" />
       ) : (
-        <div className="cards-container">
-          {results.map((barberia) => (
-            <BarberiaCard
-              key={barberia._id}
-              name={barberia.nombre_barberia}
-              description={barberia.descripcion_barberia}
-              id={barberia._id}
-              image={barberia.fotoPerfil}
-              city={barberia.nombre_ciudad}
-            />
-          ))}
-        </div>
+        <section>
+          <h3 className="subTitle">Resultados encontrados para "{searchQuery}"</h3>
+          <div className="cards-container">
+            {results.map((barberia) => (
+              <BarberiaCard
+                key={barberia._id}
+                name={barberia.nombre_barberia}
+                description={barberia.descripcion_barberia}
+                id={barberia._id}
+                image={barberia.fotoPerfil}
+                city={barberia.nombre_ciudad}
+              />
+            ))}
+          </div>
+        </section>
       )}
     </div>
   );
